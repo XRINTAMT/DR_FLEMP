@@ -1,3 +1,7 @@
+## Localization
+
+For the localization, see the following spreadsheet: 
+https://docs.google.com/spreadsheets/d/1bpNbCLMEyBjoRlegxheUYiDTy9kx9hR-cf9g4LY0CaY/edit#gid=0
 
 ## External assets
 

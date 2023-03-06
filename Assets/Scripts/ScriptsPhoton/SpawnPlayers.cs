@@ -11,7 +11,8 @@ public class SpawnPlayers : MonoBehaviour
     void Start()
     {
         int randSpawnPoint = Random.Range(0, spawnPoints.Count);
-        PhotonNetwork.Instantiate(playerNetworkPrefab.name,spawnPoints[randSpawnPoint].position,spawnPoints[randSpawnPoint].rotation);
+        if (playerNetworkPrefab!=null)
+            PhotonNetwork.Instantiate(playerNetworkPrefab.name, spawnPoints[randSpawnPoint].position, spawnPoints[randSpawnPoint].rotation);
     }
 
     // Update is called once per frame

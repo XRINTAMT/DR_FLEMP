@@ -5,16 +5,20 @@ using UnityEngine;
 
 public class SpawnPlayers : MonoBehaviour
 {
-    [SerializeField] GameObject playerNetworkPrefab;
-    [SerializeField] List<Transform> spawnPoints;
-    // Start is called before the first frame update
+    [SerializeField] GameObject player;
+    [SerializeField] GameObject multiplayer;
+    [SerializeField] List<Transform> spawnPoint;
+
     void Start()
     {
-        int randSpawnPoint = Random.Range(0, spawnPoints.Count);
-        if (playerNetworkPrefab!=null)
-            PhotonNetwork.Instantiate(playerNetworkPrefab.name, spawnPoints[randSpawnPoint].position, spawnPoints[randSpawnPoint].rotation);
+        int randPoint = Random.Range(0, spawnPoint.Count);
+        if (player!=null)
+        {
+            player.transform.position = spawnPoint[randPoint].position;
+            player.transform.rotation = spawnPoint[randPoint].rotation;
+        }
+        PhotonNetwork.Instantiate(multiplayer.name, spawnPoint[randPoint].position, spawnPoint[randPoint].rotation);
     }
-
     // Update is called once per frame
     void Update()
     {

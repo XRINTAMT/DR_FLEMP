@@ -7,56 +7,65 @@ using UnityEngine.SceneManagement;
 
 public class PhotonManager : MonoBehaviourPunCallbacks
 {
-    [SerializeField] string region;
-    [SerializeField] int maxPlayer=3;
+    [SerializeField] int maxPlayer = 3;
     [SerializeField] string sceneOnLoad;
-    // Start is called before the first frame update
+
+    public bool connectedToServerOnStart;
+    public bool automaticJoinRoom;
+
+
     void Start()
     {
-        PhotonNetwork.ConnectUsingSettings();
-        PhotonNetwork.ConnectToRegion(region);
+        if (connectedToServerOnStart)
+        {
+            //PhotonNetwork.OfflineMode = false;
+            PhotonNetwork.AutomaticallySyncScene = true;
+            PhotonNetwork.ConnectUsingSettings();
+        }
     }
     public override void OnConnectedToMaster()
     {
-        Debug.Log("You connected to " + PhotonNetwork.CloudRegion);
+        Debug.Log("Connect to server " + PhotonNetwork.CloudRegion);
     }
 
     public override void OnDisconnected(DisconnectCause cause)
     {
-        Debug.Log("You Disconnected");
+        Debug.Log("Disconnect server");
     }
 
-    public void CreateRoom() 
+    public void ConnectToRoom()
     {
         if (!PhotonNetwork.IsConnected)
             return;
-        
+        PhotonNetwork.JoinRandomRoom();
+    }
+
+    public override void OnJoinedRoom()
+    {
+        LoadScene();
+    }
+
+    public override void OnJoinRandomFailed(short returnCode, string message)
+    {
+        Debug.Log("Join room FALSE");
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.MaxPlayers = (byte)maxPlayer;
-        string roomName = "Room" + Random.Range(1, 100);
-        PhotonNetwork.JoinOrCreateRoom(roomName, roomOptions, TypedLobby.Default);
-        LoadScene();
-    }
-
-    public override void OnCreatedRoom()
-    {
-        Debug.Log("Create room");
-    }
-    public override void OnCreateRoomFailed(short returnCode, string message)
-    {
-        Debug.Log("Join room failed");
-        PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = (byte)maxPlayer });
-        LoadScene();
+        roomOptions.IsOpen = true;
+        roomOptions.IsVisible = true;
+        PhotonNetwork.CreateRoom(null, roomOptions);
     }
 
 
-
-    private void LoadScene() 
+    private void LoadScene()
     {
         SceneManager.LoadScene(sceneOnLoad);
     }
     void Update()
     {
-        
+        if (automaticJoinRoom && PhotonNetwork.IsConnectedAndReady)
+        {
+            ConnectToRoom();
+            automaticJoinRoom = false;
+        }
     }
 }

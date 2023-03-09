@@ -7,30 +7,34 @@ using UnityEngine.SceneManagement;
 
 public class PhotonManager : MonoBehaviourPunCallbacks
 {
+    ManagerScene managerScene;
     [SerializeField] int maxPlayer = 3;
-    [SerializeField] string sceneOnLoad;
-
     public bool connectedToServerOnStart;
     public bool automaticJoinRoom;
 
 
     void Start()
     {
+        managerScene = FindObjectOfType<ManagerScene>();
+
         if (connectedToServerOnStart)
-        {
-            //PhotonNetwork.OfflineMode = false;
-            PhotonNetwork.AutomaticallySyncScene = true;
-            PhotonNetwork.ConnectUsingSettings();
-        }
+            ConnectToServer();
+    }
+
+    public void ConnectToServer() 
+    {
+        //PhotonNetwork.OfflineMode = false;
+        PhotonNetwork.AutomaticallySyncScene = true;
+        PhotonNetwork.ConnectUsingSettings();
     }
     public override void OnConnectedToMaster()
     {
-        Debug.Log("Connect to server " + PhotonNetwork.CloudRegion);
+        Debug.Log("CONNECT TO SERVER");
     }
 
     public override void OnDisconnected(DisconnectCause cause)
     {
-        Debug.Log("Disconnect server");
+        Debug.Log("DISCONNECT SERVER");
     }
 
     public void ConnectToRoom()
@@ -40,10 +44,12 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinRandomRoom();
     }
 
-    public override void OnJoinedRoom()
+    public override void OnCreatedRoom()
     {
-        LoadScene();
+        managerScene.LoadScene("MultiplayerScene");
+        Debug.Log("Create room");
     }
+   
 
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
@@ -55,11 +61,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         PhotonNetwork.CreateRoom(null, roomOptions);
     }
 
-
-    private void LoadScene()
-    {
-        SceneManager.LoadScene(sceneOnLoad);
-    }
     void Update()
     {
         if (automaticJoinRoom && PhotonNetwork.IsConnectedAndReady)

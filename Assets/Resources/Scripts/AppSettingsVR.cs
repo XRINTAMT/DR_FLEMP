@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AppSettings : MonoBehaviour
+public class AppSettingsVR : MonoBehaviour
 {
     [Range(0f, 1f)]
     public float dialogueVolume;

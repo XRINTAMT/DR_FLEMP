@@ -24,7 +24,7 @@ public class JoinRoomController : MonoBehaviour
 
     public void CreateRoom()
     {
-        Debug.Log("Create room" + codeLock.showCode.text);
+        Debug.Log("Create room " + codeLock.showCode.text);
         photonManager.CreateRoom(codeLock.showCode.text);
     }
 
@@ -39,7 +39,7 @@ public class JoinRoomController : MonoBehaviour
             }
         }
 
-        codeLock.showCode.text = "Room not found";
+        codeLock.showCode.text = "No room";
     }
 
 }

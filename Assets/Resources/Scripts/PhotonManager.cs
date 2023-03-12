@@ -68,8 +68,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
         Debug.Log("Join room FALSE");
-        //PhotonNetwork.CreateRoom(null, roomOptions);
-        CreateRoom("1234");
+        CreateRoom(null);
     }
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {

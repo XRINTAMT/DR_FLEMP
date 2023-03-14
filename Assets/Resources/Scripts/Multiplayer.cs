@@ -7,15 +7,15 @@ using UnityEngine;
 
 public class Multiplayer : MonoBehaviour
 {    
-    [SerializeField] Transform multiplayerHead;
-    [SerializeField] Transform multiplayerHandRight;
-    [SerializeField] Transform multiplayerHandLeft;
     AutoHandPlayer autoHandPlayer;
     PhotonView pv;
     Transform player;
     Transform playerHead;
     Transform playerHandRight;
     Transform playerHandLeft;
+    [SerializeField] Transform multiplayerHead;
+    [SerializeField] Transform multiplayerHandRight;
+    [SerializeField] Transform multiplayerHandLeft;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +32,7 @@ public class Multiplayer : MonoBehaviour
             var children = GetComponentsInChildren<Transform>();
             foreach (var child in children)
             {
-                child.gameObject.layer = 6;
+                child.gameObject.layer = 27;
             }
         }
          

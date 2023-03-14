@@ -6,9 +6,15 @@ using UnityEngine.UI;
 public class CodeLock : MonoBehaviour
 {
     private string code;
+    PhotonManager photonManager;
+
     [SerializeField] Text showCode;
     [SerializeField] int maxLength;
 
+    private void Start()
+    {
+        photonManager = FindObjectOfType<PhotonManager>();
+    }
     public void AddDigit(string digit)
     {
         code += digit;
@@ -33,6 +39,10 @@ public class CodeLock : MonoBehaviour
 
     public void Submit()
     {
+        if (photonManager == null)
+            return;
+
+        photonManager.ConnectToRoom();
         //Joining the room logic here
 
     }

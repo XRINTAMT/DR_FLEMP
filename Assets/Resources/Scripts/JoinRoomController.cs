@@ -9,6 +9,7 @@ public class JoinRoomController : MonoBehaviour
 {
     PhotonManager photonManager;
     CodeLock codeLock;
+    public static string nameRoom;
     List<RoomInfo> roomInfo => photonManager.roomInfo;
 
     void Start()
@@ -20,6 +21,7 @@ public class JoinRoomController : MonoBehaviour
     public void CreateNameRoom() 
     {
         codeLock.showCode.text ="" + Random.Range(1000, 9999);
+        nameRoom = codeLock.showCode.text;
     }
 
     public void CreateRoom()
@@ -34,6 +36,7 @@ public class JoinRoomController : MonoBehaviour
         {
             if (roomInfo[i].Name == codeLock.showCode.text)
             {
+                nameRoom = codeLock.showCode.text;
                 PhotonNetwork.JoinRoom(codeLock.showCode.text);
                 return;
             }

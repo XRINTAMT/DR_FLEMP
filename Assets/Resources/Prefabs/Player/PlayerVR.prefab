@@ -1624,66 +1624,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596e2cdbad5de264abd332ce27c9e3e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPointMarker: {fileID: 6664938222986110506}
-  raycastLength: 10
+  hitPointMarker: {fileID: 0}
+  raycastLength: 8
   autoShowTarget: 1
   UILayer:
     serializedVersion: 2
-    m_Bits: 32
+    m_Bits: 0
   StartSelect:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3478717093669528703}
-        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
-        m_MethodName: set_material
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2100000, guid: 2ed5da7ffe0c1f1439cb06a962cb647d, type: 2}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Material, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6130529698181779448}
-        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
-        m_MethodName: set_material
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2100000, guid: 2ed5da7ffe0c1f1439cb06a962cb647d, type: 2}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Material, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   StopSelect:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3478717093669528703}
-        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
-        m_MethodName: set_material
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2100000, guid: a23dd9a890df9154c85afc20164c615e, type: 2}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Material, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6130529698181779448}
-        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
-        m_MethodName: set_material
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2100000, guid: a23dd9a890df9154c85afc20164c615e, type: 2}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Material, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   StartPoint:
     m_PersistentCalls:
       m_Calls: []
@@ -4932,9 +4884,9 @@ MonoBehaviour:
   handRight: {fileID: 7530769499078506878}
   handLeft: {fileID: 7530769499800883880}
   useMovement: 1
-  maxMoveSpeed: 2
-  moveAcceleration: 100
-  groundedDrag: 100
+  maxMoveSpeed: 1.5
+  moveAcceleration: 10
+  groundedDrag: 4
   teleporterL: {fileID: 8526975859873385951}
   teleporterR: {fileID: 1492519613945094725}
   xrTeleporterLinkLeft: {fileID: 0}
@@ -4942,12 +4894,12 @@ MonoBehaviour:
   xRHandPlayerControllerLink: {fileID: 5220823535286729069}
   snapTurning: 1
   snapTurnAngle: 30
-  smoothTurnSpeed: 50
+  smoothTurnSpeed: 10
   showHeight: 1
-  heightSmoothSpeed: 30
-  heightOffset: -0.2
+  heightSmoothSpeed: 20
+  heightOffset: 0
   crouching: 0
-  crouchHeight: 0.2
+  crouchHeight: 0.6
   autoAdjustColliderHeight: 1
   minMaxHeight: {x: 0.5, y: 2.5}
   useHeadCollision: 1
@@ -4957,18 +4909,18 @@ MonoBehaviour:
   maxStepAngle: 30
   groundLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 0
   allowClimbing: 1
   allowClimbingMovement: 1
   climbingStrength: {x: 20, y: 20, z: 20}
   climbingAcceleration: 30
   climbingDrag: 5
-  climbUpStepHeightMultiplier: 3
+  climbUpStepHeightMultiplier: 1
   allowBodyPushing: 1
-  pushingStrength: {x: 10, y: 20, z: 10}
+  pushingStrength: {x: 10, y: 10, z: 10}
   pushingAcceleration: 10
-  pushingDrag: 1
-  pushUpStepHeightMultiplier: 3
+  pushingDrag: 3
+  pushUpStepHeightMultiplier: 1
   allowPlatforms: 1
   platformingLayerMask:
     serializedVersion: 2
@@ -6251,66 +6203,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596e2cdbad5de264abd332ce27c9e3e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPointMarker: {fileID: 2352189443973722529}
-  raycastLength: 10
+  hitPointMarker: {fileID: 0}
+  raycastLength: 8
   autoShowTarget: 1
   UILayer:
     serializedVersion: 2
-    m_Bits: 32
+    m_Bits: 0
   StartSelect:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8825547263721064499}
-        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
-        m_MethodName: set_material
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2100000, guid: 2ed5da7ffe0c1f1439cb06a962cb647d, type: 2}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Material, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6708706485859305530}
-        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
-        m_MethodName: set_material
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2100000, guid: 2ed5da7ffe0c1f1439cb06a962cb647d, type: 2}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Material, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   StopSelect:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8825547263721064499}
-        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
-        m_MethodName: set_material
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2100000, guid: a23dd9a890df9154c85afc20164c615e, type: 2}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Material, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6708706485859305530}
-        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
-        m_MethodName: set_material
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2100000, guid: a23dd9a890df9154c85afc20164c615e, type: 2}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Material, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   StartPoint:
     m_PersistentCalls:
       m_Calls: []

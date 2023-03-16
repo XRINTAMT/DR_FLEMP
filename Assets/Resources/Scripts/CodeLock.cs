@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class CodeLock : MonoBehaviour
+public class CodeLock : MonoBehaviourPunCallbacks
 {
     private string code;
     PhotonManager photonManager;
 
     public Text showCode;
+    public Text showFullError;
     [SerializeField] private int maxLength;
     private JoinRoomController MultiplayerController;
 
@@ -50,7 +53,17 @@ public class CodeLock : MonoBehaviour
         }
         else
         {
-            MultiplayerController.CheckPassword();
+            MultiplayerController.CheckPassword(code);
         }
+    }
+
+    public override void OnJoinRoomFailed(short returnCode, string message)
+    {
+        showFullError.text = message;
+    }
+
+    public override void OnCreateRoomFailed(short returnCode, string message)
+    {
+        showFullError.text = message;
     }
 }

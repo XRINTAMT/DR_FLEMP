@@ -46,7 +46,6 @@ public class JoinRoomController : MonoBehaviour
                 return;
             }
         }
-        Debug.Log(9);
         codeLock.showCode.text = "No room";
 
         if (codeLockViewerInput != null)

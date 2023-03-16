@@ -42,7 +42,7 @@ public class JoinRoomController : MonoBehaviour
             }
         }
 
-        codeLock.showCode.text = "No room";
+        codeLock.showCode.text = "Error!";
     }
 
 }

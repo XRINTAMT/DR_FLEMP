@@ -9,11 +9,13 @@ public class CodeLock : MonoBehaviour
     PhotonManager photonManager;
 
     public Text showCode;
-    [SerializeField] int maxLength;
+    [SerializeField] private int maxLength;
+    private JoinRoomController MultiplayerController;
 
     private void Start()
     {
         photonManager = FindObjectOfType<PhotonManager>();
+        MultiplayerController = GetComponent<JoinRoomController>();
     }
     public void AddDigit(string digit)
     {
@@ -42,8 +44,13 @@ public class CodeLock : MonoBehaviour
         if (photonManager == null)
             return;
 
-        photonManager.ConnectToRandomRoom();
-        //Joining the room logic here
-
+        if (code == "")
+        {
+            MultiplayerController.CreateRoom();
+        }
+        else
+        {
+            MultiplayerController.CheckPassword();
+        }
     }
 }

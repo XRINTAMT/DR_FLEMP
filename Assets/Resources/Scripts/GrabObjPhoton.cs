@@ -4,7 +4,7 @@ using Autohand;
 using Photon.Pun;
 using UnityEngine;
 
-public class PhotonGrabObj : MonoBehaviour
+public class GrabObjPhoton : MonoBehaviour
 {
     PhotonView pv;
     Grabbable grabbable;

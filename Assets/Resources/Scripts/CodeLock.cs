@@ -8,7 +8,7 @@ public class CodeLock : MonoBehaviour
     private string code;
     PhotonManager photonManager;
 
-    [SerializeField] Text showCode;
+    public Text showCode;
     [SerializeField] int maxLength;
 
     private void Start()
@@ -42,7 +42,7 @@ public class CodeLock : MonoBehaviour
         if (photonManager == null)
             return;
 
-        photonManager.ConnectToRoom();
+        photonManager.ConnectToRandomRoom();
         //Joining the room logic here
 
     }

@@ -20,29 +20,29 @@ public class JoinRoomController : MonoBehaviour
 
     public void CreateNameRoom() 
     {
-        codeLock.showCode.text ="" + Random.Range(1000, 9999);
+        codeLock.showCode.text = Random.Range(1000, 9999).ToString();
         nameRoom = codeLock.showCode.text;
     }
 
     public void CreateRoom()
     {
+        CreateNameRoom();
         Debug.Log("Create room " + codeLock.showCode.text);
         photonManager.CreateRoom(codeLock.showCode.text);
     }
 
-    public void CheckPassword()
+    public void CheckPassword(string _roomCode)
     {
         for (int i = 0; i < roomInfo.Count; i++)
         {
-            if (roomInfo[i].Name == codeLock.showCode.text)
+            if (roomInfo[i].Name == _roomCode)
             {
-                nameRoom = codeLock.showCode.text;
-                PhotonNetwork.JoinRoom(codeLock.showCode.text);
+                nameRoom = _roomCode;
+                PhotonNetwork.JoinRoom(_roomCode);
                 return;
             }
         }
-
-        codeLock.showCode.text = "No room";
+        codeLock.showCode.text = "Error!";
     }
 
 }

@@ -26,6 +26,21 @@ public class PauseManager : MonoBehaviour
     {
         PauseMenu.SetActive(false);
     }
+    
+    public void ShowOutroMessage()
+    {
+        AppPause();
+        ScenarioCompleted = true;
+        if(PlayerPrefs.GetInt("GuidedMode", 1) == 1)
+        {
+            Congrats.SetActive(true);
+        }
+        else
+        {
+            CongratsExam.SetActive(true);
+        }
+        Main.SetActive(false);
+    }
 
     public void AppPause()
     {

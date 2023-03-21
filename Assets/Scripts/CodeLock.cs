@@ -2,18 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class CodeLock : MonoBehaviour
+public class CodeLock : MonoBehaviourPunCallbacks
 {
     private string code;
     PhotonManager photonManager;
 
     public Text showCode;
-    [SerializeField] int maxLength;
+    public Text showFullError;
+    [SerializeField] private int maxLength;
+    private JoinRoomController MultiplayerController;
 
     private void Start()
     {
         photonManager = FindObjectOfType<PhotonManager>();
+        MultiplayerController = GetComponent<JoinRoomController>();
     }
     public void AddDigit(string digit)
     {
@@ -42,8 +47,23 @@ public class CodeLock : MonoBehaviour
         if (photonManager == null)
             return;
 
-        photonManager.ConnectToRandomRoom();
-        //Joining the room logic here
+        if (code == "")
+        {
+            MultiplayerController.CreateRoom();
+        }
+        else
+        {
+            MultiplayerController.CheckPassword(code);
+        }
+    }
 
+    public override void OnJoinRoomFailed(short returnCode, string message)
+    {
+        showFullError.text = message;
+    }
+
+    public override void OnCreateRoomFailed(short returnCode, string message)
+    {
+        showFullError.text = message;
     }
 }

@@ -46,7 +46,6 @@ public class CodeLock : MonoBehaviourPunCallbacks
     {
         if (photonManager == null)
             return;
-
         if (code == "")
         {
             MultiplayerController.CreateRoom();

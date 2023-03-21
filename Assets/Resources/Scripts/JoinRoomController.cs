@@ -9,7 +9,10 @@ public class JoinRoomController : MonoBehaviour
 {
     PhotonManager photonManager;
     CodeLock codeLock;
+    [SerializeField]InputField codeLockViewerInput;
     public static string nameRoom;
+
+    public bool viewer;
     List<RoomInfo> roomInfo => photonManager.roomInfo;
 
     void Start()
@@ -22,6 +25,8 @@ public class JoinRoomController : MonoBehaviour
     {
         codeLock.showCode.text ="" + Random.Range(1000, 9999);
         nameRoom = codeLock.showCode.text;
+        if (codeLockViewerInput != null)
+            codeLockViewerInput.text = "" + Random.Range(1000, 9999);
     }
 
     public void CreateRoom()
@@ -41,8 +46,10 @@ public class JoinRoomController : MonoBehaviour
                 return;
             }
         }
-
         codeLock.showCode.text = "No room";
+
+        if (codeLockViewerInput != null)
+            codeLockViewerInput.text = "No room";
     }
 
 }

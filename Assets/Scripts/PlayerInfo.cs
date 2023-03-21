@@ -8,7 +8,6 @@ public class PlayerInfo : MonoBehaviour
     PhotonView pv;
     PlayerInfo myPlayerInfo;
     PlayersList playersList;
-
     //public string playerName;
     public PlayerRole playerRole;
 
@@ -18,7 +17,6 @@ public class PlayerInfo : MonoBehaviour
         pv = GetComponent<PhotonView>();
         myPlayerInfo = GetComponent<PlayerInfo>();    
         playersList = FindObjectOfType<PlayersList>();
-
         playersList.playersList.Add(myPlayerInfo);
 
         //if (pv.IsMine) 
@@ -52,6 +50,16 @@ public class PlayerInfo : MonoBehaviour
     {
         if (pv.IsMine && playerRole != PlayerRole.Viewer && !playersList.textRole.transform.parent.gameObject.activeSelf)
         {
+          
+            if (playersList.randomRole==1)
+            {
+                playerRole = PlayerRole.OffGoing;
+            }
+            if (playersList.randomRole == 2)
+            {
+                playerRole = PlayerRole.OnComing;
+            }  
+            
             playersList.textRole.text = "You role " + playerRole + "\nYou can start";
             playersList.textRole.transform.parent.gameObject.SetActive(true);
         }
@@ -59,7 +67,9 @@ public class PlayerInfo : MonoBehaviour
 
     public enum PlayerRole
     {
+        None,
         Viewer,
+        Player,
         OffGoing,
         OnComing
     }

@@ -12,8 +12,8 @@ public class PlayersList : MonoBehaviour
     public bool serverOnComputer;
     PhotonView pv;  
     bool setRoles;
-    int randomRole;
-    int waitingCountOfPlayers=2;
+    public int randomRole;
+    int waitingCountOfPlayers;
 
     private void Start()
     {
@@ -39,10 +39,20 @@ public class PlayersList : MonoBehaviour
     private void Update()
     {
 
-        if (PhotonNetwork.IsMasterClient && PhotonNetwork.PlayerList.Length == waitingCountOfPlayers && !setRoles)
+        if (PhotonNetwork.IsMasterClient && !setRoles)
         {
-            SetRoles();
-            setRoles = true;
+            for (int i = 0; i < playersList.Count; i++)
+            {
+                if (playersList[i].playerRole == PlayerInfo.PlayerRole.Player)
+                {
+                    waitingCountOfPlayers++;
+                }
+            }
+            if (waitingCountOfPlayers==2)
+            {
+                SetRoles();
+                setRoles = true;
+            }
         }
 
         if (playersList.Count==2 && randomRole!=0)

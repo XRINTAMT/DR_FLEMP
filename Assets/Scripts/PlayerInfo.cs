@@ -26,9 +26,24 @@ public class PlayerInfo : MonoBehaviour
         //    playersList.connectedPlayerName.text = playerName + " your name";
         //    SendPlayerName(viewId, playerName);
         //}
+        WhaitPlayer();
+    }
+
+    void WhaitPlayer()
+    {
+
+        if (playerRole==PlayerRole.Player)
+        {
+            pv.RPC("WhaitPlayerRPC", RpcTarget.All);
+        }
 
     }
 
+    [PunRPC]
+    void WhaitPlayerRPC()
+    {
+        playersList.waitingCountOfPlayers++;
+    }
     //public void SendPlayerName(int viewId, string playerName)
     //{
     //    if (pv.IsMine)
@@ -48,7 +63,7 @@ public class PlayerInfo : MonoBehaviour
 
     private void Update()
     {
-        if (pv.IsMine && playerRole != PlayerRole.Viewer && !playersList.textRole.transform.parent.gameObject.activeSelf)
+        if (pv.IsMine && playerRole != PlayerRole.Viewer && !playersList.textRole.transform.parent.gameObject.activeSelf &&playersList.waitingCountOfPlayers==2)
         {
           
             if (playersList.randomRole==1)

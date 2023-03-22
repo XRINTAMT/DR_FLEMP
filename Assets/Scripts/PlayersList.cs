@@ -13,7 +13,7 @@ public class PlayersList : MonoBehaviour
     PhotonView pv;  
     bool setRoles;
     public int randomRole;
-    int waitingCountOfPlayers;
+    public int waitingCountOfPlayers;
 
     private void Start()
     {
@@ -30,6 +30,7 @@ public class PlayersList : MonoBehaviour
             pv.RPC("SetPlayerRole", RpcTarget.All, randomRole);
         }
     }
+  
 
     [PunRPC]
     void SetPlayerRole(int randomRole)
@@ -39,23 +40,25 @@ public class PlayersList : MonoBehaviour
     private void Update()
     {
 
-        if (PhotonNetwork.IsMasterClient && !setRoles)
+        if (PhotonNetwork.IsMasterClient && !setRoles && waitingCountOfPlayers == 2)
         {
-            for (int i = 0; i < playersList.Count; i++)
-            {
-                if (playersList[i].playerRole == PlayerInfo.PlayerRole.Player)
-                {
-                    waitingCountOfPlayers++;
-                }
-            }
-            if (waitingCountOfPlayers==2)
-            {
-                SetRoles();
-                setRoles = true;
-            }
+            //for (int i = 0; i < playersList.Count; i++)
+            //{
+            //    if (playersList[i].playerRole == PlayerInfo.PlayerRole.Player)
+            //    {
+            //        waitingCountOfPlayers++;
+            //    }
+            //}
+            //if (waitingCountOfPlayers==2)
+            //{
+            //    SetRoles();
+            //    setRoles = true;
+            //}
+            SetRoles();
+            setRoles = true;
         }
 
-        if (playersList.Count==2 && randomRole!=0)
+        if (waitingCountOfPlayers == 2 && randomRole!=0)
         {
             switch (randomRole)
             {

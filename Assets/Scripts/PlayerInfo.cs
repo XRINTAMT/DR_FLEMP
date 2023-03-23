@@ -19,65 +19,44 @@ public class PlayerInfo : MonoBehaviour
         playersList = FindObjectOfType<PlayersList>();
         playersList.playersList.Add(myPlayerInfo);
 
-        //if (pv.IsMine) 
+        //if (pv.IsMine)
         //{
-        //    isMine = true;
-        //    playerName = "Name" + Random.Range(10, 99);
-        //    playersList.connectedPlayerName.text = playerName + " your name";
-        //    SendPlayerName(viewId, playerName);
+        //    WhaitPlayer();
         //}
-        WhaitPlayer();
+      
     }
 
-    void WhaitPlayer()
-    {
-
-        if (playerRole==PlayerRole.Player)
-        {
-            pv.RPC("WhaitPlayerRPC", RpcTarget.All);
-        }
-
-    }
-
-    [PunRPC]
-    void WhaitPlayerRPC()
-    {
-        playersList.waitingCountOfPlayers++;
-    }
-    //public void SendPlayerName(int viewId, string playerName)
+    //void WhaitPlayer()
     //{
-    //    if (pv.IsMine)
+    //    if (playerRole==PlayerRole.Player)
     //    {
-    //        pv.RPC("SendPlayerNameRPC", RpcTarget.All, viewId, playerName);
+    //        pv.RPC("WhaitPlayerRPC", RpcTarget.All);
     //    }
     //}
 
     //[PunRPC]
-    //void SendPlayerNameRPC(int viewId, string playerName)
+    //void WhaitPlayerRPC()
     //{
-    //    if (pv.ViewID == viewId)
-    //    {
-    //        myPlayerInfo.playerName = playerName;
-    //    }
+    //    playersList.waitingCountOfPlayers++;
     //}
 
-    private void Update()
+    public void SetRoles() 
     {
-        if (pv.IsMine && playerRole != PlayerRole.Viewer && !playersList.textRole.transform.parent.gameObject.activeSelf &&playersList.waitingCountOfPlayers==2)
+        if (pv.IsMine && playerRole != PlayerRole.Viewer)
         {
-          
-            if (playersList.randomRole==1)
-            {
-                playerRole = PlayerRole.OffGoing;
-            }
-            if (playersList.randomRole == 2)
-            {
-                playerRole = PlayerRole.OnComing;
-            }  
-            
+
+            if (playerRole == PlayerRole.OffGoing)
+                playersList.showCase.SetActive(true);
+
             playersList.textRole.text = "You role " + playerRole + "\nYou can start";
             playersList.textRole.transform.parent.gameObject.SetActive(true);
         }
+
+    }
+
+    private void Update()
+    {
+
     }
 
     public enum PlayerRole

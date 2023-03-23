@@ -5,22 +5,21 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayersList : MonoBehaviour
-{   
-
+{
+    public GameObject showCase;
     public Text textRole;
-    public List<PlayerInfo> playersList = new List<PlayerInfo>();
-    public bool serverOnComputer;
-    PhotonView pv;  
-    bool setRoles;
+    public List<PlayerInfo> playersList = new List<PlayerInfo>();    
     public int randomRole;
     public int waitingCountOfPlayers;
+    PhotonView pv;  
+    bool setRoles;
+
+    public int viewId1;
+    public int viewId2;
 
     private void Start()
     {
         pv = GetComponent<PhotonView>();
-        if (serverOnComputer)
-            waitingCountOfPlayers = 3;
-      
     }
     void SetRoles() 
     {
@@ -30,8 +29,6 @@ public class PlayersList : MonoBehaviour
             pv.RPC("SetPlayerRole", RpcTarget.All, randomRole);
         }
     }
-  
-
     [PunRPC]
     void SetPlayerRole(int randomRole)
     {
@@ -40,25 +37,25 @@ public class PlayersList : MonoBehaviour
     private void Update()
     {
 
+        if (PhotonNetwork.IsMasterClient && waitingCountOfPlayers < 2)
+        {
+            if (playersList.Count>=2)
+            {
+                for (int i = 0; i < playersList.Count; i++)
+                {
+                    if (playersList[i].playerRole == PlayerInfo.PlayerRole.Player)
+                        waitingCountOfPlayers++;
+                }
+            }
+        }
+
         if (PhotonNetwork.IsMasterClient && !setRoles && waitingCountOfPlayers == 2)
         {
-            //for (int i = 0; i < playersList.Count; i++)
-            //{
-            //    if (playersList[i].playerRole == PlayerInfo.PlayerRole.Player)
-            //    {
-            //        waitingCountOfPlayers++;
-            //    }
-            //}
-            //if (waitingCountOfPlayers==2)
-            //{
-            //    SetRoles();
-            //    setRoles = true;
-            //}
             SetRoles();
             setRoles = true;
         }
 
-        if (waitingCountOfPlayers == 2 && randomRole!=0)
+        if (randomRole != 0)
         {
             switch (randomRole)
             {
@@ -73,7 +70,11 @@ public class PlayersList : MonoBehaviour
                 default:
                     break;
             }
-           randomRole=0;
+
+            playersList[playersList.Count - 1].SetRoles();
+            playersList[playersList.Count - 2].SetRoles();
+
+            randomRole =0;
         }
     }
 

@@ -316,7 +316,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fae9cb8db65bb94b934daac57851ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainText: {fileID: 7557905764042222955}
   AudioHintButton: {fileID: 8944065631910394428}
+  PopupManager: {fileID: 0}
+  checkbox: {fileID: 3890780867451574557}
+  explainationText: 
+  answerText:
+  - Answer 1
+  - Answer 2
+  - Answer 3
 --- !u!1 &2976961518680663409
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,9 +522,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6115535435768021129}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
+      - m_Target: {fileID: 6483286412973661271}
+        m_TargetAssemblyTypeName: NurseTabletRecord, Assembly-CSharp
+        m_MethodName: ShowExplaination
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -610,7 +618,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6483286412973661271}
+        m_TargetAssemblyTypeName: NurseTabletRecord, Assembly-CSharp
+        m_MethodName: CheckboxChecked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &8944065631910394428
 GameObject:

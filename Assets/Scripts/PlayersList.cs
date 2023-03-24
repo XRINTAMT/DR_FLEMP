@@ -7,15 +7,14 @@ using UnityEngine.UI;
 public class PlayersList : MonoBehaviour
 {
     public GameObject showCase;
+    public ChecklistMechanic checklistMechanic;
     public Text textRole;
     public List<PlayerInfo> playersList = new List<PlayerInfo>();    
-    public int randomRole;
-    public int waitingCountOfPlayers;
     PhotonView pv;  
+    int waitingCountOfPlayers;
+    int viewIdPlayer1;
+    int viewIdPlayer2;
     bool setRoles;
-
-    public int viewId1;
-    public int viewId2;
 
     private void Start()
     {
@@ -26,26 +25,20 @@ public class PlayersList : MonoBehaviour
         if (PhotonNetwork.IsMasterClient)
         {
             int randomRole = Random.Range(1, 3);
-            pv.RPC("SetPlayerRole", RpcTarget.All, randomRole, viewId1,viewId2);
+            pv.RPC("SetPlayerRole", RpcTarget.All, randomRole, viewIdPlayer1, viewIdPlayer2);
         }
     }
     [PunRPC]
     void SetPlayerRole(int randomRole, int view1, int view2)
     {
-        this.randomRole=randomRole;
-
         if (randomRole == 1)
         {
             for (int i = 0; i < playersList.Count; i++)
             {
                 if (playersList[i].GetComponent<PhotonView>().ViewID == view1)
-                {
                     playersList[i].playerRole= PlayerInfo.PlayerRole.OffGoing;
-                }
                 if (playersList[i].GetComponent<PhotonView>().ViewID == view2)
-                {
                     playersList[i].playerRole = PlayerInfo.PlayerRole.OnComing;
-                }
             }
         }
         if (randomRole == 2)
@@ -53,13 +46,9 @@ public class PlayersList : MonoBehaviour
             for (int i = 0; i < playersList.Count; i++)
             {
                 if (playersList[i].GetComponent<PhotonView>().ViewID == view1)
-                {
                     playersList[i].playerRole = PlayerInfo.PlayerRole.OnComing;
-                }
                 if (playersList[i].GetComponent<PhotonView>().ViewID == view2)
-                {
                     playersList[i].playerRole = PlayerInfo.PlayerRole.OffGoing;
-                }
             }
         }
 
@@ -79,8 +68,8 @@ public class PlayersList : MonoBehaviour
                         waitingCountOfPlayers++;
                 }
 
-                viewId1 = playersList[playersList.Count - 1].GetComponent<PhotonView>().ViewID;
-                viewId2 = playersList[playersList.Count - 2].GetComponent<PhotonView>().ViewID;
+                viewIdPlayer1 = playersList[playersList.Count - 1].GetComponent<PhotonView>().ViewID;
+                viewIdPlayer2 = playersList[playersList.Count - 2].GetComponent<PhotonView>().ViewID;
             }
         }
 

@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class PlayersList : MonoBehaviour
 {
     public GameObject showCase;
-    public ChecklistMechanic checklistMechanic;
     public Text textRole;
     public List<PlayerInfo> playersList = new List<PlayerInfo>();    
     PhotonView pv;  

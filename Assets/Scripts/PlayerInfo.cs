@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Autohand;
 using Photon.Pun;
 using UnityEngine;
 
 public class PlayerInfo : MonoBehaviour
 {
+    [SerializeField] Grabbable grabbableTablet;
+    [SerializeField] ChecklistMechanic checklistMechanic;
     PhotonView pv;
     PlayerInfo myPlayerInfo;
     PlayersList playersList;
@@ -27,14 +30,14 @@ public class PlayerInfo : MonoBehaviour
             if (playerRole == PlayerRole.OffGoing) 
             {
                 playersList.showCase.SetActive(true);
-                playersList.checklistMechanic.Oncoming = false;
+                checklistMechanic.Oncoming = false;
             }
             if (playerRole == PlayerRole.OnComing)
             {
                 playersList.showCase.SetActive(false);
-                playersList.checklistMechanic.Oncoming = true;
+                checklistMechanic.Oncoming = true;
             }
-            playersList.checklistMechanic.transform.parent.gameObject.SetActive(true);
+            grabbableTablet.enabled = true;
             playersList.textRole.text = "You role " + playerRole + "\nYou can start";
             playersList.textRole.transform.parent.gameObject.SetActive(true);
         }

@@ -14,6 +14,9 @@ public class PlayersList : MonoBehaviour
     int viewIdPlayer1;
     int viewIdPlayer2;
     bool setRoles;
+    bool RpcSetRoles;
+    int RpcRandRole;
+    int RpcView1, RpcView2;
 
     private void Start()
     {
@@ -30,29 +33,34 @@ public class PlayersList : MonoBehaviour
     [PunRPC]
     void SetPlayerRole(int randomRole, int view1, int view2)
     {
-        if (randomRole == 1)
-        {
-            for (int i = 0; i < playersList.Count; i++)
-            {
-                if (playersList[i].GetComponent<PhotonView>().ViewID == view1)
-                    playersList[i].playerRole= PlayerInfo.PlayerRole.OffGoing;
-                if (playersList[i].GetComponent<PhotonView>().ViewID == view2)
-                    playersList[i].playerRole = PlayerInfo.PlayerRole.OnComing;
-            }
-        }
-        if (randomRole == 2)
-        {
-            for (int i = 0; i < playersList.Count; i++)
-            {
-                if (playersList[i].GetComponent<PhotonView>().ViewID == view1)
-                    playersList[i].playerRole = PlayerInfo.PlayerRole.OnComing;
-                if (playersList[i].GetComponent<PhotonView>().ViewID == view2)
-                    playersList[i].playerRole = PlayerInfo.PlayerRole.OffGoing;
-            }
-        }
+        RpcRandRole = randomRole;
+        RpcView1 = view1;
+        RpcView2 = view2;
+        RpcSetRoles = true;
 
-        playersList[playersList.Count - 1].SetRoles();
-        playersList[playersList.Count - 2].SetRoles();
+        //if (randomRole == 1)
+        //{
+        //    for (int i = 0; i < playersList.Count; i++)
+        //    {
+        //        if (playersList[i].GetComponent<PhotonView>().ViewID == view1)
+        //            playersList[i].playerRole= PlayerInfo.PlayerRole.OffGoing;
+        //        if (playersList[i].GetComponent<PhotonView>().ViewID == view2)
+        //            playersList[i].playerRole = PlayerInfo.PlayerRole.OnComing;
+        //    }
+        //}
+        //if (randomRole == 2)
+        //{
+        //    for (int i = 0; i < playersList.Count; i++)
+        //    {
+        //        if (playersList[i].GetComponent<PhotonView>().ViewID == view1)
+        //            playersList[i].playerRole = PlayerInfo.PlayerRole.OnComing;
+        //        if (playersList[i].GetComponent<PhotonView>().ViewID == view2)
+        //            playersList[i].playerRole = PlayerInfo.PlayerRole.OffGoing;
+        //    }
+        //}
+
+        //playersList[playersList.Count - 1].SetRoles();
+        //playersList[playersList.Count - 2].SetRoles();
     }
     private void Update()
     {
@@ -78,27 +86,34 @@ public class PlayersList : MonoBehaviour
             setRoles = true;
         }
 
-        //if (randomRole != 0)
-        //{
-        //    switch (randomRole)
-        //    {
-        //        case 1:
-        //            playersList[playersList.Count - 1].playerRole = PlayerInfo.PlayerRole.OffGoing;
-        //            playersList[playersList.Count - 2].playerRole = PlayerInfo.PlayerRole.OnComing;
-        //            break;
-        //        case 2:
-        //            playersList[playersList.Count - 1].playerRole = PlayerInfo.PlayerRole.OnComing;
-        //            playersList[playersList.Count - 2].playerRole = PlayerInfo.PlayerRole.OffGoing;
-        //            break;
-        //        default:
-        //            break;
-        //    }
+        if (playersList.Count>1 && RpcSetRoles)
+        {
+            if (RpcRandRole == 1)
+            {
+                for (int i = 0; i < playersList.Count; i++)
+                {
+                    if (playersList[i].GetComponent<PhotonView>().ViewID == RpcView1)
+                        playersList[i].playerRole = PlayerInfo.PlayerRole.OffGoing;
+                    if (playersList[i].GetComponent<PhotonView>().ViewID == RpcView2)
+                        playersList[i].playerRole = PlayerInfo.PlayerRole.OnComing;
+                }
+            }
+            if (RpcRandRole == 2)
+            {
+                for (int i = 0; i < playersList.Count; i++)
+                {
+                    if (playersList[i].GetComponent<PhotonView>().ViewID == RpcView1)
+                        playersList[i].playerRole = PlayerInfo.PlayerRole.OnComing;
+                    if (playersList[i].GetComponent<PhotonView>().ViewID == RpcView2)
+                        playersList[i].playerRole = PlayerInfo.PlayerRole.OffGoing;
+                }
+            }
 
-        //    playersList[playersList.Count - 1].SetRoles();
-        //    playersList[playersList.Count - 2].SetRoles();
+            playersList[playersList.Count - 1].SetRoles();
+            playersList[playersList.Count - 2].SetRoles();
 
-        //    randomRole =0;
-        //}
+            RpcSetRoles = false;
+        }
     }
 
 }

@@ -37,9 +37,13 @@ public class PlayerInfo : MonoBehaviour
                 playersList.showCase.SetActive(false);
                 checklistMechanic.Oncoming = true;
             }
-            grabbableTablet.enabled = true;
+
             playersList.textRole.text = "You role " + playerRole + "\nYou can start";
             playersList.textRole.transform.parent.gameObject.SetActive(true);
+        }
+        if (!pv.IsMine)
+        {
+            grabbableTablet.enabled = false;
         }
 
     }

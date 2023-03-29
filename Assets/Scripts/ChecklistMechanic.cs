@@ -20,7 +20,8 @@ public class ChecklistMechanic : MonoBehaviour
         CSVParser Scenario = new CSVParser("Scenarios/"+ scenarioName + "/NursingTablets");
         int i = -1;
         correctAnswers = new int[Scenario.rowData.Count];
-        foreach(string[] row in Scenario.rowData)
+        givenAnswers = new int[Scenario.rowData.Count];
+        foreach (string[] row in Scenario.rowData)
         {
             if(i != -1 && TabletRecords.Length > i)
             {

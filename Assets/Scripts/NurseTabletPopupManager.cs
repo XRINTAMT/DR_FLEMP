@@ -40,7 +40,23 @@ public class NurseTabletPopupManager : MonoBehaviour
 
     public void ProcessAnswer(int optionNumber)
     {
-        QuestionWindow.SetActive(false);
+        //QuestionWindow.SetActive(false);
         Checklist.SaveAnswer(id, optionNumber);
+
+        Text textAnswer = AnswerText[optionNumber - 1];
+
+        if (Checklist.correctAnswers[id] == optionNumber - 1) 
+        {
+            for (int i = 0; i < AnswerText.Length; i++)
+            {
+                AnswerText[i].color = Color.white;
+            }
+            QuestionWindow.SetActive(false);
+            return;
+        }
+         
+        if (Checklist.correctAnswers[id] != optionNumber-1)
+            textAnswer.color = Color.red;
+            AnswerText[Checklist.correctAnswers[id]].color = Color.green;
     }
 }

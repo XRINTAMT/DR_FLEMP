@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class NurseTabletRecord : MonoBehaviour
 {
-    [SerializeField] private Text MainText;
+    public Text MainText;
     [SerializeField] private GameObject AudioHintButton;
     [SerializeField] private NurseTabletPopupManager PopupManager;
     [SerializeField] private ChecklistMechanic ChecklistManager;
-    [SerializeField] private Toggle checkbox;
+    public Toggle checkbox;
     [SerializeField] private string explainationText;
     [SerializeField] private string[] answerText;
     [SerializeField] private int id;
@@ -47,5 +47,9 @@ public class NurseTabletRecord : MonoBehaviour
                 PopupManager.ShowQuestion(questionText, answerText, id);
             }
         }
+
+
+        if (ChecklistManager.indicate)
+            ChecklistManager.DisableIndicate();
     }
 }

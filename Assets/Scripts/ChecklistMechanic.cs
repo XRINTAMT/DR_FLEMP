@@ -15,6 +15,7 @@ public class ChecklistMechanic : MonoBehaviour
     int[] givenAnswers;
     [HideInInspector]
     public bool indicate;
+    Timer timer;
     public void Awake()
     {
         TabletRecords = GetComponentsInChildren<NurseTabletRecord>();
@@ -42,6 +43,8 @@ public class ChecklistMechanic : MonoBehaviour
             }
             i++;
         }
+
+        timer = GetComponent<Timer>();
     }
 
     public void SaveAnswer(int _id, int _answer)
@@ -56,6 +59,8 @@ public class ChecklistMechanic : MonoBehaviour
             //run code if the wrong answer is given
         }
         CheckCompletion();
+
+        timer.TimerStart();
     }
 
     public void CheckCompletion() {

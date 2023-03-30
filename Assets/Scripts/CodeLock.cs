@@ -7,7 +7,7 @@ using Photon.Realtime;
 
 public class CodeLock : MonoBehaviourPunCallbacks
 {
-    private string code;
+    private string code = "";
     PhotonManager photonManager;
 
     public Text showCode;

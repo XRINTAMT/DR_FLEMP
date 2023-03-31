@@ -17,7 +17,15 @@ public class NurseTabletRecord : MonoBehaviour
 
     public void Start()
     {
-        questionText = MainText.text;
+        
+    }
+
+    public void SetData(string _questionText, string[] _answerText, string _explainText)
+    {
+        explainationText = _explainText;
+        questionText = _questionText;
+        MainText.text = _questionText;
+        answerText = _answerText;
     }
 
     public void ShowAudioHint()

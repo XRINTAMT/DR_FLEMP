@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 using Meta.WitAi.TTS.Utilities;
 
@@ -14,11 +16,16 @@ namespace OpenAI
         [SerializeField] private string Instruction;
 
         private int secret = 0;
-        string[] errorReplies = { "ChatGPT is down (or we didn't pay for it) so have this:",
+        string[] errorReplies = { "Chat GPT is down (or we didn't pay for it) so have this:",
                     "We're no strangers to love",
                     "You know the rules and so do I (do I)",
                     "A full commitment's what I'm thinking of",
                     "You wouldn't get this from any other guy" };
+        List<string> forbiddenPhrases = new List<string>
+        {
+            "Press activation to talk...",
+            "Processing..."
+        };
 
         private OpenAIApi openai = new OpenAIApi("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");
 
@@ -34,7 +41,7 @@ namespace OpenAI
         public async void SendReply()
         {
             userInput = playerUtterance.text;
-            if(userInput == "Press activation to talk...")
+            if(forbiddenPhrases.Contains(userInput))
             {
                 Debug.Log("Heard nothing / did not have enough time to process the speech");
                 return;
@@ -65,7 +72,6 @@ namespace OpenAI
                 Debug.LogWarning("No text was generated from this prompt.");
                 finalInstruction += $"{errorReplies[secret]}\nQ: ";
                 textArea.text = finalInstruction;
-                Debug.Log("Instruction :: " + finalInstruction);
                 _speaker.Speak(errorReplies[secret]);
                 secret++;
                 if (secret >= errorReplies.Length)

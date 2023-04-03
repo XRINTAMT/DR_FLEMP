@@ -31,6 +31,11 @@ public class JoinRoomController : MonoBehaviour
         photonManager.CreateRoom(codeLock.showCode.text);
     }
 
+    public void GetPassword() 
+    {
+        CheckPassword(codeLock.showCode.text);
+    }
+
     public void CheckPassword(string _roomCode)
     {
         for (int i = 0; i < roomInfo.Count; i++)

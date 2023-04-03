@@ -103,7 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 812962606292548853}
   - component: {fileID: 812962606292548854}
-  - component: {fileID: 618810322875314804}
+  - component: {fileID: 4497029918584345137}
   m_Layer: 0
   m_Name: App Voice Experience
   m_TagString: Untagged
@@ -280,7 +280,7 @@ MonoBehaviour:
     preferredActivationOffset: -0.5
   usePlatformServices: 0
   enableConsoleLogging: 0
---- !u!114 &618810322875314804
+--- !u!114 &4497029918584345137
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -289,36 +289,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 812962606292548855}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 292a83d2cb7abe74c85efb570f5dc5c7, type: 3}
+  m_Script: {fileID: 11500000, guid: 150dd19256e47264f840336287aff528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 812962604712040616}
-        m_TargetAssemblyTypeName: Oculus.Voice.Demo.InteractionHandler, Oculus.Voice.Demo
-        m_MethodName: SetActivation
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 812962606292548854}
-        m_TargetAssemblyTypeName: Meta.WitAi.VoiceService, Meta.WitAi
-        m_MethodName: Activate
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  OutputAudio: {fileID: 6087861903202982151}
 --- !u!1 &5283375387066610803
 GameObject:
   m_ObjectHideFlags: 0

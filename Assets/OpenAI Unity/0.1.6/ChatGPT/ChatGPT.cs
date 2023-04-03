@@ -8,57 +8,69 @@ namespace OpenAI
     {
         //[SerializeField] private InputField inputField;
         [SerializeField] private Text playerUtterance;
-        [SerializeField] private Button button;
         [SerializeField] private Text textArea;
 
         [SerializeField] private TTSSpeaker _speaker;
-        
+        [SerializeField] private string Instruction;
+
+        private int secret = 0;
+        string[] errorReplies = { "ChatGPT is down (or we didn't pay for it) so have this:",
+                    "We're no strangers to love",
+                    "You know the rules and so do I (do I)",
+                    "A full commitment's what I'm thinking of",
+                    "You wouldn't get this from any other guy" };
 
         private OpenAIApi openai = new OpenAIApi("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");
 
         private string userInput;
         //private string Instruction = "Act as a random stranger in a chat room and reply to the questions.\nQ: ";
-        private string Instruction = "Act as an angry patient in a hospital and reply to the questions.\nQ:";
+        private string finalInstruction;
 
-        private void Start()
+        void Start()
         {
-            button.onClick.AddListener(SendReply);
+            finalInstruction = $"{Instruction}\nQ:";
         }
 
-        private async void SendReply()
+        public async void SendReply()
         {
             userInput = playerUtterance.text;
+            if(userInput == "Press activation to talk...")
+            {
+                Debug.Log("Heard nothing / did not have enough time to process the speech");
+                return;
+            }
             Debug.Log("userInput:: "+userInput);
-            Instruction += $"{userInput}\nA: ";
+            finalInstruction += $"{userInput}\nA: ";
             
             textArea.text = "...";
-            //inputField.text = "";
             playerUtterance.text = "";
-
-            button.enabled = false;
-            //inputField.enabled = false;
             
             // Complete the instruction
             var completionResponse = await openai.CreateCompletion(new CreateCompletionRequest()
             {
-                Prompt = Instruction,
+                Prompt = finalInstruction,
                 Model = "text-davinci-003",
                 MaxTokens = 128
             });
 
             if (completionResponse.Choices != null && completionResponse.Choices.Count > 0)
             {
-                Instruction += $"{completionResponse.Choices[0].Text}\nQ: ";
-                textArea.text = Instruction;
-                Debug.Log("Instruction :: "+Instruction);
+                finalInstruction += $"{completionResponse.Choices[0].Text}\nQ: ";
+                textArea.text = finalInstruction;
+                Debug.Log("Instruction :: "+finalInstruction);
                 _speaker.Speak(completionResponse.Choices[0].Text);
             }
             else
             {
                 Debug.LogWarning("No text was generated from this prompt.");
+                finalInstruction += $"{errorReplies[secret]}\nQ: ";
+                textArea.text = finalInstruction;
+                Debug.Log("Instruction :: " + finalInstruction);
+                _speaker.Speak(errorReplies[secret]);
+                secret++;
+                if (secret >= errorReplies.Length)
+                    secret = 0;
             }
-
-            button.enabled = true;
             //inputField.enabled = true;
         }
     }

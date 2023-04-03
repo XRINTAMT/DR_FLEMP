@@ -7,6 +7,7 @@ public class NurseTabletPopupManager : MonoBehaviour
 {
     [SerializeField] GameObject ExplanationWindow;
     [SerializeField] GameObject QuestionWindow;
+    [SerializeField] ChecklistMechanic Checklist;
     [SerializeField] Text ExplanationText;
     [SerializeField] Text QuestionText;
     [SerializeField] Text[] AnswerText;
@@ -40,5 +41,6 @@ public class NurseTabletPopupManager : MonoBehaviour
     public void ProcessAnswer(int optionNumber)
     {
         QuestionWindow.SetActive(false);
+        Checklist.SaveAnswer(id, optionNumber);
     }
 }

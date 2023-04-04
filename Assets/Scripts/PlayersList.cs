@@ -9,6 +9,8 @@ public class PlayersList : MonoBehaviour
     public GameObject showCase;
     public Text textRole;
     public List<PlayerInfo> playersList = new List<PlayerInfo>();    
+    public int randomRole;
+    public int waitingCountOfPlayers;
     PhotonView pv;  
     int waitingCountOfPlayers;
     int viewIdPlayer1;
@@ -82,10 +84,18 @@ public class PlayersList : MonoBehaviour
 
         if (PhotonNetwork.IsMasterClient && !setRoles && waitingCountOfPlayers == 2)
         {
-            SetRoles();
-            setRoles = true;
-        }
+            if (playersList.Count>=2)
+            {
+                for (int i = 0; i < playersList.Count; i++)
+                {
+                    if (playersList[i].playerRole == PlayerInfo.PlayerRole.Player) 
+                        waitingCountOfPlayers++;
+                }
 
+                viewId1 = playersList[playersList.Count - 1].GetComponent<PhotonView>().ViewID;
+                viewId2 = playersList[playersList.Count - 2].GetComponent<PhotonView>().ViewID;
+            }
+        }
         if (playersList.Count>1 && RpcSetRoles)
         {
             if (RpcRandRole == 1)
@@ -114,6 +124,28 @@ public class PlayersList : MonoBehaviour
 
             RpcSetRoles = false;
         }
+
+        //if (randomRole != 0)
+        //{
+        //    switch (randomRole)
+        //    {
+        //        case 1:
+        //            playersList[playersList.Count - 1].playerRole = PlayerInfo.PlayerRole.OffGoing;
+        //            playersList[playersList.Count - 2].playerRole = PlayerInfo.PlayerRole.OnComing;
+        //            break;
+        //        case 2:
+        //            playersList[playersList.Count - 1].playerRole = PlayerInfo.PlayerRole.OnComing;
+        //            playersList[playersList.Count - 2].playerRole = PlayerInfo.PlayerRole.OffGoing;
+        //            break;
+        //        default:
+        //            break;
+        //    }
+
+        //    playersList[playersList.Count - 1].SetRoles();
+        //    playersList[playersList.Count - 2].SetRoles();
+
+        //    randomRole =0;
+        //}
     }
 
 }

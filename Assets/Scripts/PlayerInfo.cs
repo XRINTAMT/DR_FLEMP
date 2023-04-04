@@ -11,6 +11,7 @@ public class PlayerInfo : MonoBehaviour
     PhotonView pv;
     PlayerInfo myPlayerInfo;
     PlayersList playersList;
+    //public string playerName;
     public PlayerRole playerRole;
 
 
@@ -20,8 +21,27 @@ public class PlayerInfo : MonoBehaviour
         myPlayerInfo = GetComponent<PlayerInfo>();    
         playersList = FindObjectOfType<PlayersList>();
         playersList.playersList.Add(myPlayerInfo);
+
+        //if (pv.IsMine)
+        //{
+        //    WhaitPlayer();
+        //}
+      
     }
 
+    //void WhaitPlayer()
+    //{
+    //    if (playerRole==PlayerRole.Player)
+    //    {
+    //        pv.RPC("WhaitPlayerRPC", RpcTarget.All);
+    //    }
+    //}
+
+    //[PunRPC]
+    //void WhaitPlayerRPC()
+    //{
+    //    playersList.waitingCountOfPlayers++;
+    //}
 
     public void SetRoles() 
     {

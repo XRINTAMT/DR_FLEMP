@@ -7,7 +7,7 @@ using System.IO;
 
 public class ChecklistMechanic : MonoBehaviour
 {
-    [field: SerializeField] public bool Oncoming { private set; get; }
+    [field: SerializeField] public bool Oncoming {set; get; }
     [SerializeField] int[] correctAnswers;
     [SerializeField] Toggle[] checkBoxes;
     [SerializeField] string scenarioName;
@@ -19,7 +19,9 @@ public class ChecklistMechanic : MonoBehaviour
         TabletRecords = GetComponentsInChildren<NurseTabletRecord>();
         CSVParser Scenario = new CSVParser("Scenarios/"+ scenarioName + "/NursingTablets");
         int i = -1;
-        foreach(string[] row in Scenario.rowData)
+        correctAnswers = new int[Scenario.rowData.Count];
+        givenAnswers = new int[Scenario.rowData.Count];
+        foreach (string[] row in Scenario.rowData)
         {
             if(i != -1 && TabletRecords.Length > i)
             {

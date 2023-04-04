@@ -12,7 +12,6 @@ public class PlayersList : MonoBehaviour
     public int randomRole;
     public int waitingCountOfPlayers;
     PhotonView pv;  
-    int waitingCountOfPlayers;
     int viewIdPlayer1;
     int viewIdPlayer2;
     bool setRoles;
@@ -92,8 +91,8 @@ public class PlayersList : MonoBehaviour
                         waitingCountOfPlayers++;
                 }
 
-                viewId1 = playersList[playersList.Count - 1].GetComponent<PhotonView>().ViewID;
-                viewId2 = playersList[playersList.Count - 2].GetComponent<PhotonView>().ViewID;
+                viewIdPlayer1 = playersList[playersList.Count - 1].GetComponent<PhotonView>().ViewID;
+                viewIdPlayer2 = playersList[playersList.Count - 2].GetComponent<PhotonView>().ViewID;
             }
         }
         if (playersList.Count>1 && RpcSetRoles)

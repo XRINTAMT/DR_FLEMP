@@ -15,8 +15,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     [SerializeField] int maxPlayers = 3;
     public bool connectedToServerOnStart;
     public bool automaticJoinRoom;
-
-
+    public bool viewerApp;
+    public static bool _viewerApp;
     void Start()
     {
         roomOptions.MaxPlayers = (byte)maxPlayers;
@@ -25,6 +25,15 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
         if (connectedToServerOnStart)
             ConnectToServer();
+
+        if (viewerApp) 
+        {
+            PhotonNetwork.NickName = "viewer";
+            _viewerApp = true;
+        }
+    
+        else
+            PhotonNetwork.NickName = "player";
     }
 
     public void Leave()

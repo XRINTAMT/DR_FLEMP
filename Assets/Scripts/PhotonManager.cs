@@ -4,17 +4,19 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class PhotonManager : MonoBehaviourPunCallbacks
 {
     RoomOptions roomOptions = new RoomOptions();
     public List<RoomInfo> roomInfo = new List<RoomInfo>();
-    
+
+    [SerializeField] UnityEvent OnLeft;
     [SerializeField] int maxPlayers = 3;
     public bool connectedToServerOnStart;
     public bool automaticJoinRoom;
-
-
+    public bool viewerApp;
+    public static bool _viewerApp;
     void Start()
     {
         roomOptions.MaxPlayers = (byte)maxPlayers;
@@ -23,6 +25,21 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
         if (connectedToServerOnStart)
             ConnectToServer();
+
+        if (viewerApp) 
+        {
+            PhotonNetwork.NickName = "viewer";
+            _viewerApp = true;
+        }
+    
+        else
+            PhotonNetwork.NickName = "player";
+    }
+
+    public void Leave()
+    {
+        PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
+        PhotonNetwork.LeaveRoom();
     }
 
     public void ConnectToServer()
@@ -43,7 +60,10 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinRandomRoom();
     }
 
-
+    override public void OnLeftRoom()
+    {
+        OnLeft.Invoke();
+    }
 
     public override void OnConnectedToMaster()
     {

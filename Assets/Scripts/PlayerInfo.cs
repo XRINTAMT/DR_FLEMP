@@ -49,12 +49,12 @@ public class PlayerInfo : MonoBehaviour
         {
             if (playerRole == PlayerRole.OffGoing) 
             {
-                playersList.showCase.SetActive(true);
+                //playersList.showCase.SetActive(true);
                 checklistMechanic.Oncoming = false;
             }
             if (playerRole == PlayerRole.OnComing)
             {
-                playersList.showCase.SetActive(false);
+                //playersList.showCase.SetActive(false);
                 checklistMechanic.Oncoming = true;
             }
 

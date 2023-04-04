@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PlayersList : MonoBehaviour
 {
-    public GameObject showCase;
+    //public GameObject showCase;
     public Text textRole;
     public List<PlayerInfo> playersList = new List<PlayerInfo>();    
     public int randomRole;

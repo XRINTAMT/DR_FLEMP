@@ -7,7 +7,7 @@ using System.IO;
 
 public class ChecklistMechanic : MonoBehaviour
 {
-    [field: SerializeField] public bool Oncoming { private set; get; }
+    [field: SerializeField] public bool Oncoming {set; get; }
     [SerializeField] int[] correctAnswers;
     [SerializeField] Toggle[] checkBoxes;
     [SerializeField] string scenarioName;

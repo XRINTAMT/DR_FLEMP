@@ -30,10 +30,9 @@ public class Multiplayer : MonoBehaviour
             playerHandLeft = autoHandPlayer.handLeft.gameObject.transform;
 
             var children = GetComponentsInChildren<Transform>();
-            foreach (var child in children)
-            {
-                child.gameObject.layer = 27;
-            }
+
+            multiplayerHandRight.gameObject.layer = 27;
+            multiplayerHandLeft.gameObject.layer = 27;
         }
          
     }

@@ -11,7 +11,6 @@ public class PlayerInfo : MonoBehaviour
     PhotonView pv;
     PlayerInfo myPlayerInfo;
     PlayersList playersList;
-    //public string playerName;
     public PlayerRole playerRole;
 
 
@@ -22,26 +21,7 @@ public class PlayerInfo : MonoBehaviour
         playersList = FindObjectOfType<PlayersList>();
         playersList.playersList.Add(myPlayerInfo);
 
-        //if (pv.IsMine)
-        //{
-        //    WhaitPlayer();
-        //}
-      
     }
-
-    //void WhaitPlayer()
-    //{
-    //    if (playerRole==PlayerRole.Player)
-    //    {
-    //        pv.RPC("WhaitPlayerRPC", RpcTarget.All);
-    //    }
-    //}
-
-    //[PunRPC]
-    //void WhaitPlayerRPC()
-    //{
-    //    playersList.waitingCountOfPlayers++;
-    //}
 
     public void SetRoles() 
     {
@@ -49,28 +29,36 @@ public class PlayerInfo : MonoBehaviour
         {
             if (playerRole == PlayerRole.OffGoing) 
             {
-                //playersList.showCase.SetActive(true);
+                for (int i = 0; i < playersList.showCase.Count; i++)
+                {
+                    playersList.showCase[i].SetActive(true);
+                }
                 checklistMechanic.Oncoming = false;
             }
             if (playerRole == PlayerRole.OnComing)
             {
-                //playersList.showCase.SetActive(false);
+                for (int i = 0; i < playersList.showCase.Count; i++)
+                {
+                    playersList.showCase[i].SetActive(false);
+                }
                 checklistMechanic.Oncoming = true;
             }
 
-            playersList.textRole.text = "You role " + playerRole + "\nYou can start";
+            playersList.textRole.text = "Your role: " + playerRole + "\nYou can start";
             playersList.textRole.transform.parent.gameObject.SetActive(true);
         }
         if (!pv.IsMine)
         {
+            if (playerRole == PlayerRole.OffGoing)
+            {
+                checklistMechanic.Oncoming = false;
+            }
+            if (playerRole == PlayerRole.OnComing)
+            {
+                checklistMechanic.Oncoming = true;
+            }
             grabbableTablet.enabled = false;
         }
-
-    }
-
-    private void Update()
-    {
-
     }
 
     public enum PlayerRole

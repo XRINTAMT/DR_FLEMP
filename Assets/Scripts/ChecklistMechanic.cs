@@ -7,13 +7,15 @@ using System.IO;
 
 public class ChecklistMechanic : MonoBehaviour
 {
-    [field: SerializeField] public bool Oncoming {set; get; }
-    [SerializeField] int[] correctAnswers;
+    [field: SerializeField] public bool Oncoming { private set; get; }
+    public int[] correctAnswers;
     [SerializeField] Toggle[] checkBoxes;
     [SerializeField] string scenarioName;
     [SerializeField] NurseTabletRecord[] TabletRecords;
     int[] givenAnswers;
-
+    [HideInInspector]
+    public bool indicate;
+    Timer timer;
     public void Awake()
     {
         TabletRecords = GetComponentsInChildren<NurseTabletRecord>();
@@ -41,6 +43,8 @@ public class ChecklistMechanic : MonoBehaviour
             }
             i++;
         }
+
+        timer = GetComponent<Timer>();
     }
 
     public void SaveAnswer(int _id, int _answer)
@@ -55,6 +59,8 @@ public class ChecklistMechanic : MonoBehaviour
             //run code if the wrong answer is given
         }
         CheckCompletion();
+
+        timer.TimerStart();
     }
 
     public void CheckCompletion() {
@@ -66,7 +72,22 @@ public class ChecklistMechanic : MonoBehaviour
         }
         //Everything is done
     }
+    public void EnableIndicate()
+    {
+        for (int i = 0; i < TabletRecords.Length; i++)
+        {
+            if (!TabletRecords[i].checkbox.isOn)
+                TabletRecords[i].MainText.color = Color.green;
+        }
+        indicate = true;
+    }
+    public void DisableIndicate() 
+    {
+        for (int i = 0; i < TabletRecords.Length; i++)
+            TabletRecords[i].MainText.color = Color.white;
 
+        indicate = false;
+    }
     // Update is called once per frame
     void Update()
     {

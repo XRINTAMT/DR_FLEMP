@@ -6,22 +6,20 @@ using Photon.Pun;
 using UnityEngine;
 
 public class SynsFingersState : MonoBehaviour
-{
+{ 
+    
+    [SerializeField] List<Finger> multiplayerFingersRight;
+    [SerializeField] List<Finger> multiplayerFingersLeft;
     PhotonView pv;
-    AutoHandPlayer autoHandPlayer;
     Hand handRight;
     Hand handLeft;
-    public List<Finger> playerFingersRight = new List<Finger>();
-    public List<Finger> playerFingersLeft = new List<Finger>();
-    public List<Finger> multiplayerFingersRight = new List<Finger>();
-    public List<Finger> multiplayerFingersLeft = new List<Finger>();
-    XRControllerEvent gripLeft;
-    XRControllerEvent triggerLeft;
-    XRControllerEvent axisLeft;
-    XRControllerEvent gripRight;
-    XRControllerEvent triggerRight;
-    XRControllerEvent axisRight;
-    // Start is called before the first frame update
+    List<Finger> playerFingersRight = new List<Finger>();
+    List<Finger> playerFingersLeft = new List<Finger>();
+   
+    [SerializeField] XRControllerEvent gripLeft, triggerLeft, axisLeft;
+    [SerializeField] XRControllerEvent gripRight, triggerRight, axisRight;
+
+  
     void Start()
     {
         pv = GetComponent<PhotonView>();
@@ -40,53 +38,47 @@ public class SynsFingersState : MonoBehaviour
                 playerFingersLeft.Add(handLeft.fingers[i]);
             }
 
-        }
-        //for left hand
-        gripLeft = new XRControllerEvent();
-        gripLeft.link = handLeft.GetComponent<XRHandControllerLink>();
-        gripLeft.button = CommonButton.gripButton;
-        gripLeft.Pressed.AddListener(() => SetFingerStateLeftHand());
-        gripLeft.Released.AddListener(() => SetFingerStateLeftHand());
+            //for left hand
+            gripLeft.link = handLeft.GetComponent<XRHandControllerLink>();
+            triggerLeft.link = handLeft.GetComponent<XRHandControllerLink>();
+            axisLeft.link = handLeft.GetComponent<XRHandControllerLink>();
 
-        triggerLeft = new XRControllerEvent();
-        triggerLeft.link = handRight.GetComponent<XRHandControllerLink>();
-        triggerLeft.button = CommonButton.triggerButton;
+            //for right hand
+            gripRight.link = handRight.GetComponent<XRHandControllerLink>();
+            triggerRight.link = handRight.GetComponent<XRHandControllerLink>();
+            axisRight.link = handRight.GetComponent<XRHandControllerLink>();
+
+            AddListener();
+        }
+    }
+
+    public void AddListener() 
+    {
+        gripLeft.Pressed.AddListener(() => WhaitSetFingerStateLeftHand());
+        gripLeft.Released.AddListener(() => WhaitSetFingerStateLeftHand());
         triggerLeft.Pressed.AddListener(() => SetFingerStateLeftHand());
         triggerLeft.Released.AddListener(() => SetFingerStateLeftHand());
-
-        axisLeft = new XRControllerEvent();
-        axisLeft.link = handRight.GetComponent<XRHandControllerLink>();
-        axisLeft.button = CommonButton.primary2DAxisTouch;
         axisLeft.Pressed.AddListener(() => SetFingerStateLeftHand());
         axisLeft.Released.AddListener(() => SetFingerStateLeftHand());
 
-        ////for right hand
-        gripRight = new XRControllerEvent();
-        gripRight.link = handRight.GetComponent<XRHandControllerLink>();
-        gripRight.button = CommonButton.gripButton;
-        gripRight.Pressed.AddListener(() => SetFingerStateRightHand());
-        gripRight.Released.AddListener(() => SetFingerStateRightHand());
-
-        triggerRight = new XRControllerEvent();
-        triggerRight.link = handRight.GetComponent<XRHandControllerLink>();
-        triggerRight.button = CommonButton.triggerButton;
+        gripRight.Pressed.AddListener(() => WhaitSetFingerStateRightHand());
+        gripRight.Released.AddListener(() => WhaitSetFingerStateRightHand());
         triggerRight.Pressed.AddListener(() => SetFingerStateRightHand());
         triggerRight.Released.AddListener(() => SetFingerStateRightHand());
-
-        axisRight = new XRControllerEvent();
-        axisRight.link = handRight.GetComponent<XRHandControllerLink>();
-        axisRight.button = CommonButton.primary2DAxisTouch;
         axisRight.Pressed.AddListener(() => SetFingerStateRightHand());
         axisRight.Released.AddListener(() => SetFingerStateRightHand());
     }
 
 
-    IEnumerator SetFingerStateLeftHand()
+    void WhaitSetFingerStateLeftHand() 
     {
-        yield return new WaitForSeconds(0.1f);
+        Invoke("SetFingerStateLeftHand", 0.1f);
+    }
+    void SetFingerStateLeftHand()
+    {
         for (int i = 0; i < playerFingersLeft.Count; i++)
         {
-            multiplayerFingersLeft[i].bendOffset = playerFingersLeft[i].bendOffset;
+            multiplayerFingersLeft[i].SetFingerBend(playerFingersLeft[i].bendOffset);
         }
         pv.RPC("SetFingerStateLeftHandRPC", RpcTarget.All, pv.ViewID, multiplayerFingersLeft[0].bendOffset, multiplayerFingersLeft[1].bendOffset, multiplayerFingersLeft[2].bendOffset, multiplayerFingersLeft[3].bendOffset, multiplayerFingersLeft[4].bendOffset);
     }
@@ -103,16 +95,17 @@ public class SynsFingersState : MonoBehaviour
             multiplayerFingersLeft[4].bendOffset = finger4;
         }
     }
-
-    IEnumerator SetFingerStateRightHand()
+    void WhaitSetFingerStateRightHand()
     {
-        yield return new WaitForSeconds(0.1f);
+        Invoke("SetFingerStateRightHand", 0.1f);
+    }
+    void SetFingerStateRightHand()
+    {
         for (int i = 0; i < playerFingersRight.Count; i++)
         {
-            multiplayerFingersRight[i].bendOffset = playerFingersRight[i].bendOffset;
+            multiplayerFingersRight[i].SetFingerBend(playerFingersRight[i].bendOffset);
         }
         pv.RPC("SetFingerStateRightHandRPC", RpcTarget.All, pv.ViewID, multiplayerFingersLeft[0].bendOffset, multiplayerFingersLeft[1].bendOffset, multiplayerFingersLeft[2].bendOffset, multiplayerFingersLeft[3].bendOffset, multiplayerFingersLeft[4].bendOffset);
-
     }
 
     [PunRPC]

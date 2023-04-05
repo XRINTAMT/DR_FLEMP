@@ -87,11 +87,11 @@ public class SynsFingersState : MonoBehaviour
     {
         if (viewId == pv.GetComponent<PhotonView>().ViewID)
         {
-            multiplayerFingersLeft[0].bendOffset = finger0;
-            multiplayerFingersLeft[1].bendOffset = finger1;
-            multiplayerFingersLeft[2].bendOffset = finger2;
-            multiplayerFingersLeft[3].bendOffset = finger3;
-            multiplayerFingersLeft[4].bendOffset = finger4;
+            multiplayerFingersLeft[0].SetFingerBend(finger0);
+            multiplayerFingersLeft[1].SetFingerBend(finger1);
+            multiplayerFingersLeft[2].SetFingerBend(finger2);
+            multiplayerFingersLeft[3].SetFingerBend(finger3);
+            multiplayerFingersLeft[4].SetFingerBend(finger4);
         }
     }
     void WhaitSetFingerStateRightHand()
@@ -112,11 +112,12 @@ public class SynsFingersState : MonoBehaviour
     {
         if (viewId == pv.GetComponent<PhotonView>().ViewID)
         {
-            multiplayerFingersRight[0].bendOffset = finger0;
-            multiplayerFingersRight[1].bendOffset = finger1;
-            multiplayerFingersRight[2].bendOffset = finger2;
-            multiplayerFingersRight[3].bendOffset = finger3;
-            multiplayerFingersRight[4].bendOffset = finger4;
+            Debug.Log("RPC");
+            multiplayerFingersRight[0].SetFingerBend(finger0);
+            multiplayerFingersRight[1].SetFingerBend(finger1);
+            multiplayerFingersRight[2].SetFingerBend(finger2);
+            multiplayerFingersRight[3].SetFingerBend(finger3);
+            multiplayerFingersRight[4].SetFingerBend(finger4);
         }
     }
     void Update()

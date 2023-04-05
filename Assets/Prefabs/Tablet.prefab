@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2913489760826657569}
   - component: {fileID: 7658253873450590853}
   - component: {fileID: 701237763284141082}
+  - component: {fileID: 7735883158683801603}
+  - component: {fileID: 6057504721735182250}
   m_Layer: 0
   m_Name: Tablet
   m_TagString: Untagged
@@ -124,6 +126,45 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7735883158683801603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2913489760826657568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 6057504721735182250}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &6057504721735182250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2913489760826657568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 0
 --- !u!1001 &934392683334533496
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -972,6 +1013,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2637256368512669746, guid: 2ac6a6ba8b9dc774eb5967e0ee4dfe4b, type: 3}
   m_PrefabInstance: {fileID: 934392683334533496}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4909048089769772826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2913489760111860042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11fb8dea0a551fa40ae2e1701e0fe183, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timeLeft: 0
 --- !u!114 &8187033142533610550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1007,20 +1061,6 @@ MonoBehaviour:
   scenarioName: EnglishDefaultMultiplayer
   TabletRecords: []
   indicate: 0
---- !u!114 &4909048089769772826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2913489760111860042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11fb8dea0a551fa40ae2e1701e0fe183, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time: 0
-  timerText: {fileID: 0}
 --- !u!224 &2913489760111860043 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2637256368512669747, guid: 2ac6a6ba8b9dc774eb5967e0ee4dfe4b, type: 3}

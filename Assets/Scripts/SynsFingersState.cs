@@ -112,11 +112,6 @@ public class SynsFingersState : MonoBehaviour
     {
         if (viewId == pv.GetComponent<PhotonView>().ViewID)
         {
-            Debug.Log(finger0);
-            Debug.Log(finger1);
-            Debug.Log(finger2);
-            Debug.Log(finger3);
-            Debug.Log(finger4);
             multiplayerFingersRight[0].SetFingerBend(finger0);
             multiplayerFingersRight[1].SetFingerBend(finger1);
             multiplayerFingersRight[2].SetFingerBend(finger2);

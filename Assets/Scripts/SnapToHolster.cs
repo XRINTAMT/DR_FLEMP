@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SnapToHolster : MonoBehaviour
 {
     [SerializeField] Transform followTransform;
     [SerializeField] float speed;
+    [SerializeField] UnityEvent OnRelease;
+    [SerializeField] UnityEvent OnCameBack;
 
     private Transform prevParent;
     private Quaternion initRotation;
@@ -27,6 +30,7 @@ public class SnapToHolster : MonoBehaviour
         {
             initRotation = transform.rotation;
             initMagnitude = (followTransform.position - transform.position).magnitude;
+            OnRelease.Invoke();
             isFollowing = true;
             rb.isKinematic = true;
         }
@@ -42,8 +46,8 @@ public class SnapToHolster : MonoBehaviour
             {
                 transform.parent = followTransform;
                 isFollowing = false;
+                OnCameBack.Invoke();
             }
-            Debug.Log(isFollowing);
         }
         else
         {

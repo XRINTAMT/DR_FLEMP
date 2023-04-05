@@ -14,11 +14,11 @@ public class IgnoreAllColliders : MonoBehaviour
         {
             Exceptions = new List<Collider>();
         }
-        var thisCol = GetComponent<Collider>();
+        Collider thisCol = GetComponent<Collider>();
         Collider[] CollidersToIgnore = FindObjectsOfType<Collider>();
         if (CollidersToIgnore != null)
         {
-            foreach (var col in CollidersToIgnore)
+            foreach (Collider col in CollidersToIgnore)
             {
                 if (col && col.enabled && !Exceptions.Contains(col))
                 {

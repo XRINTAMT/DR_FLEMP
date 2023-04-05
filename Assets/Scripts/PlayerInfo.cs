@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Autohand;
 using Photon.Pun;
 using UnityEngine;
 
 public class PlayerInfo : MonoBehaviour
 {
+    [SerializeField] Grabbable grabbableTablet;
+    [SerializeField] ChecklistMechanic checklistMechanic;
     PhotonView pv;
     PlayerInfo myPlayerInfo;
     PlayersList playersList;
-
-    //public string playerName;
     public PlayerRole playerRole;
 
 
@@ -18,48 +19,53 @@ public class PlayerInfo : MonoBehaviour
         pv = GetComponent<PhotonView>();
         myPlayerInfo = GetComponent<PlayerInfo>();    
         playersList = FindObjectOfType<PlayersList>();
-
         playersList.playersList.Add(myPlayerInfo);
-
-        //if (pv.IsMine) 
-        //{
-        //    isMine = true;
-        //    playerName = "Name" + Random.Range(10, 99);
-        //    playersList.connectedPlayerName.text = playerName + " your name";
-        //    SendPlayerName(viewId, playerName);
-        //}
 
     }
 
-    //public void SendPlayerName(int viewId, string playerName)
-    //{
-    //    if (pv.IsMine)
-    //    {
-    //        pv.RPC("SendPlayerNameRPC", RpcTarget.All, viewId, playerName);
-    //    }
-    //}
-
-    //[PunRPC]
-    //void SendPlayerNameRPC(int viewId, string playerName)
-    //{
-    //    if (pv.ViewID == viewId)
-    //    {
-    //        myPlayerInfo.playerName = playerName;
-    //    }
-    //}
-
-    private void Update()
+    public void SetRoles() 
     {
-        if (pv.IsMine && playerRole != PlayerRole.Viewer && !playersList.textRole.transform.parent.gameObject.activeSelf)
+        if (pv.IsMine && playerRole != PlayerRole.Viewer)
         {
-            playersList.textRole.text = "You role " + playerRole + "\nYou can start";
+            if (playerRole == PlayerRole.OffGoing) 
+            {
+                for (int i = 0; i < playersList.showCase.Count; i++)
+                {
+                    playersList.showCase[i].SetActive(true);
+                }
+                checklistMechanic.Oncoming = false;
+            }
+            if (playerRole == PlayerRole.OnComing)
+            {
+                for (int i = 0; i < playersList.showCase.Count; i++)
+                {
+                    playersList.showCase[i].SetActive(false);
+                }
+                checklistMechanic.Oncoming = true;
+            }
+
+            playersList.textRole.text = "Your role: " + playerRole + "\nYou can start";
             playersList.textRole.transform.parent.gameObject.SetActive(true);
+        }
+        if (!pv.IsMine)
+        {
+            if (playerRole == PlayerRole.OffGoing)
+            {
+                checklistMechanic.Oncoming = false;
+            }
+            if (playerRole == PlayerRole.OnComing)
+            {
+                checklistMechanic.Oncoming = true;
+            }
+            grabbableTablet.enabled = false;
         }
     }
 
     public enum PlayerRole
     {
+        None,
         Viewer,
+        Player,
         OffGoing,
         OnComing
     }

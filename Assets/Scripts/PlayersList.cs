@@ -5,62 +5,79 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayersList : MonoBehaviour
-{   
-
+{
+    public List<GameObject> showCase;
     public Text textRole;
     public List<PlayerInfo> playersList = new List<PlayerInfo>();
-    public bool serverOnComputer;
-    PhotonView pv;  
-    bool setRoles;
+    PhotonView pv;
     int randomRole;
-    int waitingCountOfPlayers=2;
+    int waitingCountOfPlayers;  
+    int viewIdPlayer1;
+    int viewIdPlayer2;
+    bool setRoles;
 
     private void Start()
     {
         pv = GetComponent<PhotonView>();
-        if (serverOnComputer)
-            waitingCountOfPlayers = 3;
-      
     }
     void SetRoles() 
     {
         if (PhotonNetwork.IsMasterClient)
         {
             int randomRole = Random.Range(1, 3);
-            pv.RPC("SetPlayerRole", RpcTarget.All, randomRole);
+            pv.RPC("SetPlayerRole", RpcTarget.All, randomRole, viewIdPlayer1, viewIdPlayer2);
         }
     }
-
     [PunRPC]
-    void SetPlayerRole(int randomRole)
+    void SetPlayerRole(int randomRole, int view1, int view2)
     {
-        this.randomRole=randomRole;
+        this.randomRole = randomRole;
+        viewIdPlayer1 = view1;
+        viewIdPlayer2 = view2;
+        setRoles = true;
     }
     private void Update()
     {
 
-        if (PhotonNetwork.IsMasterClient && PhotonNetwork.PlayerList.Length == waitingCountOfPlayers && !setRoles)
+        if (PhotonNetwork.IsMasterClient && playersList.Count >= 2 && waitingCountOfPlayers < 2)
         {
+            for (int i = 0; i < playersList.Count; i++)
+            {
+                if (playersList[i].playerRole == PlayerInfo.PlayerRole.Player)
+                    waitingCountOfPlayers++;
+            }
+            viewIdPlayer1 = playersList[playersList.Count - 1].GetComponent<PhotonView>().ViewID;
+            viewIdPlayer2 = playersList[playersList.Count - 2].GetComponent<PhotonView>().ViewID;
             SetRoles();
-            setRoles = true;
         }
 
-        if (playersList.Count==2 && randomRole!=0)
+        if (setRoles)
         {
-            switch (randomRole)
+            if (randomRole == 1)
             {
-                case 1:
-                    playersList[playersList.Count - 1].playerRole = PlayerInfo.PlayerRole.OffGoing;
-                    playersList[playersList.Count - 2].playerRole = PlayerInfo.PlayerRole.OnComing;
-                    break;
-                case 2:
-                    playersList[playersList.Count - 1].playerRole = PlayerInfo.PlayerRole.OnComing;
-                    playersList[playersList.Count - 2].playerRole = PlayerInfo.PlayerRole.OffGoing;
-                    break;
-                default:
-                    break;
+                for (int i = 0; i < playersList.Count; i++)
+                {
+                    if (playersList[i].GetComponent<PhotonView>().ViewID == viewIdPlayer1)
+                        playersList[i].playerRole = PlayerInfo.PlayerRole.OffGoing;
+                    if (playersList[i].GetComponent<PhotonView>().ViewID == viewIdPlayer2)
+                        playersList[i].playerRole = PlayerInfo.PlayerRole.OnComing;
+                }
             }
-           randomRole=0;
+            if (randomRole == 2)
+            {
+                for (int i = 0; i < playersList.Count; i++)
+                {
+                    if (playersList[i].GetComponent<PhotonView>().ViewID == viewIdPlayer1)
+                        playersList[i].playerRole = PlayerInfo.PlayerRole.OnComing;
+                    if (playersList[i].GetComponent<PhotonView>().ViewID == viewIdPlayer2)
+                        playersList[i].playerRole = PlayerInfo.PlayerRole.OffGoing;
+                }
+            }
+
+            playersList[playersList.Count - 1].SetRoles();
+            playersList[playersList.Count - 2].SetRoles();
+
+            setRoles = false;
         }
     }
 

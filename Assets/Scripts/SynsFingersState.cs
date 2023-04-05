@@ -24,11 +24,21 @@ public class SynsFingersState : MonoBehaviour
     {
         pv = GetComponent<PhotonView>();
 
+        handRight = FindObjectOfType<AutoHandPlayer>().handRight;
+        handLeft = FindObjectOfType<AutoHandPlayer>().handLeft;
+
+        //for left hand
+        gripLeft.link = handLeft.GetComponent<XRHandControllerLink>();
+        triggerLeft.link = handLeft.GetComponent<XRHandControllerLink>();
+        axisLeft.link = handLeft.GetComponent<XRHandControllerLink>();
+
+        //for right hand
+        gripRight.link = handRight.GetComponent<XRHandControllerLink>();
+        triggerRight.link = handRight.GetComponent<XRHandControllerLink>();
+        axisRight.link = handRight.GetComponent<XRHandControllerLink>();
+
         if (pv.IsMine)
         {
-            handRight = FindObjectOfType<AutoHandPlayer>().handRight;
-            handLeft = FindObjectOfType<AutoHandPlayer>().handLeft;
-
             for (int i = 0; i < handRight.fingers.Length; i++)
             {
                 playerFingersRight.Add(handRight.fingers[i]);
@@ -37,16 +47,6 @@ public class SynsFingersState : MonoBehaviour
             {
                 playerFingersLeft.Add(handLeft.fingers[i]);
             }
-
-            //for left hand
-            gripLeft.link = handLeft.GetComponent<XRHandControllerLink>();
-            triggerLeft.link = handLeft.GetComponent<XRHandControllerLink>();
-            axisLeft.link = handLeft.GetComponent<XRHandControllerLink>();
-
-            //for right hand
-            gripRight.link = handRight.GetComponent<XRHandControllerLink>();
-            triggerRight.link = handRight.GetComponent<XRHandControllerLink>();
-            axisRight.link = handRight.GetComponent<XRHandControllerLink>();
 
             AddListener();
         }

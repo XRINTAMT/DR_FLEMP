@@ -79,7 +79,7 @@ public class SynsFingersState : MonoBehaviour
         {
             multiplayerFingersLeft[i].SetFingerBend(playerFingersLeft[i].bendOffset);
         }
-        pv.RPC("SetFingerStateLeftHandRPC", RpcTarget.All, pv.ViewID, multiplayerFingersLeft[0].bendOffset, multiplayerFingersLeft[1].bendOffset, multiplayerFingersLeft[2].bendOffset, multiplayerFingersLeft[3].bendOffset, multiplayerFingersLeft[4].bendOffset);
+        pv.RPC("SetFingerStateLeftHandRPC", RpcTarget.All, pv.ViewID, playerFingersLeft[0].bendOffset, playerFingersLeft[1].bendOffset, playerFingersLeft[2].bendOffset, playerFingersLeft[3].bendOffset, playerFingersLeft[4].bendOffset);
     }
 
     [PunRPC]
@@ -104,7 +104,7 @@ public class SynsFingersState : MonoBehaviour
         {
             multiplayerFingersRight[i].SetFingerBend(playerFingersRight[i].bendOffset);
         }
-        pv.RPC("SetFingerStateRightHandRPC", RpcTarget.All, pv.ViewID, multiplayerFingersLeft[0].bendOffset, multiplayerFingersLeft[1].bendOffset, multiplayerFingersLeft[2].bendOffset, multiplayerFingersLeft[3].bendOffset, multiplayerFingersLeft[4].bendOffset);
+        pv.RPC("SetFingerStateRightHandRPC", RpcTarget.All, pv.ViewID, playerFingersRight[0].bendOffset, playerFingersRight[1].bendOffset, playerFingersRight[2].bendOffset, playerFingersRight[3].bendOffset, playerFingersRight[4].bendOffset);
     }
 
     [PunRPC]
@@ -112,7 +112,11 @@ public class SynsFingersState : MonoBehaviour
     {
         if (viewId == pv.GetComponent<PhotonView>().ViewID)
         {
-            Debug.Log("RPC");
+            Debug.Log(finger0);
+            Debug.Log(finger1);
+            Debug.Log(finger2);
+            Debug.Log(finger3);
+            Debug.Log(finger4);
             multiplayerFingersRight[0].SetFingerBend(finger0);
             multiplayerFingersRight[1].SetFingerBend(finger1);
             multiplayerFingersRight[2].SetFingerBend(finger2);

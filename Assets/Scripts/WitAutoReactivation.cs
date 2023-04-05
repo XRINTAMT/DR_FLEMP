@@ -7,6 +7,12 @@ public class WitAutoReactivation : MonoBehaviour
 {
     WitService _wit;
     [SerializeField] AudioSource OutputAudio;
+    public bool temporarilyIgnore;
+
+    public void Ignore(bool ignore)
+    {
+        temporarilyIgnore = ignore;
+    }
 
     private void Start()
     {
@@ -22,12 +28,12 @@ public class WitAutoReactivation : MonoBehaviour
 
         if (!_wit.Active)
         {
-            if (!OutputAudio.isPlaying)
+            if (!OutputAudio.isPlaying && !temporarilyIgnore)
                 _wit.ActivateImmediately();
         }
         else
         {
-            if (OutputAudio.isPlaying)
+            if (OutputAudio.isPlaying || temporarilyIgnore)
                 _wit.DeactivateAndAbortRequest();
         }
     }

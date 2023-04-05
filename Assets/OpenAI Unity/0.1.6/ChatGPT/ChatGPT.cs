@@ -15,6 +15,9 @@ namespace OpenAI
         [SerializeField] private TTSSpeaker _speaker;
         [SerializeField] private string Instruction;
 
+        [SerializeField] private WitAutoReactivation WitReact;
+        int instrLen;
+
         private int secret = 0;
         string[] errorReplies = { "Chat GPT is down (or we didn't pay for it) so have this:",
                     "We're no strangers to love",
@@ -27,7 +30,7 @@ namespace OpenAI
             "Processing..."
         };
 
-        private OpenAIApi openai = new OpenAIApi("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");
+        private OpenAIApi openai = new OpenAIApi("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");
 
         private string userInput;
         //private string Instruction = "Act as a random stranger in a chat room and reply to the questions.\nQ: ";
@@ -35,7 +38,8 @@ namespace OpenAI
 
         void Start()
         {
-            finalInstruction = $"{Instruction}\nQ:";
+            finalInstruction = $"{Instruction}\nQ: ";
+            instrLen = finalInstruction.Length - 4;
         }
 
         public async void SendReply()
@@ -46,6 +50,9 @@ namespace OpenAI
                 Debug.Log("Heard nothing / did not have enough time to process the speech");
                 return;
             }
+
+            WitReact.temporarilyIgnore = true;
+
             Debug.Log("userInput:: "+userInput);
             finalInstruction += $"{userInput}\nA: ";
             
@@ -63,19 +70,21 @@ namespace OpenAI
             if (completionResponse.Choices != null && completionResponse.Choices.Count > 0)
             {
                 finalInstruction += $"{completionResponse.Choices[0].Text}\nQ: ";
-                textArea.text = finalInstruction;
+                textArea.text = finalInstruction.Substring(instrLen);
                 Debug.Log("Instruction :: "+finalInstruction);
                 _speaker.Speak(completionResponse.Choices[0].Text);
+                //WitReact.temporarilyIgnore = false;
             }
             else
             {
                 Debug.LogWarning("No text was generated from this prompt.");
                 finalInstruction += $"{errorReplies[secret]}\nQ: ";
-                textArea.text = finalInstruction;
+                textArea.text = finalInstruction.Substring(instrLen);
                 _speaker.Speak(errorReplies[secret]);
                 secret++;
                 if (secret >= errorReplies.Length)
                     secret = 0;
+                //WitReact.temporarilyIgnore = false;
             }
             //inputField.enabled = true;
         }

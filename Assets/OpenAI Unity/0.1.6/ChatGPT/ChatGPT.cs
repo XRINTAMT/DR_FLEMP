@@ -16,6 +16,8 @@ namespace OpenAI
         [SerializeField] private string Instruction;
 
         [SerializeField] private WitAutoReactivation WitReact;
+
+        [SerializeField] private string[] sentences;
         int instrLen;
 
         private int secret = 0;
@@ -72,7 +74,8 @@ namespace OpenAI
                 finalInstruction += $"{completionResponse.Choices[0].Text}\nQ: ";
                 textArea.text = finalInstruction.Substring(instrLen);
                 Debug.Log("Instruction :: "+finalInstruction);
-                _speaker.Speak(completionResponse.Choices[0].Text);
+                sentences = completionResponse.Choices[0].Text.Split(new char[] { ',', '\n', '.', '?', ';', '!' });
+                StartCoroutine(PlayAndWait());
                 //WitReact.temporarilyIgnore = false;
             }
             else
@@ -87,6 +90,27 @@ namespace OpenAI
                 //WitReact.temporarilyIgnore = false;
             }
             //inputField.enabled = true;
+        }
+        IEnumerator PlayAndWait()
+        {
+            foreach (string sentence in sentences)
+            {
+                if (sentence == string.Empty)
+                    continue;
+                _speaker.Speak(sentence);
+                
+                while (!_speaker.IsSpeaking)
+                {
+                    yield return 0;
+                }
+                while (_speaker.IsSpeaking)
+                {
+                    yield return 0;
+                }
+                WitReact.temporarilyIgnore = true;
+            }
+            WitReact.temporarilyIgnore = false;
+            Debug.Log("Giving control back to the stt");
         }
     }
 }

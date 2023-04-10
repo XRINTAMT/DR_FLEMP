@@ -58,6 +58,7 @@ public class PlayerInfo : MonoBehaviour
                 checklistMechanic.Oncoming = true;
             }
             grabbableTablet.enabled = false;
+            grabbableTablet.GetComponent<SnapToHolster>().enabled = false;
         }
     }
 

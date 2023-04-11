@@ -3,26 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HeadCharacterFollow : MonoBehaviour
-{
+{ 
+    [SerializeField] float interpolationSpeed=1;
 
-    public Transform player;
-    public Transform defaultPos;
-    public Transform playerPos;
+    Transform player;
+    Transform defaultPos;
+    Transform playerPos;
     Transform m_trLookAt = null;
     Transform m_Transform;
     Vector3 m_vecInitPosition;
-    Vector3 m_vecInitEuler;
-    float m_LookAtWeight = 0;
-    [SerializeField] protected Animator m_Animator;
-    bool inArea;
-    public float interpolationSpeed;
+    Vector3 m_vecInitEuler;    
     Vector3 startPos;
     Quaternion startRot;
-    // Start is called before the first frame update
+    float m_LookAtWeight = 0;
+    protected Animator m_Animator;
+    bool inArea;
+   
+
     void Start()
     {
         if (!Animator)
             Animator = GetComponent<Animator>();
+
+        player = Camera.main.transform;
+
+        defaultPos = new GameObject().transform;
+        defaultPos.gameObject.name = "HeadDefaultPosition";
+        defaultPos.parent = transform;
+        defaultPos.localPosition = new Vector3(0, 1.18f, 0);
+        playerPos = new GameObject().transform;
+        playerPos.gameObject.name = "HeadFollowTarget";
+
+
         m_Transform = transform;
         m_vecInitEuler = m_Transform.localEulerAngles;
         m_vecInitPosition = m_Transform.localPosition;
@@ -34,25 +46,15 @@ public class HeadCharacterFollow : MonoBehaviour
     }
     private void Update()
     {
-
         if (defaultPos.position != startPos)
-        {
             defaultPos.position = Vector3.MoveTowards(defaultPos.position, startPos, interpolationSpeed * Time.deltaTime);
-        }
         if (defaultPos.rotation != startRot)
-        {
             defaultPos.rotation = Quaternion.RotateTowards(defaultPos.rotation, startRot, 10*interpolationSpeed * Time.deltaTime);
-        }
 
         if (playerPos.position != player.position)
-        {
             playerPos.position = Vector3.MoveTowards(playerPos.position, player.position, interpolationSpeed * Time.deltaTime);
-        }
         if (defaultPos.rotation != player.rotation)
-        {
             playerPos.rotation = Quaternion.RotateTowards(playerPos.rotation, player.rotation, 10 * interpolationSpeed * Time.deltaTime);
-        }
-
     }
     public void ExitArea() 
     {

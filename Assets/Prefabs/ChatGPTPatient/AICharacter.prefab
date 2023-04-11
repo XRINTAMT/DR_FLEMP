@@ -257,6 +257,111 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OutputAudio: {fileID: 4082341524421796689}
   temporarilyIgnore: 0
+--- !u!1 &1316696014981848715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6030004495968364441}
+  - component: {fileID: 5272278239149973895}
+  - component: {fileID: 4210702128231538116}
+  m_Layer: 0
+  m_Name: AreaHeadFollow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6030004495968364441
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316696014981848715}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5283375388985890351}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &5272278239149973895
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316696014981848715}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4210702128231538116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316696014981848715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf4e711b062ea3f4e9b98bb216629994, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oneHanded: 1
+  handType: 0
+  exitTriggerRelease: 1
+  exitTriggerUnsqueeze: 1
+  HandEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4082341524421796691}
+        m_TargetAssemblyTypeName: HeadCharacterFollow, Assembly-CSharp
+        m_MethodName: EnterArea
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  HandExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4082341524421796691}
+        m_TargetAssemblyTypeName: HeadCharacterFollow, Assembly-CSharp
+        m_MethodName: ExitArea
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  HandGrab:
+    m_PersistentCalls:
+      m_Calls: []
+  HandRelease:
+    m_PersistentCalls:
+      m_Calls: []
+  HandSqueeze:
+    m_PersistentCalls:
+      m_Calls: []
+  HandUnsqueeze:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5283375387066610803
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,6 +693,7 @@ MonoBehaviour:
     of emergency, her husband should be called. Don't diagnose yourself. No notes.
     Keep the answer to one to three sentences. Answer this question:"
   WitReact: {fileID: 4497029918584345137}
+  sentences: []
 --- !u!1 &5283375388985890344
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,6 +728,7 @@ Transform:
   - {fileID: 812962606292548853}
   - {fileID: 5283375387711484708}
   - {fileID: 5410028526587762738}
+  - {fileID: 6030004495968364441}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -989,7 +1096,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 503870629, guid: eb6b0aedc8512d840a1b9f1b6a319f78, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8337055390089531332, guid: eb6b0aedc8512d840a1b9f1b6a319f78, type: 3}
       propertyPath: m_RootOrder
@@ -1001,7 +1108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8337055390089531332, guid: eb6b0aedc8512d840a1b9f1b6a319f78, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.005999982
+      value: -0.75
       objectReference: {fileID: 0}
     - target: {fileID: 8337055390089531332, guid: eb6b0aedc8512d840a1b9f1b6a319f78, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1050,6 +1157,17 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 503870631, guid: eb6b0aedc8512d840a1b9f1b6a319f78, type: 3}
   m_PrefabInstance: {fileID: 4082341523917936630}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4082341524421796691 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 503870629, guid: eb6b0aedc8512d840a1b9f1b6a319f78, type: 3}
+  m_PrefabInstance: {fileID: 4082341523917936630}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3505c7f5735c00b40a951c1dbe2ffb24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5410028526587762738 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8337055390089531332, guid: eb6b0aedc8512d840a1b9f1b6a319f78, type: 3}

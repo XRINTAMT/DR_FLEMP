@@ -8,6 +8,7 @@ public class PauseManager : MonoBehaviour
     [SerializeField] GameObject PauseMenu;
     [SerializeField] GameObject MenuOffset;
     [SerializeField] GameObject Main;
+    [SerializeField] GameObject FinishedMultiplayer;
     [SerializeField] Camera UICamera;
     [SerializeField] Camera MainCamera;
     [SerializeField] GameObject[] TurnOffOnPause;
@@ -111,6 +112,14 @@ public class PauseManager : MonoBehaviour
         {
             AppUnpause();
         }
+    }
+
+    public void ShowMultiplayerOutro()
+    {
+        AppPause();
+        GetComponent<UnscaleMove>().Play();
+        Main.SetActive(false);
+        FinishedMultiplayer.SetActive(true);
     }
 
     // Update is called once per frame

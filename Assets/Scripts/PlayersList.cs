@@ -35,6 +35,27 @@ public class PlayersList : MonoBehaviour
             pv.RPC("SetPlayerRole", RpcTarget.All, randomRole, viewIdPlayer1, viewIdPlayer2);
         }
     }
+
+    public void RestartGame(bool sameRoles)
+    {
+        if (!sameRoles)
+        {
+            randomRole = (randomRole == 1) ? 2 : 1;
+        }
+        pv.RPC("SetPlayerRole", RpcTarget.All, randomRole, viewIdPlayer1, viewIdPlayer2);
+        pv.RPC("ResetChecklists", RpcTarget.All);
+    }
+
+    [PunRPC]
+    void ResetChecklists()
+    {
+        ChecklistMechanic[] Tablets = FindObjectsOfType<ChecklistMechanic>();
+        foreach (ChecklistMechanic tablet in Tablets)
+        {
+            tablet.Reset();
+        }
+    }
+
     [PunRPC]
     void SetPlayerRole(int randomRole, int view1, int view2)
     {
@@ -43,6 +64,7 @@ public class PlayersList : MonoBehaviour
         viewIdPlayer2 = view2;
         setRoles = true;
     }
+
     private void Update()
     {
 

@@ -19,32 +19,37 @@ public class ChecklistMechanic : MonoBehaviour
     public void Awake()
     {
         TabletRecords = GetComponentsInChildren<NurseTabletRecord>();
-        CSVParser Scenario = new CSVParser("Scenarios/"+ scenarioName + "/NursingTablets");
+        ParseTheScenario();
+
+        timer = GetComponent<Timer>();
+    }
+
+    void ParseTheScenario() //use with caution, erases all the answers gathered from the player
+    {
+        CSVParser Scenario = new CSVParser("Scenarios/" + scenarioName + "/NursingTablets");
         int i = -1;
         correctAnswers = new int[Scenario.rowData.Count];
         givenAnswers = new int[Scenario.rowData.Count];
         foreach (string[] row in Scenario.rowData)
         {
-            if(i != -1 && TabletRecords.Length > i)
+            if (i != -1 && TabletRecords.Length > i)
             {
                 string[] _answers = new string[3];
                 int _correct = Random.Range(0, 3);
                 correctAnswers[i] = _correct;
-                for(int j = 0; j < _correct; j++)
+                for (int j = 0; j < _correct; j++)
                 {
                     _answers[j] = row[3 + j];
                 }
                 _answers[_correct] = row[2];
-                for (int j = _correct+1; j <= 2; j++)
+                for (int j = _correct + 1; j <= 2; j++)
                 {
                     _answers[j] = row[2 + j];
                 }
-                TabletRecords[i].SetData(row[0],_answers,row[1]);
+                TabletRecords[i].SetData(row[0], _answers, row[1]);
             }
             i++;
         }
-
-        timer = GetComponent<Timer>();
     }
 
     public void SaveAnswer(int _id, int _answer)
@@ -71,6 +76,7 @@ public class ChecklistMechanic : MonoBehaviour
             //check in the answer is correct and probably save the score somewhere
         }
         //Everything is done
+        FindObjectOfType<PauseManager>().ShowMultiplayerOutro();
     }
     public void EnableIndicate()
     {
@@ -88,7 +94,16 @@ public class ChecklistMechanic : MonoBehaviour
 
         indicate = false;
     }
-    // Update is called once per frame
+
+    public void Reset()
+    {
+        foreach (Toggle _checkbox in checkBoxes)
+        {
+            _checkbox.isOn = false;
+        }
+        ParseTheScenario();
+    }
+
     void Update()
     {
         

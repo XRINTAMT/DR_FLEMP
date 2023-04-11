@@ -11,16 +11,23 @@ public class PlayersList : MonoBehaviour
     public List<PlayerInfo> playersList = new List<PlayerInfo>();
     PhotonView pv;
     int randomRole;
-    int waitingCountOfPlayers;  
+    int waitingCountOfPlayers;
     int viewIdPlayer1;
     int viewIdPlayer2;
     bool setRoles;
+    bool forceSet;
 
     private void Start()
     {
         pv = GetComponent<PhotonView>();
     }
-    void SetRoles() 
+
+    public void ForceSetRoles()
+    {
+        forceSet = true;
+    }
+
+    void SetRoles()
     {
         if (PhotonNetwork.IsMasterClient)
         {
@@ -39,7 +46,7 @@ public class PlayersList : MonoBehaviour
     private void Update()
     {
 
-        if (PhotonNetwork.IsMasterClient && playersList.Count >= 2 && waitingCountOfPlayers < 2)
+        if ((PhotonNetwork.IsMasterClient && playersList.Count >= 2 && waitingCountOfPlayers < 2) || forceSet)
         {
             for (int i = 0; i < playersList.Count; i++)
             {
@@ -47,8 +54,10 @@ public class PlayersList : MonoBehaviour
                     waitingCountOfPlayers++;
             }
             viewIdPlayer1 = playersList[playersList.Count - 1].GetComponent<PhotonView>().ViewID;
-            viewIdPlayer2 = playersList[playersList.Count - 2].GetComponent<PhotonView>().ViewID;
+            if(!forceSet)
+                viewIdPlayer2 = playersList[playersList.Count - 2].GetComponent<PhotonView>().ViewID;
             SetRoles();
+            forceSet = false;
         }
 
         if (setRoles)
@@ -75,8 +84,8 @@ public class PlayersList : MonoBehaviour
             }
 
             playersList[playersList.Count - 1].SetRoles();
-            playersList[playersList.Count - 2].SetRoles();
-
+            if(playersList.Count > 1)
+                playersList[playersList.Count - 2].SetRoles();
             setRoles = false;
         }
     }

@@ -1463,6 +1463,7 @@ GameObject:
   - component: {fileID: 2764601255599308822}
   - component: {fileID: 4787812787530134747}
   - component: {fileID: 5434374485337663366}
+  - component: {fileID: 8777271595486562950}
   - component: {fileID: 7443494174229855324}
   m_Layer: 0
   m_Name: PopupManager
@@ -1521,6 +1522,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8335892126201915488}
   m_CullTransparentMesh: 1
+--- !u!114 &8777271595486562950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8335892126201915488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!114 &7443494174229855324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1539,6 +1562,7 @@ MonoBehaviour:
   ExplanationText: {fileID: 3653130949018738700}
   QuestionText: {fileID: 6532017663568818260}
   AnswerText: []
+  pv: {fileID: 8777271595486562950}
 --- !u!1001 &64189982139930010
 PrefabInstance:
   m_ObjectHideFlags: 0

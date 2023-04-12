@@ -11,6 +11,7 @@ namespace OpenAI
         //[SerializeField] private InputField inputField;
         [SerializeField] private Text playerUtterance;
         [SerializeField] private Text textArea;
+        [SerializeField] private Toggle pauseOnCommas;
 
         [SerializeField] private TTSSpeaker _speaker;
         [SerializeField] private string Instruction;
@@ -74,7 +75,10 @@ namespace OpenAI
                 finalInstruction += $"{completionResponse.Choices[0].Text}\nQ: ";
                 textArea.text = finalInstruction.Substring(instrLen);
                 Debug.Log("Instruction :: "+finalInstruction);
-                sentences = completionResponse.Choices[0].Text.Split(new char[] { ',', '\n', '.', '?', ';', '!' });
+                if(pauseOnCommas.isOn)
+                    sentences = completionResponse.Choices[0].Text.Split(new char[] { ',', '\n', '.', '?', ';', '!' });
+                else
+                    sentences = completionResponse.Choices[0].Text.Split(new char[] { '\n', '.', '?', ';', '!' });
                 StartCoroutine(PlayAndWait());
                 //WitReact.temporarilyIgnore = false;
             }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Autohand;
 using Photon.Pun;
 using UnityEngine;
+using UnityTemplateProjects;
 
 public class PlayerInfo : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class PlayerInfo : MonoBehaviour
     [SerializeField] Vector3 OnComingLocation;
     [SerializeField] Vector3 OffGoingLocation;
     public GameObject AutoHandPlayer;
+    [SerializeField] GameObject microphone;
     PhotonView pv;
     PlayerInfo myPlayerInfo;
     PlayersList playersList;
@@ -24,6 +26,20 @@ public class PlayerInfo : MonoBehaviour
         playersList = FindObjectOfType<PlayersList>();
         playersList.playersList.Add(myPlayerInfo);
 
+        //if (microphone && !pv.IsMine)
+        //    microphone.SetActive(false);
+
+        if (playerRole==PlayerRole.Viewer && pv.IsMine)
+        {
+            AutoHandPlayer autoHandPlayer = FindObjectOfType<AutoHandPlayer>();
+            autoHandPlayer.headCamera.gameObject.AddComponent<SimpleCameraController>();
+            autoHandPlayer.GetComponent<Rigidbody>().isKinematic=true;
+            foreach (Renderer rend in autoHandPlayer.transform.root.GetComponentsInChildren<Renderer>())
+            {
+                rend.enabled = false;
+            }
+   
+        }
     }
 
     void MoveAHPlayer(GameObject _ahPlayer, Vector3 moveTo)
@@ -75,6 +91,7 @@ public class PlayerInfo : MonoBehaviour
                 MoveAHPlayer(AutoHandPlayer, OnComingLocation);
             }
             grabbableTablet.enabled = false;
+            grabbableTablet.GetComponent<SnapToHolster>().enabled = false;
         }
     }
 

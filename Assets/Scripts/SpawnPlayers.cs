@@ -24,8 +24,14 @@ public class SpawnPlayers : MonoBehaviour
             
         }
 
-        if (PhotonManager._viewerApp)
+        if (PhotonManager._viewerApp) 
+        {
+            if (player != null)
+                Instantiate(player, spawnPoint[randPoint].position, spawnPoint[randPoint].rotation);
             PhotonNetwork.Instantiate(photonPlayerView.name, spawnPoint[randPoint].position, spawnPoint[randPoint].rotation);
+           
+        }
+           
 
     }
     // Update is called once per frame

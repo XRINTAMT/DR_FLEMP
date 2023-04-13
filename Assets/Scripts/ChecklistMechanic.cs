@@ -11,7 +11,7 @@ public class ChecklistMechanic : MonoBehaviour
     public int[] correctAnswers;
     [SerializeField] Toggle[] checkBoxes;
     [SerializeField] string scenarioName;
-    [SerializeField] NurseTabletRecord[] TabletRecords;
+    public NurseTabletRecord[] TabletRecords;
     int[] givenAnswers;
     [HideInInspector]
     public bool indicate;

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,8 +12,9 @@ public class NurseTabletPopupManager : MonoBehaviour
     [SerializeField] Text ExplanationText;
     [SerializeField] Text QuestionText;
     [SerializeField] Text[] AnswerText;
+    [SerializeField] PhotonView pv;
     int id;
-
+  
     public void ShowExplaination(string _text)
     {
         QuestionWindow.SetActive(false);
@@ -40,23 +42,23 @@ public class NurseTabletPopupManager : MonoBehaviour
 
     public void ProcessAnswer(int optionNumber)
     {
-        //QuestionWindow.SetActive(false);
+        QuestionWindow.SetActive(false);
         Checklist.SaveAnswer(id, optionNumber);
-
-        Text textAnswer = AnswerText[optionNumber - 1];
-
-        if (Checklist.correctAnswers[id] == optionNumber - 1) 
-        {
-            for (int i = 0; i < AnswerText.Length; i++)
-            {
-                AnswerText[i].color = Color.white;
-            }
-            QuestionWindow.SetActive(false);
-            return;
-        }
          
-        if (Checklist.correctAnswers[id] != optionNumber-1)
-            textAnswer.color = Color.red;
-            AnswerText[Checklist.correctAnswers[id]].color = Color.green;
+        if (Checklist.correctAnswers[id] != optionNumber - 1) 
+        {
+            pv.RPC("ActivateHint", RpcTarget.All, id);
+        }
+    }
+
+    [PunRPC]
+    void ActivateHint(int id)
+    {
+        ChecklistMechanic [] checkList;
+        checkList = FindObjectsOfType<ChecklistMechanic>();
+        for (int i = 0; i < checkList.Length; i++)
+        {
+            checkList[i].TabletRecords[id].AudioHintButton.SetActive(true);
+        }
     }
 }

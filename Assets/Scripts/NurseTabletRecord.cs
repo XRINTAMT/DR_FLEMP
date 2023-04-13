@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class NurseTabletRecord : MonoBehaviour
 {
     public Text MainText;
-    [SerializeField] private GameObject AudioHintButton;
+    [SerializeField] public GameObject AudioHintButton;
     [SerializeField] private NurseTabletPopupManager PopupManager;
     [SerializeField] private ChecklistMechanic ChecklistManager;
     public Toggle checkbox;

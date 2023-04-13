@@ -16,9 +16,12 @@ public class SpawnPlayers : MonoBehaviour
 
         if (!PhotonManager._viewerApp)
         {
+            PlayerInfo _PI = PhotonNetwork.Instantiate(photonPlayer.name, spawnPoint[randPoint].position, spawnPoint[randPoint].rotation).GetComponent<PlayerInfo>();
             if (player != null)
-                Instantiate(player, spawnPoint[randPoint].position, spawnPoint[randPoint].rotation);
-            PhotonNetwork.Instantiate(photonPlayer.name, spawnPoint[randPoint].position, spawnPoint[randPoint].rotation);
+            {
+                _PI.AutoHandPlayer = Instantiate(player, spawnPoint[randPoint].position, spawnPoint[randPoint].rotation);
+            }
+            
         }
 
         if (PhotonManager._viewerApp) 

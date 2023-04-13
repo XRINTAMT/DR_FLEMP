@@ -9,6 +9,9 @@ public class PlayerInfo : MonoBehaviour
 {
     [SerializeField] Grabbable grabbableTablet;
     [SerializeField] ChecklistMechanic checklistMechanic;
+    [SerializeField] Vector3 OnComingLocation;
+    [SerializeField] Vector3 OffGoingLocation;
+    public GameObject AutoHandPlayer;
     [SerializeField] GameObject microphone;
     PhotonView pv;
     PlayerInfo myPlayerInfo;
@@ -39,6 +42,16 @@ public class PlayerInfo : MonoBehaviour
         }
     }
 
+    void MoveAHPlayer(GameObject _ahPlayer, Vector3 moveTo)
+    {
+        AutoHandPlayer AhObj = _ahPlayer.GetComponentInChildren<AutoHandPlayer>();
+        Vector3 resultingCoords = moveTo - AhObj.transform.localPosition;
+        AutoHandPlayer.transform.position = resultingCoords;
+        Debug.Log("To move to: " + moveTo);
+        Debug.Log("AH with local pos: " + AhObj.transform.localPosition);
+        Debug.Log("move to: " + resultingCoords);
+    }
+
     public void SetRoles() 
     {
         if (pv.IsMine && playerRole != PlayerRole.Viewer)
@@ -50,6 +63,7 @@ public class PlayerInfo : MonoBehaviour
                     playersList.showCase[i].SetActive(true);
                 }
                 checklistMechanic.Oncoming = false;
+                MoveAHPlayer(AutoHandPlayer, OffGoingLocation);
             }
             if (playerRole == PlayerRole.OnComing)
             {
@@ -58,6 +72,7 @@ public class PlayerInfo : MonoBehaviour
                     playersList.showCase[i].SetActive(false);
                 }
                 checklistMechanic.Oncoming = true;
+                MoveAHPlayer(AutoHandPlayer, OnComingLocation);
             }
 
             playersList.textRole.text = "Your role: " + playerRole + "\nYou can start";
@@ -68,10 +83,12 @@ public class PlayerInfo : MonoBehaviour
             if (playerRole == PlayerRole.OffGoing)
             {
                 checklistMechanic.Oncoming = false;
+                MoveAHPlayer(AutoHandPlayer, OffGoingLocation);
             }
             if (playerRole == PlayerRole.OnComing)
             {
                 checklistMechanic.Oncoming = true;
+                MoveAHPlayer(AutoHandPlayer, OnComingLocation);
             }
             grabbableTablet.enabled = false;
             grabbableTablet.GetComponent<SnapToHolster>().enabled = false;

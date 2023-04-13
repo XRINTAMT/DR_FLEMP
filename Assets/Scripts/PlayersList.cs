@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class PlayersList : MonoBehaviour
@@ -9,17 +10,19 @@ public class PlayersList : MonoBehaviour
     public List<GameObject> showCase;
     public Text textRole;
     public List<PlayerInfo> playersList = new List<PlayerInfo>();
+    public List<PlayerInfo> playersReady = new List<PlayerInfo>();
     PhotonView pv;
     int randomRole;
-    int waitingCountOfPlayers;  
     int viewIdPlayer1;
     int viewIdPlayer2;
     bool setRoles;
-
+    int countOfList;
+    
     private void Start()
     {
         pv = GetComponent<PhotonView>();
     }
+
     void SetRoles() 
     {
         if (PhotonNetwork.IsMasterClient)
@@ -39,16 +42,20 @@ public class PlayersList : MonoBehaviour
     private void Update()
     {
 
-        if (PhotonNetwork.IsMasterClient && playersList.Count >= 2 && waitingCountOfPlayers < 2)
+        if (playersList.Count != countOfList && playersReady.Count < 2)
         {
-            for (int i = 0; i < playersList.Count; i++)
+            if (playersList[playersList.Count - 1].playerRole == PlayerInfo.PlayerRole.Player)
             {
-                if (playersList[i].playerRole == PlayerInfo.PlayerRole.Player)
-                    waitingCountOfPlayers++;
+                playersReady.Add(playersList[playersList.Count - 1]);
             }
-            viewIdPlayer1 = playersList[playersList.Count - 1].GetComponent<PhotonView>().ViewID;
-            viewIdPlayer2 = playersList[playersList.Count - 2].GetComponent<PhotonView>().ViewID;
-            SetRoles();
+            if (playersReady.Count == 2 && PhotonNetwork.IsMasterClient)
+            {
+                viewIdPlayer1 = playersReady[playersReady.Count - 1].GetComponent<PhotonView>().ViewID;
+                viewIdPlayer2 = playersReady[playersReady.Count - 2].GetComponent<PhotonView>().ViewID;
+                SetRoles();
+            }
+
+            countOfList = playersList.Count;
         }
 
         if (setRoles)

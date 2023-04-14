@@ -55,17 +55,17 @@ public class SynsFingersState : MonoBehaviour
     {
         gripLeft.Pressed.AddListener(() => WhaitSetFingerStateLeftHand());
         gripLeft.Released.AddListener(() => WhaitSetFingerStateLeftHand());
-        triggerLeft.Pressed.AddListener(() => SetFingerStateLeftHand());
-        triggerLeft.Released.AddListener(() => SetFingerStateLeftHand());
-        axisLeft.Pressed.AddListener(() => SetFingerStateLeftHand());
-        axisLeft.Released.AddListener(() => SetFingerStateLeftHand());
+        triggerLeft.Pressed.AddListener(() => WhaitSetFingerStateLeftHand());
+        triggerLeft.Released.AddListener(() => WhaitSetFingerStateLeftHand());
+        axisLeft.Pressed.AddListener(() => WhaitSetFingerStateLeftHand());
+        axisLeft.Released.AddListener(() => WhaitSetFingerStateLeftHand());
 
         gripRight.Pressed.AddListener(() => WhaitSetFingerStateRightHand());
         gripRight.Released.AddListener(() => WhaitSetFingerStateRightHand());
-        triggerRight.Pressed.AddListener(() => SetFingerStateRightHand());
-        triggerRight.Released.AddListener(() => SetFingerStateRightHand());
-        axisRight.Pressed.AddListener(() => SetFingerStateRightHand());
-        axisRight.Released.AddListener(() => SetFingerStateRightHand());
+        triggerRight.Pressed.AddListener(() => WhaitSetFingerStateRightHand());
+        triggerRight.Released.AddListener(() => WhaitSetFingerStateRightHand());
+        axisRight.Pressed.AddListener(() => WhaitSetFingerStateRightHand());
+        axisRight.Released.AddListener(() => WhaitSetFingerStateRightHand());
     }
 
 

@@ -10,10 +10,15 @@ public class IgnoreAllColliders : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(Exceptions == null)
+        if (Exceptions == null)
         {
             Exceptions = new List<Collider>();
         }
+        IgnoreAll();
+    }
+
+    private void IgnoreAll()
+    {
         Collider thisCol = GetComponent<Collider>();
         Collider[] CollidersToIgnore = FindObjectsOfType<Collider>();
         if (CollidersToIgnore != null)
@@ -26,5 +31,10 @@ public class IgnoreAllColliders : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void UpdateIgnores()
+    {
+        IgnoreAll();
     }
 }

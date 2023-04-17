@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Autohand;
 using Photon.Pun;
 using UnityEngine;
-using UnityTemplateProjects;
 
 public class PlayerInfo : MonoBehaviour
 {
@@ -32,7 +31,7 @@ public class PlayerInfo : MonoBehaviour
         if (playerRole==PlayerRole.Viewer && pv.IsMine)
         {
             AutoHandPlayer autoHandPlayer = FindObjectOfType<AutoHandPlayer>();
-            autoHandPlayer.headCamera.gameObject.AddComponent<SimpleCameraController>();
+            autoHandPlayer.headCamera.gameObject.AddComponent<ViewerController>();
             autoHandPlayer.GetComponent<Rigidbody>().isKinematic=true;
             foreach (Renderer rend in autoHandPlayer.transform.root.GetComponentsInChildren<Renderer>())
             {
@@ -80,18 +79,21 @@ public class PlayerInfo : MonoBehaviour
         }
         if (!pv.IsMine)
         {
-            if (playerRole == PlayerRole.OffGoing)
+            if (AutoHandPlayer && checklistMechanic)
             {
-                checklistMechanic.Oncoming = false;
-                MoveAHPlayer(AutoHandPlayer, OffGoingLocation);
+                if (playerRole == PlayerRole.OffGoing)
+                {
+                    checklistMechanic.Oncoming = false;
+                    MoveAHPlayer(AutoHandPlayer, OffGoingLocation);
+                }
+                if (playerRole == PlayerRole.OnComing)
+                {
+                    checklistMechanic.Oncoming = true;
+                    MoveAHPlayer(AutoHandPlayer, OnComingLocation);
+                }
+                grabbableTablet.enabled = false;
+                grabbableTablet.GetComponent<SnapToHolster>().enabled = false;
             }
-            if (playerRole == PlayerRole.OnComing)
-            {
-                checklistMechanic.Oncoming = true;
-                MoveAHPlayer(AutoHandPlayer, OnComingLocation);
-            }
-            grabbableTablet.enabled = false;
-            grabbableTablet.GetComponent<SnapToHolster>().enabled = false;
         }
     }
 

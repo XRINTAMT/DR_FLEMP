@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 2807407678842908354}
   - component: {fileID: 2807407678842908355}
   - component: {fileID: 1709075701472213524}
-  - component: {fileID: 115305414243090501}
+  - component: {fileID: 2227516239675032074}
   m_Layer: 0
   m_Name: ViewerApp
   m_TagString: Untagged
@@ -189,9 +189,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grabbableTablet: {fileID: 0}
   checklistMechanic: {fileID: 0}
+  OnComingLocation: {x: 0, y: 0, z: 0}
+  OffGoingLocation: {x: 0, y: 0, z: 0}
+  AutoHandPlayer: {fileID: 0}
   microphone: {fileID: 0}
   playerRole: 1
---- !u!114 &115305414243090501
+--- !u!114 &2227516239675032074
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -200,7 +203,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2807407678842908365}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be76e5f14cfee674cb30b491fb72b09b, type: 3}
+  m_Script: {fileID: 11500000, guid: d5713dffd1ed1754bb04186706158889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   boost: 3.5

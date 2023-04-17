@@ -12,12 +12,21 @@ public class SceneChanger : MonoBehaviour
     }
     public void Fire(int i)
     {
-
         if (sceneLoader != null) sceneLoader.LoadScene();
 
-        if(i == -1)
+        if (i == -1)
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         else
             SceneManager.LoadScene(i);
+    }
+
+    public void TryLeaveMultuplayerRoom()
+    {
+        PhotonManager PhotonManagerObject = FindObjectOfType<PhotonManager>();
+
+        if (PhotonManagerObject != null)
+        {
+            PhotonManagerObject.Leave();
+        }
     }
 }

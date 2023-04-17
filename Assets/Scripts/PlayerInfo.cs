@@ -77,23 +77,23 @@ public class PlayerInfo : MonoBehaviour
             playersList.textRole.text = "Your role: " + playerRole + "\nYou can start";
             playersList.textRole.transform.parent.gameObject.SetActive(true);
         }
-        if (!pv.IsMine)
+        if (!pv.IsMine && playerRole != PlayerRole.Viewer)
         {
-            if (AutoHandPlayer && checklistMechanic)
+            if (playerRole == PlayerRole.OffGoing)
             {
-                if (playerRole == PlayerRole.OffGoing)
-                {
-                    checklistMechanic.Oncoming = false;
+                checklistMechanic.Oncoming = false;
+                if (AutoHandPlayer)
                     MoveAHPlayer(AutoHandPlayer, OffGoingLocation);
-                }
-                if (playerRole == PlayerRole.OnComing)
-                {
-                    checklistMechanic.Oncoming = true;
-                    MoveAHPlayer(AutoHandPlayer, OnComingLocation);
-                }
-                grabbableTablet.enabled = false;
-                grabbableTablet.GetComponent<SnapToHolster>().enabled = false;
             }
+            if (playerRole == PlayerRole.OnComing)
+            {
+                checklistMechanic.Oncoming = true;
+                if (AutoHandPlayer)
+                    MoveAHPlayer(AutoHandPlayer, OnComingLocation);
+            }
+
+            grabbableTablet.enabled = false;
+            grabbableTablet.GetComponent<SnapToHolster>().enabled = false;
         }
     }
 

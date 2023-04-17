@@ -54,9 +54,9 @@ public class PauseManager : MonoBehaviour
             }
         }
         */
-        UICamera.gameObject.GetComponent<Camera>().enabled = true;
+        //UICamera.gameObject.GetComponent<Camera>().enabled = true;
         UICamera.cullingMask = (1 << LayerMask.NameToLayer("Hand")) | (1 << LayerMask.NameToLayer("MenusUI")) | (1 << LayerMask.NameToLayer("Fade"));
-        MainCamera.cullingMask = (~0) &~ (1 << LayerMask.NameToLayer("Dialogue"));
+        //MainCamera.cullingMask = (~0) &~ (1 << LayerMask.NameToLayer("Dialogue"));
         PauseMenu.SetActive(true);
         PauseMenu.transform.position = MenuOffset.transform.position;
         PauseMenu.transform.rotation = MenuOffset.transform.rotation;
@@ -96,9 +96,9 @@ public class PauseManager : MonoBehaviour
         PauseMenu.SetActive(false);
         if (Controls != null) Controls.SwitchLocomotion(PlayerPrefs.GetInt("MovementType", 0));
 
-        MainCamera.cullingMask = ~0;
+        //MainCamera.cullingMask = ~0;
         UICamera.cullingMask = (1 << LayerMask.NameToLayer("Fade"));
-        UICamera.gameObject.GetComponent<Camera>().enabled=false;
+        //UICamera.gameObject.GetComponent<Camera>().enabled = false;
         GetComponent<UnscaleMove>().Play();
     }
 

@@ -39,6 +39,13 @@ public class PlayerInfo : MonoBehaviour
             }
    
         }
+
+
+        if (!pv.IsMine && grabbableTablet)
+        {
+            grabbableTablet.enabled = false;
+            grabbableTablet.GetComponent<SnapToHolster>().enabled = false;
+        }
     }
 
     void MoveAHPlayer(GameObject _ahPlayer, Vector3 moveTo)
@@ -91,7 +98,10 @@ public class PlayerInfo : MonoBehaviour
                 if (AutoHandPlayer)
                     MoveAHPlayer(AutoHandPlayer, OnComingLocation);
             }
+        }
 
+        if (!pv.IsMine)
+        {
             grabbableTablet.enabled = false;
             grabbableTablet.GetComponent<SnapToHolster>().enabled = false;
         }

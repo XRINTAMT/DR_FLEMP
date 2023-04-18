@@ -110,6 +110,8 @@ public class SynsFingersState : MonoBehaviour
     [PunRPC]
     void SetFingerStateRightHandRPC(int viewId, float finger0, float finger1, float finger2, float finger3, float finger4)
     {
+        pv = GetComponent<PhotonView>();
+
         if (viewId == pv.GetComponent<PhotonView>().ViewID)
         {
             multiplayerFingersRight[0].SetFingerBend(finger0);

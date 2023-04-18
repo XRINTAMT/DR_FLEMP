@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class RoomListEntryBehaviour : MonoBehaviour
 {
@@ -21,7 +23,7 @@ public class RoomListEntryBehaviour : MonoBehaviour
 
     public void JoinRoom()
     {
-        //join the room
+        PhotonNetwork.JoinRoom(roomName);
     }
 
     // Update is called once per frame

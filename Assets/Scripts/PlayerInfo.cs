@@ -23,7 +23,7 @@ public class PlayerInfo : MonoBehaviour
         pv = GetComponent<PhotonView>();
         myPlayerInfo = GetComponent<PlayerInfo>();    
         playersList = FindObjectOfType<PlayersList>();
-        playersList.playersList.Add(myPlayerInfo);
+        playersList.onJoin.Invoke();
 
         //if (microphone && !pv.IsMine)
         //    microphone.SetActive(false);
@@ -100,7 +100,7 @@ public class PlayerInfo : MonoBehaviour
             }
         }
 
-        if (!pv.IsMine)
+        if (!pv.IsMine && grabbableTablet)
         {
             grabbableTablet.enabled = false;
             grabbableTablet.GetComponent<SnapToHolster>().enabled = false;

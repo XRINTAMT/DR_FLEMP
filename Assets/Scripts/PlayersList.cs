@@ -7,22 +7,24 @@ using UnityEngine.UI;
 
 public class PlayersList : MonoBehaviour
 {
+    int playersCount;
     public List<GameObject> showCase;
     public Text textRole;
     public List<PlayerInfo> playersList = new List<PlayerInfo>();
     public List<PlayerInfo> playersReady = new List<PlayerInfo>();
     PhotonView pv;
     int randomRole;
-    int waitingCountOfPlayers;
     int viewIdPlayer1;
     int viewIdPlayer2;
     bool setRoles;
     bool forceSet;
-    int countOfList;
+    public UnityEvent onJoin;
+    public UnityEvent onLeft;
 
     private void Start()
     {
         pv = GetComponent<PhotonView>();
+        onJoin.AddListener(OnJoin);
     }
 
     public void ForceSetRoles()
@@ -30,6 +32,29 @@ public class PlayersList : MonoBehaviour
         forceSet = true;
     }
 
+    void OnJoin() 
+    {
+        var playersInfo = FindObjectsOfType<PlayerInfo>();
+        playersList.Clear();
+        playersReady.Clear();
+
+        for (int i = 0; i < playersInfo.Length; i++) 
+        {
+            playersList.Add(playersInfo[i]);
+
+            if (playersInfo[i].playerRole == PlayerInfo.PlayerRole.Player)
+                playersReady.Add(playersList[i]);
+        }
+
+        if (PhotonNetwork.IsMasterClient && playersReady.Count == 2)
+        {
+            viewIdPlayer1 = playersReady[playersReady.Count - 1].GetComponent<PhotonView>().ViewID;
+            viewIdPlayer2 = playersReady[playersReady.Count - 2].GetComponent<PhotonView>().ViewID;
+            SetRoles();
+        }
+
+        playersCount = PhotonNetwork.PlayerList.Length;
+    }
     void SetRoles()
     {
         if (PhotonNetwork.IsMasterClient)
@@ -71,22 +96,31 @@ public class PlayersList : MonoBehaviour
     private void Update()
     {
 
-        if ((playersList.Count != countOfList && playersReady.Count < 2) || forceSet)
+        if (playersCount > PhotonNetwork.PlayerList.Length) //when some player leaves the room
         {
-            if (playersList[playersList.Count - 1].playerRole == PlayerInfo.PlayerRole.Player)
+            playersList.Clear();
+            playersReady.Clear();
+
+            var playersInfo = FindObjectsOfType<PlayerInfo>();
+            for (int i = 0; i < playersInfo.Length; i++)
             {
-                playersReady.Add(playersList[playersList.Count - 1]);
+                playersList.Add(playersInfo[i]);
+
+                if (playersInfo[i].playerRole == PlayerInfo.PlayerRole.Player)
+                    playersReady.Add(playersList[i]);
             }
 
-            if ((playersReady.Count == 2 && PhotonNetwork.IsMasterClient) || forceSet)
-            {
-                viewIdPlayer1 = playersReady[playersReady.Count - 1].GetComponent<PhotonView>().ViewID;
-                if(!forceSet)
-                    viewIdPlayer2 = playersReady[playersReady.Count - 2].GetComponent<PhotonView>().ViewID;
-                SetRoles();
-                forceSet = false;
-            }
-            countOfList = playersList.Count;
+            playersCount = PhotonNetwork.PlayerList.Length;
+        }
+
+
+        if (forceSet)
+        {
+            viewIdPlayer1 = playersReady[playersReady.Count - 1].GetComponent<PhotonView>().ViewID;
+            if (!forceSet)
+                viewIdPlayer2 = playersReady[playersReady.Count - 2].GetComponent<PhotonView>().ViewID;
+            SetRoles();
+            forceSet = false;
         }
 
         if (setRoles)

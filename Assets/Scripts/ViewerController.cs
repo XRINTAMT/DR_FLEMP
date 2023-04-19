@@ -16,6 +16,9 @@ public class ViewerController : MonoBehaviour
         public float x;
         public float y;
         public float z;
+        public bool Groundbound;
+        public Vector3 BoundsMin;
+        public Vector3 BoundsMax;
 
         public void SetFromTransform(Transform t)
         {
@@ -27,13 +30,59 @@ public class ViewerController : MonoBehaviour
             z = t.position.z;
         }
 
+        public void SetBounds(Vector3 _min, Vector3 _max)
+        {
+            BoundsMin = _min;
+            BoundsMax = _max;
+        }
+
         public void Translate(Vector3 translation)
         {
-            Vector3 rotatedTranslation = Quaternion.Euler(pitch, yaw, roll) * translation;
-
+            Vector3 rotatedTranslation;
+            if (!Groundbound)
+            {
+                rotatedTranslation = Quaternion.Euler(pitch, yaw, roll) * translation;
+            }
+            else
+            {
+                rotatedTranslation = Quaternion.Euler(0, yaw, 0) * translation;
+            }
             x += rotatedTranslation.x;
+            if(x > BoundsMax.x)
+            {
+                x = BoundsMax.x;
+            }
+            else
+            {
+                if(x < BoundsMin.x)
+                {
+                    x = BoundsMin.x;
+                }
+            }
             y += rotatedTranslation.y;
+            if (y > BoundsMax.y)
+            {
+                y = BoundsMax.y;
+            }
+            else
+            {
+                if (y < BoundsMin.y)
+                {
+                    y = BoundsMin.y;
+                }
+            }
             z += rotatedTranslation.z;
+            if (z > BoundsMax.z)
+            {
+                z = BoundsMax.z;
+            }
+            else
+            {
+                if (z < BoundsMin.z)
+                {
+                    z = BoundsMin.z;
+                }
+            }
         }
 
         public void LerpTowards(CameraState target, float positionLerpPct, float rotationLerpPct)
@@ -44,7 +93,7 @@ public class ViewerController : MonoBehaviour
 
             x = Mathf.Lerp(x, target.x, positionLerpPct);
             y = Mathf.Lerp(y, target.y, positionLerpPct);
-            z = Mathf.Lerp(z, target.z, positionLerpPct);
+            z = Mathf.Lerp(z, target.z, positionLerpPct);            
         }
 
         public void UpdateTransform(Transform t)
@@ -59,7 +108,7 @@ public class ViewerController : MonoBehaviour
 
     [Header("Movement Settings")]
     [Tooltip("Exponential boost factor on translation, controllable by mouse wheel.")]
-    public float boost = 3.5f;
+    public float boost = 1;
 
     [Tooltip("Time it takes to interpolate camera position 99% of the way to the target."), Range(0.001f, 1f)]
     public float positionLerpTime = 0.2f;
@@ -74,36 +123,51 @@ public class ViewerController : MonoBehaviour
     [Tooltip("Whether or not to invert our Y axis for mouse input to rotation.")]
     public bool invertY = false;
 
+    [SerializeField] GameObject WalkingUI;
+    [SerializeField] GameObject FlyingUI;
+    [SerializeField] Vector3 BoundsMin;
+    [SerializeField] Vector3 BoundsMax;
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        m_TargetCameraState.Groundbound = true;
+        m_TargetCameraState.y = 1.7f;
+        WalkingUI.SetActive(true);
+    }
+
     void OnEnable()
     {
         m_TargetCameraState.SetFromTransform(transform);
+        m_TargetCameraState.SetBounds(BoundsMin, BoundsMax);
         m_InterpolatingCameraState.SetFromTransform(transform);
+        m_InterpolatingCameraState.SetBounds(BoundsMin, BoundsMax);
     }
 
     Vector3 GetInputTranslationDirection()
     {
         Vector3 direction = new Vector3();
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             direction += Vector3.forward;
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             direction += Vector3.back;
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             direction += Vector3.left;
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             direction += Vector3.right;
         }
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetKey(KeyCode.Q) && !m_TargetCameraState.Groundbound)
         {
             direction += Vector3.down;
         }
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.E) && !m_TargetCameraState.Groundbound)
         {
             direction += Vector3.up;
         }
@@ -117,6 +181,7 @@ public class ViewerController : MonoBehaviour
 #if ENABLE_LEGACY_INPUT_MANAGER
 
         // Exit Sample  
+        /*
         if (Input.GetKey(KeyCode.Escape))
         {
             Application.Quit();
@@ -124,7 +189,13 @@ public class ViewerController : MonoBehaviour
             UnityEditor.EditorApplication.isPlaying = false;
 #endif
         }
+        */
         // Hide and lock cursor when right mouse button pressed
+
+
+
+
+        /*
         if (Input.GetMouseButtonDown(1))
         {
             Cursor.lockState = CursorLockMode.Locked;
@@ -136,17 +207,17 @@ public class ViewerController : MonoBehaviour
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
+        */
+
+
 
         // Rotation
-        if (Input.GetMouseButton(1))
-        {
-            var mouseMovement = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y") * (invertY ? 1 : -1));
+        var mouseMovement = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y") * (invertY ? 1 : -1));
 
-            var mouseSensitivityFactor = mouseSensitivityCurve.Evaluate(mouseMovement.magnitude);
+        var mouseSensitivityFactor = mouseSensitivityCurve.Evaluate(mouseMovement.magnitude);
 
-            m_TargetCameraState.yaw += mouseMovement.x * mouseSensitivityFactor;
-            m_TargetCameraState.pitch += mouseMovement.y * mouseSensitivityFactor;
-        }
+        m_TargetCameraState.yaw += mouseMovement.x * mouseSensitivityFactor;
+        m_TargetCameraState.pitch += mouseMovement.y * mouseSensitivityFactor;
 
         // Translation
         translation = GetInputTranslationDirection() * Time.deltaTime;
@@ -154,18 +225,32 @@ public class ViewerController : MonoBehaviour
         // Speed up movement when shift key held
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            translation *= 10.0f;
+            translation *= 2.0f;
         }
+
+
 
         // Modify movement by a boost factor (defined in Inspector and modified in play mode through the mouse scroll wheel)
         boost += Input.mouseScrollDelta.y * 0.2f;
         translation *= Mathf.Pow(2.0f, boost);
+        translation *= boost;
 
 #elif USE_INPUT_SYSTEM
             // TODO: make the new input system work
 #endif
 
         m_TargetCameraState.Translate(translation);
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            m_TargetCameraState.Groundbound = !m_TargetCameraState.Groundbound;
+            if (m_TargetCameraState.Groundbound)
+            {
+                m_TargetCameraState.y = 1.7f; 
+            }
+            WalkingUI.SetActive(m_TargetCameraState.Groundbound);
+            FlyingUI.SetActive(!m_TargetCameraState.Groundbound);
+        }
 
         // Framerate-independent interpolation
         // Calculate the lerp amount, such that we get 99% of the way to our target in the specified time

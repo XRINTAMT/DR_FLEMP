@@ -37,7 +37,8 @@ public class PlayerInfo : MonoBehaviour
             {
                 rend.enabled = false;
             }
-   
+
+            Destroy(FindObjectOfType<FadeWall>());
         }
 
 

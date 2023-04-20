@@ -44,7 +44,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public void ConnectToServer()
     {
-        PhotonNetwork.AutomaticallySyncScene = true;
+        //PhotonNetwork.AutomaticallySyncScene = true;
         PhotonNetwork.ConnectUsingSettings();
     }
     public void CreateRoom(string nameRoom)

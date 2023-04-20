@@ -78,7 +78,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         if (automaticJoinRoom)
             ConnectToRandomRoom();
-   
     }
     public override void OnCreatedRoom()
     {

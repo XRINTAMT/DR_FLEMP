@@ -31,13 +31,14 @@ public class PlayerInfo : MonoBehaviour
         if (playerRole==PlayerRole.Viewer && pv.IsMine)
         {
             AutoHandPlayer autoHandPlayer = FindObjectOfType<AutoHandPlayer>();
-            autoHandPlayer.headCamera.gameObject.AddComponent<ViewerController>();
+            autoHandPlayer.headCamera.gameObject.GetComponent<ViewerController>().enabled = true;
             autoHandPlayer.GetComponent<Rigidbody>().isKinematic=true;
             foreach (Renderer rend in autoHandPlayer.transform.root.GetComponentsInChildren<Renderer>())
             {
                 rend.enabled = false;
             }
-   
+
+            Destroy(FindObjectOfType<FadeWall>());
         }
 
 

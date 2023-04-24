@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 9219138677053935608}
   - component: {fileID: 5182360235764267415}
   m_Layer: 0
-  m_Name: Image
+  m_Name: ShowcaseSignBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,10 +149,10 @@ RectTransform:
   m_Father: {fileID: 485352091088461451}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 512, y: 250}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &9219138677053935608
 CanvasRenderer:
@@ -225,10 +225,10 @@ RectTransform:
   m_Father: {fileID: 1362656229470348347}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 448, y: 400}
+  m_SizeDelta: {x: -64, y: -38.020004}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5168243074627507407
 CanvasRenderer:
@@ -504,4 +504,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7bccc3428100549bb141cb23fcf852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}

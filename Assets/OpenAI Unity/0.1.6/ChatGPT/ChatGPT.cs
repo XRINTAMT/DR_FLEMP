@@ -33,7 +33,7 @@ namespace OpenAI
             "Processing..."
         };
 
-        private OpenAIApi openai = new OpenAIApi("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");
+        private OpenAIApi openai = new OpenAIApi("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");
 
         private string userInput;
         //private string Instruction = "Act as a random stranger in a chat room and reply to the questions.\nQ: ";

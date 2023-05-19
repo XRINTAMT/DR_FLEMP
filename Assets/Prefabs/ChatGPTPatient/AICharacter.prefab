@@ -82,10 +82,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abf7a75ccc7b2ef43bde5b4c73de6e65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  freshStateText: Try to say something...
+  freshStateText: Listening...
   textArea: {fileID: 5283375387066610801}
   showJson: 0
   appVoiceExperience: {fileID: 812962606292548854}
+  LastNonNullPhrase: 
+  RealWorkingSilenceTimeout: 1.5
+  CurrentTimeout: 0
+  OnTimeout:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5283375388466701186}
+        m_TargetAssemblyTypeName: OpenAI.ChatGPT, Assembly-CSharp
+        m_MethodName: SendReply
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Done: 1
 --- !u!1 &812962606292548855
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,16 +164,16 @@ MonoBehaviour:
     OnResponse:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 5283375388466701186}
-          m_TargetAssemblyTypeName: OpenAI.ChatGPT, Assembly-CSharp
-          m_MethodName: SendReply
-          m_Mode: 1
+        - m_Target: {fileID: 812962604712040616}
+          m_TargetAssemblyTypeName: Oculus.Voice.Demo.InteractionHandler, Oculus.Voice.Demo
+          m_MethodName: SetActivation
+          m_Mode: 6
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: Activate
+            m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
     OnPartialResponse:
@@ -234,31 +253,7 @@ MonoBehaviour:
         m_Calls: []
     onFullTranscription:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 812962604712040616}
-          m_TargetAssemblyTypeName: Oculus.Voice.Demo.InteractionHandler, Oculus.Voice.Demo
-          m_MethodName: SetActivation
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 812962606292548854}
-          m_TargetAssemblyTypeName: Oculus.Voice.AppVoiceExperience, VoiceSDK.Runtime
-          m_MethodName: Deactivate
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
     OnByteDataReady:
       m_PersistentCalls:
         m_Calls: []
@@ -268,8 +263,8 @@ MonoBehaviour:
   witRuntimeConfiguration:
     witConfiguration: {fileID: 11400000, guid: 8ca721df475c92e4ca9167b74de4b2f6, type: 2}
     minKeepAliveVolume: 0.0005
-    minKeepAliveTimeInSeconds: 8
-    minTranscriptionKeepAliveTimeInSeconds: 8
+    minKeepAliveTimeInSeconds: 5.94
+    minTranscriptionKeepAliveTimeInSeconds: 6.18
     maxRecordingTime: 20
     soundWakeThreshold: 0.0005
     sampleLengthInMs: 10
@@ -682,7 +677,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -19.999994, y: -30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5283375387066610800
 CanvasRenderer:
@@ -714,7 +709,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 24781ee6d31dc2b479d4e4742d0bd331, type: 3}
-    m_FontSize: 84
+    m_FontSize: 54
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
@@ -978,7 +973,9 @@ MonoBehaviour:
     of emergency, her husband should be called. Don't diagnose yourself. No notes.
     Keep the answer to one to three sentences. Answer this question:"
   WitReact: {fileID: 4497029918584345137}
+  InterHandler: {fileID: 812962604712040616}
   sentences: []
+  JustTestingDontSend: 0
 --- !u!1 &5283375388985890344
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,7 +1527,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &8682414643167532141
 GameObject:
   m_ObjectHideFlags: 0

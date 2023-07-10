@@ -17,9 +17,12 @@ namespace OpenAI
         [SerializeField] private string Instruction;
 
         [SerializeField] private WitAutoReactivation WitReact;
+        [SerializeField] private Oculus.Voice.Demo.InteractionHandler InterHandler;
+        
 
         [SerializeField] private string[] sentences;
         int instrLen;
+        [SerializeField] private bool JustTestingDontSend = false;
 
         private int secret = 0;
         string[] errorReplies = { "Chat GPT is down (or we didn't pay for it) so have this:",
@@ -30,7 +33,7 @@ namespace OpenAI
         List<string> forbiddenPhrases = new List<string>
         {
             "Press activation to talk...",
-            "Processing..."
+            "Processing...", "", " "
         };
 
         private OpenAIApi openai = new OpenAIApi("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");
@@ -47,8 +50,9 @@ namespace OpenAI
 
         public async void SendReply()
         {
-            userInput = playerUtterance.text;
-            if(forbiddenPhrases.Contains(userInput))
+            userInput = InterHandler.LastNonNullPhrase;
+            InterHandler.LastNonNullPhrase = "";
+            if (forbiddenPhrases.Contains(userInput))
             {
                 Debug.Log("Heard nothing / did not have enough time to process the speech");
                 return;
@@ -59,41 +63,50 @@ namespace OpenAI
             Debug.Log("userInput:: "+userInput);
             finalInstruction += $"{userInput}\nA: ";
             
-            textArea.text = "...";
+            textArea.text = textArea.text + "\n...";
             playerUtterance.text = "";
-            
-            // Complete the instruction
-            var completionResponse = await openai.CreateCompletion(new CreateCompletionRequest()
-            {
-                Prompt = finalInstruction,
-                Model = "text-davinci-003",
-                MaxTokens = 128
-            });
 
-            if (completionResponse.Choices != null && completionResponse.Choices.Count > 0)
+            if (!JustTestingDontSend)
             {
-                finalInstruction += $"{completionResponse.Choices[0].Text}\nQ: ";
-                textArea.text = finalInstruction.Substring(instrLen);
-                Debug.Log("Instruction :: "+finalInstruction);
-                if(pauseOnCommas.isOn)
-                    sentences = completionResponse.Choices[0].Text.Split(new char[] { ',', '\n', '.', '?', ';', '!' });
+                // Complete the instruction
+                var completionResponse = await openai.CreateCompletion(new CreateCompletionRequest()
+                {
+                    Prompt = finalInstruction,
+                    Model = "text-davinci-003",
+                    MaxTokens = 128
+                });
+
+                if (completionResponse.Choices != null && completionResponse.Choices.Count > 0)
+                {
+                    finalInstruction += $"{completionResponse.Choices[0].Text}\nQ: ";
+                    textArea.text = finalInstruction.Substring(instrLen);
+                    Debug.Log("Instruction :: " + finalInstruction);
+                    if (pauseOnCommas.isOn)
+                        sentences = completionResponse.Choices[0].Text.Split(new char[] { ',', '\n', '.', '?', ';', '!' });
+                    else
+                        sentences = completionResponse.Choices[0].Text.Split(new char[] { '\n', '.', '?', ';', '!' });
+                    StartCoroutine(PlayAndWait());
+                    //WitReact.temporarilyIgnore = false;
+                }
                 else
-                    sentences = completionResponse.Choices[0].Text.Split(new char[] { '\n', '.', '?', ';', '!' });
-                StartCoroutine(PlayAndWait());
-                //WitReact.temporarilyIgnore = false;
+                {
+                    Debug.LogWarning("No text was generated from this prompt.");
+                    finalInstruction += $"{errorReplies[secret]}\nQ: ";
+                    textArea.text = finalInstruction.Substring(instrLen);
+                    _speaker.Speak(errorReplies[secret]);
+                    secret++;
+                    if (secret >= errorReplies.Length)
+                        secret = 0;
+                    //WitReact.temporarilyIgnore = false;
+                }
+                //inputField.enabled = true;
             }
             else
             {
-                Debug.LogWarning("No text was generated from this prompt.");
-                finalInstruction += $"{errorReplies[secret]}\nQ: ";
-                textArea.text = finalInstruction.Substring(instrLen);
-                _speaker.Speak(errorReplies[secret]);
-                secret++;
-                if (secret >= errorReplies.Length)
-                    secret = 0;
-                //WitReact.temporarilyIgnore = false;
+                Debug.LogWarning("We're just testing, but if I was to send this to GPT, that would be: " + finalInstruction);
+                sentences = new string[2] { "This is very cool", "tell me more"};
+                StartCoroutine(PlayAndWait());
             }
-            //inputField.enabled = true;
         }
         IEnumerator PlayAndWait()
         {

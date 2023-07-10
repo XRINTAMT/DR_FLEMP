@@ -31,6 +31,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject assistantChosen;
     [SerializeField] private GameObject nurseChosen;
     [SerializeField] private AudioMixer AppMixer;
+    [SerializeField] private bool Realtime;
 
     public static float dialogueVolume;
     public static float soundVolume;
@@ -113,7 +114,7 @@ public class UIController : MonoBehaviour
         walkingSpeed = setWalkingSpeed.value;
         //appSettings.UpdateSettings();
         PlayerPrefs.SetFloat("walkingSpeed", walkingSpeed);
-        Object.FindObjectOfType<XRMovementControls>().SetMovementSpeed(walkingSpeed);
+        FindObjectOfType<XRMovementControls>().SetMovementSpeed(walkingSpeed);
     }
 
     public void SetLanguage(string lang)
@@ -138,13 +139,15 @@ public class UIController : MonoBehaviour
         Debug.Log("Looking for a thing");
         //Object.FindObjectOfType<XRMovementControls>().SwitchLocomotion(teleport);
         Debug.Log("found one");
+        if(Realtime)
+            FindObjectOfType<XRMovementControls>().SwitchLocomotion(teleport);
     }
     public void SetHandType(int hand)
     {
         if (hand == 0) AutoHandPlayer.movementHand = MovementHand.Left;
     
         if (hand == 1) AutoHandPlayer.movementHand = MovementHand.Right;
-      
+
     }
 
     public void SetGender(int genderID)

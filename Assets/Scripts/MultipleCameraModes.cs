@@ -6,13 +6,14 @@ using Photon.Pun;
 public class MultipleCameraModes : MonoBehaviour
 {
     [SerializeField] Camera mainCamera;
+    ViewportHintManager HintManager;
     Camera Player1Camera;
     Camera Player2Camera;
     int mode = 0;
 
     void Start()
     {
-
+        HintManager = FindObjectOfType<ViewportHintManager>();
     }
 
     void Update()
@@ -42,6 +43,7 @@ public class MultipleCameraModes : MonoBehaviour
             }
             mode += 1;
             mode = mode % 5;
+            HintManager.SwitchTo(mode);
             switch (mode)
             {
                 case (0):
@@ -53,14 +55,14 @@ public class MultipleCameraModes : MonoBehaviour
                     break;
                 case (1):
                     Player1Camera.enabled = true;
-                    Player1Camera.rect = new Rect(new Vector2(0.67f, 0), new Vector2(0.33f, 0.5f));
+                    Player1Camera.rect = new Rect(new Vector2(0.6f, 0.5f), new Vector2(0.4f, 0.5f));
                     if (Player2Camera != null)
                     {
                         Player2Camera.enabled = true;
-                        Player2Camera.rect = new Rect(new Vector2(0.67f, 0.5f), new Vector2(0.33f, 0.5f));
+                        Player2Camera.rect = new Rect(new Vector2(0.6f, 0f), new Vector2(0.4f, 0.5f));
                     }
                     mainCamera.enabled = true;
-                    mainCamera.rect = new Rect(Vector2.zero, new Vector2(0.67f, 1));
+                    mainCamera.rect = new Rect(Vector2.zero, new Vector2(0.6f, 1));
                     break;
                 case (2):
                     Player1Camera.enabled = true;

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using Meta.WitAi.TTS.Utilities;
+using System.Linq;
 
 namespace OpenAI
 {
@@ -18,9 +19,13 @@ namespace OpenAI
 
         [SerializeField] private WitAutoReactivation WitReact;
         [SerializeField] private Oculus.Voice.Demo.InteractionHandler InterHandler;
+        [SerializeField] private string Name = "Elisa";
+
         
 
         [SerializeField] private string[] sentences;
+        [SerializeField] private List<string> ChatHistory;
+        [SerializeField] private int PhrasesToSend = 4;
         int instrLen;
         [SerializeField] private bool JustTestingDontSend = false;
 
@@ -42,10 +47,37 @@ namespace OpenAI
         //private string Instruction = "Act as a random stranger in a chat room and reply to the questions.\nQ: ";
         private string finalInstruction;
 
+        private void Awake()
+        {
+            ChatHistory = new List<string>();
+        }
+
         void Start()
         {
-            finalInstruction = $"{Instruction}\nQ: ";
-            instrLen = finalInstruction.Length - 4;
+            //finalInstruction = $"{Instruction}\nQ: ";
+            //instrLen = finalInstruction.Length - 4;
+        }
+
+        private string ComposeFinalString()
+        {
+            string _finalString = Instruction;
+            foreach (string _str in ChatHistory.Skip(Mathf.Max(0, ChatHistory.Count() - PhrasesToSend)))
+            {
+                _finalString += "\n" + _str;
+            }
+            _finalString += "\nElisa: ";
+            return _finalString;
+        }
+
+        private string FullHistory()
+        {
+            string _finalString = "";
+            foreach (string _str in ChatHistory)
+            {
+                Debug.Log(_str);
+                _finalString += _str + '\n';
+            }
+            return _finalString;
         }
 
         public async void SendReply()
@@ -61,10 +93,15 @@ namespace OpenAI
             WitReact.temporarilyIgnore = true;
 
             Debug.Log("userInput:: "+userInput);
-            finalInstruction += $"{userInput}\nA: ";
-            
-            textArea.text = textArea.text + "\n...";
+
+
+            //finalInstruction += $"{userInput}\nA: ";
+            ChatHistory.Add("Nurse: " + userInput);
+
+            textArea.text = FullHistory() + "\n...";
+            Debug.Log("Full chat history: " + FullHistory());
             playerUtterance.text = "";
+            finalInstruction = ComposeFinalString();
 
             if (!JustTestingDontSend)
             {
@@ -76,11 +113,16 @@ namespace OpenAI
                     MaxTokens = 128
                 });
 
+                
+
                 if (completionResponse.Choices != null && completionResponse.Choices.Count > 0)
                 {
-                    finalInstruction += $"{completionResponse.Choices[0].Text}\nQ: ";
-                    textArea.text = finalInstruction.Substring(instrLen);
+                    //finalInstruction += $"{completionResponse.Choices[0].Text}\nQ: ";
+
+                    ChatHistory.Add("Elisa: " + completionResponse.Choices[0].Text);
+                    textArea.text = FullHistory();
                     Debug.Log("Instruction :: " + finalInstruction);
+                    Debug.Log("Response :: " + completionResponse.Choices[0].Text);
                     if (pauseOnCommas.isOn)
                         sentences = completionResponse.Choices[0].Text.Split(new char[] { ',', '\n', '.', '?', ';', '!' });
                     else
@@ -90,9 +132,9 @@ namespace OpenAI
                 }
                 else
                 {
+                    textArea.text = FullHistory();
                     Debug.LogWarning("No text was generated from this prompt.");
-                    finalInstruction += $"{errorReplies[secret]}\nQ: ";
-                    textArea.text = finalInstruction.Substring(instrLen);
+                    //finalInstruction += $"{errorReplies[secret]}\nQ: ";
                     _speaker.Speak(errorReplies[secret]);
                     secret++;
                     if (secret >= errorReplies.Length)

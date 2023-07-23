@@ -5,10 +5,34 @@ using UnityEngine.UI;
 using Meta.WitAi.TTS.Utilities;
 using System.Linq;
 
+public class RandomPool<T>
+{
+    private List<T> List;
+    private T[] Array;
+
+    public RandomPool(T[] _arr)
+    {
+        Array = _arr.Clone() as T[];
+        List = new List<T>(_arr);
+    }
+
+    public T Draw()
+    {
+        if(List.Count == 0)
+            List = new List<T>(Array);
+        int _randint = Random.Range(0, List.Count - 1);
+        T elem = List.ElementAt(_randint);
+        List.RemoveAt(_randint);
+        return elem;
+    }
+
+}
+
 namespace OpenAI
 {
     public class ChatGPT : MonoBehaviour
     {
+        
         //[SerializeField] private InputField inputField;
         [SerializeField] private Text playerUtterance;
         [SerializeField] private Text textArea;
@@ -21,10 +45,13 @@ namespace OpenAI
         [SerializeField] private Oculus.Voice.Demo.InteractionHandler InterHandler;
         [SerializeField] private string Name = "Elisa";
 
-        
 
-        [SerializeField] private string[] sentences;
-        [SerializeField] private List<string> ChatHistory;
+        [SerializeField] private AudioClip[] WaitingPhrases;
+
+        private RandomPool<AudioClip> PhrasesPool; 
+
+        private string[] sentences;
+        private List<string> ChatHistory;
         [SerializeField] private int PhrasesToSend = 4;
         int instrLen;
         [SerializeField] private bool JustTestingDontSend = false;
@@ -50,6 +77,7 @@ namespace OpenAI
         private void Awake()
         {
             ChatHistory = new List<string>();
+            PhrasesPool = new RandomPool<AudioClip>(WaitingPhrases); 
         }
 
         void Start()
@@ -156,6 +184,8 @@ namespace OpenAI
             {
                 if (sentence == string.Empty)
                     continue;
+                _speaker.AudioSource.clip = PhrasesPool.Draw();
+                _speaker.AudioSource.Play();
                 _speaker.Speak(sentence);
                 
                 while (!_speaker.IsSpeaking)

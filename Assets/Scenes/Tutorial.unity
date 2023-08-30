@@ -1222,7 +1222,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6231535693548155164, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
   m_PrefabInstance: {fileID: 1067664178}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1197669263}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 245bee9b113e7144cb3549484bae2a0c, type: 3}
@@ -1466,6 +1466,43 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 716694536464018080, guid: 14f12e684bce3674183daf5c38d9d2a1, type: 3}
   m_PrefabInstance: {fileID: 1609209887}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1197669263 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7530769499800883881, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+  m_PrefabInstance: {fileID: 1067664178}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1197669264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197669263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fbab967b03b78f4093d38ef2637575f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  link: {fileID: 1067664181}
+  button: 1
+  Pressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1042908352}
+        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
+        m_MethodName: Fire
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Released:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1385104147
 GameObject:
   m_ObjectHideFlags: 0

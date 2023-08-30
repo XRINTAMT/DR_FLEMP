@@ -17,12 +17,17 @@ public class HintControllers : MonoBehaviour
       //xRControllerEvent.button = CommonButton.menuButton;
       xRControllerEvent.Pressed.AddListener(PressButton);
 
-        if (!loadOnStart)
-        {
-            transform.GetChild(0).gameObject.SetActive(true);
-            modelHand.SetActive(false);
-            loadOnStart = true;
-        }
+        //if (!loadOnStart)
+        //{
+        //    transform.GetChild(0).gameObject.SetActive(true);
+        //    modelHand.SetActive(false);
+        //    loadOnStart = true;
+        //}
+    }
+    public void EnableHint() 
+    {
+        transform.GetChild(0).gameObject.SetActive(true);
+        modelHand.SetActive(false);
     }
 
     void PressButton() 

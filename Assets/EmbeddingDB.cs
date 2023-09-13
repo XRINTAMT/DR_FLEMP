@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using AICharacter;
 using Unity.Mathematics;
 using NaughtyAttributes;
 using UnityEngine;
@@ -67,6 +68,11 @@ public class EmbeddingDB : MonoBehaviour
         }
         return sum;
     }
+    
+    public static double vectorSimilarity(List<float> a, List<float> b)
+    {
+        return Math.Abs(dot(a, b));
+    }
 
     [Button("Generate DB")]
     void generateDB()
@@ -112,7 +118,7 @@ public class EmbeddingDB : MonoBehaviour
         }).ContinueWith(r =>
         {
             var e = r.Result.Data[0].Embedding;
-            var searchResult = _embeddings.OrderBy(kv => -Math.Abs(dot(kv.Value, e))).GetEnumerator();
+            var searchResult = _embeddings.OrderBy(kv => -vectorSimilarity(kv.Value, e)).GetEnumerator();
             searchResult.MoveNext();
             for (int i = 0; i < topN; ++i)
             {

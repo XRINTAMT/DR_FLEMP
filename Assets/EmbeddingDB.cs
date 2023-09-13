@@ -118,12 +118,10 @@ public class EmbeddingDB : MonoBehaviour
         }).ContinueWith(r =>
         {
             var e = r.Result.Data[0].Embedding;
-            var searchResult = _embeddings.OrderBy(kv => -vectorSimilarity(kv.Value, e)).GetEnumerator();
-            searchResult.MoveNext();
+            var searchResult = _embeddings.OrderBy(kv => -vectorSimilarity(kv.Value, e)).ToList();
             for (int i = 0; i < topN; ++i)
             {
-                Debug.Log(searchResult.Current.Key);
-                searchResult.MoveNext();
+                Debug.Log(searchResult[i].Key);
             }
         });
     }

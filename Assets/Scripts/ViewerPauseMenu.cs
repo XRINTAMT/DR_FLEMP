@@ -28,7 +28,7 @@ public class ViewerPauseMenu : MonoBehaviour
     void Start()
     {
         menu.SetActive(false);
-        roomNumber.text = JoinRoomController.nameRoom;
+        roomNumber.text = PhotonNetwork.CurrentRoom.Name;
     }
 
     // Update is called once per frame
@@ -36,10 +36,15 @@ public class ViewerPauseMenu : MonoBehaviour
     {
         if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && photonView.IsMine) 
         {
+            roomNumber.text = PhotonNetwork.CurrentRoom.Name;
             Cursor.visible = !menu.activeSelf;
             Cursor.lockState = CursorLockMode.None;
             menu.SetActive(!menu.activeSelf);
-
+            ViewerController[] _VCs = FindObjectsByType<ViewerController>(FindObjectsSortMode.None);
+            foreach(ViewerController _vc in _VCs)
+            {
+                _vc.enabled = !menu.activeSelf;
+            }
         }
            
 

@@ -11,7 +11,9 @@ public class HintBehaviour : MonoBehaviour
     public AudioClip[] audioClip;
     public GameObject hintSkip;
     public GameObject lineSkip;
+    public GameObject[] hints;
     AudioSource audioSource;
+    public bool[] play;
     private void Awake()
     {
         if (!startFirstTime)
@@ -34,22 +36,36 @@ public class HintBehaviour : MonoBehaviour
     {
         if (!playAudioFirstTime)
         {
-            audioSource.Stop();
-            audioSource.PlayOneShot(audioClip[index]);
-            if (index == 4)
+            if (!play[index])
             {
-                Invoke("ChangeAudio", 24f);
+                audioSource.Stop();
+                audioSource.PlayOneShot(audioClip[index]);
+
+                if (index == 4)
+                    Invoke("ChangeAudio", 24f);
+                play[index] = true;
             }
+          
         }
 
 
     }
     void ChangeAudio() 
     {
+        audioSource.Stop();
         audioSource.PlayOneShot(audioClip[5]);
-        lineSkip.SetActive(true);
-        hintSkip.SetActive(true);
-
+        for (int i = 0; i < hints.Length; i++)
+        {
+            if (i==0 || i==1)
+            {
+                hints[i].SetActive(true);
+            }
+            else
+            {
+                hints[i].SetActive(false);
+            }
+        }
+      
     }
 
     public void EnnableMove() 

@@ -2,12 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using AICharacter;
 using Unity.Mathematics;
 using NaughtyAttributes;
 using UnityEngine;
 using OpenAI;
-using UnityEditor.Search;
 
 public class EmbeddingDB : MonoBehaviour
 {
@@ -15,9 +15,7 @@ public class EmbeddingDB : MonoBehaviour
     [SerializeField] private string key;
     [SerializeField] private int chunkLength;
     [SerializeField] private Dictionary<string, List<float>> _embeddings;
-    public string searchtext;
     public int returnTop;
-    public List<string> pwins;
 
 
 
@@ -27,8 +25,6 @@ public class EmbeddingDB : MonoBehaviour
     {
         openai = new OpenAIApi(key);
     }
-    
-    
 
     // Update is called once per frame
     void Update()
@@ -54,7 +50,7 @@ public class EmbeddingDB : MonoBehaviour
         return res;
     }
 
-    public static double dot(List<float> a, List<float> b)
+    public static double Dot(List<float> a, List<float> b)
     {
         if (a.Count != b.Count)
         {
@@ -69,16 +65,15 @@ public class EmbeddingDB : MonoBehaviour
         return sum;
     }
     
-    public static double vectorSimilarity(List<float> a, List<float> b)
+    public static double VectorSimilarity(List<float> a, List<float> b)
     {
-        return Math.Abs(dot(a, b));
+        return Math.Abs(Dot(a, b));
     }
 
     [Button("Generate DB")]
-    void generateDB()
+    void GenerateDB()
     {
         var wins = window(prompt, chunkLength);
-        pwins = wins;
         if (_embeddings == null) _embeddings = new Dictionary<string, List<float>>();
         if (openai == null) openai = new OpenAIApi(key);
         _embeddings.Clear();
@@ -100,29 +95,28 @@ public class EmbeddingDB : MonoBehaviour
 
     }
 
-    [Button("Search")]
-    void searchEditor()
+    public Task<List<float>> GetEmbedding(string message)
     {
-        search(searchtext, returnTop);
+        if (openai == null) openai = new OpenAIApi(key);
+
+        return openai.CreateEmbeddings(new CreateEmbeddingsRequest()
+        {
+            Input = message,
+            Model = model
+        }).ContinueWith(r => r.Result.Data[0].Embedding);
     }
     
-    void search(string text, int topN)
+    List<string> Search(List<float> embedding, int topN)
     {
-        if(_embeddings == null) return;
-        if (openai == null) openai = new OpenAIApi(key);
-        Debug.Log("Searching for: \""+text+"\"");
-        openai.CreateEmbeddings(new CreateEmbeddingsRequest()
+        if (_embeddings == null) return null;
+
+        var searchResult = _embeddings.OrderBy(kv => -VectorSimilarity(kv.Value, embedding)).ToList();
+        var res = new List<string>();
+        for (int i = 0; i < topN; ++i)
         {
-            Input = text,
-            Model = model
-        }).ContinueWith(r =>
-        {
-            var e = r.Result.Data[0].Embedding;
-            var searchResult = _embeddings.OrderBy(kv => -vectorSimilarity(kv.Value, e)).ToList();
-            for (int i = 0; i < topN; ++i)
-            {
-                Debug.Log(searchResult[i].Key);
-            }
-        });
+            res.Add(searchResult[i].Key);
+        }
+
+        return res;
     }
 }

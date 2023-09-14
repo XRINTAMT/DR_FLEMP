@@ -47,7 +47,7 @@ namespace AICharacter
                 temp.Add(history[i]);
             }
 
-            var searchResult = temp.OrderBy(e => -EmbeddingDB.vectorSimilarity(e.embedding, embedding)).ToList();
+            var searchResult = temp.OrderBy(e => -EmbeddingDB.VectorSimilarity(e.embedding, embedding)).ToList();
             
             var res = new List<ChatMessage>();
             for (int i = 0; i < count; ++i)

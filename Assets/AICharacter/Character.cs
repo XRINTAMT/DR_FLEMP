@@ -24,7 +24,7 @@ namespace AICharacter
 
         public void InitCharacter()
         {
-            Debug.Log("Init Character: "+Name);
+            Debug.Log("Init Character :: "+Name);
         }
     }
 

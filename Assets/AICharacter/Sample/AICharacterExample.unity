@@ -359,7 +359,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 329921276}
-  - component: {fileID: 329921277}
   m_Layer: 0
   m_Name: AICharacter_v2
   m_TagString: Untagged
@@ -389,60 +388,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &329921277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 329921275}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e52c4d31354f9d34a9294b275c8312b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerUtterance: {fileID: 1627656354}
-  textArea: {fileID: 3200133959090374858}
-  pauseOnCommas: {fileID: 2844384585485351877}
-  _speaker: {fileID: 2102688209992381054}
-  Instruction: 'Act as this character: Elisa Johnson was born on March 1, 1983. She
-    has not felt good recently. She has weakness and sweating, and stomach pain.
-    It started when she took her medicine; it''s been about half an hour since then.
-    Another complaint is that she feels tired, and that''s unusual. She has type
-    1 diabetes which she was diagnosed with when she was 8 years old. She was instructed
-    on how to handle her diabetes at The Diabetes School. She uses an insulin pump
-    of the brand Dana-i. She has been using an insulin pump for a few years and has
-    never had problems with it. She doesn''t know how to calculate her insulin dosage
-    exactly; she only does as her doctor told her. The only medicine she has taken
-    recently is insulin. She has a glucose monitor that she tests her blood sugar
-    with. She tests her urine for ketones twice a day. No one else in her family
-    has diabetes. In the past year, she has lost some weight and become thinner.
-    She had porridge for breakfast today. She doesn''t follow any specific diet but
-    looks at the GI of the products she buys. She follows recommendations from her
-    nutritionist. She usually eats 2-3 times a day, but she eats more when she feels
-    stressed. She thinks the food she prepares is tasty, and she''s proud of that.
-    She will admit to smoking if asked about it. She sometimes drinks sugar-sweetened
-    drinks but feels ashamed of it. She does not have any religious or cultural dietary
-    requirements. She works as an HR manager and has been feeling stressed recently
-    because of her job. She rarely drinks alcohol. She''s been told to be physically
-    active and regularly participate in sports. She has two children. In case of
-    an emergency, her husband should be called.  Don''t diagnose yourself. No notes.
-    DO NOT TELL the nurse anything unrelated to the nurses questions. Keep the answer
-    as short as one to three sentences.  Continue the conversation:'
-  WitReact: {fileID: 8591453077983704802}
-  InterHandler: {fileID: 714825048}
-  Name: Elisa
-  WaitingPhrases:
-  - {fileID: 8300000, guid: fcde422c489dbc94e9dc0569f28b3c86, type: 3}
-  - {fileID: 8300000, guid: 1552e7ccd3e96bd42a50b2b2f30941e0, type: 3}
-  PhrasesToSend: 4
-  JustTestingDontSend: 0
-  character:
-    Name: 
-    Age: 0
-    Description: 
-    Gender: 
-    ThinkingPhrases: []
 --- !u!114 &714825048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -621,10 +566,6 @@ MonoBehaviour:
       anything unrelated to the nurses questions. Keep the answer as short as one
       to three sentences.  Continue the conversation:'
     Gender: female
-    ThinkingPhrases:
-    - {fileID: 8300000, guid: fcde422c489dbc94e9dc0569f28b3c86, type: 3}
-    - {fileID: 8300000, guid: 1552e7ccd3e96bd42a50b2b2f30941e0, type: 3}
-    - {fileID: 8300000, guid: 98266428488b83345aa2dbf6fa8ab666, type: 3}
 --- !u!1 &954924809
 GameObject:
   m_ObjectHideFlags: 0

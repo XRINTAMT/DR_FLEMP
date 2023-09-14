@@ -59,7 +59,7 @@ namespace AICharacter
 
         private void Awake()
         {
-            character = new Character();
+            //character = new Character();
             character.InitCharacter();
 
             ChatHistory = new List<string>();
@@ -74,7 +74,7 @@ namespace AICharacter
 
         private string ComposeFinalString()
         {
-            string _finalString = Instruction;
+            string _finalString = Instruction;//Character.GetDescription();
             foreach (string _str in ChatHistory.Skip(Mathf.Max(0, ChatHistory.Count() - PhrasesToSend)))
             {
                 _finalString += "\n" + _str;

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using Meta.WitAi.TTS.Utilities;
 using System.Linq;
 using OpenAI;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 
 namespace AICharacter
@@ -53,8 +55,13 @@ namespace AICharacter
         //private string Instruction = "Act as a random stranger in a chat room and reply to the questions.\nQ: ";
         private string finalInstruction;
 
+        [SerializeField] private Character character;
+
         private void Awake()
         {
+            character = new Character();
+            character.InitCharacter();
+
             ChatHistory = new List<string>();
             PhrasesPool = new RandomPool<AudioClip>(WaitingPhrases); 
         }

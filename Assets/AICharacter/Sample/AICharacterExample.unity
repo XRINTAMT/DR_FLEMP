@@ -128,7 +128,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 329921276}
+    m_TransformParent: {fileID: 1358385812}
     m_Modifications:
     - target: {fileID: 4852061571279439017, guid: 3e919abfe68b0314aa3fa156a83435f2, type: 3}
       propertyPath: m_Name
@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4852061571279439020, guid: 3e919abfe68b0314aa3fa156a83435f2, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4852061571279439020, guid: 3e919abfe68b0314aa3fa156a83435f2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -359,6 +359,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 329921276}
+  - component: {fileID: 329921277}
   m_Layer: 0
   m_Name: AICharacter_v2
   m_TagString: Untagged
@@ -378,16 +379,38 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 30203790}
   - {fileID: 884524882}
-  - {fileID: 2102688209992381053}
-  - {fileID: 4763234740673157158}
+  - {fileID: 1358385812}
   - {fileID: 1202984951}
   - {fileID: 163846630487882977}
   - {fileID: 5270519518103751388}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &329921277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329921275}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa973609930808646a04ddf0e9e85812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WitReact: {fileID: 8591453077983704802}
+  InterHandler: {fileID: 714825048}
+  character:
+    Name: Elisa
+    role: assistant
+    Content: Act as a random person named Elisa.
+    VoiceSpeaker: {fileID: 2102688209992381054}
+    ThinkingPhrases:
+    - {fileID: 8300000, guid: 1552e7ccd3e96bd42a50b2b2f30941e0, type: 3}
+    - {fileID: 8300000, guid: 4a487235e56c47840b09a631f3574803, type: 3}
+    - {fileID: 8300000, guid: 616b874a22f392a4b9669994d3766718, type: 3}
+    contentPain: '{"pain":"9"}'
 --- !u!114 &714825048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,8 +433,8 @@ MonoBehaviour:
   OnTimeout:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 884524884}
-        m_TargetAssemblyTypeName: AICharacter.ChatGPTController, Assembly-CSharp
+      - m_Target: {fileID: 884524881}
+        m_TargetAssemblyTypeName: OpenAI.ChatGPT, Assembly-CSharp
         m_MethodName: SendReply
         m_Mode: 1
         m_Arguments:
@@ -448,7 +471,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 884524880}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83764466e83f8aa40b421e5af75b1b49, type: 3}
   m_Name: 
@@ -483,7 +506,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 329921276}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &884524884
 MonoBehaviour:
@@ -492,7 +515,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 884524880}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e52c4d31354f9d34a9294b275c8312b8, type: 3}
   m_Name: 
@@ -501,33 +524,8 @@ MonoBehaviour:
   textArea: {fileID: 3200133959090374858}
   pauseOnCommas: {fileID: 2844384585485351877}
   _speaker: {fileID: 2102688209992381054}
-  Instruction: 'Act as this character: Elisa Johnson was born on March 1, 1983. She
-    has not felt good recently. She has weakness and sweating, and stomach pain.
-    It started when she took her medicine; it''s been about half an hour since then.
-    Another complaint is that she feels tired, and that''s unusual. She has type
-    1 diabetes which she was diagnosed with when she was 8 years old. She was instructed
-    on how to handle her diabetes at The Diabetes School. She uses an insulin pump
-    of the brand Dana-i. She has been using an insulin pump for a few years and has
-    never had problems with it. She doesn''t know how to calculate her insulin dosage
-    exactly; she only does as her doctor told her. The only medicine she has taken
-    recently is insulin. She has a glucose monitor that she tests her blood sugar
-    with. She tests her urine for ketones twice a day. No one else in her family
-    has diabetes. In the past year, she has lost some weight and become thinner.
-    She had porridge for breakfast today. She doesn''t follow any specific diet but
-    looks at the GI of the products she buys. She follows recommendations from her
-    nutritionist. She usually eats 2-3 times a day, but she eats more when she feels
-    stressed. She thinks the food she prepares is tasty, and she''s proud of that.
-    She will admit to smoking if asked about it. She sometimes drinks sugar-sweetened
-    drinks but feels ashamed of it. She does not have any religious or cultural dietary
-    requirements. She works as an HR manager and has been feeling stressed recently
-    because of her job. She rarely drinks alcohol. She''s been told to be physically
-    active and regularly participate in sports. She has two children. In case of
-    an emergency, her husband should be called.  Don''t diagnose yourself. No notes.
-    DO NOT TELL the nurse anything unrelated to the nurses questions. Keep the answer
-    as short as one to three sentences.  Continue the conversation:'
   WitReact: {fileID: 8591453077983704802}
   InterHandler: {fileID: 714825048}
-  Name: Elisa
   WaitingPhrases:
   - {fileID: 8300000, guid: fcde422c489dbc94e9dc0569f28b3c86, type: 3}
   - {fileID: 8300000, guid: 1552e7ccd3e96bd42a50b2b2f30941e0, type: 3}
@@ -539,33 +537,13 @@ MonoBehaviour:
   JustTestingDontSend: 0
   character:
     Name: Elisa
-    Age: 43
-    Description: 'Act as this character: Elisa Johnson was born on March 1, 1983.
-      She has not felt good recently. She has weakness and sweating, and stomach
-      pain. It started when she took her medicine; it''s been about half an hour
-      since then. Another complaint is that she feels tired, and that''s unusual.
-      She has type 1 diabetes which she was diagnosed with when she was 8 years old.
-      She was instructed on how to handle her diabetes at The Diabetes School. She
-      uses an insulin pump of the brand Dana-i. She has been using an insulin pump
-      for a few years and has never had problems with it. She doesn''t know how to
-      calculate her insulin dosage exactly; she only does as her doctor told her.
-      The only medicine she has taken recently is insulin. She has a glucose monitor
-      that she tests her blood sugar with. She tests her urine for ketones twice
-      a day. No one else in her family has diabetes. In the past year, she has lost
-      some weight and become thinner. She had porridge for breakfast today. She doesn''t
-      follow any specific diet but looks at the GI of the products she buys. She
-      follows recommendations from her nutritionist. She usually eats 2-3 times a
-      day, but she eats more when she feels stressed. She thinks the food she prepares
-      is tasty, and she''s proud of that. She will admit to smoking if asked about
-      it. She sometimes drinks sugar-sweetened drinks but feels ashamed of it. She
-      does not have any religious or cultural dietary requirements. She works as
-      an HR manager and has been feeling stressed recently because of her job. She
-      rarely drinks alcohol. She''s been told to be physically active and regularly
-      participate in sports. She has two children. In case of an emergency, her husband
-      should be called.  Don''t diagnose yourself. No notes. DO NOT TELL the nurse
-      anything unrelated to the nurses questions. Keep the answer as short as one
-      to three sentences.  Continue the conversation:'
-    Gender: female
+    role: assistant
+    Content: Act as a random person named Elisa.
+    VoiceSpeaker: {fileID: 2102688209992381054}
+    ThinkingPhrases:
+    - {fileID: 8300000, guid: 616b874a22f392a4b9669994d3766718, type: 3}
+    - {fileID: 8300000, guid: 1552e7ccd3e96bd42a50b2b2f30941e0, type: 3}
+    contentPain: '{"pain":"9"}'
 --- !u!1 &954924809
 GameObject:
   m_ObjectHideFlags: 0
@@ -1067,7 +1045,7 @@ RectTransform:
   - {fileID: 8236878766505056051}
   - {fileID: 4342542578635465316}
   m_Father: {fileID: 329921276}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 21.572, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1141,6 +1119,40 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1358385811
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1358385812}
+  m_Layer: 0
+  m_Name: STT_and_TTS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1358385812
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358385811}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4763234740673157158}
+  - {fileID: 2102688209992381053}
+  - {fileID: 30203790}
+  m_Father: {fileID: 329921276}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1627656352
 GameObject:
@@ -1485,7 +1497,7 @@ Transform:
   - {fileID: 2239090441140639040}
   - {fileID: 6222821523461591016}
   m_Father: {fileID: 329921276}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 91.661, z: 0}
 --- !u!1 &171938158182065166
 GameObject:
@@ -3193,12 +3205,12 @@ Transform:
   m_GameObject: {fileID: 2102688209992381055}
   m_LocalRotation: {x: 0.0026179885, y: -0, z: -0, w: 0.9999966}
   m_LocalPosition: {x: 0, y: 0.38900003, z: 0.19300002}
-  m_LocalScale: {x: 0.10692, y: 0.10691998, z: 0.10691998}
+  m_LocalScale: {x: 0.10692, y: 0.106919974, z: 0.106919974}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2102688208787455445}
-  m_Father: {fileID: 329921276}
-  m_RootOrder: 2
+  m_Father: {fileID: 1358385812}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2102688209992381054
 MonoBehaviour:
@@ -6458,8 +6470,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4763234742317890682}
-  m_Father: {fileID: 329921276}
-  m_RootOrder: 3
+  m_Father: {fileID: 1358385812}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4763234742317890681
 GameObject:
@@ -7174,7 +7186,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 329921276}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &5347365000626116377
 MonoBehaviour:

@@ -8,7 +8,15 @@ using OpenAI;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
+/*
+From Mondat-Task: "ChatCharacterComponent"
+Pull together the prompt form all the other objects
 
+A MonoBehviour
+initializes the ChatHistory and EmbeddingDB objects in start method
+
+has a private method "ProducePrompt(string message) with return type List<ChatMessage> and input parameter string
+*/
 namespace AICharacter
 {
     public class ChatGPTController : MonoBehaviour
@@ -20,11 +28,10 @@ namespace AICharacter
         [SerializeField] private Toggle pauseOnCommas;
 
         [SerializeField] private TTSSpeaker _speaker;
-        [SerializeField] private string Instruction;
+        //[SerializeField] private string Instruction;
 
         [SerializeField] private WitAutoReactivation WitReact;
         [SerializeField] private Oculus.Voice.Demo.InteractionHandler InterHandler;
-        [SerializeField] private string Name = "Elisa";
 
 
         [SerializeField] private AudioClip[] WaitingPhrases;
@@ -52,15 +59,20 @@ namespace AICharacter
         private OpenAIApi openai = new OpenAIApi("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");
 
         private string userInput;
-        //private string Instruction = "Act as a random stranger in a chat room and reply to the questions.\nQ: ";
         private string finalInstruction;
 
         [SerializeField] private Character character;
 
+        private List<ChatMessage> messages = new List<ChatMessage>();
+
         private void Awake()
         {
-            //character = new Character();
-            character.InitCharacter();
+            character = new Character();
+            //character.InitCharacter();
+            string c = JsonConvert.SerializeObject(character);
+            Debug.Log("=====v======");
+            Debug.Log(c);
+            Debug.Log("=====^======");
 
             ChatHistory = new List<string>();
             PhrasesPool = new RandomPool<AudioClip>(WaitingPhrases); 
@@ -72,9 +84,9 @@ namespace AICharacter
             //instrLen = finalInstruction.Length - 4;
         }
 
-        private string ComposeFinalString()
+        private string ComposeFinalString(string charDesc)
         {
-            string _finalString = Instruction;//Character.GetDescription();
+            string _finalString = charDesc; //Instruction;
             foreach (string _str in ChatHistory.Skip(Mathf.Max(0, ChatHistory.Count() - PhrasesToSend)))
             {
                 _finalString += "\n" + _str;
@@ -94,6 +106,24 @@ namespace AICharacter
             return _finalString;
         }
 
+        private ChatMessage HandleFunctionCalling(FunctionCall? functionCall)
+        {
+            string functionName = functionCall?.Name;
+            string msgContent = "";
+            Debug.Log("functionName :: " + functionName);
+            if (functionName == "report_pain_level") {
+                Debug.Log("Add pain level to message");
+                msgContent = character.contentPain;
+            }
+            Debug.Log("=================================");
+            return new ChatMessage()
+            {
+                Role = "function",
+                Name = functionName,
+                Content = msgContent
+            };
+        }
+
         public async void SendReply()
         {
             userInput = InterHandler.LastNonNullPhrase;
@@ -107,40 +137,50 @@ namespace AICharacter
             WitReact.temporarilyIgnore = true;
 
             Debug.Log("userInput:: "+userInput);
-
+            var newMessage = new ChatMessage()
+            {
+                Role = "user",
+                Content = userInput
+            };
 
             //finalInstruction += $"{userInput}\nA: ";
-            ChatHistory.Add("Nurse: " + userInput);
+            //ChatHistory.Add("Nurse: " + userInput);
+            if (messages.Count == 0) newMessage.Content = character.Content + "\n" + userInput;
+            messages.Add(newMessage);
 
             textArea.text = FullHistory() + "\n...";
             Debug.Log("Full chat history: " + FullHistory());
             playerUtterance.text = "";
-            finalInstruction = ComposeFinalString();
+            finalInstruction = ComposeFinalString(character.Content);
 
             if (!JustTestingDontSend)
             {
+                // Step 1: send the conversation and available functions to GPT
                 // Complete the instruction
-                var completionResponse = await openai.CreateCompletion(new CreateCompletionRequest()
+                var completionResponse = await openai.CreateChatCompletion(new CreateChatCompletionRequest()
                 {
-                    Prompt = finalInstruction,
-                    Model = "text-davinci-003",
-                    MaxTokens = 128
+                    Model = "gpt-3.5-turbo-0613",
+                    Messages = messages,
+                    Functions = character.functionDescriptions
                 });
 
                 
-
-                if (completionResponse.Choices != null && completionResponse.Choices.Count > 0)
+                bool responseHasChoices = (completionResponse.Choices != null && completionResponse.Choices.Count > 0);
+                if (responseHasChoices)
                 {
-                    //finalInstruction += $"{completionResponse.Choices[0].Text}\nQ: ";
+                    var message = completionResponse.Choices[0].Message;
+                    message.Content = message.Content.Trim();
+                    
+                    messages.Add(message);
 
-                    ChatHistory.Add("Elisa: " + completionResponse.Choices[0].Text);
+                    string mgs = JsonConvert.SerializeObject(messages);
+                    Debug.Log("::::  mgs  :::::::");
+                    Debug.Log(mgs);
+                    Debug.Log(":::: _mgs_ :::::::");
+
+                    ChatHistory.Add("Elisa: " + message.Content);
                     textArea.text = FullHistory();
-                    Debug.Log("Instruction :: " + finalInstruction);
-                    Debug.Log("Response :: " + completionResponse.Choices[0].Text);
-                    if (pauseOnCommas.isOn)
-                        sentences = completionResponse.Choices[0].Text.Split(new char[] { ',', '\n', '.', '?', ';', '!' });
-                    else
-                        sentences = completionResponse.Choices[0].Text.Split(new char[] { '\n', '.', '?', ';', '!' });
+                    
                     StartCoroutine(PlayAndWait());
                     //WitReact.temporarilyIgnore = false;
                 }

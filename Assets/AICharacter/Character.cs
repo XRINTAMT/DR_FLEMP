@@ -1,27 +1,65 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Meta.WitAi.TTS.Utilities;
 using OpenAI;
 
 
+/*
+# From Monday task:
+name
+description
+voice settings?
+male/female
+age?
+
+"Thinking phrases" List of "hmmm"s and "let me think"s
+*/
 namespace AICharacter
 {
     [System.Serializable]
+    public class FunctionContent
+    {
+        public string key;
+        public string value;
+    }
+
+    [System.Serializable]
     public class Character
     {
-        public string Name;
-        public int Age;
-        public string Description;
-        public string Gender;
-
-
-        private ChatHistory ChatHistory {get; set;}
-
-        private int lenOfThinkingPhrases = 3;
-
+        public string Name = "Elisa";
+        public string role = "assistant";
+        public string Content = "Act as a random person named Elisa.";
+        //public int Age;
+        //public string Gender;
+        public TTSSpeaker VoiceSpeaker;
+        public AudioClip[] ThinkingPhrases;
+        
         // !!! Change this into something more Dynamic.. !!!
-        public string contentPain =  "{\"pain\":\"9\"}";
-        public List<FunctionDescription> functionDescriptions = new List<FunctionDescription>
+        public List<FunctionDescription> functionDescriptions;
+        public string contentPain = "{\"pain\":\"9\"}";
+        //[SerializeField] public FunctionContent functionContent;
+
+
+        public void Init()
+        {
+            Debug.Log("Init Character :: "+Name);
+            InitTestFunctionDescription(); // For demon. (Make this more dynamic)
+        }
+
+        public void AddFunctionDescription(FunctionDescription functionDescription) 
+        {
+            functionDescriptions.Add(functionDescription);
+        }
+
+        public void Speak(string sentance)
+        {
+            VoiceSpeaker.Speak(sentance);
+        }
+
+        private void InitTestFunctionDescription() 
+        {
+            functionDescriptions = new List<FunctionDescription>
             {
                 new FunctionDescription
                 {
@@ -51,12 +89,6 @@ namespace AICharacter
                     }
                 }
             };
-
-        public Character() {}
-
-        public void InitCharacter()
-        {
-            Debug.Log("Init Character :: "+Name);
         }
     }
 

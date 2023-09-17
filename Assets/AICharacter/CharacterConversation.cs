@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using ChatGPT_Patient;
 using UnityEngine;
 using OpenAI;
 using Newtonsoft.Json;
@@ -10,7 +11,7 @@ namespace AICharacter
     public class CharacterConversation : MonoBehaviour
     {
         [SerializeField] private WitAutoReactivation WitReact;
-        [SerializeField] private Oculus.Voice.Demo.InteractionHandler InterHandler;
+        [SerializeField] private InteractionHandler InterHandler;
         [SerializeField] private Character character;
         //private ChatHistory ChatHistory; 
 

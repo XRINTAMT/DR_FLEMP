@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using Meta.WitAi.TTS.Utilities;
 using System.Linq;
+using ChatGPT_Patient;
 
 public class RandomPool<T>
 {
@@ -42,7 +43,7 @@ namespace OpenAI
         [SerializeField] private string Instruction;
 
         [SerializeField] private WitAutoReactivation WitReact;
-        [SerializeField] private Oculus.Voice.Demo.InteractionHandler InterHandler;
+        [SerializeField] private InteractionHandler InterHandler;
         [SerializeField] private string Name = "Elisa";
 
 

@@ -77,6 +77,12 @@ namespace ChatGPT_Patient
             appVoiceExperience.VoiceEvents.OnResponse.AddListener(OnRequestResponse);
             appVoiceExperience.VoiceEvents.OnError.AddListener(OnRequestError);
         }
+
+        public void Clear()
+        {
+            LastNonNullPhrase = "";
+        }
+        
         // Remove delegates
         private void OnDisable()
         {

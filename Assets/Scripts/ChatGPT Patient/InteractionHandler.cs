@@ -20,10 +20,11 @@
 
 using Meta.WitAi;
 using Meta.WitAi.Json;
+using Oculus.Voice;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Oculus.Voice.Demo
+namespace ChatGPT_Patient
 {
     public class InteractionHandler : MonoBehaviour
     {

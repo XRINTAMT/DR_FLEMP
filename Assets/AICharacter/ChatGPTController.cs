@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using Meta.WitAi.TTS.Utilities;
 using System.Linq;
+using ChatGPT_Patient;
 using OpenAI;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -31,7 +32,7 @@ namespace AICharacter
         //[SerializeField] private string Instruction;
 
         [SerializeField] private WitAutoReactivation WitReact;
-        [SerializeField] private Oculus.Voice.Demo.InteractionHandler InterHandler;
+        [SerializeField] private InteractionHandler InterHandler;
 
 
         [SerializeField] private AudioClip[] WaitingPhrases;

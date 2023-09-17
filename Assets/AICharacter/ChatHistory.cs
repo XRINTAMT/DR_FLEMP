@@ -31,12 +31,14 @@ namespace AICharacter
 
         public List<ChatMessage> GetHistory(int count)
         {
+            var res = new List<ChatMessage>();
             for (int i = Math.Clamp(history.Count - count, 0, history.Count) ; i < history.Count; i++)
             {
-                Debug.Log(history[i]);
+                res.Add(history[i].message);
+                res.Add(history[i].response);
             }
 
-            return null;
+            return res;
         }
         
         public List<ChatMessage> GetDeepHistory(int cutoff, int count, List<float> embedding)
@@ -50,7 +52,7 @@ namespace AICharacter
             var searchResult = temp.OrderBy(e => -EmbeddingDB.VectorSimilarity(e.embedding, embedding)).ToList();
             
             var res = new List<ChatMessage>();
-            for (int i = 0; i < count; ++i)
+            for (int i = 0; i < Math.Min(count, searchResult.Count); ++i)
             {
                 res.Add(searchResult[i].message);
                 res.Add(searchResult[i].response);

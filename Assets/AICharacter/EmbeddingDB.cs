@@ -22,7 +22,7 @@ namespace AICharacter
         private OpenAIApi openai;
         void Start()
         {
-            openai = new OpenAIApi(key);
+            openai = new OpenAIApi("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");
         }
 
         // Update is called once per frame

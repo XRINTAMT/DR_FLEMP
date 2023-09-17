@@ -971,6 +971,7 @@ GameObject:
   - component: {fileID: 5283375388466701185}
   - component: {fileID: 234560533678603480}
   - component: {fileID: 1083527520337386733}
+  - component: {fileID: 7750616982758472614}
   m_Layer: 0
   m_Name: ChatGPT
   m_TagString: Untagged
@@ -1007,7 +1008,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   STTInput: {fileID: 812962604712040616}
   info: {fileID: 1083527520337386733}
+  _embeddingDB: {fileID: 7750616982758472614}
   targeted: 0
+  numberOfHistoryEntries: 3
+  numberOfDeepHistoryEntries: 3
+  _wheelChair: {fileID: 0}
 --- !u!114 &1083527520337386733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1023,6 +1028,22 @@ MonoBehaviour:
   name: 
   description: 
   thinkingPhrases: []
+--- !u!114 &7750616982758472614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5283375388466701187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ede14abe299f849a0aea7d63ae79bd27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prompt: 
+  key: '"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"'
+  chunkLength: 0
+  returnTop: 0
 --- !u!1 &5283375388985890344
 GameObject:
   m_ObjectHideFlags: 0

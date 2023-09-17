@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Autohand;
 using UnityEngine;
+using ScenarioTaskSystem;
 
 public class SittingWheelChair : MonoBehaviour
 {
@@ -25,6 +26,10 @@ public class SittingWheelChair : MonoBehaviour
             transform.parent = siitingPos;
             transform.localPosition = Vector3.zero;
             transform.localEulerAngles = Vector3.zero;
+            Task _wheelchairTask;
+            if (siitingPos.TryGetComponent<Task>(out _wheelchairTask)){
+                _wheelchairTask.Complete();
+            }
         }
     }
     // Update is called once per frame

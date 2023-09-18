@@ -6,6 +6,7 @@ using ChatGPT_Patient;
 using OpenAI;
 using UnityEngine;
 using WebSocketSharp;
+using Meta.WitAi.TTS.Utilities;
 using CharacterInfo = AICharacter.CharacterInfo;
 
 public class ChatCharacter : MonoBehaviour
@@ -19,6 +20,10 @@ public class ChatCharacter : MonoBehaviour
     [SerializeField] private int numberOfHistoryEntries = 3;
     [SerializeField] private int numberOfDeepHistoryEntries = 3;
     [SerializeField] private SittingWheelChair _wheelChair;
+    [SerializeField] private TTSSpeaker _speaker;
+    [SerializeField] private WitAutoReactivation WitReact;
+    private string[] sentences;
+
     void Start()
     {
         _history = new ChatHistory();
@@ -160,6 +165,32 @@ public class ChatCharacter : MonoBehaviour
     private void SendResponseToTTS(string response)
     {
         Debug.Log("should be pronounced using TTS: "+response);
+        sentences = response.Split(new char[] { '\n', '.', '?', ';', '!' });
+        StartCoroutine(PlayAndWait());
+
+        IEnumerator PlayAndWait()
+        {
+            foreach (string sentence in sentences)
+            {
+                if (sentence == string.Empty)
+                    continue;
+                //_speaker.AudioSource.clip = PhrasesPool.Draw();
+                _speaker.AudioSource.Play();
+                _speaker.Speak(sentence);
+
+                while (!_speaker.IsSpeaking)
+                {
+                    yield return 0;
+                }
+                while (_speaker.IsSpeaking)
+                {
+                    yield return 0;
+                }
+                WitReact.temporarilyIgnore = true;
+            }
+            WitReact.temporarilyIgnore = false;
+            Debug.Log("Giving control back to the stt");
+        }
     }
 
     private bool GetIntoWheelchar()

@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class PainIndicator : MonoBehaviour
 {
-    [Range(0, 5)]
+    [Range(0, 9)] 
     public int painCount;
     int _painCount;
     [SerializeField] Color [] colorPain;
-    [SerializeField] Color currentColor;
     Material material;
 
     // Start is called before the first frame update
@@ -24,7 +23,6 @@ public class PainIndicator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentColor = material.color;
         if (painCount!=_painCount)
         {
             SetPain(painCount);

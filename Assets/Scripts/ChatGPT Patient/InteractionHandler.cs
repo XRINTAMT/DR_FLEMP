@@ -56,9 +56,14 @@ namespace ChatGPT_Patient
             if (CurrentTimeout <= 0 && !Done)
             {
                 OnTimeout.Invoke();
+                foreach(ChatCharacter _character in FindObjectsOfType<ChatCharacter>())
+                {
+                    _character.RecieveSTT();
+                }
                 CurrentTimeout = 0;
                 Done = true;
                 textArea.text = freshStateText;
+                Invoke("Clear", 1);
             }
 
         }

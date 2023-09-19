@@ -28,6 +28,7 @@ public class ChatCharacter : MonoBehaviour
     {
         _history = new ChatHistory();
         _openAI = new OpenAIApi("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");
+        STTInput = FindAnyObjectByType<InteractionHandler>();
     }
 
     public void setTargeted(bool t)

@@ -1319,7 +1319,7 @@ PrefabInstance:
     - target: {fileID: 659352737493535447, guid: dedb650b0e5b5f143b4046f527d9557e, type: 3}
       propertyPath: OnMax.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1022263649}
+      objectReference: {fileID: 0}
     - target: {fileID: 659352737493535447, guid: dedb650b0e5b5f143b4046f527d9557e, type: 3}
       propertyPath: OnMax.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Fire
@@ -2073,7 +2073,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1022263649}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: StateMachine, Assembly-CSharp
         m_MethodName: SwitchState
         m_Mode: 3
@@ -2128,17 +2128,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2658186634197554928, guid: 568f541d7a18097439e743922c5c574b, type: 3}
   m_PrefabInstance: {fileID: 1064835096}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1022263649 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1018024048213380876, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
-  m_PrefabInstance: {fileID: 1018024048010907245}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d20f2c69a20f59a418d7faf48fa4af6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1064835096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2758,7 +2747,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1022263649}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: StateMachine, Assembly-CSharp
         m_MethodName: SwitchState
         m_Mode: 3
@@ -2996,7 +2985,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1022263649}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: StateMachine, Assembly-CSharp
         m_MethodName: SwitchState
         m_Mode: 3
@@ -3365,7 +3354,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1022263649}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: StateMachine, Assembly-CSharp
         m_MethodName: SwitchState
         m_Mode: 3
@@ -4347,7 +4336,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1022263649}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: StateMachine, Assembly-CSharp
         m_MethodName: SwitchState
         m_Mode: 3
@@ -4407,7 +4396,7 @@ PrefabInstance:
     - target: {fileID: 659352737493535447, guid: dedb650b0e5b5f143b4046f527d9557e, type: 3}
       propertyPath: OnMax.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1022263649}
+      objectReference: {fileID: 0}
     - target: {fileID: 659352737493535447, guid: dedb650b0e5b5f143b4046f527d9557e, type: 3}
       propertyPath: OnMax.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: StateMachine, Assembly-CSharp
@@ -5322,6 +5311,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1018024047081267811, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1018024047081267811, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1018024047081267811, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1018024047081267811, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1018024047602702344, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -5453,6 +5458,42 @@ PrefabInstance:
     - target: {fileID: 1018024048213380914, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1018024048213380915, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3704670677864504068, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3704670677864504068, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3704670677864504068, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3704670677864504068, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3782178719885747241, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3782178719885747241, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3782178719885747241, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3782178719885747241, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7297601132004684016, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: ListTasks.Array.size
@@ -9089,7 +9130,7 @@ PrefabInstance:
     - target: {fileID: 679080130407633862, guid: b01809d83ed38894c8f5c1cbe3179da8, type: 3}
       propertyPath: OnMax.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1022263649}
+      objectReference: {fileID: 0}
     - target: {fileID: 679080130407633862, guid: b01809d83ed38894c8f5c1cbe3179da8, type: 3}
       propertyPath: OnMax.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Fire
@@ -10018,7 +10059,7 @@ PrefabInstance:
     - target: {fileID: 659352737493535447, guid: dedb650b0e5b5f143b4046f527d9557e, type: 3}
       propertyPath: OnMax.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1022263649}
+      objectReference: {fileID: 0}
     - target: {fileID: 659352737493535447, guid: dedb650b0e5b5f143b4046f527d9557e, type: 3}
       propertyPath: OnMax.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: StateMachine, Assembly-CSharp

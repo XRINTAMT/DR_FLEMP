@@ -21,11 +21,14 @@ namespace PersistentSaveSystem
             {
                 foreach (string _condition in Condition)
                 {
-                    if (PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + _condition, 0) == 1)
+                    if (PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + _condition, 0) == 0)
                     {
-                        Event.Invoke();
+                        Debug.Log("Skipping " + Name);
+                        return;
                     }
                 }
+                Debug.Log(Name + " is getting completed!");
+                Event.Invoke();
             }
         }
 
@@ -50,6 +53,7 @@ namespace PersistentSaveSystem
 
             public void Picked()
             {
+                Debug.Log(Name + " just got picked!");
                 foreach (ConditionalEvent _ce in OnPicked)
                 {
                     _ce.Invoke();

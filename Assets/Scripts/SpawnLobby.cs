@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using Autohand;
 using UnityEngine;
 
-public class SpawnPlayerInLobby : MonoBehaviour
+public class SpawnLobby : MonoBehaviour
 {
     [SerializeField] Transform[] pos;
-    public static int indexPos;
+    public static int indexScene;
     Transform player;
     // Start is called before the first frame update
     void Awake()
     {
         player = FindObjectOfType<AutoHandPlayer>().transform.root;
 
-        if (indexPos!=0)
-            player.position = pos[indexPos - 1].position;
+        if (indexScene != 0)
+            player.position = pos[indexScene - 1].position;
 
     }
-
 }

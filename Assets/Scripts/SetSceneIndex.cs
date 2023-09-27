@@ -10,8 +10,8 @@ public class SetSceneIndex : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name.Contains("Lobby"))
         {
-            SpawnPlayerLobby.indexScene = SceneManager.GetActiveScene().buildIndex;
-            Debug.Log("Scene index: " + SpawnPlayerLobby.indexScene);
+            SpawnLobby.indexScene = SceneManager.GetActiveScene().buildIndex;
+            Debug.Log("Scene index: " + SpawnLobby.indexScene);
         }
     }
 }

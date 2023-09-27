@@ -23,14 +23,16 @@ public class SentenceScrambleTab : MonoBehaviour
     [SerializeField] TextMeshProUGUI textDescription;
     [SerializeField] TextMeshProUGUI textConstructedSentence;
     [SerializeField] GameObject buttonSentencePrefab;
+    [SerializeField] Transform contentConstructor;
     [SerializeField] Transform content;
 
     public List<string> descriptions = new List<string>();
     public List<SolutionsList> solutionsList = new List<SolutionsList>();
     public List<AdditionalWordsList> additionalWordList = new List<AdditionalWordsList>();
-    [HideInInspector]
+    //[HideInInspector]
     public List<bool> completion;
-    string constructedSentenceTrue;
+    public string constructedSentenceTrue;
+    public string constructedSentenceCheck;
     List<string> allSentence = new List<string>();
     int indexList;
 
@@ -46,7 +48,16 @@ public class SentenceScrambleTab : MonoBehaviour
         allSentence.Clear();
 
         textDescription.text = descriptions[indexList];
-        textConstructedSentence.text = "";
+        //textConstructedSentence.text = "";
+        constructedSentenceTrue = "";
+        constructedSentenceCheck = "";
+
+        foreach (var buttons in contentConstructor.GetComponentsInChildren<Button>())
+            Destroy(buttons.gameObject);
+        foreach (var buttons in content.GetComponentsInChildren<Button>())
+            Destroy(buttons.gameObject);
+
+
         for (int i = 0; i < solutionsList[indexList].solutions.Count; i++)
         {
             allSentence.Add(solutionsList[indexList].solutions[i]);
@@ -59,6 +70,9 @@ public class SentenceScrambleTab : MonoBehaviour
 
         Shuffle(allSentence);
 
+       
+
+
         for (int i = 0; i < allSentence.Count; i++)
         {
             var button = Instantiate(buttonSentencePrefab, content);
@@ -68,13 +82,37 @@ public class SentenceScrambleTab : MonoBehaviour
     }
     public void SetVariant(string variant) 
     {
-        textConstructedSentence.text = textConstructedSentence.text + " " + variant;
+        var button = Instantiate(buttonSentencePrefab, contentConstructor);
+        button.GetComponentInChildren<TextMeshProUGUI>().text = variant;
+        button.GetComponent<ButtonSentence>().inConstructor = true;
+        //textConstructedSentence.text = textConstructedSentence.text + " " + variant;
+
+        constructedSentenceCheck = "";
+        foreach (TextMeshProUGUI textMeshProUGUI in contentConstructor.GetComponentsInChildren<TextMeshProUGUI>())
+        {
+            constructedSentenceCheck = constructedSentenceCheck + " " + textMeshProUGUI.text;
+        }
+    }
+    public void ReturnVariant(string variant)
+    {
+        var button = Instantiate(buttonSentencePrefab, content);
+        button.GetComponentInChildren<TextMeshProUGUI>().text = variant;
+        button.GetComponent<ButtonSentence>().inConstructor = false;
+        //textConstructedSentence.text = textConstructedSentence.text + " " + variant;
+        constructedSentenceCheck = "";
+        foreach (TextMeshProUGUI textMeshProUGUI in contentConstructor.GetComponentsInChildren<TextMeshProUGUI>())
+        {
+            if (textMeshProUGUI.text!=variant)
+            {
+                constructedSentenceCheck = constructedSentenceCheck + " " + textMeshProUGUI.text;
+            }
+        }
     }
 
 
     public void CheckSentence() 
     {
-        if (textConstructedSentence.text == constructedSentenceTrue)
+        if (constructedSentenceCheck == constructedSentenceTrue)
         {
             completion[indexList] = true;
         }

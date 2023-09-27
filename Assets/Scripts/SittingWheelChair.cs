@@ -6,7 +6,7 @@ using UnityEngine;
 public class SittingWheelChair : MonoBehaviour
 {
     public Transform siitingPos;
-    public HeadCharacterFollow headCharacterFollow;
+    HeadCharacterFollow headCharacterFollow;
 
     // Start is called before the first frame update
     void Start()

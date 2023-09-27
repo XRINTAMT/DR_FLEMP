@@ -14,7 +14,7 @@ namespace ScenarioTaskSystem
         //[SerializeField] RestartSystem Restart;
         [SerializeField] bool active;
         [SerializeField] private bool guided;
-        //[SerializeField] ScoreGenerator Scoring;
+        [SerializeField] ResultHandler Scoring;
         
         /*
         public Scenario(TaskSettings[] ts, UniversalOperation operation)
@@ -49,6 +49,16 @@ namespace ScenarioTaskSystem
         public void RecieveScore()
         {
             //Scoring.Refresh(tasks);
+        }
+
+        public int TotalScore()
+        {
+            int _s = 0;
+            foreach (TaskSettings _ts in tasks)
+            {
+                _s += _ts.Score;
+            }
+            return _s;
         }
 
         public void SetGuidedMode(bool enabled)
@@ -227,7 +237,7 @@ namespace ScenarioTaskSystem
             }
             if (OnAllCompleted != null)
                 OnAllCompleted.Invoke();
-            //Scoring.Refresh(tasks);
+            Scoring.HandleResult(this);
         }
 
         public void Activate(bool _active = true)

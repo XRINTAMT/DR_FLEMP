@@ -35,6 +35,8 @@ public class SentenceScrambleTab : MonoBehaviour
     public string constructedSentenceCheck;
     List<string> allSentence = new List<string>();
     int indexList;
+    [HideInInspector]
+    public Button buttonChoose;
 
     // Start is called before the first frame update
     void Start()

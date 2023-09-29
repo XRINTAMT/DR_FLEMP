@@ -7,7 +7,8 @@ using ScenarioTaskSystem;
 public class SittingWheelChair : MonoBehaviour
 {
     public Transform siitingPos;
-    HeadCharacterFollow headCharacterFollow;
+    public HeadCharacterFollow headCharacterFollow;
+    [field:SerializeField] public bool RightPatient { get; private set; }
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +29,7 @@ public class SittingWheelChair : MonoBehaviour
             transform.localEulerAngles = Vector3.zero;
             Task _wheelchairTask;
             if (siitingPos.TryGetComponent<Task>(out _wheelchairTask)){
-                _wheelchairTask.Complete();
+                _wheelchairTask.Complete(RightPatient ? 1 : 0);
             }
         }
     }

@@ -6,10 +6,9 @@ using ScenarioTaskSystem;
 public class ScenarioBehaviour : MonoBehaviour
 {
     [SerializeField] Scenario Scenario;
-
     void Start()
     {
-        Scenario.SetGuidedMode(PlayerPrefs.GetInt("GuidedMode", 1) == 1);
+        Scenario.SetGuidedMode(false);
         Scenario.Reconnect();
     }
 

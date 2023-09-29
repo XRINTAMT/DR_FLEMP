@@ -9,7 +9,8 @@ public class ButtonSentence : MonoBehaviour
     public bool inConstructor;
     SentenceScrambleTab sentenceScrambleTab;
     public string variant;
-    // Start is called before the first frame update
+    public bool inConstruct;
+
     void Start()
     {
         GetComponent<Button>().onClick.AddListener(SetVariant);
@@ -18,6 +19,7 @@ public class ButtonSentence : MonoBehaviour
     }
     void SetVariant() 
     {
+
         if (!inConstructor)
         {
             sentenceScrambleTab.SetVariant(variant);
@@ -74,6 +76,16 @@ public class ButtonSentence : MonoBehaviour
             sentenceScrambleTab.buttonChoose = GetComponent<Button>();
         }
       
+        if (!inConstruct)
+        {
+            FindObjectOfType<SentenceScrambleTab>().SetVariant(GetComponentInChildren<TextMeshProUGUI>().text);
+            Destroy(gameObject);
+        }
+        if (inConstruct)
+        {
+            FindObjectOfType<SentenceScrambleTab>().ReturnVariant(GetComponentInChildren<TextMeshProUGUI>().text);
+            Destroy(gameObject);
+        }
     }
 
 

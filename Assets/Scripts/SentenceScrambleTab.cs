@@ -23,7 +23,9 @@ public class SentenceScrambleTab : MonoBehaviour
     [SerializeField] TextMeshProUGUI textDescription;
     [SerializeField] TextMeshProUGUI textConstructedSentence;
     [SerializeField] GameObject buttonSentencePrefab;
+
     [SerializeField] Transform contentConstructor;
+
     [SerializeField] Transform content;
 
     public List<string> descriptions = new List<string>();
@@ -84,6 +86,7 @@ public class SentenceScrambleTab : MonoBehaviour
     }
     public void SetVariant(string variant) 
     {
+
         var button = Instantiate(buttonSentencePrefab, contentConstructor);
         button.GetComponentInChildren<TextMeshProUGUI>().text = variant;
         button.GetComponent<ButtonSentence>().inConstructor = true;
@@ -94,11 +97,13 @@ public class SentenceScrambleTab : MonoBehaviour
         {
             constructedSentenceCheck = constructedSentenceCheck + " " + textMeshProUGUI.text;
         }
+
     }
     public void ReturnVariant(string variant)
     {
         var button = Instantiate(buttonSentencePrefab, content);
         button.GetComponentInChildren<TextMeshProUGUI>().text = variant;
+
         button.GetComponent<ButtonSentence>().inConstructor = false;
         //textConstructedSentence.text = textConstructedSentence.text + " " + variant;
         constructedSentenceCheck = "";
@@ -109,6 +114,7 @@ public class SentenceScrambleTab : MonoBehaviour
                 constructedSentenceCheck = constructedSentenceCheck + " " + textMeshProUGUI.text;
             }
         }
+
     }
 
 

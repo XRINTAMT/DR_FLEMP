@@ -9,17 +9,15 @@ public class ButtonSentence : MonoBehaviour
     public bool inConstructor;
     SentenceScrambleTab sentenceScrambleTab;
     public string variant;
-    public bool inConstruct;
-
+    // Start is called before the first frame update
     void Start()
     {
         GetComponent<Button>().onClick.AddListener(SetVariant);
         sentenceScrambleTab = FindObjectOfType<SentenceScrambleTab>();
         variant = GetComponentInChildren<TextMeshProUGUI>().text;
     }
-    void SetVariant() 
+    void SetVariant()
     {
-
         if (!inConstructor)
         {
             sentenceScrambleTab.SetVariant(variant);
@@ -34,7 +32,7 @@ public class ButtonSentence : MonoBehaviour
         }
 
     }
-    public void pointerEnter() 
+    public void pointerEnter()
     {
         if (sentenceScrambleTab.buttonChoose != null && inConstructor)
         {
@@ -44,7 +42,7 @@ public class ButtonSentence : MonoBehaviour
             variant = GetComponentInChildren<TextMeshProUGUI>().text;
             sentenceScrambleTab.buttonChoose.GetComponent<ButtonSentence>().variant = sentenceScrambleTab.buttonChoose.GetComponentInChildren<TextMeshProUGUI>().text;
         }
-    
+
     }
     public void pointerExit()
     {
@@ -54,7 +52,7 @@ public class ButtonSentence : MonoBehaviour
             sentenceScrambleTab.buttonChoose.GetComponent<ButtonSentence>().variant = GetComponentInChildren<TextMeshProUGUI>().text;
 
             GetComponentInChildren<TextMeshProUGUI>().text = variant;
-            sentenceScrambleTab.buttonChoose.GetComponentInChildren<TextMeshProUGUI>().text= sentenceScrambleTab.buttonChoose.GetComponent<ButtonSentence>().variant;
+            sentenceScrambleTab.buttonChoose.GetComponentInChildren<TextMeshProUGUI>().text = sentenceScrambleTab.buttonChoose.GetComponent<ButtonSentence>().variant;
         }
 
     }
@@ -67,7 +65,7 @@ public class ButtonSentence : MonoBehaviour
 
             sentenceScrambleTab.buttonChoose = null;
         }
-      
+
     }
     public void pointerDown()
     {
@@ -75,17 +73,7 @@ public class ButtonSentence : MonoBehaviour
         {
             sentenceScrambleTab.buttonChoose = GetComponent<Button>();
         }
-      
-        if (!inConstruct)
-        {
-            FindObjectOfType<SentenceScrambleTab>().SetVariant(GetComponentInChildren<TextMeshProUGUI>().text);
-            Destroy(gameObject);
-        }
-        if (inConstruct)
-        {
-            FindObjectOfType<SentenceScrambleTab>().ReturnVariant(GetComponentInChildren<TextMeshProUGUI>().text);
-            Destroy(gameObject);
-        }
+
     }
 
 

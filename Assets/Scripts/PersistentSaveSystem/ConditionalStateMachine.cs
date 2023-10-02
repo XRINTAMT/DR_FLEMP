@@ -76,12 +76,14 @@ namespace PersistentSaveSystem
         private void Start()
         {
             States[CurrentState].Picked();
+            SwitchState(PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "SelectedStage", 0));
         }
 
         public void SwitchState(int _State)
         {
             if (States.Length > _State)
             {
+                PlayerPrefs.SetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "SelectedStage", _State);
                 States[CurrentState].Left();
                 CurrentState = _State;
                 States[CurrentState].Picked();

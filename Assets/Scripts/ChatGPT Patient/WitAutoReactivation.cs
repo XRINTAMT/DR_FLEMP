@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Meta.WitAi;
+using Meta.WitAi.TTS.Utilities;
 
 public class WitAutoReactivation : MonoBehaviour
 {
     WitService _wit;
-    [SerializeField] AudioSource OutputAudio;
     public bool temporarilyIgnore;
 
     public void Ignore(bool ignore)
@@ -23,17 +23,28 @@ public class WitAutoReactivation : MonoBehaviour
 
     void Update()
     {
+        bool _someoneIsTalking = false;
+        TTSSpeaker[] _allSpeakers = FindObjectsOfType<TTSSpeaker>();
+        foreach(TTSSpeaker _s in _allSpeakers)
+        {
+            if(_s.AudioSource.isPlaying == true)
+            {
+                _someoneIsTalking = true;
+                break;
+            }
+        }
+
         if(_wit == null)
             _wit = GetComponent<WitService>();
 
         if (!_wit.Active)
         {
-            if (!OutputAudio.isPlaying && !temporarilyIgnore)
+            if (!_someoneIsTalking && !temporarilyIgnore)
                 _wit.ActivateImmediately();
         }
         else
         {
-            if (OutputAudio.isPlaying || temporarilyIgnore)
+            if (_someoneIsTalking || temporarilyIgnore)
                 _wit.DeactivateAndAbortRequest();
         }
     }

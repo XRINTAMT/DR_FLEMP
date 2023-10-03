@@ -22,6 +22,8 @@ public class SnapToHolster : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         prevParent = transform.parent;
+        if (!GetComponent<TabletDistanceGrabbableController>())
+            gameObject.AddComponent<TabletDistanceGrabbableController>();
     }
 
     void Update()

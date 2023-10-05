@@ -38,18 +38,15 @@ public class ChatCharacter : MonoBehaviour
 
     public void RecieveSTT()
     {
-        string stt = STTInput.LastNonNullPhrase;
-        
         if (!targeted) return;
-        
-        STTInput.LastNonNullPhrase = "";
+        string stt = STTInput.LastNonNullPhrase;
+        STTInput.Clear();
         if (stt.IsNullOrEmpty())
         {
             return;
         }
         Debug.Log(info.name+": "+stt);
         StartCoroutine(openAIChat(stt));
-
     }
 
     public List<ChatMessage> ConstructPrompt(ChatMessage userMessage, List<float> embedding)

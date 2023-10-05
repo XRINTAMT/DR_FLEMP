@@ -63,7 +63,7 @@ namespace ChatGPT_Patient
                 CurrentTimeout = 0;
                 Done = true;
                 textArea.text = freshStateText;
-                Invoke("Clear", 1);
+                Invoke("Clear", 0.1f);
             }
 
         }

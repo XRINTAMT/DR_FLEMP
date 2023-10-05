@@ -8,10 +8,11 @@ public class SetSceneIndex : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (SceneManager.GetActiveScene().name.Contains("Lobby"))
-        {
-            SpawnLobby.indexScene = SceneManager.GetActiveScene().buildIndex;
-            Debug.Log("Scene index: " + SpawnLobby.indexScene);
-        }
+        SpawnLobby.nameScene = SceneManager.GetActiveScene().name;
+        //if (!SceneManager.GetActiveScene().name.Contains("Lobby"))
+        //{
+        //    SpawnLobby.nameScene = SceneManager.GetActiveScene().name;
+        //    Debug.Log("Scene index: " + SpawnLobby.indexScene);
+        //}
     }
 }

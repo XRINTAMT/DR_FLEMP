@@ -171,6 +171,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6970006451907773082, guid: 486bdc9e70460d04196e1ed4f5eb8eb2, type: 3}
+      propertyPath: HandExit.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 5873253691482542087}
+    - target: {fileID: 6970006451907773082, guid: 486bdc9e70460d04196e1ed4f5eb8eb2, type: 3}
+      propertyPath: HandEnter.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 5873253691482542087}
+    - target: {fileID: 6970006451907773082, guid: 486bdc9e70460d04196e1ed4f5eb8eb2, type: 3}
+      propertyPath: HandExit.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ExitArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970006451907773082, guid: 486bdc9e70460d04196e1ed4f5eb8eb2, type: 3}
+      propertyPath: HandEnter.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: EnterArea
+      objectReference: {fileID: 0}
     - target: {fileID: 7183791340977444205, guid: 486bdc9e70460d04196e1ed4f5eb8eb2, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0.005637119
@@ -201,6 +217,17 @@ PrefabInstance:
       objectReference: {fileID: 7184460400204163070}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 486bdc9e70460d04196e1ed4f5eb8eb2, type: 3}
+--- !u!114 &5873253691482542087 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5724763323791528253, guid: 486bdc9e70460d04196e1ed4f5eb8eb2, type: 3}
+  m_PrefabInstance: {fileID: 2230281220704878906}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3505c7f5735c00b40a951c1dbe2ffb24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!137 &6154395140579343131 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5448019856245520929, guid: 486bdc9e70460d04196e1ed4f5eb8eb2, type: 3}

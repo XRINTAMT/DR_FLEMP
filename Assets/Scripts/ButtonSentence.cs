@@ -12,6 +12,9 @@ public class ButtonSentence : MonoBehaviour
     public GameObject spawnPoint;
     public bool spawn;
     GridController gridController;
+    bool startChoose;
+    public Button button;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,13 +30,20 @@ public class ButtonSentence : MonoBehaviour
             sentenceScrambleTab.SetVariant(variant);
 
             Destroy(gameObject);
+            return;
         }
-        if (inConstructor)
+        if (inConstructor && !startChoose)
         {
             gridController.Remove(this);
             sentenceScrambleTab.ReturnVariant(variant);
 
             Destroy(gameObject);
+            return;
+        }
+        if (inConstructor && startChoose)
+        {
+            startChoose = false;
+            return;
         }
 
     }
@@ -46,6 +56,20 @@ public class ButtonSentence : MonoBehaviour
 
             variant = GetComponentInChildren<TextMeshProUGUI>().text;
             sentenceScrambleTab.buttonChoose.GetComponent<ButtonSentence>().variant = sentenceScrambleTab.buttonChoose.GetComponentInChildren<TextMeshProUGUI>().text;
+
+        
+           
+            if (sentenceScrambleTab.buttonChoose!=GetComponent<Button>())
+            {
+                GetComponent<Image>().color = Color.green;
+                sentenceScrambleTab.buttonChoose.GetComponent<Image>().color = Color.white;
+                sentenceScrambleTab.buttonChoose.GetComponent<ButtonSentence>().button = GetComponent<Button>();
+            }
+            if (sentenceScrambleTab.buttonChoose == GetComponent<Button>())
+            {
+                GetComponent<Image>().color = Color.green;
+            }
+
         }
 
     }
@@ -58,8 +82,15 @@ public class ButtonSentence : MonoBehaviour
 
             GetComponentInChildren<TextMeshProUGUI>().text = variant;
             sentenceScrambleTab.buttonChoose.GetComponentInChildren<TextMeshProUGUI>().text = sentenceScrambleTab.buttonChoose.GetComponent<ButtonSentence>().variant;
-        }
 
+
+            GetComponent<Image>().color = Color.white;
+            sentenceScrambleTab.buttonChoose.GetComponent<Image>().color = Color.green;
+        }
+        if (inConstructor && GetComponent<Button>()== sentenceScrambleTab.buttonChoose)
+        {
+            startChoose = true;
+        }
     }
     public void pointerUp()
     {
@@ -67,15 +98,22 @@ public class ButtonSentence : MonoBehaviour
         {
             variant = GetComponentInChildren<TextMeshProUGUI>().text;
             sentenceScrambleTab.buttonChoose.GetComponent<ButtonSentence>().variant = sentenceScrambleTab.buttonChoose.GetComponentInChildren<TextMeshProUGUI>().text;
+            if (button)
+            {
+                button.GetComponent<Image>().color = Color.white;
+                button = null;
 
+            }
             sentenceScrambleTab.buttonChoose = null;
         }
 
+        startChoose = false;
     }
     public void pointerDown()
     {
         if (inConstructor)
         {
+            GetComponent<Image>().color = Color.green;
             sentenceScrambleTab.buttonChoose = GetComponent<Button>();
         }
 

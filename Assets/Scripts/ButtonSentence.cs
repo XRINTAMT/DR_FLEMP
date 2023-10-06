@@ -9,12 +9,16 @@ public class ButtonSentence : MonoBehaviour
     public bool inConstructor;
     SentenceScrambleTab sentenceScrambleTab;
     public string variant;
+    public GameObject spawnPoint;
+    public bool spawn;
+    GridController gridController;
     // Start is called before the first frame update
     void Start()
     {
         GetComponent<Button>().onClick.AddListener(SetVariant);
         sentenceScrambleTab = FindObjectOfType<SentenceScrambleTab>();
         variant = GetComponentInChildren<TextMeshProUGUI>().text;
+        gridController = FindObjectOfType<GridController>();
     }
     void SetVariant()
     {
@@ -26,6 +30,7 @@ public class ButtonSentence : MonoBehaviour
         }
         if (inConstructor)
         {
+            gridController.Remove(this);
             sentenceScrambleTab.ReturnVariant(variant);
 
             Destroy(gameObject);
@@ -76,5 +81,13 @@ public class ButtonSentence : MonoBehaviour
 
     }
 
-
+    private void Update()
+    {
+        if (spawn)
+        {
+            spawn = false;
+            Instantiate(gameObject, spawnPoint.transform.position, Quaternion.identity, gameObject.transform.parent);
+            Debug.Log(gameObject.GetComponent<RectTransform>().rect.width);
+        }
+    }
 }

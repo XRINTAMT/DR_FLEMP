@@ -23,7 +23,7 @@ public class SentenceScrambleTab : MonoBehaviour
     [SerializeField] TextMeshProUGUI textDescription;
     [SerializeField] TextMeshProUGUI textConstructedSentence;
     [SerializeField] GameObject buttonSentencePrefab;
-
+    [SerializeField] GameObject buttonSentenceConstructorPrefab;
     [SerializeField] Transform contentConstructor;
 
     [SerializeField] Transform content;
@@ -39,11 +39,12 @@ public class SentenceScrambleTab : MonoBehaviour
     int indexList;
     [HideInInspector]
     public Button buttonChoose;
-
+    GridController gridController;
     // Start is called before the first frame update
     void Start()
     {
         SetNewList();
+        gridController = GetComponent<GridController>();
     }
 
     public void SetNewList() 
@@ -87,7 +88,8 @@ public class SentenceScrambleTab : MonoBehaviour
     public void SetVariant(string variant) 
     {
 
-        var button = Instantiate(buttonSentencePrefab, contentConstructor);
+        //var button = Instantiate(buttonSentencePrefab, contentConstructor);
+        var button = gridController.Instantiate(buttonSentenceConstructorPrefab,variant);
         button.GetComponentInChildren<TextMeshProUGUI>().text = variant;
         button.GetComponent<ButtonSentence>().inConstructor = true;
         //textConstructedSentence.text = textConstructedSentence.text + " " + variant;

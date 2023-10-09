@@ -38,7 +38,7 @@ public class SentenceScrambleTab : MonoBehaviour
     List<string> allSentence = new List<string>();
     int indexList;
     [HideInInspector]
-    public Button buttonChoose;
+    public ButtonSentence buttonChoose;
     GridController gridController;
     // Start is called before the first frame update
     void Start()
@@ -105,7 +105,7 @@ public class SentenceScrambleTab : MonoBehaviour
     {
         var button = Instantiate(buttonSentencePrefab, content);
         button.GetComponentInChildren<TextMeshProUGUI>().text = variant;
-
+        
         button.GetComponent<ButtonSentence>().inConstructor = false;
         //textConstructedSentence.text = textConstructedSentence.text + " " + variant;
         constructedSentenceCheck = "";

@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00000667572, y: -0.0030351728}
+  m_AnchoredPosition: {x: -0.00000667572, y: -0.000010117888}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1106431058312974179
@@ -716,8 +716,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3756842200684454925}
   m_HandleRect: {fileID: 8631284569316402780}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 0.99985117
+  m_Value: 1
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1500,7 +1500,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6469368698259579074}
   m_HandleRect: {fileID: 6469368698259579075}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1556,6 +1556,7 @@ GameObject:
   - component: {fileID: 6469368699364206258}
   - component: {fileID: 6469368699364206259}
   - component: {fileID: 6469368699364206156}
+  - component: {fileID: 323291684}
   m_Layer: 5
   m_Name: SentenceScrambleTab
   m_TagString: Untagged
@@ -1629,7 +1630,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &6469368699364206259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1662,6 +1663,7 @@ MonoBehaviour:
   textDescription: {fileID: 6469368698678835467}
   textConstructedSentence: {fileID: 6469368700137347133}
   buttonSentencePrefab: {fileID: 3914236934285060648, guid: 65706e9778c84604b901b38beb0959b3, type: 3}
+  buttonSentenceConstructorPrefab: {fileID: 3914236934285060648, guid: 5411df1f10fa5094fa0ef404a48e1c20, type: 3}
   contentConstructor: {fileID: 6834543470810392416}
   content: {fileID: 6469368699647899159}
   descriptions:
@@ -1693,29 +1695,47 @@ MonoBehaviour:
     - Solution3
   additionalWordList:
   - additionalWords:
-    - AddWord1
-    - AddWord2
-    - AddWord3
+    - AdditionalWord1
+    - AdditionalWord2
+    - AdditionalWord3
   - additionalWords:
-    - AddWord1
-    - AddWord2
-    - AddWord3
+    - AdditionalWord1
+    - AdditionalWord2
+    - AdditionalWord3
   - additionalWords:
-    - AddWord1
-    - AddWord2
-    - AddWord3
+    - AdditionalWord1
+    - AdditionalWord2
+    - AdditionalWord3
   - additionalWords:
-    - AddWord1
-    - AddWord2
-    - AddWord3
+    - AdditionalWord1
+    - AdditionalWord2
+    - AdditionalWord3
   - additionalWords:
-    - AddWord1
-    - AddWord2
-    - AddWord3
+    - AdditionalWord1
+    - AdditionalWord2
+    - AdditionalWord3
   completion: 0000000000
   constructedSentenceTrue: 
   constructedSentenceCheck: 
   buttonChoose: {fileID: 0}
+--- !u!114 &323291684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6469368699364206157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d534ea9fb5a0042b5c3f981219fd50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  row: []
+  rowPrefab: {fileID: -7116838112211549172, guid: e4fc79f438b862d4a8068a747ccab5f1, type: 3}
+  content: {fileID: 6834543470810392416}
+  contentWidth: 65
+  up: 0
+  stopChecEnter: 0
 --- !u!1 &6469368699431161700
 GameObject:
   m_ObjectHideFlags: 0
@@ -1902,7 +1922,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00000667572, y: -0.0054837326}
+  m_AnchoredPosition: {x: -0.00000667572, y: 0.0000056168064}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6469368699647899158

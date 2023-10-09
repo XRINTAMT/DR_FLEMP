@@ -7,20 +7,21 @@ using UnityEngine;
 
 public class GridController : MonoBehaviour
 {
-    [SerializeField] List<RowSentence> row = new List<RowSentence>();
+    public List<RowSentence> row = new List<RowSentence>();
     //[SerializeField] List<Words> row =  new List<Words>();
     [SerializeField] RowSentence rowPrefab;
     [SerializeField] Transform content;
-    [SerializeField] float contentWidth;
+    public float contentWidth;
     GameObject checkObj;
     bool setPos;
+
     // Start is called before the first frame update
     void Start()
     {
         SetNewRow();
     }
 
-    float WordsLenghts(float instObgWidth) 
+    public float WordsLenghts(float instObgWidth) 
     {
         float lenght = instObgWidth;
 
@@ -30,6 +31,32 @@ public class GridController : MonoBehaviour
         }
         return lenght;
     
+    }
+
+    public float WordsLenghts(ButtonSentence buttonSentence)
+    {
+        int indexRow=0;
+        int indexWord=0;
+        for (int i = 0; i < row.Count; i++)
+        {
+            for (int j = 0; j < row[i].GetComponent<RowSentence>().word.Count; j++)
+            {
+                if (row[i].GetComponent<RowSentence>().word[j]==buttonSentence)
+                {
+                    indexRow = i;
+                    indexWord = j;
+                }
+            }
+        }
+
+        float lenght = 0;
+
+        for (int i = 0; i < row[indexRow].word.Count; i++)
+        {
+            lenght = lenght + row[indexRow].word[i].GetComponent<RectTransform>().rect.width;
+        }
+        return lenght;
+
     }
     public GameObject  Instantiate(GameObject obj, string text) 
     {
@@ -56,6 +83,9 @@ public class GridController : MonoBehaviour
       
         return newObj;
     }
+
+
+
     public void Remove(ButtonSentence obj)
     {
 
@@ -116,7 +146,7 @@ public class GridController : MonoBehaviour
 
     }
 
-    void UpdatePostions() 
+    public void UpdatePostions() 
     {
         for (int i = 0; i < row.Count; i++)
         {
@@ -164,11 +194,32 @@ public class GridController : MonoBehaviour
     {
         row.Add(Instantiate(rowPrefab, content));
     }
+    IEnumerator UpdatePInstantPos(GameObject obj)
+    {
+        yield return new WaitForEndOfFrame();
+        if (contentWidth > WordsLenghts(checkObj.GetComponent<RectTransform>().rect.width))
+        {
+            obj.transform.position = row[row.Count - 1].word[row[row.Count - 1].word.Count - 1].spawnPoint.transform.position;
+            obj.transform.parent = row[row.Count - 1].transform;
+            row[row.Count - 1].word.Add(checkObj.GetComponent<ButtonSentence>());
 
+        }
+        if (contentWidth < WordsLenghts(checkObj.GetComponent<RectTransform>().rect.width))
+        {
+            SetNewRow();
+            obj.transform.position = row[row.Count - 1].spawnPoint.transform.position;
+            obj.transform.parent = row[row.Count - 1].transform;
+            row[row.Count - 1].word.Add(checkObj.GetComponent<ButtonSentence>());
+            setPos = true;
+
+        }
+    }
 
     // Update is called once per frame
     void Update()
     {
+
+
 
         if (checkObj && checkObj.GetComponent<RectTransform>().rect.width>0 && !setPos)
         {

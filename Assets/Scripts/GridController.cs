@@ -7,41 +7,56 @@ using UnityEngine;
 
 public class GridController : MonoBehaviour
 {
-    public List<RowSentence> row = new List<RowSentence>();
+    public List<RowSentence> rowsCheck = new List<RowSentence>();
+
+    public List<RowSentence> rowsSentence = new List<RowSentence>();
     //[SerializeField] List<Words> row =  new List<Words>();
-    [SerializeField] RowSentence rowPrefab;
-    [SerializeField] Transform content;
+    public List<RowSentence> rowsChoose = new List<RowSentence>();
+    [SerializeField] RowSentence rowSentence;
+    [SerializeField] RowSentence rowChoose;
+    [SerializeField] Transform contentSentence;
+    [SerializeField] Transform contentChoose;
     public float contentWidth;
     GameObject checkObj;
     bool setPos;
-
+ 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        SetNewRow();
+        SetNewRow(rowSentence);
+        SetNewRow(rowChoose);
     }
 
     public float WordsLenghts(float instObgWidth) 
     {
         float lenght = instObgWidth;
 
-        for (int i = 0; i < row[row.Count - 1].word.Count; i++)
+        for (int i = 0; i < rowsSentence[rowsSentence.Count - 1].word.Count; i++)
         {
-            lenght = lenght + row[row.Count - 1].word[i].GetComponent<RectTransform>().rect.width;
+            lenght = lenght + rowsSentence[rowsSentence.Count - 1].word[i].GetComponent<RectTransform>().rect.width;
         }
         return lenght;
     
     }
+    public float WordsLenghts(float instObjWidth, RowSentence row)
+    {
+        float lenght = instObjWidth;
+        for (int i = 0; i < row.word.Count; i++)
+        {
+            lenght = lenght + row.word[i].GetComponent<RectTransform>().rect.width;
+        }
 
+        return lenght;
+    }
     public float WordsLenghts(ButtonSentence buttonSentence)
     {
         int indexRow=0;
         int indexWord=0;
-        for (int i = 0; i < row.Count; i++)
+        for (int i = 0; i < rowsSentence.Count; i++)
         {
-            for (int j = 0; j < row[i].GetComponent<RowSentence>().word.Count; j++)
+            for (int j = 0; j < rowsSentence[i].GetComponent<RowSentence>().word.Count; j++)
             {
-                if (row[i].GetComponent<RowSentence>().word[j]==buttonSentence)
+                if (rowsSentence[i].GetComponent<RowSentence>().word[j]==buttonSentence)
                 {
                     indexRow = i;
                     indexWord = j;
@@ -51,13 +66,69 @@ public class GridController : MonoBehaviour
 
         float lenght = 0;
 
-        for (int i = 0; i < row[indexRow].word.Count; i++)
+        for (int i = 0; i < rowsSentence[indexRow].word.Count; i++)
         {
-            lenght = lenght + row[indexRow].word[i].GetComponent<RectTransform>().rect.width;
+            lenght = lenght + rowsSentence[indexRow].word[i].GetComponent<RectTransform>().rect.width;
         }
         return lenght;
 
+    }    
+    
+    float GetRowLenght(int indexRow) 
+    {
+        float lenght=0;
+        for (int i = 0; i < rowsSentence[indexRow].word.Count; i++)
+        {
+            lenght = lenght + rowsSentence[rowsSentence.Count - 1].word[i].GetComponent<RectTransform>().rect.width;
+        }
+        return lenght;
     }
+
+    float GetRowLenght(RowSentence row) 
+    {
+        float lenght = 0;
+        for (int i = 0; i < row.word.Count; i++)
+            lenght=lenght+ row.word[i].GetComponent<RectTransform>().rect.width;
+
+        return lenght;
+    }
+
+    public float GetRowLenghts(ButtonSentence buttonSentence)
+    {
+        List<RowSentence> rowsList = new List<RowSentence>();
+        int indexRow = 0;
+        float lenght = 0;
+
+        for (int i = 0; i < rowsSentence.Count; i++)
+        {
+            for (int j = 0; j < rowsSentence[i].GetComponent<RowSentence>().word.Count; j++)
+            {
+                if (rowsSentence[i].GetComponent<RowSentence>().word[j] == buttonSentence)
+                {
+                    indexRow = i;
+                    rowsList = rowsSentence;
+                }
+            }
+        }
+        for (int i = 0; i < rowsChoose.Count; i++)
+        {
+            for (int j = 0; j < rowsChoose[i].GetComponent<RowSentence>().word.Count; j++)
+            {
+                if (rowsChoose[i].GetComponent<RowSentence>().word[j] == buttonSentence)
+                {
+                    indexRow = i;
+                    rowsList = rowsChoose;
+                }
+            }
+        }
+
+        for (int i = 0; i < rowsList[indexRow].word.Count; i++)
+        {
+            lenght = lenght + rowsList[indexRow].word[i].GetComponent<RectTransform>().rect.width;
+        }
+        return lenght;
+    }
+
     public GameObject  Instantiate(GameObject obj, string text) 
     {
         checkObj = null;
@@ -67,16 +138,16 @@ public class GridController : MonoBehaviour
         newObj = Instantiate(obj,transform);
         newObj.GetComponentInChildren<TextMeshProUGUI>().text = text;
 
-        if (row[row.Count - 1].word.Count == 0)
+        if (rowsSentence[rowsSentence.Count - 1].word.Count == 0)
         {
             //newObj=Instantiate(obj, row[row.Count - 1].spawnPoint.transform.position, Quaternion.identity, row[row.Count - 1].transform);
-            newObj.transform.position = row[row.Count - 1].spawnPoint.transform.position;
-            newObj.transform.parent = row[row.Count - 1].transform;
-            row[row.Count - 1].word.Add(newObj.GetComponent<ButtonSentence>());
+            newObj.transform.position = rowsSentence[rowsSentence.Count - 1].spawnPoint.transform.position;
+            newObj.transform.parent = rowsSentence[rowsSentence.Count - 1].transform;
+            rowsSentence[rowsSentence.Count - 1].word.Add(newObj.GetComponent<ButtonSentence>());
 
             return newObj;
         }
-        if (row[row.Count - 1].word.Count != 0)
+        if (rowsSentence[rowsSentence.Count - 1].word.Count != 0)
         {
             checkObj = newObj;
         }
@@ -84,34 +155,48 @@ public class GridController : MonoBehaviour
         return newObj;
     }
 
+    public GameObject InstantiateWordChoose(GameObject obj, string text)
+    {
+        RowSentence rowSentence = rowsChoose[rowsChoose.Count - 1];
+        GameObject word = Instantiate(obj, rowSentence.spawnPoint.transform.parent);
+        word.GetComponentInChildren<TextMeshProUGUI>().text = text;
+        rowSentence.word.Add(word.GetComponent<ButtonSentence>());
+
+        return word;
+    }
 
 
+    IEnumerator UpdaterowChooseCenter(GameObject word, RowSentence rowSentence) 
+    {
+        yield return new WaitForEndOfFrame();
+        rowsChoose[rowsChoose.Count - 1].spawnPoint.transform.parent.transform.position = new Vector3(WordsLenghts(word.GetComponent<RectTransform>().rect.width, rowSentence) / 2, 0, 0);
+    }
     public void Remove(ButtonSentence obj)
     {
 
-        for (int i = 0; i < row.Count; i++)
+        for (int i = 0; i < rowsSentence.Count; i++)
         {
-            for (int j = 0; j < row[i].word.Count; j++)
+            for (int j = 0; j < rowsSentence[i].word.Count; j++)
             {
-                if (row[i].word[j] == obj)
+                if (rowsSentence[i].word[j] == obj)
                 {
-                    row[i].word.RemoveAt(j);
+                    rowsSentence[i].word.RemoveAt(j);
 
-                    if (j - 1 == row[i].word.Count-1 )
+                    if (j - 1 == rowsSentence[i].word.Count-1 )
                     {
-                        if (i != row.Count - 1)
+                        if (i != rowsSentence.Count - 1)
                         {
                             UpdatePostionsToPrevRow(i);
                         }
                         return;
                     }
-                    if (j - 1 < row[i].word.Count - 1)
+                    if (j - 1 < rowsSentence[i].word.Count - 1)
                     {
-                        if (i != row.Count-1)
+                        if (i != rowsSentence.Count-1)
                         {
                             UpdatePostionsToPrevRow(i);
                         }
-                        if (i == row.Count - 1)
+                        if (i == rowsSentence.Count - 1)
                         {
                             UpdatePostions();
                         }
@@ -135,12 +220,12 @@ public class GridController : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < row.Count; i++)
+        for (int i = 0; i < rowsSentence.Count; i++)
         {
-            if (row[i].word.Count==0)
+            if (rowsSentence[i].word.Count==0)
             {
-                Destroy(row[i].gameObject);
-                row.RemoveAt(i);
+                Destroy(rowsSentence[i].gameObject);
+                rowsSentence.RemoveAt(i);
             }
         }
 
@@ -148,17 +233,66 @@ public class GridController : MonoBehaviour
 
     public void UpdatePostions() 
     {
-        for (int i = 0; i < row.Count; i++)
+        for (int i = 0; i < rowsSentence.Count; i++)
         {
-            for (int j = 0; j < row[i].word.Count; j++)
+            for (int j = 0; j < rowsSentence[i].word.Count; j++)
             {
                 if (j == 0)
                 {
-                    row[i].word[j].transform.position = row[i].spawnPoint.transform.position;
+                    rowsSentence[i].word[j].transform.position = rowsSentence[i].spawnPoint.transform.position;
                 }
                 else
                 {
-                    row[i].word[j].transform.position = row[i].word[j - 1].spawnPoint.transform.position;
+                    rowsSentence[i].word[j].transform.position = rowsSentence[i].word[j - 1].spawnPoint.transform.position;
+                }
+
+            }
+        }
+    }
+    public void UpdatePostions(List<RowSentence> row)
+    {
+        for (int i = 0; i < row.Count; i++)
+        {
+            if (GetRowLenght(row[i]) < contentWidth)
+            {
+                for (int j = 0; j < row[i].word.Count; j++)
+                {
+                    if (j == 0)
+                        row[i].word[j].transform.position = row[i].spawnPoint.transform.position;
+                    else
+                        row[i].word[j].transform.position = row[i].word[j - 1].spawnPoint.transform.position;
+
+                }
+            }
+            if (GetRowLenght(row[i]) >= contentWidth)
+            {
+                SetNewRow(rowChoose);
+                row[i].word[row[i].word.Count - 1].transform.parent = row[i+1].spawnPoint.transform.parent;
+                row[i].word[row[i].word.Count - 1].transform.position = row[i+1].spawnPoint.transform.position;
+
+                row[i + 1].word.Add(row[i].word[row[i].word.Count - 1]);
+                row[i].word.RemoveAt(row[i].word.Count - 1);
+            }
+
+
+        }
+    }
+
+   
+
+    public void UpdatePostionsRowChoose()
+    {
+        for (int i = 0; i < rowsSentence.Count; i++)
+        {
+            for (int j = 0; j < rowsSentence[i].word.Count; j++)
+            {
+                if (j == 0)
+                {
+                    rowsSentence[i].word[j].transform.position = rowsSentence[i].spawnPoint.transform.position;
+                }
+                else
+                {
+                    rowsSentence[i].word[j].transform.position = rowsSentence[i].word[j - 1].spawnPoint.transform.position;
                 }
 
             }
@@ -166,12 +300,12 @@ public class GridController : MonoBehaviour
     }
     void UpdatePostionsToPrevRow(int rowIndex)
     {
-        if (GetRowLenght(rowIndex) + row[rowIndex + 1].word[0].GetComponent<RectTransform>().rect.width<contentWidth)
+        if (GetRowLenght(rowIndex) + rowsSentence[rowIndex + 1].word[0].GetComponent<RectTransform>().rect.width<contentWidth)
         {
-            row[rowIndex + 1].word[0].transform.parent = row[rowIndex].transform;
-            row[rowIndex + 1].word[0].transform.position = row[rowIndex].word[row[rowIndex].word.Count - 1].spawnPoint.transform.position;
-            row[rowIndex].word.Add(row[rowIndex + 1].word[0]);
-            row[rowIndex + 1].word.RemoveAt(0);
+            rowsSentence[rowIndex + 1].word[0].transform.parent = rowsSentence[rowIndex].transform;
+            rowsSentence[rowIndex + 1].word[0].transform.position = rowsSentence[rowIndex].word[rowsSentence[rowIndex].word.Count - 1].spawnPoint.transform.position;
+            rowsSentence[rowIndex].word.Add(rowsSentence[rowIndex + 1].word[0]);
+            rowsSentence[rowIndex + 1].word.RemoveAt(0);
 
             UpdatePostions();
         }
@@ -181,38 +315,66 @@ public class GridController : MonoBehaviour
         }
     }
 
-    float GetRowLenght(int indexRow) 
-    {
-        float lenght=0;
-        for (int i = 0; i < row[indexRow].word.Count; i++)
-        {
-            lenght = lenght + row[row.Count - 1].word[i].GetComponent<RectTransform>().rect.width;
-        }
-        return lenght;
-    }
+
     public void SetNewRow() 
     {
-        row.Add(Instantiate(rowPrefab, content));
+        rowsSentence.Add(Instantiate(rowSentence, contentSentence));
     }
-    IEnumerator UpdatePInstantPos(GameObject obj)
+  
+
+    public void SetNewRow(RowSentence row)
+    {
+        if (rowSentence.gameObject == row.gameObject)
+            rowsSentence.Add(Instantiate(rowSentence, contentSentence));
+
+        if (rowChoose.gameObject==row.gameObject)
+            rowsChoose.Add(Instantiate(rowChoose, contentChoose));
+      
+    }
+    IEnumerator UpdateInstantPos(GameObject word, RowSentence rowSentence, bool constructor)
     {
         yield return new WaitForEndOfFrame();
-        if (contentWidth > WordsLenghts(checkObj.GetComponent<RectTransform>().rect.width))
+        if (constructor)
         {
-            obj.transform.position = row[row.Count - 1].word[row[row.Count - 1].word.Count - 1].spawnPoint.transform.position;
-            obj.transform.parent = row[row.Count - 1].transform;
-            row[row.Count - 1].word.Add(checkObj.GetComponent<ButtonSentence>());
+            if (contentWidth > WordsLenghts(word.GetComponent<RectTransform>().rect.width))
+            {
+                word.transform.position = rowsSentence[rowsSentence.Count - 1].word[rowsSentence[rowsSentence.Count - 1].word.Count - 1].spawnPoint.transform.position;
+                word.transform.parent = rowsSentence[rowsSentence.Count - 1].transform;
+                rowsSentence[rowsSentence.Count - 1].word.Add(word.GetComponent<ButtonSentence>());
 
+            }
+            if (contentWidth < WordsLenghts(word.GetComponent<RectTransform>().rect.width))
+            {
+                SetNewRow();
+                word.transform.position = rowsSentence[rowsSentence.Count - 1].spawnPoint.transform.position;
+                word.transform.parent = rowsSentence[rowsSentence.Count - 1].transform;
+                rowsSentence[rowsSentence.Count - 1].word.Add(word.GetComponent<ButtonSentence>());
+            }
         }
-        if (contentWidth < WordsLenghts(checkObj.GetComponent<RectTransform>().rect.width))
+        if (!constructor)
         {
-            SetNewRow();
-            obj.transform.position = row[row.Count - 1].spawnPoint.transform.position;
-            obj.transform.parent = row[row.Count - 1].transform;
-            row[row.Count - 1].word.Add(checkObj.GetComponent<ButtonSentence>());
-            setPos = true;
+            word.transform.position = rowSentence.word[rowSentence.word.Count - 1].spawnPoint.transform.position;
+            word.transform.parent = rowSentence.spawnPoint.transform.parent;
+            rowSentence.word.Add(word.GetComponent<ButtonSentence>());
 
+            //if (contentWidth > WordsLenghts(word.GetComponent<RectTransform>().rect.width, rowSentence))
+            //{
+            //    word.transform.position = rowSentence.word[rowSentence.word.Count - 1].spawnPoint.transform.position;
+            //    word.transform.parent = rowSentence.spawnPoint.transform.parent;
+            //    rowSentence.word.Add(word.GetComponent<ButtonSentence>());
+
+            //}
+            //if (contentWidth < WordsLenghts(word.GetComponent<RectTransform>().rect.width,rowSentence))
+            //{
+            //    SetNewRow();
+            //    word.transform.position = rowChoose[rowChoose.Count - 1].spawnPoint.transform.position;
+            //    word.transform.parent = rowChoose[rowChoose.Count - 1].spawnPoint.transform.parent;
+            //    rowChoose[rowChoose.Count - 1].word.Add(word.GetComponent<ButtonSentence>());
+            //}
+
+            //rowChoose[rowChoose.Count - 1].spawnPoint.transform.parent.transform.position = new Vector3(WordsLenghts(word.GetComponent<RectTransform>().rect.width, rowSentence) / 2, 0, 0);
         }
+
     }
 
     // Update is called once per frame
@@ -220,15 +382,14 @@ public class GridController : MonoBehaviour
     {
 
 
-
         if (checkObj && checkObj.GetComponent<RectTransform>().rect.width>0 && !setPos)
         {
             if (contentWidth > WordsLenghts(checkObj.GetComponent<RectTransform>().rect.width))
             {
                 //newObj=Instantiate(obj, row[row.Count - 1].word[row[row.Count - 1].word.Count - 1].spawnPoint.transform.position, Quaternion.identity, row[row.Count - 1].transform);
-                checkObj.transform.position = row[row.Count - 1].word[row[row.Count - 1].word.Count - 1].spawnPoint.transform.position;
-                checkObj.transform.parent = row[row.Count - 1].transform;
-                row[row.Count - 1].word.Add(checkObj.GetComponent<ButtonSentence>());
+                checkObj.transform.position = rowsSentence[rowsSentence.Count - 1].word[rowsSentence[rowsSentence.Count - 1].word.Count - 1].spawnPoint.transform.position;
+                checkObj.transform.parent = rowsSentence[rowsSentence.Count - 1].transform;
+                rowsSentence[rowsSentence.Count - 1].word.Add(checkObj.GetComponent<ButtonSentence>());
                 setPos = true;
                 return;
 
@@ -237,9 +398,9 @@ public class GridController : MonoBehaviour
             {
                 SetNewRow();
                 //newObj=Instantiate(obj, row[row.Count - 1].spawnPoint.transform.position, Quaternion.identity, row[row.Count - 1].transform);
-                checkObj.transform.position = row[row.Count - 1].spawnPoint.transform.position;
-                checkObj.transform.parent = row[row.Count - 1].transform;
-                row[row.Count - 1].word.Add(checkObj.GetComponent<ButtonSentence>());
+                checkObj.transform.position = rowsSentence[rowsSentence.Count - 1].spawnPoint.transform.position;
+                checkObj.transform.parent = rowsSentence[rowsSentence.Count - 1].transform;
+                rowsSentence[rowsSentence.Count - 1].word.Add(checkObj.GetComponent<ButtonSentence>());
                 setPos = true;
                 return;
 

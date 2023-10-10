@@ -43,8 +43,9 @@ public class SentenceScrambleTab : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetNewList();
         gridController = GetComponent<GridController>();
+        SetNewList();
+   
     }
 
     public void SetNewList() 
@@ -80,8 +81,7 @@ public class SentenceScrambleTab : MonoBehaviour
 
         for (int i = 0; i < allSentence.Count; i++)
         {
-            var button = Instantiate(buttonSentencePrefab, content);
-            button.GetComponentInChildren<TextMeshProUGUI>().text = allSentence[i];
+            var button = gridController.InstantiateWordChoose(buttonSentenceConstructorPrefab, allSentence[i]);
         }
 
     }
@@ -90,31 +90,25 @@ public class SentenceScrambleTab : MonoBehaviour
 
         //var button = Instantiate(buttonSentencePrefab, contentConstructor);
         var button = gridController.Instantiate(buttonSentenceConstructorPrefab,variant);
-        button.GetComponentInChildren<TextMeshProUGUI>().text = variant;
+        //button.GetComponentInChildren<TextMeshProUGUI>().text = variant;
         button.GetComponent<ButtonSentence>().inConstructor = true;
-        //textConstructedSentence.text = textConstructedSentence.text + " " + variant;
 
         constructedSentenceCheck = "";
         foreach (TextMeshProUGUI textMeshProUGUI in contentConstructor.GetComponentsInChildren<TextMeshProUGUI>())
-        {
             constructedSentenceCheck = constructedSentenceCheck + " " + textMeshProUGUI.text;
-        }
 
     }
     public void ReturnVariant(string variant)
     {
-        var button = Instantiate(buttonSentencePrefab, content);
-        button.GetComponentInChildren<TextMeshProUGUI>().text = variant;
-        
+        //var button = Instantiate(buttonSentencePrefab, content);
+        var button = gridController.InstantiateWordChoose(buttonSentenceConstructorPrefab,variant);
         button.GetComponent<ButtonSentence>().inConstructor = false;
-        //textConstructedSentence.text = textConstructedSentence.text + " " + variant;
+
         constructedSentenceCheck = "";
         foreach (TextMeshProUGUI textMeshProUGUI in contentConstructor.GetComponentsInChildren<TextMeshProUGUI>())
         {
             if (textMeshProUGUI.text!=variant)
-            {
                 constructedSentenceCheck = constructedSentenceCheck + " " + textMeshProUGUI.text;
-            }
         }
 
     }

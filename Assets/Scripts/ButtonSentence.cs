@@ -115,16 +115,29 @@ public class ButtonSentence : MonoBehaviour
     private void Update()
     {
 
+        //if (buttonWidth != GetComponent<RectTransform>().rect.width)
+        //{
+        //    if (gridController.WordsLenghts(this) > gridController.contentWidth)
+        //    {
+        //        Debug.Log(3);
+        //    }
+        //    gridController.UpdatePostions();
+        //    buttonWidth = GetComponent<RectTransform>().rect.width;
+        //}
         if (buttonWidth != GetComponent<RectTransform>().rect.width)
         {
-            if (gridController.WordsLenghts(this) > gridController.contentWidth)
+
+            if (inConstructor)
             {
-                Debug.Log(3);
+                gridController.UpdatePostions(gridController.rowsSentence);
             }
-            gridController.UpdatePostions();
+            if (!inConstructor)
+            {
+                gridController.UpdatePostions(gridController.rowsChoose);
+            }
+
             buttonWidth = GetComponent<RectTransform>().rect.width;
         }
-
     }
 }
 

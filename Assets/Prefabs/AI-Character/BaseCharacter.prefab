@@ -2549,6 +2549,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2195129380462472870}
   - component: {fileID: 5230515755707069660}
+  - component: {fileID: 2744056384321536134}
   m_Layer: 0
   m_Name: SeniorFemale
   m_TagString: Untagged
@@ -2593,6 +2594,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &2744056384321536134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530513752352191516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3505c7f5735c00b40a951c1dbe2ffb24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interpolationSpeed: 1
+  inArea: 0
 --- !u!1 &1538931787561461453
 GameObject:
   m_ObjectHideFlags: 0
@@ -3910,6 +3925,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1585061647151181968}
   - component: {fileID: 4836701068974320362}
+  - component: {fileID: 7793586605485776498}
   m_Layer: 0
   m_Name: SeniorMale
   m_TagString: Untagged
@@ -3954,6 +3970,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &7793586605485776498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2212557724321507882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3505c7f5735c00b40a951c1dbe2ffb24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interpolationSpeed: 1
+  inArea: 0
 --- !u!1 &2215397930005968365
 GameObject:
   m_ObjectHideFlags: 0
@@ -4507,6 +4537,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3145751746491235518}
   - component: {fileID: 9027421882438215364}
+  - component: {fileID: 5724763323791528253}
   m_Layer: 0
   m_Name: Male
   m_TagString: Untagged
@@ -4551,6 +4582,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &5724763323791528253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2372310855579395588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3505c7f5735c00b40a951c1dbe2ffb24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interpolationSpeed: 1
+  inArea: 0
 --- !u!1 &2413414215972923830
 GameObject:
   m_ObjectHideFlags: 0
@@ -7942,7 +7987,6 @@ GameObject:
   - component: {fileID: 6648620144474253133}
   - component: {fileID: 2778475835057526509}
   - component: {fileID: 2594321332404210}
-  - component: {fileID: 1484410483595701218}
   - component: {fileID: 6092347307288497176}
   - component: {fileID: 9178177437678483009}
   - component: {fileID: 2453958709990072862}
@@ -8089,20 +8133,6 @@ MonoBehaviour:
   speedChangeMood: 0
   interpolate: 0
   indexInerpolate: 0
---- !u!114 &1484410483595701218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4142916255692843300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3505c7f5735c00b40a951c1dbe2ffb24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interpolationSpeed: 1
-  inArea: 0
 --- !u!114 &6092347307288497176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8420,18 +8450,6 @@ MonoBehaviour:
   HandEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1484410483595701218}
-        m_TargetAssemblyTypeName: HeadCharacterFollow, Assembly-CSharp
-        m_MethodName: EnterArea
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1602890584154119592}
         m_TargetAssemblyTypeName: ChatCharacter, Assembly-CSharp
         m_MethodName: setTargeted
@@ -8444,13 +8462,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 196243802697397783}
+        m_TargetAssemblyTypeName: HeadCharacterFollow, Assembly-CSharp
+        m_MethodName: EnterArea
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   HandExit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1484410483595701218}
-        m_TargetAssemblyTypeName: HeadCharacterFollow, Assembly-CSharp
-        m_MethodName: ExitArea
-        m_Mode: 1
+      - m_Target: {fileID: 1602890584154119592}
+        m_TargetAssemblyTypeName: ChatCharacter, Assembly-CSharp
+        m_MethodName: setTargeted
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8459,10 +8489,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1602890584154119592}
-        m_TargetAssemblyTypeName: ChatCharacter, Assembly-CSharp
-        m_MethodName: setTargeted
-        m_Mode: 6
+      - m_Target: {fileID: 196243802697397783}
+        m_TargetAssemblyTypeName: HeadCharacterFollow, Assembly-CSharp
+        m_MethodName: ExitArea
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -10626,6 +10656,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5684096859349279836}
   - component: {fileID: 1729904726244376102}
+  - component: {fileID: 196243802697397783}
   m_Layer: 0
   m_Name: YoungMale
   m_TagString: Untagged
@@ -10670,6 +10701,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &196243802697397783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5019867988214234854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3505c7f5735c00b40a951c1dbe2ffb24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interpolationSpeed: 1
+  inArea: 0
 --- !u!1 &5028695855193881346
 GameObject:
   m_ObjectHideFlags: 0
@@ -11848,6 +11893,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5081949418530359310}
   - component: {fileID: 1181802130235495028}
+  - component: {fileID: 4468750702649200484}
   m_Layer: 0
   m_Name: YoungFemale
   m_TagString: Untagged
@@ -11903,6 +11949,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &4468750702649200484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5606250080474567348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3505c7f5735c00b40a951c1dbe2ffb24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interpolationSpeed: 1
+  inArea: 0
 --- !u!1 &5635488421998669639
 GameObject:
   m_ObjectHideFlags: 0
@@ -13952,7 +14012,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   siitingPos: {fileID: 0}
-  headCharacterFollow: {fileID: 1484410483595701218}
+  headCharacterFollow: {fileID: 0}
   <RightPatient>k__BackingField: 0
 --- !u!1 &6642138757718178474
 GameObject:

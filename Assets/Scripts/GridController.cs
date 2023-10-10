@@ -149,7 +149,6 @@ public class GridController : MonoBehaviour
                     {
                         if (GetRowLenght(rowsSentence[i]) + rowsSentence[i + 1].word[0].GetComponent<RectTransform>().rect.width < contentWidth)
                         {
-                            Debug.Log(GetRowLenght(rowsSentence[i]) + rowsSentence[i + 1].word[0].GetComponent<RectTransform>().rect.width);
                             rowsSentence[i + 1].word[0].transform.parent = rowsSentence[i].transform;
                             rowsSentence[i + 1].word[0].transform.position = rowsSentence[i].word[rowsSentence[i].word.Count - 1].spawnPoint.transform.position;
                             rowsSentence[i].word.Add(rowsSentence[i + 1].word[0]);
@@ -290,7 +289,6 @@ public class GridController : MonoBehaviour
         }
 
 
-        Debug.Log(10);
         GetComponent<SentenceScrambleTab>().InstNewWordChoose();
         //if (rowsChoose.Count < GetComponent<SentenceScrambleTab>().allWords.Count)
         //{

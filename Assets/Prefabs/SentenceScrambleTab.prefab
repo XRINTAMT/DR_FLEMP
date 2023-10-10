@@ -70,7 +70,7 @@ MonoBehaviour:
     m_Top: 5
     m_Bottom: 5
   m_ChildAlignment: 1
-  m_Spacing: 5
+  m_Spacing: 1
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -1717,6 +1717,7 @@ MonoBehaviour:
   completion: 0000000000
   constructedSentenceTrue: 
   constructedSentenceCheck: 
+  allWords: []
   buttonChoose: {fileID: 0}
 --- !u!114 &323291684
 MonoBehaviour:
@@ -1730,13 +1731,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1d534ea9fb5a0042b5c3f981219fd50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: []
-  rowDown: []
-  rowPrefabMiddle: {fileID: -7116838112211549172, guid: e4fc79f438b862d4a8068a747ccab5f1, type: 3}
-  rowPrefabDown: {fileID: -7116838112211549172, guid: c2484f4d4b41bcc41b227095cec04870, type: 3}
-  contentMiddle: {fileID: 6834543470810392416}
-  contentDown: {fileID: 6469368699647899159}
-  contentWidth: 65
+  rowsCheck: []
+  rowsSentence: []
+  rowsChoose: []
+  rowSentence: {fileID: -7116838112211549172, guid: e4fc79f438b862d4a8068a747ccab5f1, type: 3}
+  rowChoose: {fileID: -7116838112211549172, guid: c2484f4d4b41bcc41b227095cec04870, type: 3}
+  contentSentence: {fileID: 6834543470810392416}
+  contentChoose: {fileID: 6469368699647899159}
+  contentWidth: 80
+  obj: {fileID: 0}
 --- !u!1 &6469368699431161700
 GameObject:
   m_ObjectHideFlags: 0
@@ -1958,7 +1961,7 @@ MonoBehaviour:
     m_Top: 5
     m_Bottom: 5
   m_ChildAlignment: 1
-  m_Spacing: 5
+  m_Spacing: 1
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0

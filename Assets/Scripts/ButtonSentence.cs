@@ -23,92 +23,143 @@ public class ButtonSentence : MonoBehaviour
         variant = GetComponentInChildren<TextMeshProUGUI>().text;
         gridController = FindObjectOfType<GridController>();
         buttonWidth = GetComponent<RectTransform>().rect.width;
+        GetComponent<Button>().onClick.AddListener(OnClick);
     }
 
-    public void pointerEnter()
+    void OnClick() 
     {
-        if (sentenceScrambleTab.buttonChoose != null && inConstructor)
+        if (inConstructor)
         {
-            sentenceScrambleTab.buttonChoose.variant = text.text;
-            variant = sentenceScrambleTab.buttonChoose.text.text;
-   
+            gridController.Remove(this);
 
-            //text.text = sentenceScrambleTab.buttonChoose.variant;
-            //sentenceScrambleTab.buttonChoose.text.text = variant;
-
-            //variant = text.text;
-            //sentenceScrambleTab.buttonChoose.variant = sentenceScrambleTab.buttonChoose.text.text;
-
-            GetComponent<Image>().color = Color.green;
-        }
-    }
-    public void pointerExit()
-    {
-        if (inConstructor )
-        {
-
-            if (sentenceScrambleTab.buttonChoose != null)
+            for (int i = 0; i < gridController.rowsChoose.Count; i++)
             {
+                for (int j = 0; j < gridController.rowsChoose[i].word.Count; j++)
+                {
+                    if (GetComponentInChildren<TextMeshProUGUI>().text == gridController.rowsChoose[i].word[j].GetComponentInChildren<TextMeshProUGUI>(true).text)
+                    {
+                        gridController.rowsChoose[i].word[j].gameObject.SetActive(true);
+                        gridController.rowsChoose[i].word[j].inConstructor = false;
+                    }
 
-                variant = text.text;
-                sentenceScrambleTab.buttonChoose.variant = sentenceScrambleTab.buttonChoose.text.text;
+                }
 
-                //variant = sentenceScrambleTab.buttonChoose.text.text;
-                //sentenceScrambleTab.buttonChoose.variant = text.text;
-
-                //text.text = variant;
-                //sentenceScrambleTab.buttonChoose.text.text = sentenceScrambleTab.buttonChoose.variant;
-
-                if (sentenceScrambleTab.buttonChoose != GetComponent<ButtonSentence>())
-                    GetComponent<Image>().color = Color.white;
             }
         }
 
-        if (thisbButton!=null)
-        {
-            if (!sentenceScrambleTab.buttonChoose)
-                sentenceScrambleTab.buttonChoose = GetComponent<ButtonSentence>();
-        }
-        thisbButton = null;
-
-    }
-    public void pointerUp()
-    {
         if (!inConstructor)
         {
             sentenceScrambleTab.SetVariant(variant);
-            Destroy(gameObject);
+            GetComponent<Image>().color = Color.white;
+            gameObject.SetActive(false);
+            //Destroy(gameObject);
             return;
         }
 
-        if (inConstructor && !sentenceScrambleTab.buttonChoose && thisbButton)
-        {
-            gridController.Remove(this);
-            sentenceScrambleTab.ReturnVariant(variant);
-            Destroy(gameObject);
-            return;
-        }
-
-        if (inConstructor && sentenceScrambleTab.buttonChoose)
-        {
-            var buttonsSentence = FindObjectsOfType<ButtonSentence>();
-            for (int i = 0; i < buttonsSentence.Length; i++) 
-            {
-                buttonsSentence[i].GetComponent<Image>().color = Color.white;
-
-                if (buttonsSentence[i].text.text != buttonsSentence[i].variant)
-                    buttonsSentence[i].text.text = buttonsSentence[i].variant;
-            }
-
-            sentenceScrambleTab.buttonChoose = null;
-            return;
-        }
     }
-    public void pointerDown()
-    {
-        GetComponent<Image>().color = Color.green;
-        thisbButton = this;
-    }
+    //public void pointerEnter()
+    //{
+    //    if (sentenceScrambleTab.buttonChoose != null && inConstructor)
+    //    {
+    //        sentenceScrambleTab.buttonChoose.variant = text.text;
+    //        variant = sentenceScrambleTab.buttonChoose.text.text;
+
+
+    //        //text.text = sentenceScrambleTab.buttonChoose.variant;
+    //        //sentenceScrambleTab.buttonChoose.text.text = variant;
+
+    //        //variant = text.text;
+    //        //sentenceScrambleTab.buttonChoose.variant = sentenceScrambleTab.buttonChoose.text.text;
+
+    //        GetComponent<Image>().color = Color.green;
+    //    }
+    //}
+    //public void pointerExit()
+    //{
+    //    if (inConstructor )
+    //    {
+
+    //        if (sentenceScrambleTab.buttonChoose != null)
+    //        {
+
+    //            variant = text.text;
+    //            sentenceScrambleTab.buttonChoose.variant = sentenceScrambleTab.buttonChoose.text.text;
+
+    //            //variant = sentenceScrambleTab.buttonChoose.text.text;
+    //            //sentenceScrambleTab.buttonChoose.variant = text.text;
+
+    //            //text.text = variant;
+    //            //sentenceScrambleTab.buttonChoose.text.text = sentenceScrambleTab.buttonChoose.variant;
+
+    //            if (sentenceScrambleTab.buttonChoose != GetComponent<ButtonSentence>())
+    //                GetComponent<Image>().color = Color.white;
+    //        }
+    //    }
+
+    //    if (thisbButton!=null)
+    //    {
+    //        if (!sentenceScrambleTab.buttonChoose)
+    //            sentenceScrambleTab.buttonChoose = GetComponent<ButtonSentence>();
+    //    }
+    //    thisbButton = null;
+
+    //}
+    //public void pointerUp()
+    //{
+    //    if (!inConstructor)
+    //    {
+    //        sentenceScrambleTab.SetVariant(variant);
+    //        GetComponent<Image>().color = Color.white;
+    //        gameObject.SetActive(false);
+    //        //Destroy(gameObject);
+    //        return;
+    //    }
+
+    //    if (inConstructor && !sentenceScrambleTab.buttonChoose && thisbButton)
+    //    {
+    //        gridController.Remove(this);
+    //        //sentenceScrambleTab.ReturnVariant(variant);
+
+    //        for (int i = 0; i < gridController.rowsChoose.Count; i++)
+    //        {
+    //            for (int j = 0; j < gridController.rowsChoose[i].word.Count; j++)
+    //            {
+    //                if (GetComponentInChildren<TextMeshProUGUI>().text == gridController.rowsChoose[i].word[j].GetComponentInChildren<TextMeshProUGUI>(true).text) 
+    //                {
+    //                    gridController.rowsChoose[i].word[j].gameObject.SetActive(true);
+    //                    gridController.rowsChoose[i].word[j].inConstructor = false;
+    //                    Debug.Log("Find");
+    //                }
+
+    //            }
+
+    //        }
+
+    //        Destroy(gameObject);
+
+    //        return;
+    //    }
+
+    //    if (inConstructor && sentenceScrambleTab.buttonChoose)
+    //    {
+    //        var buttonsSentence = FindObjectsOfType<ButtonSentence>();
+    //        for (int i = 0; i < buttonsSentence.Length; i++) 
+    //        {
+    //            buttonsSentence[i].GetComponent<Image>().color = Color.white;
+
+    //            if (buttonsSentence[i].text.text != buttonsSentence[i].variant)
+    //                buttonsSentence[i].text.text = buttonsSentence[i].variant;
+    //        }
+
+    //        sentenceScrambleTab.buttonChoose = null;
+    //        return;
+    //    }
+    //}
+    //public void pointerDown()
+    //{
+    //    GetComponent<Image>().color = Color.green;
+    //    thisbButton = this;
+    //}
 
 
 
@@ -126,14 +177,14 @@ public class ButtonSentence : MonoBehaviour
         //}
         if (buttonWidth != GetComponent<RectTransform>().rect.width)
         {
-
+            Debug.Log(9);
             if (inConstructor)
             {
-                gridController.UpdatePostions(gridController.rowsSentence);
+                //gridController.UpdatePostions(gridController.rowsSentence);
             }
             if (!inConstructor)
             {
-                gridController.UpdatePostions(gridController.rowsChoose);
+                gridController.UpdatePostionsWordChoose(gridController.rowsChoose);
             }
 
             buttonWidth = GetComponent<RectTransform>().rect.width;

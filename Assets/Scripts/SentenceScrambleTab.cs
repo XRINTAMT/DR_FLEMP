@@ -35,11 +35,12 @@ public class SentenceScrambleTab : MonoBehaviour
     public List<bool> completion;
     public string constructedSentenceTrue;
     public string constructedSentenceCheck;
-    List<string> allSentence = new List<string>();
+    public List<string> allWords = new List<string>();
     int indexList;
     [HideInInspector]
     public ButtonSentence buttonChoose;
     GridController gridController;
+    int index;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,7 +52,7 @@ public class SentenceScrambleTab : MonoBehaviour
     public void SetNewList() 
     {
 
-        allSentence.Clear();
+        allWords.Clear();
 
         textDescription.text = descriptions[indexList];
         //textConstructedSentence.text = "";
@@ -66,25 +67,36 @@ public class SentenceScrambleTab : MonoBehaviour
 
         for (int i = 0; i < solutionsList[indexList].solutions.Count; i++)
         {
-            allSentence.Add(solutionsList[indexList].solutions[i]);
+            allWords.Add(solutionsList[indexList].solutions[i]);
             constructedSentenceTrue = constructedSentenceTrue + " " + solutionsList[indexList].solutions[i];
         }
         for (int i = 0; i < additionalWordList[indexList].additionalWords.Count; i++)
         {
-            allSentence.Add(additionalWordList[indexList].additionalWords[i]);
+            allWords.Add(additionalWordList[indexList].additionalWords[i]);
         }
 
-        Shuffle(allSentence);
-
-       
-
-
-        for (int i = 0; i < allSentence.Count; i++)
-        {
-            var button = gridController.InstantiateWordChoose(buttonSentenceConstructorPrefab, allSentence[i]);
-        }
-
+        Shuffle(allWords);
+        InstNewWordChoose();
+        //for (int i = 0; i < allWords.Count; i++)
+        //{
+        //    gridController.InstantiateWordChoose(buttonSentenceConstructorPrefab, allWords[i]);
+        //}
+        //gridController.CheckEmptyRow();
     }
+    public void InstNewWordChoose() 
+    {
+        if (index<6)
+        {
+            gridController.InstantiateWordChoose(buttonSentenceConstructorPrefab, allWords[index]);
+            index++;
+
+        }
+       
+    }
+
+
+
+
     public void SetVariant(string variant) 
     {
 
@@ -98,20 +110,20 @@ public class SentenceScrambleTab : MonoBehaviour
             constructedSentenceCheck = constructedSentenceCheck + " " + textMeshProUGUI.text;
 
     }
-    public void ReturnVariant(string variant)
-    {
-        //var button = Instantiate(buttonSentencePrefab, content);
-        var button = gridController.InstantiateWordChoose(buttonSentenceConstructorPrefab,variant);
-        button.GetComponent<ButtonSentence>().inConstructor = false;
+    //public void ReturnVariant(string variant)
+    //{
+    //    //var button = Instantiate(buttonSentencePrefab, content);
+    //    var button = gridController.InstantiateWordChoose(buttonSentenceConstructorPrefab,variant);
+    //    button.GetComponent<ButtonSentence>().inConstructor = false;
 
-        constructedSentenceCheck = "";
-        foreach (TextMeshProUGUI textMeshProUGUI in contentConstructor.GetComponentsInChildren<TextMeshProUGUI>())
-        {
-            if (textMeshProUGUI.text!=variant)
-                constructedSentenceCheck = constructedSentenceCheck + " " + textMeshProUGUI.text;
-        }
+    //    constructedSentenceCheck = "";
+    //    foreach (TextMeshProUGUI textMeshProUGUI in contentConstructor.GetComponentsInChildren<TextMeshProUGUI>())
+    //    {
+    //        if (textMeshProUGUI.text!=variant)
+    //            constructedSentenceCheck = constructedSentenceCheck + " " + textMeshProUGUI.text;
+    //    }
 
-    }
+    //}
 
 
     public void CheckSentence() 

@@ -25,27 +25,42 @@ namespace AICharacter
             openai = new OpenAIApi("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");
         }
 
-        // Update is called once per frame
         void Update()
         {
+
         }
 
         public static List<string> window(string s, int winsize)
         {
+            string[] _sentences = s.Split(".", StringSplitOptions.RemoveEmptyEntries);
+            int _sentenceIter = 0;
+            int _sentencesTotal = _sentences.Length;
             var res = new List<string>();
-            int halfWin = winsize/2;
-            for (var remaining = s.Length; remaining > 0; remaining -= halfWin)
+            while (_sentenceIter < _sentencesTotal)
             {
-                if (remaining > winsize)
+                int _currentWin = winsize;
+                int _currentSentence = _sentenceIter;
+                string _currentString = "";
+                while ((_currentWin > 0) && (_currentSentence < _sentencesTotal))
                 {
-                    res.Add(s.Substring(s.Length - remaining, winsize));
+                    _currentWin -= _sentences[_currentSentence].Trim().Length + 2;
+                    _currentString += _sentences[_currentSentence].Trim() + ". ";
+                    _currentSentence++;
                 }
-                else
+                if (((_currentSentence - _sentenceIter) == 1) || _currentSentence == _sentencesTotal)
                 {
-                    res.Add(s.Substring(s.Length - remaining, remaining));
+                    _currentSentence += 1;
                 }
-                
+                _sentenceIter = _currentSentence - 1;
+
+                res.Add(_currentString);
             }
+
+            foreach(string _currentString in res)
+            {
+                Debug.Log(_currentString);
+            }
+            
             return res;
         }
 

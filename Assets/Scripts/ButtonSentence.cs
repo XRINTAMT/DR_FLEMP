@@ -177,7 +177,6 @@ public class ButtonSentence : MonoBehaviour
         //}
         if (buttonWidth != GetComponent<RectTransform>().rect.width)
         {
-            Debug.Log(9);
             if (inConstructor)
             {
                 //gridController.UpdatePostions(gridController.rowsSentence);

@@ -17,7 +17,7 @@ public class HeadCharacterFollow : MonoBehaviour
     Quaternion startRot;
     float m_LookAtWeight = 0;
     protected Animator m_Animator;
-    bool inArea;
+    public bool inArea;
    
 
     void Start()

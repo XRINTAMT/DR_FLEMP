@@ -11,6 +11,9 @@ public class ChecklistMechanic : MonoBehaviour
     public int[] correctAnswers;
     [SerializeField] Toggle[] checkBoxes;
     [SerializeField] string scenarioName;
+    [SerializeField] string scenarioTag;
+    [SerializeField] GameObject ScorePanel;
+    [SerializeField] Text ScoreText;
     public NurseTabletRecord[] TabletRecords;
     int[] givenAnswers;
     [HideInInspector]
@@ -76,7 +79,25 @@ public class ChecklistMechanic : MonoBehaviour
             //check in the answer is correct and probably save the score somewhere
         }
         //Everything is done
-        FindObjectOfType<PauseManager>().ShowMultiplayerOutro();
+        ShiftChangeFinishScreen _scfs = FindObjectOfType<ShiftChangeFinishScreen>(true);
+        if(_scfs != null)
+        {
+            FindObjectOfType<PauseManager>().ShowMultiplayerOutro();
+        }
+        PlayerPrefs.SetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + scenarioTag, 1);
+        ScorePanel.SetActive(true);
+        ScoreText.text = CalculateScore() + "/" + correctAnswers.Length;
+    }
+
+    private int CalculateScore()
+    {
+        int _score = 0;
+        for(int i = 0; i < correctAnswers.Length; i++)
+        {
+            if (correctAnswers[i] == givenAnswers[i])
+                _score++;
+        }
+        return _score;
     }
     public void EnableIndicate()
     {

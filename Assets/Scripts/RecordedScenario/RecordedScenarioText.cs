@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Meta.WitAi.TTS.Utilities;
 
 namespace RecordedScenario
 {
@@ -23,15 +24,30 @@ namespace RecordedScenario
         public string[] Text;
     }
 
+    [System.Serializable]
+    public class SpeakerRef
+    {
+        public string Name;
+        public TTSSpeaker Speaker;
+        public void Speak(string _s)
+        {
+            Debug.Log("Speaker " + Name + "on gameobject " + Speaker.transform.parent.name + ">" + Speaker.name);
+            Speaker.Speak(_s);
+        }
+    }
+
     public class RecordedScenarioText : MonoBehaviour
     {
         [SerializeField] private string scenarioName;
         [SerializeField] private Text TranscriptTextbox;
         public bool PlayOnAwake;
+        public int PlayOnAwakeTimeout;
         [SerializeField] private List<Phrase> Phrases;
+        [SerializeField] private List<SpeakerRef> Speakers;
         private int previousTimeElapsed;
         private float TimeElapsed;
         private bool running;
+        public float TestScenarioSpeed = 1;
         
         // Start is called before the first frame update
         void Start()
@@ -55,22 +71,30 @@ namespace RecordedScenario
                 }
                 Phrases.Add(new Phrase(_row[0], _row[1] != "0", _timecodes, _texts));
             }
-            running = PlayOnAwake;
+            if (PlayOnAwake)
+                Invoke("Play", PlayOnAwakeTimeout);
         }
 
         private void ProcessTick(int _tickNumber)
         {
             foreach(Phrase _phrase in Phrases)
             {
-                if(_phrase.Timecode[0] == _tickNumber)
+                int _lang = 0;
+                if (_phrase.Timecode[_lang] == _tickNumber)
                 {
-                    string textToAdd = "<b>" + _phrase.Speaker + ":</b> " + _phrase.Text[0];
+                    string textToAdd = "<b>" + _phrase.Speaker + ":</b> " + _phrase.Text[_lang];
                     if (_phrase.Highlight)
                     {
                         textToAdd = "<i><color=#68FF9A>" + textToAdd + "</color></i>";
                     }
                     textToAdd += "\n";
                     TranscriptTextbox.text += textToAdd;
+                    //_phrase.Speaker
+                    SpeakerRef _speaker = Speakers.Find(a => a.Name == _phrase.Speaker);
+                    if (_speaker != null)
+                    {
+                        _speaker.Speak(_phrase.Text[_lang]);
+                    }
                 }
             }
         }
@@ -87,7 +111,7 @@ namespace RecordedScenario
 
         private void Tick()
         {
-            TimeElapsed += Time.deltaTime;
+            TimeElapsed += Time.deltaTime * TestScenarioSpeed;
             if(previousTimeElapsed < (int)TimeElapsed)
             {
                 previousTimeElapsed = (int)TimeElapsed;

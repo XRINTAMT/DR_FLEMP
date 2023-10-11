@@ -19,7 +19,6 @@ public class GridController : MonoBehaviour
     public float contentWidth;
     GameObject checkObj;
     bool setPos;
-    public ButtonSentence obj;
     // Start is called before the first frame update
     void Awake()
     {

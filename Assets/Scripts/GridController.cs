@@ -7,37 +7,27 @@ using UnityEngine;
 
 public class GridController : MonoBehaviour
 {
-    public List<RowSentence> rowsCheck = new List<RowSentence>();
-
+    public TextMeshProUGUI textDescription;
+    [HideInInspector]
     public List<RowSentence> rowsSentence = new List<RowSentence>();
-    //[SerializeField] List<Words> row =  new List<Words>();
+    [HideInInspector]
     public List<RowSentence> rowsChoose = new List<RowSentence>();
+    public Transform contentSentence;
+    public Transform contentChoose;
+    [SerializeField] ButtonSentence buttonWord;
     [SerializeField] RowSentence rowSentence;
     [SerializeField] RowSentence rowChoose;
-    [SerializeField] Transform contentSentence;
-    [SerializeField] Transform contentChoose;
-    public float contentWidth;
-    GameObject checkObj;
-    bool setPos;
+
+    [SerializeField] float contentWidth;
+    SentenceScrambleTab sentenceScrambleTab;
     // Start is called before the first frame update
     void Awake()
     {
-        SetNewRow(rowSentence);
-        SetNewRow(rowChoose);
+        sentenceScrambleTab = GetComponent<SentenceScrambleTab>();
+        rowsSentence.Add(Instantiate(rowSentence, contentSentence));
+        rowsChoose.Add(Instantiate(rowChoose, contentChoose));
     }
-
-    public float WordsLenghts(float instObgWidth)
-    {
-        float lenght = instObgWidth;
-
-        for (int i = 0; i < rowsSentence[rowsSentence.Count - 1].word.Count; i++)
-        {
-            lenght = lenght + rowsSentence[rowsSentence.Count - 1].word[i].GetComponent<RectTransform>().rect.width;
-        }
-        lenght = lenght + (2.5f * (rowsSentence[rowsSentence.Count - 1].word.Count - 1));
-        return lenght;
-
-    }
+   
 
     float GetRowLenght(RowSentence row)
     {
@@ -49,77 +39,22 @@ public class GridController : MonoBehaviour
         return lenght;
     }
 
-
-    //public float GetRowLenghts(ButtonSentence buttonSentence)
-    //{
-    //    List<RowSentence> rowsList = new List<RowSentence>();
-    //    int indexRow = 0;
-    //    float lenght = 0;
-
-    //    for (int i = 0; i < rowsSentence.Count; i++)
-    //    {
-    //        for (int j = 0; j < rowsSentence[i].GetComponent<RowSentence>().word.Count; j++)
-    //        {
-    //            if (rowsSentence[i].GetComponent<RowSentence>().word[j] == buttonSentence)
-    //            {
-    //                indexRow = i;
-    //                rowsList = rowsSentence;
-    //            }
-    //        }
-    //    }
-    //    for (int i = 0; i < rowsChoose.Count; i++)
-    //    {
-    //        for (int j = 0; j < rowsChoose[i].GetComponent<RowSentence>().word.Count; j++)
-    //        {
-    //            if (rowsChoose[i].GetComponent<RowSentence>().word[j] == buttonSentence)
-    //            {
-    //                indexRow = i;
-    //                rowsList = rowsChoose;
-    //            }
-    //        }
-    //    }
-
-    //    for (int i = 0; i < rowsList[indexRow].word.Count; i++)
-    //    {
-    //        lenght = lenght + rowsList[indexRow].word[i].GetComponent<RectTransform>().rect.width;
-    //    }
-    //    return lenght;
-    //}
-
-    public GameObject Instantiate(GameObject obj, string text)
+    public void InstantiateSentenceWord(string text)
     {
-        checkObj = null;
-        setPos = false;
-        GameObject newObj = null;
-
-        newObj = Instantiate(obj, transform);
-        newObj.GetComponentInChildren<TextMeshProUGUI>().text = text;
-
-        if (rowsSentence[rowsSentence.Count - 1].word.Count == 0)
-        {
-            //newObj=Instantiate(obj, row[row.Count - 1].spawnPoint.transform.position, Quaternion.identity, row[row.Count - 1].transform);
-            newObj.transform.position = rowsSentence[rowsSentence.Count - 1].spawnPoint.transform.position;
-            newObj.transform.parent = rowsSentence[rowsSentence.Count - 1].transform;
-            rowsSentence[rowsSentence.Count - 1].word.Add(newObj.GetComponent<ButtonSentence>());
-
-            return newObj;
-        }
-        if (rowsSentence[rowsSentence.Count - 1].word.Count != 0)
-        {
-            checkObj = newObj;
-        }
-
-        return newObj;
+        RowSentence rowSentence = rowsSentence[rowsSentence.Count - 1];
+        ButtonSentence word = Instantiate(buttonWord, rowSentence.spawnPoint.transform.parent);
+        word.GetComponent<ButtonSentence>().inSenntence = true;
+        word.GetComponentInChildren<TextMeshProUGUI>().text = text;
+        //rowSentence.word.Add(word.GetComponent<ButtonSentence>());
+        //sentenceScrambleTab.UpdateSentence();
     }
 
-    public GameObject InstantiateWordChoose(GameObject obj, string text)
+    public void InstantiateWordChoose(string text)
     {
-        RowSentence rowSentence = rowsChoose[rowsChoose.Count - 1];
-        GameObject word = Instantiate(obj, rowSentence.spawnPoint.transform.parent);
+        RowSentence rowChoose = rowsChoose[rowsChoose.Count - 1];
+        ButtonSentence word = Instantiate(buttonWord, rowChoose.spawnPoint.transform.parent);
         word.GetComponentInChildren<TextMeshProUGUI>().text = text;
-        rowSentence.word.Add(word.GetComponent<ButtonSentence>());
-
-        return word;
+        rowChoose.word.Add(word.GetComponent<ButtonSentence>());
     }
     public void Remove(ButtonSentence buttonSentence)
     {
@@ -133,7 +68,7 @@ public class GridController : MonoBehaviour
                     rowsSentence[i].word.RemoveAt(j);
                     if (i== rowsSentence.Count-1)
                     {
-                        if (rowsSentence[i].word.Count == 0)
+                        if (rowsSentence[i].word.Count == 0 && i>0)
                         {
                             Destroy(rowsSentence[i].gameObject);
                             rowsSentence.Remove(rowsSentence[i]);
@@ -161,85 +96,10 @@ public class GridController : MonoBehaviour
                         }
                     }
                 }
-
             }
         }
-
     }
 
-
-    //public void Remove(ButtonSentence obj)
-    //{
-    //    this.obj = obj;
-
-    //    for (int i = 0; i < rowsSentence.Count; i++)
-    //    {
-    //        for (int j = 0; j < rowsSentence[i].word.Count; j++)
-    //        {
-    //            if (rowsSentence[i].word[j] == obj)
-    //            {
-    //                rowsSentence[i].word.RemoveAt(j);
-    //                //Destroy(obj.gameObject);
-
-    //                if (j - 1 == rowsSentence[i].word.Count - 1)
-    //                {
-    //                    if (i != rowsSentence.Count - 1)
-    //                    {
-    //                        UpdatePostionsToPrevRow(i);
-    //                        Destroy(obj);
-
-    //                    }
-    //                    return;
-    //                }
-    //                if (j - 1 < rowsSentence[i].word.Count - 1)
-    //                {
-    //                    if (i != rowsSentence.Count - 1)
-    //                    {
-    //                        UpdatePostionsToPrevRow(i);
-    //                    }
-    //                    if (i == rowsSentence.Count - 1)
-    //                    {
-    //                        UpdatePostions();
-    //                        Destroy(obj);
-    //                    }
-
-    //                }
-    //            }
-
-
-
-    //            //if ((j - 1) >= 0)
-    //            //{
-    //            //    row[i].word[j].transform.position = row[i].word[j - 1].spawnPoint.transform.position;
-    //            //    return;
-    //            //}
-    //            //if ((j - 1) >= 0)
-    //            //{
-    //            //    row[i].word[j].transform.position = row[i].spawnPoint.transform.position;
-    //            //    return;
-    //            //}
-
-    //        }
-    //    }
-    //    //CheckEmptyRow();
-
-
-
-    //}
-    //public void CheckEmptyRow() 
-    //{
-    //    Debug.Log(33);
-    //    for (int i = 0; i < rowsSentence.Count; i++)
-    //    {
-    //        Debug.Log(44);
-    //        if (rowsSentence[i].word.Count == 0)
-    //        {
-    //            Debug.Log(55);
-    //            Destroy(rowsSentence[i].gameObject);
-    //            rowsSentence.RemoveAt(i);
-    //        }
-    //    }
-    //}
     public void UpdatePostions() 
     {
         for (int i = 0; i < rowsSentence.Count; i++)
@@ -247,14 +107,9 @@ public class GridController : MonoBehaviour
             for (int j = 0; j < rowsSentence[i].word.Count; j++)
             {
                 if (j == 0)
-                {
                     rowsSentence[i].word[j].transform.position = rowsSentence[i].spawnPoint.transform.position;
-                }
                 else
-                {
                     rowsSentence[i].word[j].transform.position = rowsSentence[i].word[j - 1].spawnPoint.transform.position;
-                }
-
             }
         }
     }
@@ -270,15 +125,13 @@ public class GridController : MonoBehaviour
                         row[i].word[j].transform.position = row[i].spawnPoint.transform.position;
                     else
                         row[i].word[j].transform.position = row[i].word[j - 1].spawnPoint.transform.position;
-
                 }
                 row[i].spawnPoint.transform.parent.transform.localPosition = new Vector3(GetRowLenght(row[i])  / -2, 0, 0);
             }
 
-            
             if (GetRowLenght(row[i]) >= contentWidth)
             {
-                SetNewRow(rowChoose);
+                rowsChoose.Add(Instantiate(rowChoose, contentChoose));
                 row[i].word[row[i].word.Count - 1].transform.parent = row[i+1].spawnPoint.transform.parent;
                 row[i].word[row[i].word.Count - 1].transform.position = row[i+1].spawnPoint.transform.position;
 
@@ -287,125 +140,42 @@ public class GridController : MonoBehaviour
             }
         }
 
-
-        GetComponent<SentenceScrambleTab>().InstNewWordChoose();
-        //if (rowsChoose.Count < GetComponent<SentenceScrambleTab>().allWords.Count)
-        //{
-        //    GetComponent<SentenceScrambleTab>().InstNewWordChoose(rowsChoose.Count - 1);
-        //}
+        if (rowsChoose[rowsChoose.Count-1].word.Count==0)
+        {
+            Destroy(rowsChoose[rowsChoose.Count - 1].gameObject);
+            rowsChoose.RemoveAt(rowsChoose.Count - 1);
+        }
     }
+   
 
-
-
-
-    //void UpdatePostionsToPrevRow(int rowIndex)
-    //{
-    //    if (GetRowLenght(rowIndex) + rowsSentence[rowIndex + 1].word[0].GetComponent<RectTransform>().rect.width < contentWidth)
-    //    {
-    //        rowsSentence[rowIndex + 1].word[0].transform.parent = rowsSentence[rowIndex].transform;
-    //        rowsSentence[rowIndex + 1].word[0].transform.position = rowsSentence[rowIndex].word[rowsSentence[rowIndex].word.Count - 1].spawnPoint.transform.position;
-    //        rowsSentence[rowIndex].word.Add(rowsSentence[rowIndex + 1].word[0]);
-    //        rowsSentence[rowIndex + 1].word.RemoveAt(0);
-
-    //        UpdatePostions();
-    //    }
-    //    else
-    //    {
-    //        UpdatePostions();
-    //    }
-    //}
-
-
-    public void SetNewRow() 
+    public void UpdatePostionsNewWordSentence(RowSentence row, ButtonSentence word)
     {
-        rowsSentence.Add(Instantiate(rowSentence, contentSentence));
-    }
-  
+        if (contentWidth > GetRowLenght(row))
+        {
+            if (rowsSentence[rowsSentence.Count - 1].word.Count==0)
+                word.transform.position = rowsSentence[rowsSentence.Count - 1].spawnPoint.transform.position;
+            else
+                word.transform.position = rowsSentence[rowsSentence.Count - 1].word[rowsSentence[rowsSentence.Count - 1].word.Count - 1].spawnPoint.transform.position;
+           
+            word.transform.parent = rowsSentence[rowsSentence.Count - 1].transform;
+            rowsSentence[rowsSentence.Count - 1].word.Add(word.GetComponent<ButtonSentence>());
 
-    public void SetNewRow(RowSentence row)
-    {
-        if (rowSentence.gameObject == row.gameObject)
+            sentenceScrambleTab.UpdateSentence();
+            return;
+
+        }
+        if (contentWidth < GetRowLenght(row))
+        {
             rowsSentence.Add(Instantiate(rowSentence, contentSentence));
 
-        if (rowChoose.gameObject==row.gameObject)
-            rowsChoose.Add(Instantiate(rowChoose, contentChoose));
-      
-    }
-    IEnumerator UpdateInstantPos(GameObject word, RowSentence rowSentence, bool constructor)
-    {
-        yield return new WaitForEndOfFrame();
-        if (constructor)
-        {
-            if (contentWidth > WordsLenghts(word.GetComponent<RectTransform>().rect.width))
-            {
-                word.transform.position = rowsSentence[rowsSentence.Count - 1].word[rowsSentence[rowsSentence.Count - 1].word.Count - 1].spawnPoint.transform.position;
-                word.transform.parent = rowsSentence[rowsSentence.Count - 1].transform;
-                rowsSentence[rowsSentence.Count - 1].word.Add(word.GetComponent<ButtonSentence>());
+            word.transform.position = rowsSentence[rowsSentence.Count - 1].spawnPoint.transform.position;
+            word.transform.parent = rowsSentence[rowsSentence.Count - 1].transform;
+            rowsSentence[rowsSentence.Count - 1].word.Add(word.GetComponent<ButtonSentence>());
 
-            }
-            if (contentWidth < WordsLenghts(word.GetComponent<RectTransform>().rect.width))
-            {
-                SetNewRow();
-                word.transform.position = rowsSentence[rowsSentence.Count - 1].spawnPoint.transform.position;
-                word.transform.parent = rowsSentence[rowsSentence.Count - 1].transform;
-                rowsSentence[rowsSentence.Count - 1].word.Add(word.GetComponent<ButtonSentence>());
-            }
+            sentenceScrambleTab.UpdateSentence();
+            return;
         }
-        if (!constructor)
-        {
-            word.transform.position = rowSentence.word[rowSentence.word.Count - 1].spawnPoint.transform.position;
-            word.transform.parent = rowSentence.spawnPoint.transform.parent;
-            rowSentence.word.Add(word.GetComponent<ButtonSentence>());
-
-            //if (contentWidth > WordsLenghts(word.GetComponent<RectTransform>().rect.width, rowSentence))
-            //{
-            //    word.transform.position = rowSentence.word[rowSentence.word.Count - 1].spawnPoint.transform.position;
-            //    word.transform.parent = rowSentence.spawnPoint.transform.parent;
-            //    rowSentence.word.Add(word.GetComponent<ButtonSentence>());
-
-            //}
-            //if (contentWidth < WordsLenghts(word.GetComponent<RectTransform>().rect.width,rowSentence))
-            //{
-            //    SetNewRow();
-            //    word.transform.position = rowChoose[rowChoose.Count - 1].spawnPoint.transform.position;
-            //    word.transform.parent = rowChoose[rowChoose.Count - 1].spawnPoint.transform.parent;
-            //    rowChoose[rowChoose.Count - 1].word.Add(word.GetComponent<ButtonSentence>());
-            //}
-
-            //rowChoose[rowChoose.Count - 1].spawnPoint.transform.parent.transform.position = new Vector3(WordsLenghts(word.GetComponent<RectTransform>().rect.width, rowSentence) / 2, 0, 0);
-        }
-
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
-        if (checkObj && checkObj.GetComponent<RectTransform>().rect.width>0 && !setPos)
-        {
-            if (contentWidth > WordsLenghts(checkObj.GetComponent<RectTransform>().rect.width))
-            {
-                //newObj=Instantiate(obj, row[row.Count - 1].word[row[row.Count - 1].word.Count - 1].spawnPoint.transform.position, Quaternion.identity, row[row.Count - 1].transform);
-                checkObj.transform.position = rowsSentence[rowsSentence.Count - 1].word[rowsSentence[rowsSentence.Count - 1].word.Count - 1].spawnPoint.transform.position;
-                checkObj.transform.parent = rowsSentence[rowsSentence.Count - 1].transform;
-                rowsSentence[rowsSentence.Count - 1].word.Add(checkObj.GetComponent<ButtonSentence>());
-                setPos = true;
-                return;
-
-            }
-            if (contentWidth < WordsLenghts(checkObj.GetComponent<RectTransform>().rect.width))
-            {
-                SetNewRow();
-                //newObj=Instantiate(obj, row[row.Count - 1].spawnPoint.transform.position, Quaternion.identity, row[row.Count - 1].transform);
-                checkObj.transform.position = rowsSentence[rowsSentence.Count - 1].spawnPoint.transform.position;
-                checkObj.transform.parent = rowsSentence[rowsSentence.Count - 1].transform;
-                rowsSentence[rowsSentence.Count - 1].word.Add(checkObj.GetComponent<ButtonSentence>());
-                setPos = true;
-                return;
-
-            }
-        }
-
-
-    }
 }

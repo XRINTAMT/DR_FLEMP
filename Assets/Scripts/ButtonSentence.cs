@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ButtonSentence : MonoBehaviour
 {
     public TextMeshProUGUI text;
-    public bool inConstructor;
+    public bool inSenntence;
     SentenceScrambleTab sentenceScrambleTab;
     public string variant;
     public GameObject spawnPoint;
@@ -28,10 +28,9 @@ public class ButtonSentence : MonoBehaviour
 
     void OnClick() 
     {
-        if (inConstructor)
+        if (inSenntence)
         {
             gridController.Remove(this);
-
             for (int i = 0; i < gridController.rowsChoose.Count; i++)
             {
                 for (int j = 0; j < gridController.rowsChoose[i].word.Count; j++)
@@ -39,20 +38,19 @@ public class ButtonSentence : MonoBehaviour
                     if (GetComponentInChildren<TextMeshProUGUI>().text == gridController.rowsChoose[i].word[j].GetComponentInChildren<TextMeshProUGUI>(true).text)
                     {
                         gridController.rowsChoose[i].word[j].gameObject.SetActive(true);
-                        gridController.rowsChoose[i].word[j].inConstructor = false;
+                        gridController.rowsChoose[i].word[j].inSenntence = false;
+                        sentenceScrambleTab.UpdateSentence();
                     }
-
                 }
-
             }
         }
 
-        if (!inConstructor)
+        if (!inSenntence)
         {
-            sentenceScrambleTab.SetVariant(variant);
+            //sentenceScrambleTab.SetVariant(variant);
+            gridController.InstantiateSentenceWord(variant);
             GetComponent<Image>().color = Color.white;
             gameObject.SetActive(false);
-            //Destroy(gameObject);
             return;
         }
 
@@ -177,14 +175,10 @@ public class ButtonSentence : MonoBehaviour
         //}
         if (buttonWidth != GetComponent<RectTransform>().rect.width)
         {
-            if (inConstructor)
-            {
-                //gridController.UpdatePostions(gridController.rowsSentence);
-            }
-            if (!inConstructor)
-            {
+            if (inSenntence)
+                gridController.UpdatePostionsNewWordSentence(gridController.rowsSentence[gridController.rowsSentence.Count-1],this);
+            if (!inSenntence)
                 gridController.UpdatePostionsWordChoose(gridController.rowsChoose);
-            }
 
             buttonWidth = GetComponent<RectTransform>().rect.width;
         }

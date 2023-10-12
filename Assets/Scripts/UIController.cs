@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Audio;
-//using Assets.SimpleLocalization;
+using Assets.SimpleLocalization;
 
 
 public class UIController : MonoBehaviour
@@ -59,7 +59,7 @@ public class UIController : MonoBehaviour
         teleport = PlayerPrefs.GetInt("MovementType", 0);
         language = PlayerPrefs.GetString("Language", "English");
         role = PlayerPrefs.GetString("Role", "Assistant");
-        //LocalizationManager.Language = language;
+        LocalizationManager.Language = language;
         teleportChosen.SetActive(teleport == 0);
         smoothChosen.SetActive(teleport == 1);
         mixedChosen.SetActive(teleport == 2);
@@ -121,7 +121,7 @@ public class UIController : MonoBehaviour
     {
         language = lang;
         PlayerPrefs.SetString("Language", lang);
-        //LocalizationManager.Language = language;
+        LocalizationManager.Language = language;
         englishChosen.SetActive(language == "English");
         germanChosen.SetActive(language == "German");
         lithuanianChosen.SetActive(language == "Lithuanian");

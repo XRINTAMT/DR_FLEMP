@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using Meta.WitAi.TTS.Utilities;
 
 namespace RecordedScenario
@@ -39,9 +40,11 @@ namespace RecordedScenario
     public class RecordedScenarioText : MonoBehaviour
     {
         [SerializeField] private string scenarioName;
-        [SerializeField] private Text TranscriptTextbox;
+        [SerializeField] private Text TranscriptTextbox;   
         public bool PlayOnAwake;
         public int PlayOnAwakeTimeout;
+        public int ScenarioEndTimeout; //Timeout after the last phrase in the scenario is played
+        [SerializeField] private UnityEvent OnScenarioEnd;
         [SerializeField] private List<Phrase> Phrases;
         [SerializeField] private List<SpeakerRef> Speakers;
         private int previousTimeElapsed;
@@ -95,8 +98,18 @@ namespace RecordedScenario
                     {
                         _speaker.Speak(_phrase.Text[_lang]);
                     }
+                    if (_phrase.Equals(Phrases[Phrases.Count - 1]))
+                    {
+                        Debug.Log("Scenario ended...");
+                        Invoke("End", ScenarioEndTimeout);
+                    }
                 }
             }
+        }
+
+        private void End()
+        {
+            OnScenarioEnd.Invoke();
         }
 
         public void Play()

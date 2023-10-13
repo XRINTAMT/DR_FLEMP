@@ -18,117 +18,101 @@ public class AdditionalWordsList
 {
     public List<string> additionalWords = new List<string>();
 }
+
 public class SentenceScrambleTab : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI textDescription;
-    [SerializeField] TextMeshProUGUI textConstructedSentence;
-    [SerializeField] GameObject buttonSentencePrefab;
-
-    [SerializeField] Transform contentConstructor;
-
-    [SerializeField] Transform content;
-
-    public List<string> descriptions = new List<string>();
-    public List<SolutionsList> solutionsList = new List<SolutionsList>();
-    public List<AdditionalWordsList> additionalWordList = new List<AdditionalWordsList>();
-    //[HideInInspector]
-    public List<bool> completion;
-    public string constructedSentenceTrue;
-    public string constructedSentenceCheck;
-    List<string> allSentence = new List<string>();
-    int indexList;
+    List<string> descriptions = new List<string>();
+    List<SolutionsList> solutionsList = new List<SolutionsList>();
+    List<AdditionalWordsList> additionalWordList = new List<AdditionalWordsList>();
     [HideInInspector]
-    public Button buttonChoose;
+    public List<string> allWords = new List<string>();
+    string correctSentence;
+    string sentence;
+    List<bool> completion;
+    int indexList;    
+    GridController gridController;
 
     // Start is called before the first frame update
     void Start()
     {
+        gridController = GetComponent<GridController>();
+        Parse();
         SetNewList();
+        for (int i = 0; i < allWords.Count; i++)
+            gridController.InstantiateWordChoose(allWords[i]);
     }
+    void Parse() 
+    {
+        CSVParser cSVParser = new CSVParser("Scenarios/" + "B12_Recorded" + "/B12_Sentence_Construction");
 
-    public void SetNewList() 
+        for (int i = 1; i < cSVParser.rowData.Count; i++)
+        {
+            descriptions.Add(cSVParser.rowData[i][0]);
+            solutionsList.Add(new SolutionsList());
+            additionalWordList.Add(new AdditionalWordsList());
+        }
+        for (int i = 1; i < cSVParser.rowData.Count; i++)
+        {
+            string inputString = cSVParser.rowData[i][1];
+            var words = inputString.Split(' ');
+
+            for (int j = 0; j < words.Length; j++)
+                solutionsList[i - 1].solutions.Add(words[j]);
+        }
+        for (int i = 1; i < cSVParser.rowData.Count; i++)
+        {
+            string inputString = cSVParser.rowData[i][2];
+            var words = inputString.Split(' ');
+
+            for (int j = 0; j < words.Length; j++)
+                additionalWordList[i - 1].additionalWords.Add(words[j]);
+        }
+    }
+    void SetNewList() 
     {
 
-        allSentence.Clear();
+        allWords.Clear();
 
-        textDescription.text = descriptions[indexList];
-        //textConstructedSentence.text = "";
-        constructedSentenceTrue = "";
-        constructedSentenceCheck = "";
+        gridController.textDescription.text = descriptions[indexList];
+        correctSentence = "";
+        sentence = "";
 
-        foreach (var buttons in contentConstructor.GetComponentsInChildren<Button>())
+        foreach (var buttons in gridController.contentSentence.GetComponentsInChildren<Button>())
             Destroy(buttons.gameObject);
-        foreach (var buttons in content.GetComponentsInChildren<Button>())
+        foreach (var buttons in gridController.contentChoose.GetComponentsInChildren<Button>())
             Destroy(buttons.gameObject);
 
 
         for (int i = 0; i < solutionsList[indexList].solutions.Count; i++)
         {
-            allSentence.Add(solutionsList[indexList].solutions[i]);
-            constructedSentenceTrue = constructedSentenceTrue + " " + solutionsList[indexList].solutions[i];
+            allWords.Add(solutionsList[indexList].solutions[i]);
+            correctSentence = correctSentence + " " + solutionsList[indexList].solutions[i];
         }
         for (int i = 0; i < additionalWordList[indexList].additionalWords.Count; i++)
         {
-            allSentence.Add(additionalWordList[indexList].additionalWords[i]);
+            allWords.Add(additionalWordList[indexList].additionalWords[i]);
         }
 
-        Shuffle(allSentence);
-
-       
-
-
-        for (int i = 0; i < allSentence.Count; i++)
-        {
-            var button = Instantiate(buttonSentencePrefab, content);
-            button.GetComponentInChildren<TextMeshProUGUI>().text = allSentence[i];
-        }
-
+        Shuffle(allWords);
     }
-    public void SetVariant(string variant) 
+  
+    public void UpdateSentence()
     {
-
-        var button = Instantiate(buttonSentencePrefab, contentConstructor);
-        button.GetComponentInChildren<TextMeshProUGUI>().text = variant;
-        button.GetComponent<ButtonSentence>().inConstructor = true;
-        //textConstructedSentence.text = textConstructedSentence.text + " " + variant;
-
-        constructedSentenceCheck = "";
-        foreach (TextMeshProUGUI textMeshProUGUI in contentConstructor.GetComponentsInChildren<TextMeshProUGUI>())
+        sentence = "";
+        for (int i = 0; i < gridController.rowsSentence.Count; i++)
         {
-            constructedSentenceCheck = constructedSentenceCheck + " " + textMeshProUGUI.text;
+            for (int j = 0; j < gridController.rowsSentence[i].word.Count; j++)
+                sentence = sentence + " " + gridController.rowsSentence[i].word[j].variant;
         }
-
     }
-    public void ReturnVariant(string variant)
-    {
-        var button = Instantiate(buttonSentencePrefab, content);
-        button.GetComponentInChildren<TextMeshProUGUI>().text = variant;
-
-        button.GetComponent<ButtonSentence>().inConstructor = false;
-        //textConstructedSentence.text = textConstructedSentence.text + " " + variant;
-        constructedSentenceCheck = "";
-        foreach (TextMeshProUGUI textMeshProUGUI in contentConstructor.GetComponentsInChildren<TextMeshProUGUI>())
-        {
-            if (textMeshProUGUI.text!=variant)
-            {
-                constructedSentenceCheck = constructedSentenceCheck + " " + textMeshProUGUI.text;
-            }
-        }
-
-    }
-
-
     public void CheckSentence() 
     {
-        if (constructedSentenceCheck == constructedSentenceTrue)
-        {
+        if (sentence == correctSentence)
             completion[indexList] = true;
-        }
         indexList++;
         SetNewList();
     }
-
-    public void Shuffle<T>(List<T> values)
+    void Shuffle<T>(List<T> values)
     {
         System.Random rand = new System.Random();
 
@@ -140,7 +124,4 @@ public class SentenceScrambleTab : MonoBehaviour
             values[i] = value;
         }
     }
-
-  
-
 }

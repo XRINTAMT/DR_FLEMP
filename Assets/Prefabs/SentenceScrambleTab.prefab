@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00000667572, y: -0.00019073486}
+  m_AnchoredPosition: {x: -0.00000667572, y: -0.000010117888}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1106431058312974179
@@ -70,7 +70,7 @@ MonoBehaviour:
     m_Top: 5
     m_Bottom: 5
   m_ChildAlignment: 1
-  m_Spacing: 5
+  m_Spacing: 1
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -716,8 +716,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3756842200684454925}
   m_HandleRect: {fileID: 8631284569316402780}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 0.9997789
+  m_Value: 1
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1501,7 +1501,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 6469368698259579075}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.99980867
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1556,6 +1556,8 @@ GameObject:
   - component: {fileID: 6469368699364206258}
   - component: {fileID: 6469368699364206259}
   - component: {fileID: 6469368699364206156}
+  - component: {fileID: 323291684}
+  - component: {fileID: 446108717}
   m_Layer: 5
   m_Name: SentenceScrambleTab
   m_TagString: Untagged
@@ -1659,63 +1661,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 121b25b3c9a6ca146a981c5bfe823157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allWords: []
+--- !u!114 &323291684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6469368699364206157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d534ea9fb5a0042b5c3f981219fd50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   textDescription: {fileID: 6469368698678835467}
-  textConstructedSentence: {fileID: 6469368700137347133}
-  buttonSentencePrefab: {fileID: 3914236934285060648, guid: 65706e9778c84604b901b38beb0959b3, type: 3}
-  contentConstructor: {fileID: 6834543470810392416}
-  content: {fileID: 6469368699647899159}
-  descriptions:
-  - Description1
-  - Description2
-  - Description3
-  - Description4
-  - Description5
-  solutionsList:
-  - solutions:
-    - Solution1
-    - Solution2
-    - Solution3
-  - solutions:
-    - Solution1
-    - Solution2
-    - Solution3
-  - solutions:
-    - Solution1
-    - Solution2
-    - Solution3
-  - solutions:
-    - Solution1
-    - Solution2
-    - Solution3
-  - solutions:
-    - Solution1
-    - Solution2
-    - Solution3
-  additionalWordList:
-  - additionalWords:
-    - AddWord1
-    - AddWord2
-    - AddWord3
-  - additionalWords:
-    - AddWord1
-    - AddWord2
-    - AddWord3
-  - additionalWords:
-    - AddWord1
-    - AddWord2
-    - AddWord3
-  - additionalWords:
-    - AddWord1
-    - AddWord2
-    - AddWord3
-  - additionalWords:
-    - AddWord1
-    - AddWord2
-    - AddWord3
-  completion: 0000000000
-  constructedSentenceTrue: 
-  constructedSentenceCheck: 
-  buttonChoose: {fileID: 0}
+  rowsSentence: []
+  rowsChoose: []
+  contentSentence: {fileID: 6834543470810392416}
+  contentChoose: {fileID: 6469368699647899159}
+  buttonWord: {fileID: 6030794198359974668, guid: 5411df1f10fa5094fa0ef404a48e1c20, type: 3}
+  rowSentence: {fileID: -7116838112211549172, guid: e4fc79f438b862d4a8068a747ccab5f1, type: 3}
+  rowChoose: {fileID: -7116838112211549172, guid: c2484f4d4b41bcc41b227095cec04870, type: 3}
+  contentWidth: 75
+--- !u!114 &446108717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6469368699364206157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf2546973275f4caa0511552ee3aef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TableId: 1c_ecC0Tvjr_Utn4QzOhvp4gJUyny6kE1VE5J2wO7VNA
+  Sheets:
+  - Name: B12_Sentence_Construction
+    Id: 849638291
+  SaveFolder: {fileID: 102900000, guid: 7e679f8792f5c7f4fbe8abc7e60469d4, type: 3}
 --- !u!1 &6469368699431161700
 GameObject:
   m_ObjectHideFlags: 0
@@ -1902,7 +1886,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00000667572, y: 0.0023572296}
+  m_AnchoredPosition: {x: -0.00000667572, y: 0.0000056168064}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6469368699647899158
@@ -1937,7 +1921,7 @@ MonoBehaviour:
     m_Top: 5
     m_Bottom: 5
   m_ChildAlignment: 1
-  m_Spacing: 5
+  m_Spacing: 1
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0

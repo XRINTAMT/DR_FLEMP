@@ -14,7 +14,7 @@ public class SpawnPlayers : MonoBehaviour
     {
         int randPoint = Random.Range(0, spawnPoint.Count);
 
-        if (!PhotonManager._viewerApp)
+        if (!PhotonManager._viewerApp && PhotonManager.onlineMode)
         {
             PlayerInfo _PI = PhotonNetwork.Instantiate(photonPlayer.name, spawnPoint[randPoint].position, spawnPoint[randPoint].rotation).GetComponent<PlayerInfo>();
             if (player != null)
@@ -24,7 +24,7 @@ public class SpawnPlayers : MonoBehaviour
             
         }
 
-        if (PhotonManager._viewerApp) 
+        if (PhotonManager._viewerApp && PhotonManager.onlineMode) 
         {
             if (player != null)
                 Instantiate(player, spawnPoint[randPoint].position, spawnPoint[randPoint].rotation);

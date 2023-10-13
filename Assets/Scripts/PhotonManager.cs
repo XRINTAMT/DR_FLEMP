@@ -17,6 +17,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public bool automaticJoinRoom;
     public bool viewerApp;
     public static bool _viewerApp;
+    public static bool onlineMode;
     void Start()
     {
         roomOptions.MaxPlayers = (byte)maxPlayers;
@@ -57,6 +58,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         if (!PhotonNetwork.IsConnected)
             return;
+        onlineMode = true;
         PhotonNetwork.JoinRandomRoom();
     }
 
@@ -82,6 +84,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public override void OnCreatedRoom()
     {
         SceneManager.LoadScene("MultiplayerScene");
+        onlineMode = true;
         Debug.Log("Create room");
     }
     public override void OnJoinRandomFailed(short returnCode, string message)

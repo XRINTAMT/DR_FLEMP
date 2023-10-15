@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 [Serializable]
 public class SolutionsList
@@ -31,6 +32,7 @@ public class SentenceScrambleTab : MonoBehaviour
     List<bool> completion;
     int indexList;    
     GridController gridController;
+    [SerializeField] UnityEvent OnCompletion;
 
     // Start is called before the first frame update
     void Start()
@@ -109,8 +111,19 @@ public class SentenceScrambleTab : MonoBehaviour
     {
         if (sentence == correctSentence)
             completion[indexList] = true;
+        CheckCompletion();
         indexList++;
         SetNewList();
+    }
+
+    private void CheckCompletion()
+    {
+        for (int i = 0; i < completion.Count; i++)
+        {
+            if (!completion[i])
+                return;
+        }
+        OnCompletion.Invoke();
     }
     void Shuffle<T>(List<T> values)
     {

@@ -24,6 +24,11 @@ public class ButtonSentence : MonoBehaviour
         gridController = FindObjectOfType<GridController>();
         buttonWidth = GetComponent<RectTransform>().rect.width;
         GetComponent<Button>().onClick.AddListener(OnClick);
+        Debug.Log(buttonWidth);
+        if (inSenntence)
+            gridController.UpdatePostionsNewWordSentence(gridController.rowsSentence[gridController.rowsSentence.Count - 1], this);
+        if (!inSenntence)
+            gridController.UpdatePostionsWordChoose(gridController.rowsChoose);
     }
 
     void OnClick() 

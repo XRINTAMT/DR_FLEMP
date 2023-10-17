@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using Meta.WitAi.TTS.Utilities;
+using System;
 
 namespace RecordedScenario
 {
@@ -44,6 +45,7 @@ namespace RecordedScenario
         public bool PlayOnAwake;
         public int PlayOnAwakeTimeout;
         public int ScenarioEndTimeout; //Timeout after the last phrase in the scenario is played
+        public Action <string> speakAction;
         [SerializeField] private UnityEvent OnScenarioEnd;
         [SerializeField] private List<Phrase> Phrases;
         [SerializeField] private List<SpeakerRef> Speakers;
@@ -97,6 +99,7 @@ namespace RecordedScenario
                     if (_speaker != null)
                     {
                         _speaker.Speak(_phrase.Text[_lang]);
+                        speakAction?.Invoke(_speaker.Name);
                     }
                     if (_phrase.Equals(Phrases[Phrases.Count - 1]))
                     {

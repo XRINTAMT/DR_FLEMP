@@ -63,23 +63,29 @@ namespace RecordedScenario
 
     public class RecordedScenarioText : MonoBehaviour
     {
-        [SerializeField] private string scenarioName;
-        [SerializeField] private Text TranscriptTextbox;   
+        [SerializeField] private string scenarioName;  
         public bool PlayOnAwake;
         public int PlayOnAwakeTimeout;
         public int ScenarioEndTimeout; //Timeout after the last phrase in the scenario is played
         [SerializeField] private UnityEvent OnScenarioEnd;
-        [SerializeField] private List<Phrase> Phrases;
         [SerializeField] private List<SpeakerRef> Speakers;
-        [SerializeField] private List<AnimationCall> AnimationCalls;
         [SerializeField] private List<AnimationEntity> AnimationEntities;
+        [SerializeField] private Text TranscriptTextbox;
         private int previousTimeElapsed;
         private float TimeElapsed;
         private bool running;
-        public float TestScenarioSpeed = 1;
-        
+        [SerializeField] private float TestScenarioSpeed = 1;
+        [SerializeField] private List<Phrase> Phrases;
+        [SerializeField] private List<AnimationCall> AnimationCalls;
+
         // Start is called before the first frame update
         void Start()
+        {
+            if (PlayOnAwake)
+                Invoke("Play", PlayOnAwakeTimeout);
+        }
+
+        public void Setup()
         {
             CSVParser Scenario = new CSVParser("Scenarios/" + scenarioName + "/RecordedScenarioText");
             int _len = Scenario.rowData[0].Length;
@@ -94,7 +100,7 @@ namespace RecordedScenario
                 }
                 int[] _timecodes = new int[_langNumber];
                 string[] _texts = new string[_langNumber];
-                for(int i = 0; i < _langNumber; i++)
+                for (int i = 0; i < _langNumber; i++)
                 {
                     _timecodes[i] = int.Parse(_row[2 + i * 2]);
                     _texts[i] = _row[3 + i * 2];
@@ -104,8 +110,6 @@ namespace RecordedScenario
                 else
                     Phrases.Add(new Phrase(_row[0], _row[1] != "0", _timecodes, _texts));
             }
-            if (PlayOnAwake)
-                Invoke("Play", PlayOnAwakeTimeout);
         }
 
         private void ProcessTick(int _tickNumber)

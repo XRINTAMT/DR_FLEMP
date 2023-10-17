@@ -6,14 +6,18 @@ using UnityEditor;
 namespace RecordedScenario
 {
     [CustomEditor(typeof(RecordedScenarioText))]
-    public class RecordedScenarioData : Editor
+    public class RecordedScenarioEditor : Editor
     {
         override public void OnInspectorGUI()
         {
             RecordedScenarioText _scenario = (RecordedScenarioText)target;
             if (GUILayout.Button("Load Scenario"))
             {
-                _scenario.Setup();
+                _scenario.InitiateSetup();
+            }
+            if (GUILayout.Button("Stop Loading"))
+            {
+                _scenario.BreakSetup();
             }
             DrawDefaultInspector();
         }

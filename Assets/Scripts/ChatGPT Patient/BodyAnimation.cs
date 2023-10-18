@@ -1,14 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using RecordedScenario;
 using UnityEngine;
 
 public class BodyAnimation : MonoBehaviour
 {
     [SerializeField] Animator animator;
+    RecordedScenarioText recordedScenarioText;
+    public AudioSource audioSource;
+    string speaker;
+    bool playAudio;
     // Start is called before the first frame update
     void Start()
     {
-        
+        SetRandomSittingIdleAnimation();
+        FindObjectOfType<RecordedScenarioText>().speakAction+=StartSpeak;
+        audioSource = animator.transform.parent.GetComponent<AudioSource>();
     }
     public void SetBadMoodAnimation(string triggerName) 
     {
@@ -79,9 +86,102 @@ public class BodyAnimation : MonoBehaviour
             }
         }
     }
-    // Update is called once per frame
-    void Update()
+
+    public void SetRandomSittingIdleAnimation() 
     {
-        
+        int rand = 0;
+        if (animator.transform.parent.parent.name.Contains("Male"))
+            rand = Random.Range(1, 4);
+
+        if (animator.transform.parent.parent.name.Contains("Female"))
+            rand = Random.Range(1, 3);
+
+
+        switch (rand)
+        {
+            case 1:
+                animator.SetTrigger("IdleSitting1");
+                break;
+            case 2:
+                animator.SetTrigger("IdleSitting2");
+                break;
+            case 3:
+                animator.SetTrigger("IdleSitting3");
+                break;
+
+            default:
+                break;
+        }
+    }
+
+
+    void StartSpeak(string speaker) 
+    {
+        if (speaker == "Nurse" && animator.transform.parent.parent.name.Contains("Female"))
+        {
+            animator.SetTrigger("StartTalking");
+        }
+        if (speaker == "Patient" && animator.transform.parent.parent.name.Contains("Male"))
+        {
+            animator.SetTrigger("StartTalking");
+        }
+
+        this.speaker = speaker;
+
+    }
+
+
+    void StopSpeak(string name)
+    {
+        int rand = 0;
+
+        if (name == "Nurse" && animator.transform.parent.parent.name.Contains("Female"))
+        {
+            rand = Random.Range(1, 3);
+        }
+        if (name == "Patient" && animator.transform.parent.parent.name.Contains("Male"))
+        {
+            rand = Random.Range(1, 4);
+        }
+
+        switch (rand)
+        {
+            case 1:
+                animator.SetTrigger("StopTalking1");
+                break;
+            case 2:
+                animator.SetTrigger("StopTalking2");
+                break;
+            case 3:
+                animator.SetTrigger("StopTalking3");
+                break;
+
+            default:
+                break;
+        }
+
+    }
+    public void SetStartTalkingAnimation()
+    {
+        animator.SetTrigger("StartTalking");
+    }
+    public void SetStopTalkingAnimation()
+    {
+        animator.SetTrigger("StopTalking");
+        SetRandomSittingIdleAnimation();
+    }
+
+    private void Update()
+    {
+        if (audioSource.isPlaying && !playAudio)
+        {
+            playAudio = true;
+        }
+        if (!audioSource.isPlaying && playAudio)
+        {
+            StopSpeak(speaker);
+            playAudio = false;
+        }
+    
     }
 }

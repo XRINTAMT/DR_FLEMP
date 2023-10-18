@@ -47,7 +47,8 @@ public class NurseTabletPopupManager : MonoBehaviour
          
         if (Checklist.correctAnswers[id] != optionNumber - 1) 
         {
-            pv.RPC("ActivateHint", RpcTarget.All, id);
+            if (PhotonManager.onlineMode)
+                pv.RPC("ActivateHint", RpcTarget.All, id);
         }
     }
 

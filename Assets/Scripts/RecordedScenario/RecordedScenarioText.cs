@@ -85,7 +85,6 @@ namespace RecordedScenario
         [SerializeField] private float TestScenarioSpeed = 1;
         [SerializeField] private List<Phrase> Phrases;
         [SerializeField] private List<AnimationCall> AnimationCalls;
-        private int DownloadProgressFlag = 0;
 
         // Start is called before the first frame update
         void Start()
@@ -131,64 +130,12 @@ namespace RecordedScenario
                 }
                 else
                 {
+                    //preprocess English TTS audio
                     string _name = _row[0] + _timecodes[0] + "English";
                     AudioClip[] _voiceAudio = new AudioClip[_langNumber];
                     SpeakerRef _speaker = Speakers.Find(a => a.Name == _row[0]);
                     _speaker.Speaker.runInEditMode = true;
-                    _speaker.Speaker.Speak(_texts[0]);
-
-
-                    //Wit.DownloadToDiskCache(_texts[0]);
-
-                    /*
-                    DownloadProgressFlag = 0;
-                    float _timeElapsedLog = 0;
-                    while (DownloadProgressFlag == 0)
-                    {
-                        _timeElapsedLog += Time.deltaTime;
-                        Debug.Log("Waiting for " + _speaker.Name + " to start downloading: " + _name + ". Time elapsed: " + _timeElapsedLog);
-                        yield return 0;
-                    }
-                    if(DownloadProgressFlag == 3)
-                    {
-                        Debug.LogError("Error starting to download a phrase");
-                        yield break;
-                    }
-                    if (DownloadProgressFlag == 3)
-                    {
-                        Debug.LogError("Canceled starting to download a phrase");
-                        yield break;
-                    }
-                    while (DownloadProgressFlag == 1)
-                    {
-                        _timeElapsedLog += Time.deltaTime;
-                        Debug.Log("Waiting for " + _speaker.Name + " to finish downloading: " + _name + ". Time elapsed: " + _timeElapsedLog);
-                        yield return 0;
-                    }
-                    if (DownloadProgressFlag == 3)
-                    {
-                        Debug.LogError("Error downloading a phrase");
-                        yield break;
-                    }
-                    Debug.Log("downloaded successfully???");
-
-                    */
-
-
-
-
-                    /*
-                    float _timeElapsedLog = 0;
-                    AudioSource _source = _speaker.Speaker.AudioSource;
-                    while (!_source.isPlaying)
-                    {
-                        _timeElapsedLog += Time.deltaTime;
-                        Debug.Log("Waiting for " + _speaker.Name + " to say " + _texts[0] + ". Time elapsed: " + _timeElapsedLog);
-                        yield return 0;
-                    }
-                    */
-                    //_source.Stop();
-
+                    _speaker.Speak(_texts[0]);
                     float _timeElapsedLog = 0;
                     while (_speaker.Speaker.IsLoading)
                     {
@@ -196,59 +143,15 @@ namespace RecordedScenario
                         Debug.Log("Waiting for " + _speaker.Name + " to load " + _texts[0] + ". Time elapsed: " + _timeElapsedLog);
                         yield return 0;
                     }
-                    Debug.Log(_speaker.Name + " loaded the phrase. Trying to obtain the audio data.");
+                    _speaker.Speaker.AudioSource.Stop();
+
+                    //preprocess the german stuff here;
 
 
-                    //AudioClip _streamedClip = _speaker.Speaker.SpeakingClip.clip;
-                    //Debug.Log("Streamed clip: " + _streamedClip);
-                    
-                    //RequestDownload(string downloadPath, string textToSpeak, Dictionary< string, string> ttsData, RequestCompleteDelegate<bool> onComplete, RequestProgressDelegate onProgress = null)
-                    // Create a new non-streamed AudioClip and copy the audio data
-                    //SavWav.Save("Scenarios/" + scenarioName + "/Audios/" + _row[0] + _timecodes[0] + "English", _clip);
-
-                    //TTSClipData _ttsData = TTSService.CreateClipData(_texts[0], _name, _speaker.Speaker.VoiceSettings, _diskSettings);
-
-                    //WitTTSVRequest.RequestDownload("Scenarios/" + scenarioName + "/Audios/" + _name, _texts[0], _speaker.Speaker.
-
-                    AudioClip _clip;
-                    _clip = null;
-
-                    /*
-                    TTSDiskCacheSettings _diskSettings = new TTSDiskCacheSettings();
-                    _diskSettings.DiskCacheLocation = TTSDiskCacheLocation.Persistent;
-                    TTSClipData _ttsData = new TTSClipData();
-                    _ttsData.audioType = AudioType.WAV;
-                    _ttsData.clipID = _name;
-                    _ttsData.textToSpeak = _texts[0];
-                    _ttsData.voiceSettings = _speaker.Speaker.VoiceSettings;
-                    _ttsData.diskCacheSettings = _diskSettings;
-                    _speaker.Speaker._tts.WebHandler.RequestDownloadFromWeb(_ttsData, "Scenarios/" + scenarioName + "/Audios/" + _name);
-                    
-                    */
-                    for (float i = 0; i < 5; i += Time.deltaTime)
-                    {
-                        yield return 0;
-                    }
-                    //string file = Directory.GetFiles("Assets/StreamingAssets/TempAudio/")[0];
-                    //File.Copy(file, "Scenarios/" + scenarioName + "/Audios/" + _name, true);
-                    /*
-                    
-                    */
-
-                    //SavWav.Save("Scenarios/" + scenarioName + "/Audios/" + _name, _streamedClip);
-                    //_clip = Resources.Load("Scenarios/" + scenarioName + "/Audios/" + _name) as AudioClip;
-                    Debug.Log("Resulting clip: " + _clip);
-                    _voiceAudio[0] = _clip;
-                    //SavWav.Save("Scenarios/" + scenarioName + "/Audios/" + _name, _clip);
                     Phrases.Add(new Phrase(_row[0], _row[1] != "0", _timecodes, _texts, _voiceAudio));
                 }
                     
             }
-        }
-
-        public void SetDownloadStatus(int _status) //0 - did not start yet, 1 - downloading, 2 - complete, 3 - error, 4 - cancelled
-        {
-            DownloadProgressFlag = _status;
         }
 
         private void ProcessTick(int _tickNumber)
@@ -327,8 +230,11 @@ namespace RecordedScenario
         // Update is called once per frame
         void Update()
         {
-            if(running)
-                Tick();
+            if (Application.isPlaying)
+            {
+                if (running)
+                    Tick();
+            }
         }
     }
 

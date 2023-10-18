@@ -7,6 +7,7 @@ using OpenAI;
 using UnityEngine;
 using WebSocketSharp;
 using Meta.WitAi.TTS.Utilities;
+using UnityEngine.UI;
 using CharacterInfo = AICharacter.CharacterInfo;
 
 public class ChatCharacter : MonoBehaviour
@@ -22,6 +23,7 @@ public class ChatCharacter : MonoBehaviour
     [SerializeField] private SittingWheelChair _wheelChair;
     [SerializeField] private TTSSpeaker _speaker;
     [SerializeField] private WitAutoReactivation WitReact;
+    [SerializeField] private Text ChatLogs;
     private string[] sentences;
 
     void Start()
@@ -48,6 +50,7 @@ public class ChatCharacter : MonoBehaviour
             return;
         }
         Debug.Log(info.name+": "+stt);
+        ChatLogs.text += "<b>Nurse:</b> " + stt + '\n';
         StartCoroutine(openAIChat(stt));
 
     }
@@ -165,7 +168,8 @@ public class ChatCharacter : MonoBehaviour
 
     private void SendResponseToTTS(string response)
     {
-        Debug.Log("should be pronounced using TTS: "+response);
+        Debug.Log("should be pronounced using TTS: " + response);
+        ChatLogs.text += "<b>" + info.name + ":</b> " + response + '\n';
         sentences = response.Split(new char[] { '\n', '.', '?', ';', '!' });
         StartCoroutine(PlayAndWait());
 

@@ -228,13 +228,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4048073280154792750, guid: cce79147b20de38418b96558555e073c, type: 3}
+      propertyPath: _diskPath
+      value: RecordedAudio/
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048073280154792750, guid: cce79147b20de38418b96558555e073c, type: 3}
+      propertyPath: _defaultSettings.DiskCacheLocation
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8896959442418077259, guid: cce79147b20de38418b96558555e073c, type: 3}
       propertyPath: m_Name
       value: YoungFemale Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8896959442418077260, guid: cce79147b20de38418b96558555e073c, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8896959442418077260, guid: cce79147b20de38418b96558555e073c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -242,7 +250,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8896959442418077260, guid: cce79147b20de38418b96558555e073c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.001
+      value: 0.22299999
       objectReference: {fileID: 0}
     - target: {fileID: 8896959442418077260, guid: cce79147b20de38418b96558555e073c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -276,7 +284,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2834390873926005289, guid: cce79147b20de38418b96558555e073c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cce79147b20de38418b96558555e073c, type: 3}
 --- !u!1001 &692970263
 PrefabInstance:
@@ -285,13 +294,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 356544782109549350, guid: 0be0e509579e1fe429e6a4fc41dac3f3, type: 3}
+      propertyPath: _diskPath
+      value: RecordedAudio/
+      objectReference: {fileID: 0}
+    - target: {fileID: 356544782109549350, guid: 0be0e509579e1fe429e6a4fc41dac3f3, type: 3}
+      propertyPath: _defaultSettings.DiskCacheLocation
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5163183312539999811, guid: 0be0e509579e1fe429e6a4fc41dac3f3, type: 3}
       propertyPath: m_Name
       value: SeniorMale Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5163183312539999812, guid: 0be0e509579e1fe429e6a4fc41dac3f3, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5163183312539999812, guid: 0be0e509579e1fe429e6a4fc41dac3f3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -299,7 +316,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5163183312539999812, guid: 0be0e509579e1fe429e6a4fc41dac3f3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.043
+      value: 0.17899999
       objectReference: {fileID: 0}
     - target: {fileID: 5163183312539999812, guid: 0be0e509579e1fe429e6a4fc41dac3f3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -333,12 +350,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1984629345657758241, guid: 0be0e509579e1fe429e6a4fc41dac3f3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0be0e509579e1fe429e6a4fc41dac3f3, type: 3}
---- !u!114 &789417660 stripped
+--- !u!114 &1029492128 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 811822442214168273, guid: 088690b0ee03c6e488d4854047047a0d, type: 3}
-  m_PrefabInstance: {fileID: 1520189896}
+  m_CorrespondingSourceObject: {fileID: 6913075178681808615, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+  m_PrefabInstance: {fileID: 1368745375}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -1053,31 +1071,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7354199785089821017, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
---- !u!1 &1067664179 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8002570631382860243, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
-  m_PrefabInstance: {fileID: 1067664178}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1067664180 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7183706670547048724, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
-  m_PrefabInstance: {fileID: 1067664178}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1067664181 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8390731095227833630, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
-  m_PrefabInstance: {fileID: 1067664178}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1067664182 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5946129993249753662, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
-  m_PrefabInstance: {fileID: 1067664178}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1067664183 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2156295710585527118, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
-  m_PrefabInstance: {fileID: 1067664178}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1100411780
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,17 +1169,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1100411780}
   m_Mesh: {fileID: 4940361533621513337, guid: ad9d1e00e1f0c204bb9a5f0633d885c0, type: 3}
---- !u!114 &1205322541 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3954057944137921970, guid: b3cec38e3ada8b64584fc5510ffa5258, type: 3}
-  m_PrefabInstance: {fileID: 1259357629}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b15403450229c3a4b8455a61d6143a6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1259357629
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1200,7 +1182,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3166484676809569584, guid: b3cec38e3ada8b64584fc5510ffa5258, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3166484676809569584, guid: b3cec38e3ada8b64584fc5510ffa5258, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1208,7 +1190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3166484676809569584, guid: b3cec38e3ada8b64584fc5510ffa5258, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.022
+      value: 0.19999999
       objectReference: {fileID: 0}
     - target: {fileID: 3166484676809569584, guid: b3cec38e3ada8b64584fc5510ffa5258, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1252,7 +1234,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7540258618695796818, guid: b3cec38e3ada8b64584fc5510ffa5258, type: 3}
       propertyPath: _diskPath
-      value: B12_Recorded/
+      value: RecordedAudio/
       objectReference: {fileID: 0}
     - target: {fileID: 7540258618695796818, guid: b3cec38e3ada8b64584fc5510ffa5258, type: 3}
       propertyPath: _defaultSettings.DiskCacheLocation
@@ -1273,6 +1255,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 111445110623832839, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: _diskPath
+      value: RecordedAudio/
+      objectReference: {fileID: 0}
+    - target: {fileID: 111445110623832839, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: _defaultSettings.DiskCacheLocation
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4818309500122658402, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
       propertyPath: m_Name
       value: Male Variant
@@ -1287,7 +1277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4818309500122658405, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.016
+      value: 0.238
       objectReference: {fileID: 0}
     - target: {fileID: 4818309500122658405, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1321,7 +1311,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2230281221087660544, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
 --- !u!1001 &1520189896
 PrefabInstance:
@@ -1332,7 +1323,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1615125391675545171, guid: 088690b0ee03c6e488d4854047047a0d, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1615125391675545171, guid: 088690b0ee03c6e488d4854047047a0d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1340,7 +1331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1615125391675545171, guid: 088690b0ee03c6e488d4854047047a0d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.01
+      value: 0.232
       objectReference: {fileID: 0}
     - target: {fileID: 1615125391675545171, guid: 088690b0ee03c6e488d4854047047a0d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1388,7 +1379,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6142891983540824881, guid: 088690b0ee03c6e488d4854047047a0d, type: 3}
       propertyPath: _diskPath
-      value: B12_Recorded/
+      value: RecordedAudio/
       objectReference: {fileID: 0}
     - target: {fileID: 6142891983540824881, guid: 088690b0ee03c6e488d4854047047a0d, type: 3}
       propertyPath: _defaultSettings.DiskCacheLocation
@@ -1531,664 +1522,73 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scenarioName: InnerServiceStuff
   PlayOnAwake: 1
-  PlayOnAwakeTimeout: 2
+  PlayOnAwakeTimeout: 1
   ScenarioEndTimeout: 2
   OnScenarioEnd:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1067664183}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1067664182}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1067664181}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1067664180}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1067664179}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
   Speakers:
-  - Name: Ann
-    Speaker: {fileID: 1205322541}
-  - Name: Tom
-    Speaker: {fileID: 789417660}
-  AnimationEntities:
-  - Name: pulse_oxy
-    AnimationEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+  - Name: VoiceModel
+    Speaker: {fileID: 1029492128}
+  AnimationEntities: []
   TranscriptTextbox: {fileID: 2084014132}
   TestScenarioSpeed: 1
   Phrases:
-  - Speaker: Ann
+  - Speaker: VoiceModel
+    Highlight: 0
+    Timecode: 0100000001000000
+    Text:
+    - Uhmm...
+    - "Uhmm...\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 0}
+  - Speaker: VoiceModel
+    Highlight: 0
+    Timecode: 0200000002000000
+    Text:
+    - Hmmm...
+    - "Hmmm...\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 0}
+  - Speaker: VoiceModel
+    Highlight: 0
+    Timecode: 0300000003000000
+    Text:
+    - Huhh...
+    - "Huhh...\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 0}
+  - Speaker: VoiceModel
+    Highlight: 0
+    Timecode: 0400000004000000
+    Text:
+    - Ahha...
+    - "Ahha...\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 0}
+  - Speaker: VoiceModel
     Highlight: 0
     Timecode: 0500000005000000
     Text:
-    - Good morning! My name is Ann, and I'm an admissions nurse.
-    - "Guten Morgen! Ich hei\xDFe Frau M\xFCller und ich unterstz\xFCtze Sie bei
-      der Aufnahme. \r"
+    - Well...
+    - "Nun...\r"
     VoiceAudio:
     - {fileID: 0}
     - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 1
-    Timecode: 0a0000000a000000
-    Text:
-    - Can I start by asking your full name?
-    - "Darf ich nach Ihrem vollst\xE4ndigen Namen fragen?\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Tom
+  - Speaker: VoiceModel
     Highlight: 0
-    Timecode: 0f0000000f000000
+    Timecode: 0600000006000000
     Text:
-    - Good morning. I'm Tom Stevens.
-    - "Guten Morgen! Mein Name ist Thomas Stegmann.\r"
+    - Let me think...
+    - Lass mich nachdenken...
     VoiceAudio:
     - {fileID: 0}
     - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 0
-    Timecode: 1400000014000000
-    Text:
-    - "What\u2019s your date of birth?"
-    - "Wie ist Ihr Geburtsdatum?\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Tom
-    Highlight: 0
-    Timecode: 1900000019000000
-    Text:
-    - 2 June 2005.
-    - "der 2. Juni 2005\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 0
-    Timecode: 1e0000001e000000
-    Text:
-    - "Where do you live, Mr Stevens? What\u2019s your address?"
-    - "Wo wohnen Sie Herr Stegmann? Wie lautet Ihre Anschrift?\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Tom
-    Highlight: 0
-    Timecode: 2300000023000000
-    Text:
-    - "It\u2019s apartment 7, 22 Park Street, D\xFCsseldorf. "
-    - "Charlottenstra\xDFe 49, 40210 D\xFCsseldorf  \"\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 0
-    Timecode: 2800000028000000
-    Text:
-    - Thank you, Mr Stevens. What is your phone number?
-    - "Vielen Dank Herr Stegmann. Und wie ist Ihre Telefonnummer? \r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Tom
-    Highlight: 0
-    Timecode: 2d0000002d000000
-    Text:
-    - +49 30 9018205
-    - "+49 30 9018205\"\"\"\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 0
-    Timecode: 3200000032000000
-    Text:
-    - 'Mr Stevens, who is your next of kin? A person that we could call in an emergent
-      case. '
-    - "Herr Stegmann, haben Sie Antgeh\xF6rige, die wir in einem Notfall anrufen
-      k\xF6nnten?\"\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Tom
-    Highlight: 0
-    Timecode: 3700000037000000
-    Text:
-    - "Well, I haven\u2019t thought of that. I guess, it\u2019s my mom, Betany Stevens.
-      The same phone number. Or my dad, John Stevens. "
-    - "Naja, dar\xFCber habe ich noch nicht nachgedacht. Ich sch\xE4tze, es ist meine
-      Mutter, Bettina Stegmann. Dieselbe Telefonnummer. Oder mein Vater, Jonah Stegmann.\"\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 1
-    Timecode: 3c0000003c000000
-    Text:
-    - Do you have any allergies?
-    - "Sind Sie allergisch gegen etwas?\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 0
-    Timecode: 4100000041000000
-    Text:
-    - Food? Medication?
-    - "Gegen Essen oder Medikamente?\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Tom
-    Highlight: 0
-    Timecode: 4600000046000000
-    Text:
-    - Not very severe, but I sometimes feel allergic to some kinds of seafood.
-    - "Nicht sehr stark, aber ich reagiere manchmal allergisch auf einige Arten von
-      Meeresfr\xFCchten.\"\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 0
-    Timecode: 4b0000004b000000
-    Text:
-    - 'Noted. Have you ever been to the hospital for any treatment? Do you have any
-      chronic diseases? '
-    - "Alles klar. Waren Sie schon einmal zur Behandlung im Krankenhaus? Haben Sie
-      chronische Krankheiten?\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Tom
-    Highlight: 0
-    Timecode: 5000000050000000
-    Text:
-    - No, none of that.
-    - "Nein, nichts davon.\"\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 0
-    Timecode: 5500000055000000
-    Text:
-    - Do you take any medication on regular basis?
-    - "Nehmen Sie regelm\xE4\xDFig Medikamente ein?\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Tom
-    Highlight: 0
-    Timecode: 5a0000005a000000
-    Text:
-    - No, just some painkillers. One or two pills during last night.
-    - "Nein, nur paar Schmerztabletten.  Eine oder zwei in der letzten Nacht. \"\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 0
-    Timecode: 5f0000005f000000
-    Text:
-    - Mr. Stevens, how are you feeling?
-    - "Herr Stegmann, wie f\xFChlen Sie sich?\"\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 1
-    Timecode: 6400000064000000
-    Text:
-    - What is the reason to come here?
-    - "Aus welchem Grund sind Sie zu uns gekommen?\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Tom
-    Highlight: 0
-    Timecode: 6900000069000000
-    Text:
-    - I've got this sharp, stabbing pain in the lower right side of my stomach that's
-      been bothering me for a while. It's consistent and not going away.
-    - "Ich habe seit einiger Zeit scharfe, stechende Schmerzen im rechten Unterbauch.
-      Sie sind durchgehend und gehen nicht weg. \"\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Tom
-    Highlight: 0
-    Timecode: 6b0000006b000000
-    Text:
-    - I'm concerned it might be something like appendicitis, so I came to get it
-      checked out. It's definitely not something I've experienced before.
-    - "Ich bef\xFCrchte, dass es eine Blinddarmentz\xFCndung sein k\xF6nnte, also
-      bin ich hierher gekommen, um es untersuchen zu lassen. Das ist definitiv nichts,
-      was ich schon mal erlebt habe.\"\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 0
-    Timecode: 6e0000006e000000
-    Text:
-    - Thank you. Mr Stevens. You will be taken care of right away. Please, sit still
-      and try not to make any sudden movements.
-    - "Ich danke Ihnen, Herr Stegmann. Man k\xFCmmert sich sofort um Sie. Bleiben
-      Sie bitte auf Ihrem Platz und machen Sie keine pl\xF6tzlichen Bewegungen.\"\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 0
-    Timecode: 7300000073000000
-    Text:
-    - Now, I'll need to take your vital signs for our examination sheet.
-    - "Jetzt muss ich Ihre Vitaldaten f\xFCr unseren Untersuchungsbogen aufnehmen.\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Tom
-    Highlight: 0
-    Timecode: 7800000078000000
-    Text:
-    - Okay
-    - "Okay\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 0
-    Timecode: 7d0000007d000000
-    Text:
-    - 'Let''s start with your blood pressure. '
-    - "Lass uns mit dem Blutdruck anfangen. \r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Tom
-    Highlight: 0
-    Timecode: 8200000082000000
-    Text:
-    - Okay
-    - "Okay\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 0
-    Timecode: 8700000087000000
-    Text:
-    - Do you have any known issues or concerns related to your blood pressure?
-    - "Haben Sie irgendwelche bekannten Probleme oder Sorgen bez\xFCglich Ihres Blutdrucks?\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Tom
-    Highlight: 0
-    Timecode: 8c0000008c000000
-    Text:
-    - No, not that I'm aware of.
-    - "Nichts, dass ich w\xFCsste\"\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 0
-    Timecode: 9100000091000000
-    Text:
-    - I'm going to measure your blood pressure now. Please extend your arm, palm
-      up, and relax.
-    - "Ich werde jetzt Ihren Blutdruck messen. Bitte strecken Sie Ihren Arm aus,
-      Handfl\xE4che nach oben, und entspannen Sie sich.\"\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 0
-    Timecode: 9600000096000000
-    Text:
-    - Your blood pressure is 136/80 mmHg. We'll keep an eye on that.
-    - "Ihr Blutdruck liegt bei 136/80 mmHg. Wir werden das im Auge behalten.\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Tom
-    Highlight: 0
-    Timecode: 9b0000009b000000
-    Text:
-    - Alright
-    - "Alles klar. \r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 0
-    Timecode: a0000000a0000000
-    Text:
-    - 'Now, I''ll check your heart rate. '
-    - "Jetzt werde ich Ihre Herzfrequenz messen.\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 1
-    Timecode: a5000000a5000000
-    Text:
-    - Any history of heart conditions or irregular heartbeats?
-    - "Gab es in der Vergangenheit Herzerkrankungen oder unregelm\xE4\xDFigen Herzschlag?\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Tom
-    Highlight: 0
-    Timecode: aa000000aa000000
-    Text:
-    - Okay, I'm going to check your heart rate now. Please stay still for a moment.
-    - "Okay, I'm going to check your heart rate now. Please stay still for a moment.\"\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 0
-    Timecode: af000000af000000
-    Text:
-    - Your heart rate is 96 beats per minute. It's slightly elevated, but that can
-      be due to pain and stress.
-    - "Your heart rate is 96 beats per minute. It's slightly elevated, but that can
-      be due to pain and stress.\"\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Tom
-    Highlight: 0
-    Timecode: b4000000b4000000
-    Text:
-    - Okay
-    - "Okay\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 0
-    Timecode: b9000000b9000000
-    Text:
-    - 'Next, I''ll measure your respiratory rate. '
-    - "Next, I'll measure your respiratory rate. \"\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 1
-    Timecode: be000000be000000
-    Text:
-    - Have you experienced any shortness of breath or breathing difficulties lately?
-    - "Have you experienced any shortness of breath or breathing difficulties lately?\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Tom
-    Highlight: 0
-    Timecode: c3000000c3000000
-    Text:
-    - No, but it's a bit hard to breathe because of the pain.
-    - "No, but it's a bit hard to breathe because of the pain.\"\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 0
-    Timecode: c8000000c8000000
-    Text:
-    - I'll observe your respiratory rate for a minute.
-    - "I'll observe your respiratory rate for a minute.\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 0
-    Timecode: cd000000cd000000
-    Text:
-    - Your respiratory rate is 20 breaths per minute. Again, this could be related
-      to the pain.
-    - "Your respiratory rate is 20 breaths per minute. Again, this could be related
-      to the pain.\"\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Tom
-    Highlight: 0
-    Timecode: d2000000d2000000
-    Text:
-    - Yes, it hurts.
-    - "Yes, it hurts.\"\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 0
-    Timecode: d7000000d7000000
-    Text:
-    - Now, let's check your temperature.
-    - "Now, let's check your temperature.\"\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 0
-    Timecode: dc000000dc000000
-    Text:
-    - Any recent fever or chills?
-    - "Any recent fever or chills?\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Tom
-    Highlight: 0
-    Timecode: e1000000e1000000
-    Text:
-    - No, I've been feeling fine in that regard.
-    - "No, I've been feeling fine in that regard.\"\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 0
-    Timecode: e6000000e6000000
-    Text:
-    - Your temperature is 36.5 degrees Celsius, which is normal.
-    - "Your temperature is 36.5 degrees Celsius, which is normal.\"\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Tom
-    Highlight: 0
-    Timecode: eb000000eb000000
-    Text:
-    - That's good to know.
-    - "That's good to know.\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 0
-    Timecode: f0000000f0000000
-    Text:
-    - Finally, I'll measure your oxygen saturation.
-    - "Finally, I'll measure your oxygen saturation.\"\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 0
-    Timecode: f5000000f5000000
-    Text:
-    - Any history of lung problems or issues with oxygen levels?
-    - "Any history of lung problems or issues with oxygen levels?\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Tom
-    Highlight: 0
-    Timecode: fa000000fa000000
-    Text:
-    - No, I've never had any lung issues.
-    - "No, I've never had any lung issues.\"\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 0
-    Timecode: ff000000ff000000
-    Text:
-    - Great. I'll place this oximeter on your finger to measure your oxygen saturation.
-    - "Great. I'll place this oximeter on your finger to measure your oxygen saturation.\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 0
-    Timecode: 0401000004010000
-    Text:
-    - Your oxygen saturation is 98%, which is excellent.
-    - "Your oxygen saturation is 98%, which is excellent.\"\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Tom
-    Highlight: 0
-    Timecode: 0901000009010000
-    Text:
-    - That's a relief.
-    - "That's a relief.\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 0
-    Timecode: 0e0100000e010000
-    Text:
-    - 'Given your symptoms, we''ll need to perform some additional tests. First,
-      we''ll need a blood test to check for any signs of infection or inflammation.
-      Secondly, we''ll schedule an urgent ultrasound to further evaluate your condition. '
-    - "Given your symptoms, we'll need to perform some additional tests. First, we'll
-      need a blood test to check for any signs of infection or inflammation. Secondly,
-      we'll schedule an urgent ultrasound to further evaluate your condition. \"\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 0
-    Timecode: 1301000013010000
-    Text:
-    - Is that okay with you?
-    - "Is that okay with you?\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Tom
-    Highlight: 0
-    Timecode: 1801000018010000
-    Text:
-    - Yes, that sounds necessary.
-    - "Yes, that sounds necessary.\"\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 0
-    Timecode: 1d0100001d010000
-    Text:
-    - I'll make sure these are scheduled for you
-    - "I'll make sure these are scheduled for you\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Ann
-    Highlight: 0
-    Timecode: 2201000022010000
-    Text:
-    - If you have any more questions or concerns, please feel free to ask.
-    - "If you have any more questions or concerns, please feel free to ask.\"\r"
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  - Speaker: Tom
-    Highlight: 0
-    Timecode: 2701000027010000
-    Text:
-    - Thank you, Ann. I appreciate your care and thoroughness.
-    - Thank you, Ann. I appreciate your care and thoroughness.
-    VoiceAudio:
-    - {fileID: 0}
-    - {fileID: 0}
-  AnimationCalls:
-  - AnimationTag: pulse_oxy
-    Timecode: ff000000ff000000
+  AnimationCalls: []
 --- !u!4 &1972225608
 Transform:
   m_ObjectHideFlags: 0
@@ -2485,14 +1885,6 @@ Transform:
   m_Father: {fileID: 4853915475545282541}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!33 &265980448446766746
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6896667114266056610}
-  m_Mesh: {fileID: 8951828918113412480, guid: 660447454dbf48d47804c60e34fa8259, type: 3}
 --- !u!23 &288841550348178416
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2601,7 +1993,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2323768715441588877}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.07399999, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2651,48 +2043,6 @@ Transform:
   m_Father: {fileID: 8512333317434443278}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 90}
---- !u!23 &598636400347134991
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6896667114266056610}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: b0a734cfcc6aea64f835f32eb1bda596, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &604160200257398645
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3040,14 +2390,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1645486986325483694
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4059053809581465679}
-  m_Mesh: {fileID: 2096048070505019585, guid: cd73c4f3d1f074c47b67418c4372ffd3, type: 3}
 --- !u!4 &1692216405376859587
 Transform:
   m_ObjectHideFlags: 0
@@ -3127,7 +2469,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 000c727e0a221ff48abd20d6ccb820b4, type: 2}
+  - {fileID: 2100000, guid: 60158c1f5a888be49b0e486812385af4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3355,7 +2697,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 190c99305b59f244ab401441b32b12fb, type: 2}
+  - {fileID: 2100000, guid: 9808ec326cff3fd4e98c6da8a065099e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3482,7 +2824,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 000c727e0a221ff48abd20d6ccb820b4, type: 2}
+  - {fileID: 2100000, guid: 60158c1f5a888be49b0e486812385af4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3577,7 +2919,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3203669377358028031}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.074, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3697,7 +3039,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2cd40f011ddf33c46ab7f49dad7e0747, type: 2}
+  - {fileID: 2100000, guid: 9808ec326cff3fd4e98c6da8a065099e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3767,28 +3109,9 @@ Transform:
   m_Children:
   - {fileID: 394315454501713291}
   - {fileID: 3122035387975635500}
-  - {fileID: 8530817809063565809}
   m_Father: {fileID: 7712577303003306543}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4059053809581465679
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6166791512751068038}
-  - component: {fileID: 1645486986325483694}
-  - component: {fileID: 8042251410304454091}
-  m_Layer: 0
-  m_Name: Plane.002_Door_0
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!33 &4124361064652430542
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4072,7 +3395,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4853915475545282541}
   m_Layer: 0
-  m_Name: ROOM DIABETES ENVIROMENT
+  m_Name: STUDIO ENVIROMENT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4101,7 +3424,7 @@ Transform:
   - {fileID: 32859871}
   - {fileID: 1802476028}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &4937759456262424917
 MeshRenderer:
@@ -4457,7 +3780,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d407ed3f35951094d89736a7698dbf67, type: 2}
+  - {fileID: 2100000, guid: 9808ec326cff3fd4e98c6da8a065099e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4521,21 +3844,6 @@ Transform:
   m_Father: {fileID: 8512333317434443278}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!4 &6166791512751068038
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4059053809581465679}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6856054039261075841}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6297887561097308161
 GameObject:
   m_ObjectHideFlags: 0
@@ -4666,8 +3974,7 @@ Transform:
   m_LocalPosition: {x: -1.3014284, y: 0, z: 5.0514283}
   m_LocalScale: {x: 0.8214285, y: 0.71428573, z: 0.7357141}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6166791512751068038}
+  m_Children: []
   m_Father: {fileID: 8512333317434443278}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4705,24 +4012,6 @@ Transform:
   m_Father: {fileID: 4522729096421071446}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6896667114266056610
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8530817809063565809}
-  - component: {fileID: 265980448446766746}
-  - component: {fileID: 598636400347134991}
-  m_Layer: 0
-  m_Name: Object_18
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &6935923271779468956
 GameObject:
   m_ObjectHideFlags: 0
@@ -5213,48 +4502,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!23 &8042251410304454091
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4059053809581465679}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 8f770523dd9b28e409386a41cc36e0b5, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &8068878060219948802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5393,21 +4640,6 @@ Transform:
   - {fileID: 6856054039261075841}
   m_Father: {fileID: 4853915475545282541}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &8530817809063565809
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6896667114266056610}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3925493352586054458}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &8561272566162094897
 Transform:

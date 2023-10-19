@@ -26,21 +26,21 @@ public class SentenceScrambleTab : MonoBehaviour
     List<AdditionalWordsList> additionalWordList = new List<AdditionalWordsList>();
     [HideInInspector]
     public List<string> allWords = new List<string>();
-    string correctSentence;
-    string sentence;
+    public string correctSentence;
+    public string sentence;
     List<bool> completion;
     int indexList;    
     GridController gridController;
 
+ 
     // Start is called before the first frame update
     void Start()
     {
         gridController = GetComponent<GridController>();
         Parse();
         SetNewList();
-        for (int i = 0; i < allWords.Count; i++)
-            gridController.InstantiateWordChoose(allWords[i]);
     }
+
     void Parse() 
     {
         CSVParser cSVParser = new CSVParser("Scenarios/" + "B12_Recorded" + "/B12_Sentence_Construction");
@@ -50,6 +50,7 @@ public class SentenceScrambleTab : MonoBehaviour
             descriptions.Add(cSVParser.rowData[i][0]);
             solutionsList.Add(new SolutionsList());
             additionalWordList.Add(new AdditionalWordsList());
+            completion.Add(false);
         }
         for (int i = 1; i < cSVParser.rowData.Count; i++)
         {
@@ -68,19 +69,33 @@ public class SentenceScrambleTab : MonoBehaviour
                 additionalWordList[i - 1].additionalWords.Add(words[j]);
         }
     }
-    void SetNewList() 
+
+    void Clear() 
     {
-
         allWords.Clear();
+        gridController.rowsSentence.Clear();
+        gridController.rowsChoose.Clear();
 
-        gridController.textDescription.text = descriptions[indexList];
         correctSentence = "";
         sentence = "";
 
-        foreach (var buttons in gridController.contentSentence.GetComponentsInChildren<Button>())
+        foreach (var buttons in gridController.contentSentence.GetComponentsInChildren<Button>(true))
             Destroy(buttons.gameObject);
-        foreach (var buttons in gridController.contentChoose.GetComponentsInChildren<Button>())
+        foreach (var buttons in gridController.contentChoose.GetComponentsInChildren<Button>(true))
             Destroy(buttons.gameObject);
+
+        foreach (var rows in gridController.contentSentence.GetComponentsInChildren<RowSentence>(true))
+            Destroy(rows.gameObject);
+        foreach (var rows in gridController.contentChoose.GetComponentsInChildren<RowSentence>(true))
+            Destroy(rows.gameObject);
+    }
+    void SetNewList() 
+    {
+        Clear();
+
+        gridController.textDescription.text = descriptions[indexList];
+        gridController.rowsSentence.Add(Instantiate(gridController.rowSentence, gridController.contentSentence));
+        gridController.rowsChoose.Add(Instantiate(gridController.rowChoose, gridController.contentChoose));
 
 
         for (int i = 0; i < solutionsList[indexList].solutions.Count; i++)
@@ -94,8 +109,13 @@ public class SentenceScrambleTab : MonoBehaviour
         }
 
         Shuffle(allWords);
+
+
+        for (int i = 0; i < allWords.Count; i++)
+            gridController.InstantiateWordChoose(allWords[i]);
+
     }
-  
+
     public void UpdateSentence()
     {
         sentence = "";
@@ -105,12 +125,40 @@ public class SentenceScrambleTab : MonoBehaviour
                 sentence = sentence + " " + gridController.rowsSentence[i].word[j].variant;
         }
     }
-    public void CheckSentence() 
+
+
+    public void CheckSentence()
     {
-        if (sentence == correctSentence)
+        if (sentence == correctSentence) 
+        {
             completion[indexList] = true;
-        indexList++;
-        SetNewList();
+
+            descriptions.RemoveAt(indexList);
+            solutionsList.RemoveAt(indexList);
+            additionalWordList.RemoveAt(indexList);
+            completion.RemoveAt(indexList);
+
+            if (descriptions.Count <= indexList)
+                indexList = 0;
+
+            if (descriptions.Count == 0)
+            {
+                Clear();
+
+                gridController.textDescription.text = "Its Done!";
+                return;
+            }
+
+            SetNewList();
+        }
+        else
+        {
+            indexList++;
+
+            if (descriptions.Count <= indexList)
+                indexList = 0;
+            SetNewList();
+        }
     }
     void Shuffle<T>(List<T> values)
     {

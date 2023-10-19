@@ -8,6 +8,12 @@ namespace AICharacter
     {
         public string name;
         public string description;
-        public string[] thinkingPhrases;
+        public RandomPool<AudioClip> ThinkingPhrasesPool;
+        [SerializeField] private AudioClip[] thinkingPhrases;
+
+        private void Awake()
+        {
+            ThinkingPhrasesPool = new RandomPool<AudioClip>(thinkingPhrases);
+        }
     }
 }

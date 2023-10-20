@@ -51,6 +51,8 @@ public class ChatCharacter : MonoBehaviour
             return;
         }
         Debug.Log(info.name+": "+stt);
+        _speaker.AudioSource.clip = PhrasesPool.Draw();
+        _speaker.AudioSource.Play();
         StartCoroutine(openAIChat(stt));
 
     }
@@ -170,28 +172,12 @@ public class ChatCharacter : MonoBehaviour
     {
         Debug.Log("should be pronounced using TTS: "+response);
         sentences = response.Split(new char[] { '\n', '.', '?', ';', '!' });
-        StartCoroutine(PlayAndWait());
 
-        IEnumerator PlayAndWait()
+        foreach (string sentence in sentences)
         {
-            foreach (string sentence in sentences)
-            {
-                if (sentence == string.Empty)
-                    continue;
-                _speaker.AudioSource.clip = PhrasesPool.Draw();
-                _speaker.AudioSource.Play();
-                _speaker.Speak(sentence);
-
-                while (!_speaker.IsSpeaking)
-                {
-                    yield return 0;
-                }
-                while (_speaker.IsSpeaking)
-                {
-                    yield return 0;
-                }
-            }
-            Debug.Log("Giving control back to the stt");
+            if (sentence == string.Empty)
+                continue;
+            _speaker.SpeakQueued(sentence);
         }
     }
 

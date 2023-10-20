@@ -11,7 +11,7 @@ using CharacterInfo = AICharacter.CharacterInfo;
 
 public class ChatCharacter : MonoBehaviour
 {
-    [SerializeField] private InteractionHandler STTInput;
+    private InteractionHandler STTInput;
     [SerializeField] private CharacterInfo info;
     private ChatHistory _history;
     [SerializeField] private EmbeddingDB _embeddingDB;
@@ -21,8 +21,8 @@ public class ChatCharacter : MonoBehaviour
     [SerializeField] private int numberOfDeepHistoryEntries = 3;
     [SerializeField] private SittingWheelChair _wheelChair;
     [SerializeField] private TTSSpeaker _speaker;
-    [SerializeField] private WitAutoReactivation WitReact;
     private RandomPool<AudioClip> PhrasesPool;
+    private WitAutoReactivation WitReact;
     private string[] sentences;
 
     void Start()
@@ -31,7 +31,7 @@ public class ChatCharacter : MonoBehaviour
         _openAI = new OpenAIApi("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");
         PhrasesPool = info.ThinkingPhrasesPool;
         STTInput = FindAnyObjectByType<InteractionHandler>();
-        
+        WitReact = FindAnyObjectByType<WitAutoReactivation>();
     }
 
     public void setTargeted(bool t)

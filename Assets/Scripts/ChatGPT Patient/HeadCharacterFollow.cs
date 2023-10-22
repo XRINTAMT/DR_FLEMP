@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using RecordedScenario;
 using UnityEngine;
 
 public class HeadCharacterFollow : MonoBehaviour
@@ -43,6 +44,11 @@ public class HeadCharacterFollow : MonoBehaviour
 
         startPos = defaultPos.position;
         startRot = defaultPos.rotation;
+
+        if (FindAnyObjectByType<RecordedScenarioText>())
+        {
+            this.enabled = false;
+        }
     }
     private void Update()
     {

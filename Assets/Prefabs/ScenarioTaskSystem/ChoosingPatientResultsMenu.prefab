@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1887085209108958870}
   - component: {fileID: 4313246793463872643}
   - component: {fileID: 3568570411246441145}
+  - component: {fileID: 4730715134501385860}
   m_Layer: 5
   m_Name: ButtonText
   m_TagString: Untagged
@@ -80,6 +81,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Back to lobby
+--- !u!114 &4730715134501385860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016985248494092475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2404a37f3bd75444aa4ad05d0f228347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizationKey: BackToLobby
 --- !u!1 &1644743580076162238
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,6 +105,7 @@ GameObject:
   - component: {fileID: 2884565188308681090}
   - component: {fileID: 8695234128103706681}
   - component: {fileID: 3233521274545866431}
+  - component: {fileID: 2039336351345389063}
   m_Layer: 5
   m_Name: Text(Correct)
   m_TagString: Untagged
@@ -160,6 +175,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Congratulations! You've chosen the right patient
+--- !u!114 &2039336351345389063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644743580076162238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2404a37f3bd75444aa4ad05d0f228347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizationKey: AdmissionCorrect
 --- !u!1 &4252375075023209451
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,7 +309,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5112676991209508726}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2039336351345389060}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Lobby
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4295599941250559601
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,6 +333,7 @@ GameObject:
   - component: {fileID: 7013012909631313150}
   - component: {fileID: 6973900942601646523}
   - component: {fileID: 5076515475161506233}
+  - component: {fileID: 1753289176}
   m_Layer: 5
   m_Name: Text(Incorrect)
   m_TagString: Untagged
@@ -362,6 +403,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Unfortunately, you did not get it right this time.
+--- !u!114 &1753289176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4295599941250559601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2404a37f3bd75444aa4ad05d0f228347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizationKey: AdmissionIncorrect
 --- !u!1 &4896545221425941898
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,33 +629,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2039336351345389060}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Lobby
-          m_BoolArgument: 0
-        m_CallState: 2
   IncorrectAction:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2039336351345389060}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Lobby
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2039336351345389061
 MonoBehaviour:
   m_ObjectHideFlags: 0

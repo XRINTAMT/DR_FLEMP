@@ -204,11 +204,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4832917c70ef4d94c8fab602a5b212af, type: 3}
---- !u!1 &762518318 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4853915475402414123, guid: 4832917c70ef4d94c8fab602a5b212af, type: 3}
-  m_PrefabInstance: {fileID: 762518317}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &789417660 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 811822442214168273, guid: 088690b0ee03c6e488d4854047047a0d, type: 3}
@@ -1333,17 +1328,17 @@ MonoBehaviour:
     AnimationEvent:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 762518318}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
+        - m_Target: {fileID: 6009670401322343484}
+          m_TargetAssemblyTypeName: AnimationMovement, Assembly-CSharp
+          m_MethodName: AnimationPutOnPulse
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
-            m_BoolArgument: 0
+            m_BoolArgument: 1
           m_CallState: 2
   TranscriptTextbox: {fileID: 2084014132}
   TestScenarioSpeed: 1
@@ -2118,3 +2113,14 @@ PrefabInstance:
       objectReference: {fileID: 1956255935}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 742209497a686024bbac72d31891362f, type: 3}
+--- !u!114 &6009670401322343484 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6009670401107999983, guid: 742209497a686024bbac72d31891362f, type: 3}
+  m_PrefabInstance: {fileID: 6009670401322343483}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5a5bef507224274fa473a960ab64b43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

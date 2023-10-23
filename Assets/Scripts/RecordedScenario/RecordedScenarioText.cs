@@ -5,13 +5,17 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using Meta.WitAi.TTS.Utilities;
 using System;
+using Meta.WitAi.TTS.Integrations;
+using Meta.WitAi.TTS;
+using Meta.WitAi.TTS.Data;
+using System.IO;
 
 namespace RecordedScenario
 {
     [System.Serializable]
     public struct Phrase
     {
-        public Phrase(string _s, bool _h, int[] _tc, string[] _txt)
+        public Phrase(string _s, bool _h, int[] _tc, string[] _txt, AudioClip[] _voiceAudio)
         {
             Speaker = _s;
             Highlight = _h;
@@ -19,11 +23,14 @@ namespace RecordedScenario
             _tc.CopyTo(Timecode, 0);
             Text = new string[_txt.Length];
             _txt.CopyTo(Text, 0);
+            VoiceAudio = new AudioClip[_voiceAudio.Length];
+            _voiceAudio.CopyTo(VoiceAudio, 0);
         }
         public string Speaker;
         public bool Highlight;
         public int[] Timecode;
         public string[] Text;
+        public AudioClip[] VoiceAudio;
     }
 
     [System.Serializable]
@@ -46,7 +53,7 @@ namespace RecordedScenario
         public TTSSpeaker Speaker;
         public void Speak(string _s)
         {
-            Debug.Log("Speaker " + Name + "on gameobject " + Speaker.transform.parent.name + ">" + Speaker.name);
+            Debug.Log("Speaker " + Name + " on gameobject " + Speaker.transform.parent.name + " -> " + Speaker.name);
             Speaker.Speak(_s);
         }
     }
@@ -62,26 +69,44 @@ namespace RecordedScenario
         }
     }
 
+    [ExecuteInEditMode]
     public class RecordedScenarioText : MonoBehaviour
     {
-        [SerializeField] private string scenarioName;
-        [SerializeField] private Text TranscriptTextbox;   
+        [SerializeField] private string scenarioName;  
         public bool PlayOnAwake;
         public int PlayOnAwakeTimeout;
         public int ScenarioEndTimeout; //Timeout after the last phrase in the scenario is played
         public Action <string> speakAction;
         [SerializeField] private UnityEvent OnScenarioEnd;
-        [SerializeField] private List<Phrase> Phrases;
         [SerializeField] private List<SpeakerRef> Speakers;
-        [SerializeField] private List<AnimationCall> AnimationCalls;
         [SerializeField] private List<AnimationEntity> AnimationEntities;
+        [SerializeField] private Text TranscriptTextbox;
         private int previousTimeElapsed;
         private float TimeElapsed;
         private bool running;
-        public float TestScenarioSpeed = 1;
-        
+        [SerializeField] private float TestScenarioSpeed = 1;
+        [SerializeField] private List<Phrase> Phrases;
+        [SerializeField] private List<AnimationCall> AnimationCalls;
+
         // Start is called before the first frame update
         void Start()
+        {
+            if (PlayOnAwake)
+                Invoke("Play", PlayOnAwakeTimeout);
+        }
+
+        public void InitiateSetup()
+        {
+            StopAllCoroutines();
+            StartCoroutine("Setup");
+        }
+
+        public void BreakSetup()
+        {
+            StopAllCoroutines();
+        }
+
+        private IEnumerator Setup()
         {
             CSVParser Scenario = new CSVParser("Scenarios/" + scenarioName + "/RecordedScenarioText");
             int _len = Scenario.rowData[0].Length;
@@ -96,18 +121,39 @@ namespace RecordedScenario
                 }
                 int[] _timecodes = new int[_langNumber];
                 string[] _texts = new string[_langNumber];
-                for(int i = 0; i < _langNumber; i++)
+                for (int i = 0; i < _langNumber; i++)
                 {
                     _timecodes[i] = int.Parse(_row[2 + i * 2]);
                     _texts[i] = _row[3 + i * 2];
                 }
                 if (_row[0] == "ANIMATION")
+                {
                     AnimationCalls.Add(new AnimationCall(_row[3], _timecodes));
+                }
                 else
-                    Phrases.Add(new Phrase(_row[0], _row[1] != "0", _timecodes, _texts));
+                {
+                    //preprocess English TTS audio
+                    string _name = _row[0] + _timecodes[0] + "English";
+                    AudioClip[] _voiceAudio = new AudioClip[_langNumber];
+                    SpeakerRef _speaker = Speakers.Find(a => a.Name == _row[0]);
+                    _speaker.Speaker.runInEditMode = true;
+                    _speaker.Speak(_texts[0]);
+                    float _timeElapsedLog = 0;
+                    while (_speaker.Speaker.IsLoading)
+                    {
+                        _timeElapsedLog += Time.deltaTime;
+                        Debug.Log("Waiting for " + _speaker.Name + " to load " + _texts[0] + ". Time elapsed: " + _timeElapsedLog);
+                        yield return 0;
+                    }
+                    _speaker.Speaker.AudioSource.Stop();
+
+                    //preprocess the german stuff here;
+
+
+                    Phrases.Add(new Phrase(_row[0], _row[1] != "0", _timecodes, _texts, _voiceAudio));
+                }
+                    
             }
-            if (PlayOnAwake)
-                Invoke("Play", PlayOnAwakeTimeout);
         }
 
         private void ProcessTick(int _tickNumber)
@@ -187,8 +233,11 @@ namespace RecordedScenario
         // Update is called once per frame
         void Update()
         {
-            if(running)
-                Tick();
+            if (Application.isPlaying)
+            {
+                if (running)
+                    Tick();
+            }
         }
     }
 

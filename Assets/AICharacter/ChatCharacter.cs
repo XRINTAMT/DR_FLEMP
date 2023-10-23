@@ -22,13 +22,16 @@ public class ChatCharacter : MonoBehaviour
     [SerializeField] private SittingWheelChair _wheelChair;
     [SerializeField] private TTSSpeaker _speaker;
     [SerializeField] private WitAutoReactivation WitReact;
+    private RandomPool<AudioClip> PhrasesPool;
     private string[] sentences;
 
     void Start()
     {
         _history = new ChatHistory();
         _openAI = new OpenAIApi("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");
+        PhrasesPool = info.ThinkingPhrasesPool;
         STTInput = FindAnyObjectByType<InteractionHandler>();
+        
     }
 
     public void setTargeted(bool t)
@@ -175,7 +178,7 @@ public class ChatCharacter : MonoBehaviour
             {
                 if (sentence == string.Empty)
                     continue;
-                //_speaker.AudioSource.clip = PhrasesPool.Draw();
+                _speaker.AudioSource.clip = PhrasesPool.Draw();
                 _speaker.AudioSource.Play();
                 _speaker.Speak(sentence);
 
@@ -187,9 +190,7 @@ public class ChatCharacter : MonoBehaviour
                 {
                     yield return 0;
                 }
-                WitReact.temporarilyIgnore = true;
             }
-            WitReact.temporarilyIgnore = false;
             Debug.Log("Giving control back to the stt");
         }
     }

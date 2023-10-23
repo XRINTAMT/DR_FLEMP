@@ -229,27 +229,4 @@ namespace AICharacter
             Debug.Log("Giving control back to the stt");
         }
     }
-
-    public class RandomPool<T>
-    {
-        private List<T> List;
-        private T[] Array;
-
-        public RandomPool(T[] _arr)
-        {
-            Array = _arr.Clone() as T[];
-            List = new List<T>(_arr);
-        }
-
-        public T Draw()
-        {
-            if(List.Count == 0)
-                List = new List<T>(Array);
-            int _randint = Random.Range(0, List.Count - 1);
-            T elem = List.ElementAt(_randint);
-            List.RemoveAt(_randint);
-            return elem;
-        }
-
-    }
 }

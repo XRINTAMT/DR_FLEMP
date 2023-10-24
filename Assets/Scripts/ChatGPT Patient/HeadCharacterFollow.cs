@@ -18,8 +18,8 @@ public class HeadCharacterFollow : MonoBehaviour
     float m_LookAtWeight = 0;
     protected Animator m_Animator;
     public bool inArea;
-   
-
+    public bool alawaysInArea;
+    Transform targetPos;
     void Start()
     {
         if (!Animator)
@@ -30,7 +30,7 @@ public class HeadCharacterFollow : MonoBehaviour
         defaultPos = new GameObject().transform;
         defaultPos.gameObject.name = "HeadDefaultPosition";
         defaultPos.parent = transform;
-        defaultPos.localPosition = new Vector3(0, 1.18f, 0);
+        defaultPos.localPosition = new Vector3(0, 1.18f, 0.1f);
         playerPos = new GameObject().transform;
         playerPos.gameObject.name = "HeadFollowTarget";
 
@@ -77,11 +77,12 @@ public class HeadCharacterFollow : MonoBehaviour
     }
     void OnAnimatorIK(int layerIndex)
     {
-        if (inArea) m_trLookAt = playerPos;
+        if (inArea && !alawaysInArea) m_trLookAt = playerPos;
 
-        if (!inArea) m_trLookAt = defaultPos;
-        
-      
+        if (!inArea && !alawaysInArea) m_trLookAt = defaultPos;
+
+        if (alawaysInArea) m_trLookAt = targetPos;
+
         if (!Animator)
             return;
         if (m_trLookAt == null)
@@ -104,5 +105,12 @@ public class HeadCharacterFollow : MonoBehaviour
         m_Transform.localEulerAngles = m_vecInitEuler;
         m_LookAtWeight = Mathf.Clamp(m_LookAtWeight - 0.01f, 0, 1);
         Animator.SetLookAtWeight(m_LookAtWeight);
+    }
+
+    public void ChangeHeadFollow(Transform followPos) 
+    {
+        targetPos=followPos;
+        alawaysInArea = true;
+    
     }
 }

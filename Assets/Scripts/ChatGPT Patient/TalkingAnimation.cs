@@ -5,7 +5,7 @@ using UnityEngine;
 public class TalkingAnimation : MonoBehaviour
 {
     public SkinnedMeshRenderer skinnedMeshRenderer;
-    public int frequencyBand = 0;    
+    int frequencyBand = 1;    
     AudioPeer audioPeer;
     float multiplier = 2000;
 
@@ -24,7 +24,7 @@ public class TalkingAnimation : MonoBehaviour
 
         if (skinnedMeshRenderer.transform.parent.name == "YoungFemale")
         {
-            skinnedMeshRenderer.SetBlendShapeWeight(7, audioPeer.GetFrequencyBand(frequencyBand) * multiplier);
+            skinnedMeshRenderer.SetBlendShapeWeight(7, audioPeer.GetFrequencyBand(frequencyBand) * multiplier / 1.5f);
         }
         if (skinnedMeshRenderer.transform.parent.name == "SeniorFemale")
         {
@@ -32,7 +32,7 @@ public class TalkingAnimation : MonoBehaviour
         }
         else
         {
-            skinnedMeshRenderer.SetBlendShapeWeight(67, audioPeer.GetFrequencyBand(frequencyBand) * multiplier);
+            skinnedMeshRenderer.SetBlendShapeWeight(67, audioPeer.GetFrequencyBand(frequencyBand) * (multiplier/1.75f));
         }
 
     }

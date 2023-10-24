@@ -7,6 +7,7 @@ using OpenAI;
 using UnityEngine;
 using WebSocketSharp;
 using Meta.WitAi.TTS.Utilities;
+using GoogleTextToSpeech.Scripts;
 using CharacterInfo = AICharacter.CharacterInfo;
 
 public class ChatCharacter : MonoBehaviour
@@ -21,9 +22,12 @@ public class ChatCharacter : MonoBehaviour
     [SerializeField] private int numberOfDeepHistoryEntries = 3;
     [SerializeField] private SittingWheelChair _wheelChair;
     [SerializeField] private TTSSpeaker _speaker;
+    [SerializeField] private GoogleTTS _googleSpeaker;
     private RandomPool<AudioClip> PhrasesPool;
     private WitAutoReactivation WitReact;
     private string[] sentences;
+    [SerializeField] private int ManualLanguageSettingForDebug = 0; //remove this later
+    private int language;
 
     void Start()
     {
@@ -32,6 +36,7 @@ public class ChatCharacter : MonoBehaviour
         PhrasesPool = info.ThinkingPhrasesPool;
         STTInput = FindAnyObjectByType<InteractionHandler>();
         WitReact = FindAnyObjectByType<WitAutoReactivation>();
+        language = ManualLanguageSettingForDebug; //replace with normal loading from PlayerPrefs
     }
 
     public void setTargeted(bool t)
@@ -171,13 +176,19 @@ public class ChatCharacter : MonoBehaviour
     private void SendResponseToTTS(string response)
     {
         Debug.Log("should be pronounced using TTS: "+response);
-        sentences = response.Split(new char[] { '\n', '.', '?', ';', '!' });
-
-        foreach (string sentence in sentences)
+        if(language == 0)
         {
-            if (sentence == string.Empty)
-                continue;
-            _speaker.SpeakQueued(sentence);
+            sentences = response.Split(new char[] { '\n', '.', '?', ';', '!' });
+            foreach (string sentence in sentences)
+            {
+                if (sentence == string.Empty)
+                    continue;
+                _speaker.SpeakQueued(sentence);
+            }
+        }
+        else
+        {
+            _googleSpeaker.Speak(response);
         }
     }
 

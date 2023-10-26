@@ -95,6 +95,7 @@ namespace RecordedScenario
                 Invoke("Play", PlayOnAwakeTimeout);
         }
 
+        #if UNITY_EDITOR
         public void InitiateSetup()
         {
             StopAllCoroutines();
@@ -136,6 +137,7 @@ namespace RecordedScenario
                     string _name = _row[0] + _timecodes[0] + "English";
                     AudioClip[] _voiceAudio = new AudioClip[_langNumber];
                     SpeakerRef _speaker = Speakers.Find(a => a.Name == _row[0]);
+
                     _speaker.Speaker.runInEditMode = true;
                     _speaker.Speak(_texts[0]);
                     float _timeElapsedLog = 0;
@@ -155,6 +157,7 @@ namespace RecordedScenario
                     
             }
         }
+        #endif
 
         private void ProcessTick(int _tickNumber)
         {

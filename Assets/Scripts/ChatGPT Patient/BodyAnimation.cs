@@ -14,8 +14,8 @@ public class BodyAnimation : MonoBehaviour
     void Start()
     {
         SetRandomSittingIdleAnimation();
-        FindObjectOfType<RecordedScenarioText>().speakAction+=StartSpeak;
-        audioSource = animator.transform.parent.GetComponent<AudioSource>();
+        if (FindObjectOfType<RecordedScenarioText>())
+            FindObjectOfType<RecordedScenarioText>().speakAction += StartSpeak;
     }
     public void SetBadMoodAnimation(string triggerName) 
     {

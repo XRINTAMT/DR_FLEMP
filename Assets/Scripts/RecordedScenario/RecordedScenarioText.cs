@@ -9,6 +9,8 @@ using Meta.WitAi.TTS.Integrations;
 using Meta.WitAi.TTS;
 using Meta.WitAi.TTS.Data;
 using System.IO;
+using GoogleTextToSpeech.Scripts;
+using System.Security.Cryptography;
 
 namespace RecordedScenario
 {
@@ -51,6 +53,7 @@ namespace RecordedScenario
     {
         public string Name;
         public TTSSpeaker Speaker;
+        public GoogleTTS GoogleSpeaker;
         public void Speak(string _s)
         {
             Debug.Log("Speaker " + Name + " on gameobject " + Speaker.transform.parent.name + " -> " + Speaker.name);
@@ -87,12 +90,14 @@ namespace RecordedScenario
         [SerializeField] private float TestScenarioSpeed = 1;
         [SerializeField] private List<Phrase> Phrases;
         [SerializeField] private List<AnimationCall> AnimationCalls;
+        [SerializeField] private int language;
 
         // Start is called before the first frame update
         void Start()
         {
             if (PlayOnAwake)
                 Invoke("Play", PlayOnAwakeTimeout);
+            //language = playerprefs...
         }
 
         public void InitiateSetup()
@@ -133,7 +138,7 @@ namespace RecordedScenario
                 else
                 {
                     //preprocess English TTS audio
-                    string _name = _row[0] + _timecodes[0] + "English";
+                    string _name = ComputeSHA256Hash(_row[0] + _texts[0]);
                     AudioClip[] _voiceAudio = new AudioClip[_langNumber];
                     SpeakerRef _speaker = Speakers.Find(a => a.Name == _row[0]);
                     _speaker.Speaker.runInEditMode = true;
@@ -148,22 +153,85 @@ namespace RecordedScenario
                     _speaker.Speaker.AudioSource.Stop();
 
                     //preprocess the german stuff here;
+                    _name = ComputeSHA256Hash(_row[0] + _texts[1]);
+                    string _resourcesName = "Scenarios/" + scenarioName + "/TTS_AudioRecordings/German/" + _name;
 
+                    //if one needs to change the naming conventions again
+                    /*
+                    string _fullName = Application.dataPath + "/Resources/" + _resourcesName;
+                    string _oldname = ComputeSHA256Hash(_texts[1]);
+                    string _oldresourcesName = "Scenarios/" + scenarioName + "/TTS_AudioRecordings/German/" + _oldname;
+                    string _oldfullName = Application.dataPath + "/Resources/" + _oldresourcesName;
+                    if (File.Exists(_oldfullName + ".wav"))
+                    {
+                        if(File.Exists(_fullName + ".wav"))
+                        {
+                            File.Delete(_fullName + ".wav");
+                            File.Delete(_fullName + ".wav.meta");
+                        }
+                        File.Move(_oldfullName + ".wav", _fullName + ".wav");
+                        File.Move(_oldfullName + ".wav.meta", _fullName + ".wav.meta");
+                    }
+                    else
+                    {
+                        Debug.Log("can't see " + _oldfullName);
+                    }
+                    */
 
+                    _voiceAudio[1] = Resources.Load<AudioClip>(_resourcesName);
+                    if(_voiceAudio[1] == null)
+                    {
+                        string _fullName = Application.dataPath + "/Resources/" + _resourcesName;
+                        for (int i = 0; i < 3; i++)
+                        {
+                            _speaker.GoogleSpeaker.SaveToFile(_texts[1], _fullName);
+                            while (_speaker.GoogleSpeaker.SaveWIP == 0)
+                            {
+                                Debug.Log("Waiting for " + _speaker.Name + " to load " + _texts[1] + ". Time elapsed: " + _timeElapsedLog);
+                                yield return 0;
+                            }
+                            if (_speaker.GoogleSpeaker.SaveWIP == 1)
+                                break;
+                            else
+                            {
+                                if (i < 2)
+                                    Debug.LogWarning("Couldn't load " + _name + ", trying " + (2 - i) + "more times");
+                                else
+                                    Debug.LogError("Did not manage to load " + _name + "after 3 attempts");
+                            }
+                        }
+                        if (_speaker.GoogleSpeaker.SaveWIP == 1)
+                            _voiceAudio[1] = Resources.Load<AudioClip>(_resourcesName);
+                    }
                     Phrases.Add(new Phrase(_row[0], _row[1] != "0", _timecodes, _texts, _voiceAudio));
                 }
                     
             }
         }
 
+        static string ComputeSHA256Hash(string input)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = System.Text.Encoding.UTF8.GetBytes(input);
+                byte[] hashBytes = sha256.ComputeHash(bytes);
+
+                System.Text.StringBuilder builder = new System.Text.StringBuilder();
+                for (int i = 0; i < hashBytes.Length; i++)
+                {
+                    builder.Append(hashBytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
+
         private void ProcessTick(int _tickNumber)
         {
-            int _lang = 0;
             foreach (Phrase _phrase in Phrases)
             {
-                if (_phrase.Timecode[_lang] == _tickNumber)
+                if (_phrase.Timecode[language] == _tickNumber)
                 {
-                    string textToAdd = "<b>" + _phrase.Speaker + ":</b> " + _phrase.Text[_lang];
+                    string textToAdd = "<b>" + _phrase.Speaker + ":</b> " + _phrase.Text[language];
                     if (_phrase.Highlight)
                     {
                         textToAdd = "<i><color=#68FF9A>" + textToAdd + "</color></i>";
@@ -174,8 +242,21 @@ namespace RecordedScenario
                     SpeakerRef _speaker = Speakers.Find(a => a.Name == _phrase.Speaker);
                     if (_speaker != null)
                     {
-                        _speaker.Speak(_phrase.Text[_lang]);
-                        speakAction?.Invoke(_speaker.Name);
+                        if(language == 0)
+                        {
+                            _speaker.Speak(_phrase.Text[language]);
+                            speakAction?.Invoke(_speaker.Name);
+                        }
+                        else
+                        {
+                            string _name = ComputeSHA256Hash(_phrase.Speaker + _phrase.Text[1]);
+                            string _resourcesName = "Scenarios/" + scenarioName + "/TTS_AudioRecordings/German/" + _name;
+                            AudioClip _toPlay = Resources.Load<AudioClip>(_resourcesName);
+                            if (_toPlay != null)
+                                _speaker.GoogleSpeaker.PlaySaved(_toPlay);
+                            else
+                                Debug.LogError("Phrase " + _phrase.Text[1] + " for " + _phrase.Speaker + " hasn't been prerecorded.");
+                        }
                     }
                     else
                     {
@@ -190,7 +271,7 @@ namespace RecordedScenario
             }
             foreach (AnimationCall _call in AnimationCalls)
             {
-                if (_call.Timecode[_lang] == _tickNumber)
+                if (_call.Timecode[language] == _tickNumber)
                 {
                     AnimationEntity _animation = AnimationEntities.Find(a => a.Name == _call.AnimationTag);
                     if (_animation != null)

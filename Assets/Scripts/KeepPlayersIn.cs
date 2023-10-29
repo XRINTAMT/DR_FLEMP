@@ -23,6 +23,7 @@ public class KeepPlayersIn : MonoBehaviour
             {
                 Debug.Log("Someone left the trigger area!!!");
                 MoveAHPlayer(_head, lastLocation.location);
+                FindAnyObjectByType<FadeMessageManager>().FadeWallFalse();
             }
         }
     }

@@ -37,7 +37,7 @@ public class UIController : MonoBehaviour
     public static float soundVolume;
     public static float musicVolume;
     public static float walkingSpeed;
-    public static string language;
+    public static int language;
     public static string role;
     public static int teleport;
     public static int subtitles;
@@ -57,17 +57,17 @@ public class UIController : MonoBehaviour
         //setWalkingSpeed.value = PlayerPrefs.GetFloat("walkingSpeed", 1.5f);
         setSubstitlesStatus.isOn = PlayerPrefs.GetInt("Subtitles", 0) == 0;
         teleport = PlayerPrefs.GetInt("MovementType", 0);
-        language = PlayerPrefs.GetString("Language", "English");
+        language = PlayerPrefs.GetInt("StudyLanguage", 0);
         role = PlayerPrefs.GetString("Role", "Assistant");
-        LocalizationManager.Language = language;
+        //LocalizationManager.Language = language;
         teleportChosen.SetActive(teleport == 0);
         smoothChosen.SetActive(teleport == 1);
         mixedChosen.SetActive(teleport == 2);
-        englishChosen.SetActive(language == "English");
-        germanChosen.SetActive(language == "German");
-        lithuanianChosen.SetActive(language == "Lithuanian");
-        latvianChosen.SetActive(language == "Latvian");
-        swedishChosen.SetActive(language == "Swedish");
+        englishChosen.SetActive(language == 0);
+        germanChosen.SetActive(language == 1);
+        //lithuanianChosen.SetActive(language == "Lithuanian");
+        //latvianChosen.SetActive(language == "Latvian");
+        //swedishChosen.SetActive(language == "Swedish");
         assistantChosen.SetActive(role == "Assistant");
         nurseChosen.SetActive(role == "Nurse");
     }
@@ -117,16 +117,16 @@ public class UIController : MonoBehaviour
         FindObjectOfType<XRMovementControls>().SetMovementSpeed(walkingSpeed);
     }
 
-    public void SetLanguage(string lang)
+    public void SetLanguage(int lang)
     {
         language = lang;
-        PlayerPrefs.SetString("Language", lang);
-        LocalizationManager.Language = language;
-        englishChosen.SetActive(language == "English");
-        germanChosen.SetActive(language == "German");
-        lithuanianChosen.SetActive(language == "Lithuanian");
-        latvianChosen.SetActive(language == "Latvian");
-        swedishChosen.SetActive(language == "Swedish");
+        PlayerPrefs.SetInt("StudyLanguage", lang);
+        //LocalizationManager.Language = language;
+        englishChosen.SetActive(lang==0);
+        germanChosen.SetActive(lang==1);
+        //lithuanianChosen.SetActive(language == "Lithuanian");
+        //latvianChosen.SetActive(language == "Latvian");
+        //swedishChosen.SetActive(language == "Swedish");
     }
 
     public void SetLocomotionType(int LocomotionID)

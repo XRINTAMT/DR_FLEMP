@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2245020072712494185}
   - component: {fileID: 5769382015064299257}
   - component: {fileID: 250313272548222405}
+  - component: {fileID: 2414914623519988209}
   m_Layer: 0
   m_Name: NurseTablet
   m_TagString: Untagged
@@ -350,6 +351,19 @@ MonoBehaviour:
   minRange: 0
   testAngle: 0
   testRange: 0
+--- !u!114 &2414914623519988209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7158953398030512355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc5843bc214332e4ea42a7db7b555060, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabbableDistance: 0.1
 --- !u!1 &8041423418662922728
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,7 +483,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8041423418662922728}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1945101910a6f044a916a6cc88647a0d, type: 3}
   m_Name: 

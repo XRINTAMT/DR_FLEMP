@@ -2129,7 +2129,7 @@ MonoBehaviour:
   aimer: {fileID: 8807260988284912195}
   layer:
     serializedVersion: 2
-    m_Bits: 291
+    m_Bits: 33554688
   maxSurfaceAngle: 45
   distanceMultiplyer: 1
   curveStrength: 1
@@ -3051,7 +3051,7 @@ MonoBehaviour:
   aimer: {fileID: 3270723494575490047}
   layer:
     serializedVersion: 2
-    m_Bits: 291
+    m_Bits: 33554688
   maxSurfaceAngle: 45
   distanceMultiplyer: 1
   curveStrength: 1
@@ -3649,6 +3649,7 @@ GameObject:
   - component: {fileID: 6231535692498331917}
   - component: {fileID: 6814577431278749833}
   - component: {fileID: 7397397486090623270}
+  - component: {fileID: 2917994373552280262}
   m_Layer: 0
   m_Name: PlayerVR
   m_TagString: Untagged
@@ -3721,6 +3722,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 078b2bf4c4d277643a79a5be654b24d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2917994373552280262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6231535692498331914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720569f288119ee4794390476a232ca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportList: []
 --- !u!1 &6231535692836141719
 GameObject:
   m_ObjectHideFlags: 0
@@ -3973,7 +3987,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4026531895
+    m_Bits: 4060086327
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

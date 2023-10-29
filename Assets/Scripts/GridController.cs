@@ -15,8 +15,8 @@ public class GridController : MonoBehaviour
     public Transform contentSentence;
     public Transform contentChoose;
     [SerializeField] ButtonSentence buttonWord;
-    [SerializeField] RowSentence rowSentence;
-    [SerializeField] RowSentence rowChoose;
+    public RowSentence rowSentence;
+    public RowSentence rowChoose;
 
     [SerializeField] float contentWidth;
     SentenceScrambleTab sentenceScrambleTab;
@@ -24,8 +24,8 @@ public class GridController : MonoBehaviour
     void Awake()
     {
         sentenceScrambleTab = GetComponent<SentenceScrambleTab>();
-        rowsSentence.Add(Instantiate(rowSentence, contentSentence));
-        rowsChoose.Add(Instantiate(rowChoose, contentChoose));
+        //rowsSentence.Add(Instantiate(rowSentence, contentSentence));
+        //rowsChoose.Add(Instantiate(rowChoose, contentChoose));
     }
    
 

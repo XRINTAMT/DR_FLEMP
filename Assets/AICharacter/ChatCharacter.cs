@@ -183,7 +183,6 @@ public class ChatCharacter : MonoBehaviour
         sentences = response.Split(new char[] { '\n', '.', '?', ';', '!' });
         if(language == 0)
         {
-            sentences = response.Split(new char[] { '\n', '.', '?', ';', '!' });
             foreach (string sentence in sentences)
             {
                 if (sentence == string.Empty)
@@ -193,7 +192,7 @@ public class ChatCharacter : MonoBehaviour
         }
         else
         {
-            _googleSpeaker.Speak(response);
+            _googleSpeaker.SpeakQueued(sentences);
         }
     }
 

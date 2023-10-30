@@ -18,7 +18,11 @@ namespace GoogleTextToSpeech.Scripts
 
         public void GetSpeechAudioFromGoogle(string textToConvert, VoiceScriptableObject voice, Action<AudioClip> audioClipReceived,  Action<BadRequestData> errorReceived)
         {
-            _actionRequestReceived += (requestData => RequestReceived(requestData,audioClipReceived));
+            if (_actionRequestReceived == null)
+            {
+                Debug.Log("Action Subscribed");
+                _actionRequestReceived += (requestData => RequestReceived(requestData, audioClipReceived));
+            }
 
             if (_requestService == null)
                 _requestService = gameObject.AddComponent<RequestService>();

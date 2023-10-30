@@ -8,6 +8,7 @@ using UnityEngine;
 using WebSocketSharp;
 using Meta.WitAi.TTS.Utilities;
 using UnityEngine.UI;
+using GoogleTextToSpeech.Scripts;
 using CharacterInfo = AICharacter.CharacterInfo;
 
 public class ChatCharacter : MonoBehaviour
@@ -22,11 +23,14 @@ public class ChatCharacter : MonoBehaviour
     [SerializeField] private int numberOfDeepHistoryEntries = 3;
     [SerializeField] private SittingWheelChair _wheelChair;
     [SerializeField] private TTSSpeaker _speaker;
+    [SerializeField] private GoogleTTS _googleSpeaker;
     private RandomPool<AudioClip> PhrasesPool;
     private WitAutoReactivation WitReact;
     [SerializeField] private WitAutoReactivation WitReact;
     [SerializeField] private Text ChatLogs;
     private string[] sentences;
+    [SerializeField] private int ManualLanguageSettingForDebug = 0; //remove this later
+    private int language;
 
     void Start()
     {
@@ -35,6 +39,7 @@ public class ChatCharacter : MonoBehaviour
         PhrasesPool = info.ThinkingPhrasesPool;
         STTInput = FindAnyObjectByType<InteractionHandler>();
         WitReact = FindAnyObjectByType<WitAutoReactivation>();
+        language = ManualLanguageSettingForDebug; //replace with normal loading from PlayerPrefs
     }
 
     public void setTargeted(bool t)
@@ -177,12 +182,19 @@ public class ChatCharacter : MonoBehaviour
         Debug.Log("should be pronounced using TTS: " + response);
         ChatLogs.text += "<b>" + info.name + ":</b> " + response + '\n';
         sentences = response.Split(new char[] { '\n', '.', '?', ';', '!' });
-
-        foreach (string sentence in sentences)
+        if(language == 0)
         {
-            if (sentence == string.Empty)
-                continue;
-            _speaker.SpeakQueued(sentence);
+            sentences = response.Split(new char[] { '\n', '.', '?', ';', '!' });
+            foreach (string sentence in sentences)
+            {
+                if (sentence == string.Empty)
+                    continue;
+                _speaker.SpeakQueued(sentence);
+            }
+        }
+        else
+        {
+            _googleSpeaker.Speak(response);
         }
     }
 

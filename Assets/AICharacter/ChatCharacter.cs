@@ -26,7 +26,6 @@ public class ChatCharacter : MonoBehaviour
     [SerializeField] private GoogleTTS _googleSpeaker;
     private RandomPool<AudioClip> PhrasesPool;
     private WitAutoReactivation WitReact;
-    [SerializeField] private WitAutoReactivation WitReact;
     [SerializeField] private Text ChatLogs;
     private string[] sentences;
     [SerializeField] private int ManualLanguageSettingForDebug = 0; //remove this later

@@ -90,13 +90,16 @@ public class BodyAnimation : MonoBehaviour
     public void SetRandomSittingIdleAnimation() 
     {
         int rand = 0;
-        if (animator.transform.parent.parent.name.Contains("Male"))
-            rand = Random.Range(1, 4);
+        if (animator.transform.parent.parent)
+        {
+            if (animator.transform.parent.parent.name.Contains("Male"))
+                rand = Random.Range(1, 4);
 
-        if (animator.transform.parent.parent.name.Contains("Female"))
-            rand = Random.Range(1, 3);
+            if (animator.transform.parent.parent.name.Contains("Female"))
+                rand = Random.Range(1, 3);
 
-
+        }
+        
         switch (rand)
         {
             case 1:

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Autohand.Demo;
 using Autohand;
+using UnityEngine.SceneManagement;
 
 public class XRMovementControls : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class XRMovementControls : MonoBehaviour
     {
         SwitchLocomotion(PlayerPrefs.GetInt("MovementType", 0));
         AHPlayer.maxMoveSpeed = PlayerPrefs.GetFloat("walkingSpeed", 2);
+        if (SceneManager.GetActiveScene().name=="Lobby")
+            SwitchLocomotion(2);
     }
 
     public void SwitchLocomotion(int type)

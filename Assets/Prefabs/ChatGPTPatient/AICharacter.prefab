@@ -288,7 +288,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 150dd19256e47264f840336287aff528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OutputAudio: {fileID: 4082341524421796689}
   temporarilyIgnore: 0
 --- !u!1 &3019815965206962109
 GameObject:
@@ -1006,13 +1005,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58abcf2ada92a3740ad18d69a0b7271c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  STTInput: {fileID: 812962604712040616}
   info: {fileID: 1083527520337386733}
   _embeddingDB: {fileID: 7750616982758472614}
   targeted: 0
   numberOfHistoryEntries: 3
   numberOfDeepHistoryEntries: 3
   _wheelChair: {fileID: 0}
+  _speaker: {fileID: 0}
+  _googleSpeaker: {fileID: 0}
+  ChatLogs: {fileID: 0}
+  ManualLanguageSettingForDebug: 0
 --- !u!114 &1083527520337386733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1679,6 +1681,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5283375388985890351}
     m_Modifications:
+    - target: {fileID: 503870626, guid: eb6b0aedc8512d840a1b9f1b6a319f78, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 4082341524421796689}
     - target: {fileID: 503870627, guid: eb6b0aedc8512d840a1b9f1b6a319f78, type: 3}
       propertyPath: multiplier
       value: 500

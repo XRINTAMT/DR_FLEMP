@@ -97,6 +97,7 @@ namespace RecordedScenario
         {
             if (PlayOnAwake)
                 Invoke("Play", PlayOnAwakeTimeout);
+            language = PlayerPrefs.GetInt("StudyLanguage", 0);
             //language = playerprefs...
         }
 

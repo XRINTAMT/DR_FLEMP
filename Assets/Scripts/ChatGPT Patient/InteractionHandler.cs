@@ -58,7 +58,7 @@ namespace ChatGPT_Patient
                 OnTimeout.Invoke();
                 foreach(ChatCharacter _character in FindObjectsOfType<ChatCharacter>())
                 {
-                    _character.RecieveSTT();
+                    _character.RecieveSTT(this);
                 }
                 CurrentTimeout = 0;
                 Done = true;

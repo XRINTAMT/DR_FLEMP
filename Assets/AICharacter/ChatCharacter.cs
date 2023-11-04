@@ -28,7 +28,6 @@ public class ChatCharacter : MonoBehaviour
     private WitAutoReactivation WitReact;
     [SerializeField] private Text ChatLogs;
     private string[] sentences;
-    [SerializeField] private int ManualLanguageSettingForDebug = 0; //remove this later
     private int language;
 
     void Start()
@@ -36,9 +35,9 @@ public class ChatCharacter : MonoBehaviour
         _history = new ChatHistory();
         _openAI = new OpenAIApi("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");
         PhrasesPool = info.ThinkingPhrasesPool;
-        STTInput = FindAnyObjectByType<InteractionHandler>();
+        //STTInput = FindAnyObjectByType<InteractionHandler>();
         WitReact = FindAnyObjectByType<WitAutoReactivation>();
-        language = ManualLanguageSettingForDebug; //replace with normal loading from PlayerPrefs
+        language = PlayerPrefs.GetInt("StudyLanguage", 0);
     }
 
     public void setTargeted(bool t)
@@ -46,8 +45,9 @@ public class ChatCharacter : MonoBehaviour
         targeted = t;
     }
 
-    public void RecieveSTT()
+    public void RecieveSTT(InteractionHandler _stt)
     {
+        STTInput = _stt;
         string stt = STTInput.LastNonNullPhrase;
         
         if (!targeted) return;

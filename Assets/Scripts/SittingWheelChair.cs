@@ -26,7 +26,7 @@ public class SittingWheelChair : MonoBehaviour
         {
 
             float dist = Vector3.Distance(this.transform.position, siitingPos.position);
-            if (dist > 1.0)
+            if (dist > 2.0)
             {
                 return "Sit in Wheelchair Fail: Wheelchair is too far away";
             }

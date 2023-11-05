@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PainIndicator : MonoBehaviour
 {
-    [Range(0, 9)] 
+    [Range(0, 11)] 
     public int painCount;
     int _painCount;
     [SerializeField] Color [] colorPain;

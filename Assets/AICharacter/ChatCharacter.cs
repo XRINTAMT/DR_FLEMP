@@ -78,7 +78,7 @@ public class ChatCharacter : MonoBehaviour
         var background = new ChatMessage()
         {
             Role = "system",
-            Content = "Do not act as an assistant. Do not ask  how you can help. You are a patient in the hospital. Act as this character: "+ info.description,
+            Content = "Do not act as an assistant. Do not ask  how you can help. You are "+info.name+", patient in the hospital. Act as this character: "+ info.description,
         };
         var instruction = new ChatMessage()
         {
@@ -140,6 +140,17 @@ public class ChatCharacter : MonoBehaviour
                         Properties = new Dictionary<string, Property>(),
                         Required = new List<string>()
                     }
+                },
+                new FunctionDescription
+                {
+                    Name = "explain_pain",
+                    Description = "Get information about location or intensity of pain",
+                    Parameters = new Parameters()
+                    {
+                        Type = "object",
+                        Properties = new Dictionary<string, Property>(),
+                        Required = new List<string>()
+                    }
                 }
             }
         });
@@ -167,6 +178,9 @@ public class ChatCharacter : MonoBehaviour
             {
                 case "get_into_wheelchair":
                     functionReturn.Content = _wheelChair.Sit();
+                    break;
+                case "explain_pain":
+                    functionReturn.Content = ShowPainIndicator().ToString();
                     break;
                 default:
                     Debug.Log("No function called "+response.FunctionCall?.Name);
@@ -203,9 +217,10 @@ public class ChatCharacter : MonoBehaviour
         }
     }
 
-    private bool GetIntoWheelchar()
+    private bool ShowPainIndicator()
     {
-        Debug.Log("Get into wheelchair called");
+        Debug.Log("ShowPainIndicator called");
+        indicator.painCount = painLevel + 1;
         return true;
     }
 

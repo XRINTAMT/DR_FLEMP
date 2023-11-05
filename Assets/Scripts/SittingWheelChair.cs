@@ -20,18 +20,26 @@ public class SittingWheelChair : MonoBehaviour
 
     }
   
-    public void Sit() 
+    public string Sit() 
     {
         if (headCharacterFollow.inArea)
         {
+
+            float dist = Vector3.Distance(this.transform.position, siitingPos.position);
+            if (dist > 1.0)
+            {
+                return "Sit in Wheelchair Fail: Wheelchair is too far away";
+            }
             transform.parent = siitingPos;
             transform.localPosition = Vector3.zero;
             transform.localEulerAngles = Vector3.zero;
             Task _wheelchairTask;
             if (siitingPos.TryGetComponent<Task>(out _wheelchairTask)){
                 _wheelchairTask.Complete(RightPatient ? 1 : 0);
+                return "Sit in Wheelchair Success";
             }
         }
+        return "Sit in Wheelchair Fail: Which character are you talking to?";
     }
     // Update is called once per frame
 

@@ -151,6 +151,7 @@ public class ChatCharacter : MonoBehaviour
 
         if (response.FunctionCall != null)
         {
+            Debug.Log("Function call happening: "+response.FunctionCall?.Name);
             var functionReturn = new ChatMessage()
             {
                 Role = "function",
@@ -159,7 +160,7 @@ public class ChatCharacter : MonoBehaviour
             switch(response.FunctionCall?.Name) 
             {
                 case "get_into_wheelchair":
-                    functionReturn.Content = GetIntoWheelchar().ToString();
+                    functionReturn.Content = _wheelChair.Sit();
                     break;
                 default:
                     Debug.Log("No function called "+response.FunctionCall?.Name);
@@ -198,6 +199,7 @@ public class ChatCharacter : MonoBehaviour
 
     private bool GetIntoWheelchar()
     {
+        Debug.Log("Get into wheelchair called");
         return true;
     }
 

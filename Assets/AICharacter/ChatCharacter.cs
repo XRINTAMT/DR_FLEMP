@@ -9,6 +9,7 @@ using WebSocketSharp;
 using Meta.WitAi.TTS.Utilities;
 using UnityEngine.UI;
 using GoogleTextToSpeech.Scripts;
+using UnityEngine.Serialization;
 using CharacterInfo = AICharacter.CharacterInfo;
 
 public class ChatCharacter : MonoBehaviour
@@ -29,6 +30,11 @@ public class ChatCharacter : MonoBehaviour
     [SerializeField] private Text ChatLogs;
     private string[] sentences;
     private int language;
+
+    [SerializeField] private PainIndicator indicator;
+    [SerializeField] private int painLevel;
+    
+    
 
     void Start()
     {
@@ -72,7 +78,7 @@ public class ChatCharacter : MonoBehaviour
         var background = new ChatMessage()
         {
             Role = "system",
-            Content = "You are this character: "+ info.description,
+            Content = "Do not act as an assistant. Do not ask  how you can help. You are a patient in the hospital. Act as this character: "+ info.description,
         };
         var instruction = new ChatMessage()
         {

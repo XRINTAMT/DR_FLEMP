@@ -60,6 +60,7 @@ public class UIController : MonoBehaviour
         //setWalkingSpeed.value = PlayerPrefs.GetFloat("walkingSpeed", 1.5f);
         setSubstitlesStatus.isOn = PlayerPrefs.GetInt("Subtitles", 0) == 0;
         teleport = PlayerPrefs.GetInt("MovementType", 0);
+        SetLocomotionType(teleport);
         learnedLanguage = PlayerPrefs.GetInt("StudyLanguage", 0);
         role = PlayerPrefs.GetString("Role", "Assistant");
         language = PlayerPrefs.GetString("Language", "English");

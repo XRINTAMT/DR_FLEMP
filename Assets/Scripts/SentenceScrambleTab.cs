@@ -29,7 +29,7 @@ public class SentenceScrambleTab : MonoBehaviour
     public List<string> allWords = new List<string>();
     public string correctSentence;
     public string sentence;
-    List<bool> completion;
+    List<bool> completion = new List<bool>();
     int indexList;    
     GridController gridController;
     [SerializeField] UnityEvent OnCompletion;

@@ -428,7 +428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2156295710585527118, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2156295710802554887, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
       propertyPath: m_AnchorMax.y
@@ -953,9 +953,9 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5946129993249753662, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
   m_PrefabInstance: {fileID: 1067664178}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1067664183 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2156295710585527118, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+--- !u!223 &1067664183 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 2156295710585527218, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
   m_PrefabInstance: {fileID: 1067664178}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1161613624
@@ -1381,6 +1381,63 @@ PrefabInstance:
     - {fileID: 5352402806464326198, guid: 088690b0ee03c6e488d4854047047a0d, type: 3}
     - {fileID: 5352402806464326199, guid: 088690b0ee03c6e488d4854047047a0d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 088690b0ee03c6e488d4854047047a0d, type: 3}
+--- !u!1001 &1532467818
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1324580942211490608, guid: 271b3368bc877114e860e8a7d261f61d, type: 3}
+      propertyPath: m_Name
+      value: SM_Chair_03c
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610542427652641059, guid: 271b3368bc877114e860e8a7d261f61d, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610542427652641059, guid: 271b3368bc877114e860e8a7d261f61d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.387
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610542427652641059, guid: 271b3368bc877114e860e8a7d261f61d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610542427652641059, guid: 271b3368bc877114e860e8a7d261f61d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.969
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610542427652641059, guid: 271b3368bc877114e860e8a7d261f61d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610542427652641059, guid: 271b3368bc877114e860e8a7d261f61d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610542427652641059, guid: 271b3368bc877114e860e8a7d261f61d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610542427652641059, guid: 271b3368bc877114e860e8a7d261f61d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610542427652641059, guid: 271b3368bc877114e860e8a7d261f61d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610542427652641059, guid: 271b3368bc877114e860e8a7d261f61d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610542427652641059, guid: 271b3368bc877114e860e8a7d261f61d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 271b3368bc877114e860e8a7d261f61d, type: 3}
 --- !u!1001 &1652753786
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1610,8 +1667,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1067664183}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

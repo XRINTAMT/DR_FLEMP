@@ -29,9 +29,12 @@ public class SentenceScrambleTab : MonoBehaviour
     public List<string> allWords = new List<string>();
     public string correctSentence;
     public string sentence;
-    List<bool> completion;
+    List<bool> completion = new List<bool>();
     int indexList;    
     GridController gridController;
+    AudioSource audioSource;
+    public AudioClip audioCorrect;
+    public AudioClip audioUncorrect;
     [SerializeField] UnityEvent OnCompletion;
 
  
@@ -41,6 +44,7 @@ public class SentenceScrambleTab : MonoBehaviour
         gridController = GetComponent<GridController>();
         Parse();
         SetNewList();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Parse() 
@@ -151,6 +155,7 @@ public class SentenceScrambleTab : MonoBehaviour
             }
 			CheckCompletion();
             SetNewList();
+            audioSource.PlayOneShot(audioCorrect);
         }
         else
         {
@@ -159,6 +164,7 @@ public class SentenceScrambleTab : MonoBehaviour
             if (descriptions.Count <= indexList)
                 indexList = 0;
             SetNewList();
+            audioSource.PlayOneShot(audioUncorrect);
         }
     }
 

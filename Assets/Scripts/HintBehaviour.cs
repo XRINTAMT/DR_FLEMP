@@ -23,8 +23,6 @@ public class HintBehaviour : MonoBehaviour
             {
                 hintControllers[i].EnableHint();
             }
-
-            FindObjectOfType<XRMovementControls>().SwitchLocomotion(2);
             GetComponent<HandTriggerAreaEvents>().enabled = true;
             startFirstTime = true;
         }

@@ -23,7 +23,6 @@ public class ChecklistMechanic : MonoBehaviour
     {
         TabletRecords = GetComponentsInChildren<NurseTabletRecord>();
         ParseTheScenario();
-
         timer = GetComponent<Timer>();
     }
 
@@ -33,26 +32,55 @@ public class ChecklistMechanic : MonoBehaviour
         int i = -1;
         correctAnswers = new int[Scenario.rowData.Count];
         givenAnswers = new int[Scenario.rowData.Count];
-        foreach (string[] row in Scenario.rowData)
+        if(Scenario.rowData[0].Length == 7) //normal scenario
         {
-            if (i != -1 && TabletRecords.Length > i)
+            Debug.Log("handling a normal scenario with hints and audiohints");
+            foreach (string[] row in Scenario.rowData)
             {
-                string[] _answers = new string[3];
-                int _correct = Random.Range(0, 3);
-                correctAnswers[i] = _correct;
-                for (int j = 0; j < _correct; j++)
+                if (i != -1 && TabletRecords.Length > i)
                 {
-                    _answers[j] = row[3 + j];
+                    string[] _answers = new string[3];
+                    int _correct = Random.Range(0, 3);
+                    correctAnswers[i] = _correct;
+                    for (int j = 0; j < _correct; j++)
+                    {
+                        _answers[j] = row[3 + j];
+                    }
+                    _answers[_correct] = row[2];
+                    for (int j = _correct + 1; j <= 2; j++)
+                    {
+                        _answers[j] = row[2 + j];
+                    }
+                    TabletRecords[i].SetData(row[0], _answers, row[1]);
                 }
-                _answers[_correct] = row[2];
-                for (int j = _correct + 1; j <= 2; j++)
-                {
-                    _answers[j] = row[2 + j];
-                }
-                TabletRecords[i].SetData(row[0], _answers, row[1]);
+                i++;
             }
-            i++;
         }
+        else //no hint scenario
+        {
+            Debug.Log("handling a scenario with no hints or audiohints");
+            foreach (string[] row in Scenario.rowData)
+            {
+                if (i != -1 && TabletRecords.Length > i)
+                {
+                    string[] _answers = new string[3];
+                    int _correct = Random.Range(0, 3);
+                    correctAnswers[i] = _correct;
+                    for (int j = 0; j < _correct; j++)
+                    {
+                        _answers[j] = row[2 + j];
+                    }
+                    _answers[_correct] = row[1];
+                    for (int j = _correct + 1; j <= 2; j++)
+                    {
+                        _answers[j] = row[1 + j];
+                    }
+                    TabletRecords[i].SetData(row[0], _answers, null);
+                }
+                i++;
+            }
+        }
+
     }
 
     public void SaveAnswer(int _id, int _answer)
@@ -103,15 +131,15 @@ public class ChecklistMechanic : MonoBehaviour
     {
         for (int i = 0; i < TabletRecords.Length; i++)
         {
-            if (!TabletRecords[i].checkbox.isOn)
-                TabletRecords[i].MainText.color = Color.green;
+            //if (!TabletRecords[i].checkbox.isOn)
+                //TabletRecords[i].MainText.color = Color.green;
         }
         indicate = true;
     }
     public void DisableIndicate() 
     {
-        for (int i = 0; i < TabletRecords.Length; i++)
-            TabletRecords[i].MainText.color = Color.white;
+        //for (int i = 0; i < TabletRecords.Length; i++)
+            //TabletRecords[i].MainText.color = Color.white;
 
         indicate = false;
     }

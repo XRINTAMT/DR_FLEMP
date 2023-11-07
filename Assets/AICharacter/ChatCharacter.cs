@@ -80,10 +80,11 @@ public class ChatCharacter : MonoBehaviour
             Role = "system",
             Content = "Do not act as an assistant. Do not ask  how you can help. You are "+info.name+", patient in the hospital. Act as this character: "+ info.description,
         };
+        var language = "English"; //if german, set to german
         var instruction = new ChatMessage()
         {
             Role = "system",
-            Content = "Give only short and specific answers to any questions. Answer with 1 single sentence.",
+            Content = "Give only short and specific answers to any questions. Answer with 1 single sentence. Answer only in "+language,
         };
 
         var prompt = new List<ChatMessage>();

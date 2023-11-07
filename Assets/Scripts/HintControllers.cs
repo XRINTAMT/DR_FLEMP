@@ -29,12 +29,18 @@ public class HintControllers : MonoBehaviour
         transform.GetChild(0).gameObject.SetActive(true);
         modelHand.SetActive(false);
     }
+    public void EnableHand()
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
+        modelHand.SetActive(true);
+    }
 
     void PressButton() 
     {
         transform.GetChild(0).gameObject.SetActive(!transform.GetChild(0).gameObject.activeSelf);
         modelHand.SetActive(!modelHand.activeSelf);
     }
+
     private void Update()
     {
         if (testPress)

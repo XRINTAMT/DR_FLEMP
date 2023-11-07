@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using RecordedScenario;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HeadCharacterFollow : MonoBehaviour
 { 
@@ -45,7 +46,7 @@ public class HeadCharacterFollow : MonoBehaviour
         startPos = defaultPos.position;
         startRot = defaultPos.rotation;
 
-        if (FindAnyObjectByType<RecordedScenarioText>())
+        if (FindAnyObjectByType<RecordedScenarioText>() && SceneManager.GetActiveScene().name != "RecordedShiftChange")
         {
             this.enabled = false;
         }

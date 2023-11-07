@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Autohand;
 using UnityEngine;
 
 public class IgnoreAllColliders : MonoBehaviour
@@ -13,6 +14,12 @@ public class IgnoreAllColliders : MonoBehaviour
         if (Exceptions == null)
         {
             Exceptions = new List<Collider>();
+        }
+        var hands = FindObjectsOfType<Hand>(true);
+        for (int i = 0; i < hands.Length; i++)
+        {
+            foreach (var col in hands[i].GetComponentsInChildren<Collider>(true))
+                Exceptions.Add(col);
         }
         IgnoreAll();
     }

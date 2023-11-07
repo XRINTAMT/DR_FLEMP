@@ -26,10 +26,21 @@ public class HintBehaviour : MonoBehaviour
             GetComponent<HandTriggerAreaEvents>().enabled = true;
             startFirstTime = true;
         }
+        if (startFirstTime)
+        {
+            HintControllers[] hintControllers = FindObjectsOfType<HintControllers>();
+            for (int i = 0; i < hintControllers.Length; i++)
+            {
+                hintControllers[i].EnableHand();
+            }
+        }
         audioSource = GetComponent<AudioSource>();
         PlayAudio(0);
     }
-
+    private void Start()
+    {
+        startFirstTime = true;
+    }
     public void PlayAudio(int index)
     {
         if (!playAudioFirstTime)
@@ -45,8 +56,13 @@ public class HintBehaviour : MonoBehaviour
             }
           
         }
+    }
 
-
+    public void EnableHands() 
+    {
+        HintControllers[] hintControllers = FindObjectsOfType<HintControllers>();
+        for (int i = 0; i < hintControllers.Length; i++)
+            hintControllers[i].EnableHand();
     }
     void ChangeAudio() 
     {

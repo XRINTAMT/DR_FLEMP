@@ -13,7 +13,9 @@ public class NurseTabletRecord : MonoBehaviour
     [SerializeField] private string explainationText;
     [SerializeField] private string[] answerText;
     [SerializeField] private int id;
+    [SerializeField] private GameObject HintButton;
     private string questionText;
+    private bool NoHints = false;
 
     public void Start()
     {
@@ -22,20 +24,30 @@ public class NurseTabletRecord : MonoBehaviour
 
     public void SetData(string _questionText, string[] _answerText, string _explainText)
     {
-        explainationText = _explainText;
         questionText = _questionText;
         MainText.text = _questionText;
         answerText = _answerText;
+        if(_explainText != null)
+        {
+            explainationText = _explainText;
+        }
+        else
+        {
+            NoHints = true;
+            HintButton.SetActive(false);
+        }
     }
 
     public void ShowAudioHint()
     {
-        AudioHintButton.SetActive(true);
+        if(!NoHints)
+            AudioHintButton.SetActive(true);
     }
 
     public void ShowExplaination()
     {
-        PopupManager.ShowExplaination(explainationText);
+        if (!NoHints)
+            PopupManager.ShowExplaination(explainationText);
     }
 
     public void CheckboxChecked()
@@ -49,7 +61,7 @@ public class NurseTabletRecord : MonoBehaviour
         }
 
 
-        if (ChecklistManager.indicate)
-            ChecklistManager.DisableIndicate();
+        //if (ChecklistManager.indicate)
+            //ChecklistManager.DisableIndicate();
     }
 }

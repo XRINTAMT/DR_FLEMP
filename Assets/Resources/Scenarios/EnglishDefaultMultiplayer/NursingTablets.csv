@@ -1,28 +1,34 @@
-Title,ExpandedHint,RightAnswer,WrongAnswer1,WrongAnswer2
-Name and age,Information about the name and age of the patient,[Right answer],[WrongAnswer1],[WrongAnswer2]
-Admitting diagnosis,The patient’s admitting diagnosis includes the most relevant parts of their history and other diagnoses,[Right answer],[WrongAnswer1],[WrongAnswer2]
-Code status,"Code status - when an orthopedic patient goes to the hospital for an operation, they have a set code status. The status is based on how the patient is feeling and how well they are recovering. It ranges from 1-4, with 4 being the highest status.",[Right answer],[WrongAnswer1],[WrongAnswer2]
-Level of pain,Refer to the pain of the patient,[Right answer],[WrongAnswer1],[WrongAnswer2]
-Post-surgery instructions,Doctor’s instructions of what to do and not to do after undergoing a surgery,[Right answer],[WrongAnswer1],[WrongAnswer2]
-Vital signs,Vitals - the body's important internal organs.,[Right answer],[WrongAnswer1],[WrongAnswer2]
-Orthopedic surgeon visit,Information about the visits of the doctor to check on the patient,[Right answer],[WrongAnswer1],[WrongAnswer2]
+Title,ExpandedHint,RightAnswer,WrongAnswer1,WrongAnswer2,OncomingHelp,OffgoingHelp
+Name and age,Information about the name and age of the patient,[Right answer],[WrongAnswer1],[WrongAnswer2],This is Ms X.  42. ,What's the patient's name and age?
+Admitting diagnosis,The patient’s admitting diagnosis includes the most relevant parts of their history and other diagnoses,[Right answer],[WrongAnswer1],[WrongAnswer2],She was admitted for a surgical operation. Last night she had a successful knee orthopedic surgery. She is still under some sedation and is sleeping at the moment. ,How is the patient who has just had orthopedic surgery?
+Code status,"Code status - when an orthopedic patient goes to the hospital for an operation, they have a set code status. The status is based on how the patient is feeling and how well they are recovering. It ranges from 1-4, with 4 being the highest status.",[Right answer],[WrongAnswer1],[WrongAnswer2],The patient’s code status is 2 ,What is the patients’ code status? 
+Level of pain,Refer to the pain of the patient,[Right answer],[WrongAnswer1],[WrongAnswer2],She is not experiencing any pain and is able to move her extremities.,Does the patient experience any pain?
+Post-surgery instructions,Doctor’s instructions of what to do and not to do after undergoing a surgery,[Right answer],[WrongAnswer1],[WrongAnswer2],The patient followed the post-surgery instructions so far,Did the patient follow post-surgery instructions?
+Vital signs,Vitals - the body's important internal organs.,[Right answer],[WrongAnswer1],[WrongAnswer2],Vital signs were stable / unstable,How are the patient’s vital signs?
+Orthopedic surgeon visit,Information about the visits of the doctor to check on the patient,[Right answer],[WrongAnswer1],[WrongAnswer2],"The patient's orthopedic surgeon had visited and was pleased with the progress but the patient still needed to be taken care.
+The orthopedic doctor will visit again during your shift and will give further recommendations. 
+She is scheduled for follow up appointments with her orthopedic surgeon in two hours.","Has the patient's orthopedic surgeon visited? 
+How did they feel about  the progress? 
+Is she scheduled for any more follow up appointments?"
 Mediation intake,"Information about the patient's current medications (antibiotics/pain medication etc.) and instructions for the medication intake. 
 
-[For the offgoing nurse]: Remember that you do not have to refer to each medication as the entire list is also provided to the oncoming nurse.",[Right answer],[WrongAnswer1],[WrongAnswer2]
-Isolation precautions,Isolation precautions create barriers between people and germs. These types of precautions help prevent the spread of germs in the hospital.,[Right answer],[WrongAnswer1],[WrongAnswer2]
-Respiratory,To be on oxygen - breathing of a patient supported by additional oxygen.,[Right answer],[WrongAnswer1],[WrongAnswer2]
+[For the offgoing nurse]: Remember that you do not have to refer to each medication as the entire list is also provided to the oncoming nurse.",[Right answer],[WrongAnswer1],[WrongAnswer2],I gave her some medications for pain relief and she is resting comfortably. Within the next hour she has to take X. ,"What medication is the patient taking? Is the patient on any antibiotics? Are they taking pain medication(s)? If so, when was their last dose?
+
+What medication did you provide him so far?"
+Isolation precautions,Isolation precautions create barriers between people and germs. These types of precautions help prevent the spread of germs in the hospital.,[Right answer],[WrongAnswer1],[WrongAnswer2],No visitors for the first two days to avoid germs. Except for authorized medical staff.,"Is the patient on oxygen? If so, how many liters per minute are they getting?"
+Respiratory,To be on oxygen - breathing of a patient supported by additional oxygen.,[Right answer],[WrongAnswer1],[WrongAnswer2],,
 Cardiovascular,"To be on telemetry / telemetry monitoring - telemetry monitoring is when healthcare providers monitor the electrical activity of the heart for an extended time.
 
 A drip - a short, small plastic tube. A needle is used to put the drip into the vein so that fluids and medicines can go directly into the blood. 
 
-Heparin - an anticoagulant used in the treatment of thrombosis.",[Right answer],[WrongAnswer1],[WrongAnswer2]
-Neuro,Level of consciousness - a person's awareness and understanding of what is happening in their surroundings.,[Right answer],[WrongAnswer1],[WrongAnswer2]
+Heparin - an anticoagulant used in the treatment of thrombosis.",[Right answer],[WrongAnswer1],[WrongAnswer2],,
+Neuro,Level of consciousness - a person's awareness and understanding of what is happening in their surroundings.,[Right answer],[WrongAnswer1],[WrongAnswer2],,
 Musculoskeletal,"Mobility -  capability of moving.
 
-Bed-bound - someone who has become very weak and is no longer able to move easily, instead, they are confined to their bed.",[Right answer],[WrongAnswer1],[WrongAnswer2]
-Gastrointestinal & Urinary,Diet restriction - a limitation on what a person can eat.,[Right answer],[WrongAnswer1],[WrongAnswer2]
-Skin,Postoperative wounds are those wounds acquired during surgical procedures.,[Right answer],[WrongAnswer1],[WrongAnswer2]
-Intravenous line (IV),"An intravenous line (IV) is a soft, flexible tube placed inside a vein, usually in the hand or arm.",[Right answer],[WrongAnswer1],[WrongAnswer2]
+Bed-bound - someone who has become very weak and is no longer able to move easily, instead, they are confined to their bed.",[Right answer],[WrongAnswer1],[WrongAnswer2],,
+Gastrointestinal & Urinary,Diet restriction - a limitation on what a person can eat.,[Right answer],[WrongAnswer1],[WrongAnswer2],,
+Skin,Postoperative wounds are those wounds acquired during surgical procedures.,[Right answer],[WrongAnswer1],[WrongAnswer2],,
+Intravenous line (IV),"An intravenous line (IV) is a soft, flexible tube placed inside a vein, usually in the hand or arm.",[Right answer],[WrongAnswer1],[WrongAnswer2],,
 Additional tests and care,"Wound care - involves every stage of wound management: diagnosing wound type, considering factors that affect wound healing, and the proper treatments.
 
-An Ambu bag - is a handheld tool that is used to deliver positive pressure ventilation to any subject with insufficient or ineffective breaths. It consists of a self-inflating bag, one-way valve, mask, and an oxygen reservoir.",[Right answer],[WrongAnswer1],[WrongAnswer2]
+An Ambu bag - is a handheld tool that is used to deliver positive pressure ventilation to any subject with insufficient or ineffective breaths. It consists of a self-inflating bag, one-way valve, mask, and an oxygen reservoir.",[Right answer],[WrongAnswer1],[WrongAnswer2],,

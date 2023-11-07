@@ -149,7 +149,7 @@ public class SentenceScrambleTab : MonoBehaviour
             if (descriptions.Count == 0)
             {
                 Clear();
-
+                OnCompletion.Invoke();
                 gridController.textDescription.text = "Its Done!";
                 return;
             }
@@ -170,12 +170,12 @@ public class SentenceScrambleTab : MonoBehaviour
 
     private void CheckCompletion()
     {
-        for (int i = 0; i < completion.Count; i++)
-        {
-            if (!completion[i])
-                return;
-        }
-        OnCompletion.Invoke();
+        //for (int i = 0; i < completion.Count; i++)
+        //{
+        //    if (!completion[i])
+        //        return;
+        //}
+        //OnCompletion.Invoke();
     }
     void Shuffle<T>(List<T> values)
     {

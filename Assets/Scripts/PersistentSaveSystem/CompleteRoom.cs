@@ -10,6 +10,7 @@ namespace PersistentSaveSystem
 
         public void Complete()
         {
+            Debug.Log("Complete");
             PlayerPrefs.SetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + Tag, 1);
         }
     }

@@ -233,6 +233,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 124406877915776815, guid: f494fe2006c4d8d4b8c6f9d92fd25ea9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9216060853171319756, guid: f494fe2006c4d8d4b8c6f9d92fd25ea9, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -429,6 +433,34 @@ PrefabInstance:
     - target: {fileID: 2156295710585527118, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2156295710585527119, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+      propertyPath: OnCompletion.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2156295710585527119, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+      propertyPath: OnCompletion.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2156295710585527119, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+      propertyPath: OnCompletion.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1558153177}
+    - target: {fileID: 2156295710585527119, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+      propertyPath: OnCompletion.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2156295710585527119, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+      propertyPath: OnCompletion.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Complete
+      objectReference: {fileID: 0}
+    - target: {fileID: 2156295710585527119, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+      propertyPath: OnCompletion.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PersistentSaveSystem.CompleteRoom, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2156295710585527119, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+      propertyPath: OnCompletion.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2156295710802554887, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1438,6 +1470,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 271b3368bc877114e860e8a7d261f61d, type: 3}
+--- !u!114 &1558153177 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6176095027539132273, guid: 8c018d1c0268d41459ec2c2287535466, type: 3}
+  m_PrefabInstance: {fileID: 1822919477}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b28847044175b43abbf4669c879c47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1652753786
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1524,6 +1567,11 @@ MonoBehaviour:
   interpolationSpeed: 1
   inArea: 0
   alawaysInArea: 0
+--- !u!95 &1652753790 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 8269af1eeed50ec4cb06b64927812686, type: 3}
+  m_PrefabInstance: {fileID: 1652753786}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1822919477
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1625,11 +1673,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c018d1c0268d41459ec2c2287535466, type: 3}
---- !u!95 &1956255935 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4560604174816310963, guid: b3cec38e3ada8b64584fc5510ffa5258, type: 3}
-  m_PrefabInstance: {fileID: 1259357629}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1972225606
 GameObject:
   m_ObjectHideFlags: 0
@@ -1952,7 +1995,375 @@ MonoBehaviour:
     VoiceAudio:
     - {fileID: 0}
     - {fileID: 8300000, guid: c46a7b82999b2494faff0e6bc0428e2e, type: 3}
-  AnimationCalls: []
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: 6b0000006b000000
+    Text:
+    - I'm concerned it might be something like appendicitis, so I came to get it
+      checked out. It's definitely not something I've experienced before.
+    - "Ich bef\xFCrchte, dass es eine Blinddarmentz\xFCndung sein k\xF6nnte, also
+      bin ich hierher gekommen, um es untersuchen zu lassen. Das ist definitiv nichts,
+      was ich schon mal erlebt habe.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 66fe18f599300eb4e9938dea592f6e5e, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 6e0000006e000000
+    Text:
+    - Thank you. Mr Stevens. You will be taken care of right away. Please, sit still
+      and try not to make any sudden movements.
+    - "Ich danke Ihnen, Herr Stegmann. Man k\xFCmmert sich sofort um Sie. Bleiben
+      Sie bitte auf Ihrem Platz und machen Sie keine pl\xF6tzlichen Bewegungen.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: a6aad74db435a964288ccf819e5a80f9, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 7300000073000000
+    Text:
+    - Now, I'll need to take your vital signs for our examination sheet.
+    - "Jetzt muss ich Ihre Vitaldaten f\xFCr unseren Untersuchungsbogen aufnehmen.\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 9274cec9f3b33e74d9c15a9d6a12a7e1, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: 7800000078000000
+    Text:
+    - Okay
+    - "Okay\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: dea3ff1a44f8bee4fbb23541ebf19d3e, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 7d0000007d000000
+    Text:
+    - 'Let''s start with your blood pressure. '
+    - "Lass uns mit dem Blutdruck anfangen. \r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: e4a6afad7af9d7e49838f06b7157db29, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: 8200000082000000
+    Text:
+    - Okay
+    - "Okay\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: dea3ff1a44f8bee4fbb23541ebf19d3e, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 8700000087000000
+    Text:
+    - Do you have any known issues or concerns related to your blood pressure?
+    - "Haben Sie irgendwelche bekannten Probleme oder Sorgen bez\xFCglich Ihres Blutdrucks?\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 9239c353c398d3b42838fb12d4b01140, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: 8c0000008c000000
+    Text:
+    - No, not that I'm aware of.
+    - "Nichts, dass ich w\xFCsste\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 5de7868371dfb0d459d8e6ec4b124187, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 9100000091000000
+    Text:
+    - I'm going to measure your blood pressure now. Please extend your arm, palm
+      up, and relax.
+    - "Ich werde jetzt Ihren Blutdruck messen. Bitte strecken Sie Ihren Arm aus,
+      Handfl\xE4che nach oben, und entspannen Sie sich.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 805b9408045150d48b9da67d46e149f7, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 9600000096000000
+    Text:
+    - Your blood pressure is 136/80 mmHg. We'll keep an eye on that.
+    - "Ihr Blutdruck liegt bei 136/80 mmHg. Wir werden das im Auge behalten.\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: c5c76ebdd5355c046bcc88a4af4d9b63, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: 9b0000009b000000
+    Text:
+    - Alright
+    - "Alles klar. \r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: f5f52b36f53c2ab4f8bce34217c2225e, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: a0000000a0000000
+    Text:
+    - 'Now, I''ll check your heart rate. '
+    - "Jetzt werde ich Ihre Herzfrequenz messen.\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: ca7664e46bc69ee4c838cff9ab543906, type: 3}
+  - Speaker: Ann
+    Highlight: 1
+    Timecode: a5000000a5000000
+    Text:
+    - Any history of heart conditions or irregular heartbeats?
+    - "Gab es in der Vergangenheit Herzerkrankungen oder unregelm\xE4\xDFigen Herzschlag?\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: cb2f924afb350b34f8045db30764952a, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: aa000000aa000000
+    Text:
+    - Okay, I'm going to check your heart rate now. Please stay still for a moment.
+    - "Okay, I'm going to check your heart rate now. Please stay still for a moment.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 4536a7c58740d344b972cf80f1fc208a, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: af000000af000000
+    Text:
+    - Your heart rate is 96 beats per minute. It's slightly elevated, but that can
+      be due to pain and stress.
+    - "Your heart rate is 96 beats per minute. It's slightly elevated, but that can
+      be due to pain and stress.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 437beec5b737f3246adeb48a8b2e9489, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: b4000000b4000000
+    Text:
+    - Okay
+    - "Okay\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: dea3ff1a44f8bee4fbb23541ebf19d3e, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: b9000000b9000000
+    Text:
+    - 'Next, I''ll measure your respiratory rate. '
+    - "Next, I'll measure your respiratory rate. \"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 6d77ae734097ef44a94020f2c6faeeac, type: 3}
+  - Speaker: Ann
+    Highlight: 1
+    Timecode: be000000be000000
+    Text:
+    - Have you experienced any shortness of breath or breathing difficulties lately?
+    - "Have you experienced any shortness of breath or breathing difficulties lately?\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 9ea7fecefee7a6f4e840d27f25079cc5, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: c3000000c3000000
+    Text:
+    - No, but it's a bit hard to breathe because of the pain.
+    - "No, but it's a bit hard to breathe because of the pain.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 011d886f32660984791ce8863c8b583d, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: c8000000c8000000
+    Text:
+    - I'll observe your respiratory rate for a minute.
+    - "I'll observe your respiratory rate for a minute.\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: de253b7624f6c6749a5c1b990929cf61, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: cd000000cd000000
+    Text:
+    - Your respiratory rate is 20 breaths per minute. Again, this could be related
+      to the pain.
+    - "Your respiratory rate is 20 breaths per minute. Again, this could be related
+      to the pain.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: dbca82b5ffbf18d459a6a288f0b6e5f0, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: d2000000d2000000
+    Text:
+    - Yes, it hurts.
+    - "Yes, it hurts.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: f222ccb9ddf93ae43998b72aee318222, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: d7000000d7000000
+    Text:
+    - Now, let's check your temperature.
+    - "Now, let's check your temperature.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: a6edc42b42f1fdb458c85b860ed616f1, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: dc000000dc000000
+    Text:
+    - Any recent fever or chills?
+    - "Any recent fever or chills?\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 4b53f96489672fa45a871cb12e103b11, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: e1000000e1000000
+    Text:
+    - No, I've been feeling fine in that regard.
+    - "No, I've been feeling fine in that regard.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 5072687341afe544b8cff292a1ccaf95, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: e6000000e6000000
+    Text:
+    - Your temperature is 36.5 degrees Celsius, which is normal.
+    - "Your temperature is 36.5 degrees Celsius, which is normal.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 9725cd9c5cdbee54599df30da2006ac5, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: eb000000eb000000
+    Text:
+    - That's good to know.
+    - "That's good to know.\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: ee9a99c274126c14ab688fdde20699c5, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: f0000000f0000000
+    Text:
+    - Finally, I'll measure your oxygen saturation.
+    - "Finally, I'll measure your oxygen saturation.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: cb7d6ead3c099e9418e951b7d163201b, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: f5000000f5000000
+    Text:
+    - Any history of lung problems or issues with oxygen levels?
+    - "Any history of lung problems or issues with oxygen levels?\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 06ed685cff5ba5f45919a93bcbf25eba, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: fa000000fa000000
+    Text:
+    - No, I've never had any lung issues.
+    - "No, I've never had any lung issues.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 3eaedcccf5dce134c84300d81f77d97a, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: ff000000ff000000
+    Text:
+    - Great. I'll place this oximeter on your finger to measure your oxygen saturation.
+    - "Great. I'll place this oximeter on your finger to measure your oxygen saturation.\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: a06a2184ba7874e4cbb48f45541c4ed4, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 0401000004010000
+    Text:
+    - Your oxygen saturation is 98%, which is excellent.
+    - "Your oxygen saturation is 98%, which is excellent.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 770296e0ebc4cf54ca39704f69b8702d, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: 0901000009010000
+    Text:
+    - That's a relief.
+    - "That's a relief.\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 6c81469252dac6149b251a7ab5cba588, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 0e0100000e010000
+    Text:
+    - 'Given your symptoms, we''ll need to perform some additional tests. First,
+      we''ll need a blood test to check for any signs of infection or inflammation.
+      Secondly, we''ll schedule an urgent ultrasound to further evaluate your condition. '
+    - "Given your symptoms, we'll need to perform some additional tests. First, we'll
+      need a blood test to check for any signs of infection or inflammation. Secondly,
+      we'll schedule an urgent ultrasound to further evaluate your condition. \"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 75e352cd47b6b1842a12f7f7adc275f7, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 1301000013010000
+    Text:
+    - Is that okay with you?
+    - "Is that okay with you?\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 8ec3b9bb68634a54ba2a1e3e97fd9ef4, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: 1801000018010000
+    Text:
+    - Yes, that sounds necessary.
+    - "Yes, that sounds necessary.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 6f38081597e0b3846b454e516490ae1d, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 1d0100001d010000
+    Text:
+    - I'll make sure these are scheduled for you
+    - "I'll make sure these are scheduled for you\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 8b759251748a837449b2a71f428bf877, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 2201000022010000
+    Text:
+    - If you have any more questions or concerns, please feel free to ask.
+    - "If you have any more questions or concerns, please feel free to ask.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 87280c60d146b6e4699bc8ff2685cbe1, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: 2701000027010000
+    Text:
+    - Thank you, Ann. I appreciate your care and thoroughness.
+    - Thank you, Ann. I appreciate your care and thoroughness.
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: eb881fb871c499f479b9a27ce4db8cd6, type: 3}
+  AnimationCalls:
+  - AnimationTag: pulse_oxy
+    Timecode: ff000000ff000000
   language: 0
 --- !u!4 &1972225608
 Transform:
@@ -2153,7 +2564,7 @@ PrefabInstance:
     - target: {fileID: 6009670401107999983, guid: 742209497a686024bbac72d31891362f, type: 3}
       propertyPath: animator
       value: 
-      objectReference: {fileID: 1956255935}
+      objectReference: {fileID: 1652753790}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 742209497a686024bbac72d31891362f, type: 3}
 --- !u!114 &6009670401322343484 stripped

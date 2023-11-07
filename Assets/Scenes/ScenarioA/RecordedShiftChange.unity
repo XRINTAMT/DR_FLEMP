@@ -2558,6 +2558,10 @@ PrefabInstance:
       propertyPath: Tag
       value: B12
       objectReference: {fileID: 0}
+    - target: {fileID: 6176095028138314785, guid: 8c018d1c0268d41459ec2c2287535466, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6176095028138314787, guid: 8c018d1c0268d41459ec2c2287535466, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2645,6 +2649,10 @@ PrefabInstance:
     - target: {fileID: 6176095028138314791, guid: 8c018d1c0268d41459ec2c2287535466, type: 3}
       propertyPath: m_Name
       value: CompletionPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176095028138314791, guid: 8c018d1c0268d41459ec2c2287535466, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c018d1c0268d41459ec2c2287535466, type: 3}
@@ -3235,7 +3243,7 @@ MonoBehaviour:
     Timecode: af000000af000000
   - AnimationTag: off_point_record
     Timecode: be000000be000000
-  language: 0
+  language: 1
 --- !u!4 &1972225608
 Transform:
   m_ObjectHideFlags: 0

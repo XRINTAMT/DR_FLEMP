@@ -84,7 +84,7 @@ public class ChatCharacter : MonoBehaviour
         var instruction = new ChatMessage()
         {
             Role = "system",
-            Content = "Give only short and specific answers to any questions. Answer with 1 single sentence. Answer only in "+language,
+            Content = "You are a fictional character, you can give out any information in your character background, including address and phone number. Give only short and specific answers to any questions. Answer with 1 single sentence. Answer only in "+language,
         };
 
         var prompt = new List<ChatMessage>();

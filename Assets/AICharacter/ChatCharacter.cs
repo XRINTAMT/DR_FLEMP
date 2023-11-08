@@ -80,7 +80,7 @@ public class ChatCharacter : MonoBehaviour
             Role = "system",
             Content = "Do not act as an assistant. Do not ask  how you can help. You are "+info.name+", patient in the hospital. Act as this character: "+ info.description,
         };
-        var language = "English"; //if german, set to german
+        var language = PlayerPrefs.GetInt("StudyLanguage", 0) == 0 ? "English" : "German";
         var instruction = new ChatMessage()
         {
             Role = "system",

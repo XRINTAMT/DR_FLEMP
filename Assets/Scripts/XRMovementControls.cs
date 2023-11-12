@@ -13,8 +13,8 @@ public class XRMovementControls : MonoBehaviour
     [SerializeField] GameObject TeleportLeft;
     void Awake()
     {
-        SwitchLocomotion(PlayerPrefs.GetInt("MovementType", 0));
-        AHPlayer.maxMoveSpeed = PlayerPrefs.GetFloat("walkingSpeed", 2);
+        SwitchLocomotion(PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "MovementType", 0));
+        AHPlayer.maxMoveSpeed = PlayerPrefs.GetFloat(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "walkingSpeed", 2);
         if (SceneManager.GetActiveScene().name=="Lobby")
             SwitchLocomotion(2);
     }

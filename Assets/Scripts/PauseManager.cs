@@ -94,7 +94,7 @@ public class PauseManager : MonoBehaviour
         */
 
         PauseMenu.SetActive(false);
-        if (Controls != null) Controls.SwitchLocomotion(PlayerPrefs.GetInt("MovementType", 0));
+        if (Controls != null) Controls.SwitchLocomotion(PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "MovementType", 0));
 
         //MainCamera.cullingMask = ~0;
         UICamera.cullingMask = (1 << LayerMask.NameToLayer("Fade"));

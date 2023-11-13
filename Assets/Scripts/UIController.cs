@@ -34,7 +34,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject nurseChosen;
     [SerializeField] private AudioMixer AppMixer;
     [SerializeField] private bool Realtime;
-
+    [SerializeField] Button languageButton;
     public static float dialogueVolume;
     public static float soundVolume;
     public static float musicVolume;
@@ -50,6 +50,8 @@ public class UIController : MonoBehaviour
     {
         LoadSettingsIntoUI();
         //sceneLoader = FindObjectOfType<SceneLoader>();
+        if (SceneManager.GetActiveScene().name == "Lobby")
+            languageButton.interactable = true;
     }
 
     public void LoadSettingsIntoUI()

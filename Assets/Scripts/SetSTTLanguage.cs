@@ -12,12 +12,12 @@ public class SetSTTLanguage : MonoBehaviour
 
     public void Deactivate()
     {
-        STTs[PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0)].SetActive(false);
+        STTs[PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0)].SetActive(false);
     }
 
     public void Activate()
     {
-        STTs[PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0)].SetActive(true);
+        STTs[PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0)].SetActive(true);
     }
 
 }

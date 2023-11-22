@@ -1561,7 +1561,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6729964425255584934, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729964425255584934, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729964425255584934, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6729964425255584934, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
@@ -2763,9 +2771,15 @@ MonoBehaviour:
         m_CallState: 2
   Speakers:
   - Name: Oncoming
+    LocalizedName:
+    - Nurse Ann
+    - "Frau M\xFCller"
     Speaker: {fileID: 1205322541}
     GoogleSpeaker: {fileID: 597611547}
   - Name: Offgoing
+    LocalizedName:
+    - Nurse Adam
+    - Herr Weber
     Speaker: {fileID: 789417660}
     GoogleSpeaker: {fileID: 1778389898}
   AnimationEntities:
@@ -3304,7 +3318,7 @@ MonoBehaviour:
     Timecode: 95000000a3000000
   - AnimationTag: off_point_record
     Timecode: 9e000000ac000000
-  language: 0
+  language: 1
 --- !u!4 &1972225608
 Transform:
   m_ObjectHideFlags: 0

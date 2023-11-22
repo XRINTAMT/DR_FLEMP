@@ -52,6 +52,7 @@ namespace RecordedScenario
     public class SpeakerRef
     {
         public string Name;
+        public string[] LocalizedName;
         public TTSSpeaker Speaker;
         public GoogleTTS GoogleSpeaker;
         public void Speak(string _s)
@@ -235,7 +236,8 @@ namespace RecordedScenario
             {
                 if (_phrase.Timecode[language] == _tickNumber)
                 {
-                    string textToAdd = "<b>" + _phrase.Speaker + ":</b> " + _phrase.Text[language];
+                    SpeakerRef _speaker = Speakers.Find(a => a.Name == _phrase.Speaker);
+                    string textToAdd = "<b>" + _speaker.LocalizedName[language] + ":</b> " + _phrase.Text[language];
                     if (_phrase.Highlight)
                     {
                         textToAdd = "<i><color=#68FF9A>" + textToAdd + "</color></i>";
@@ -243,7 +245,6 @@ namespace RecordedScenario
                     textToAdd += "\n";
                     TranscriptTextbox.text += textToAdd;
                     //_phrase.Speaker
-                    SpeakerRef _speaker = Speakers.Find(a => a.Name == _phrase.Speaker);
                     if (_speaker != null)
                     {
                         if(language == 0)

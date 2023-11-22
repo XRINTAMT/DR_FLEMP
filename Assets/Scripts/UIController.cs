@@ -56,16 +56,16 @@ public class UIController : MonoBehaviour
 
     public void LoadSettingsIntoUI()
     {
-        setDialogueVolumeStatus.value = PlayerPrefs.GetFloat("dialogueVolume", 0.5f);
-        setSoundVolumeStatus.value = PlayerPrefs.GetFloat("soundVolume", 0.5f);
-        setMusicVolumeStatus.value = PlayerPrefs.GetFloat("musicVolume", 0.5f);
+        setDialogueVolumeStatus.value = PlayerPrefs.GetFloat(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "dialogueVolume", 0.5f);
+        setSoundVolumeStatus.value = PlayerPrefs.GetFloat(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "soundVolume", 0.5f);
+        setMusicVolumeStatus.value = PlayerPrefs.GetFloat(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "musicVolume", 0.5f);
         //setWalkingSpeed.value = PlayerPrefs.GetFloat("walkingSpeed", 1.5f);
-        setSubstitlesStatus.isOn = PlayerPrefs.GetInt("Subtitles", 0) == 0;
-        teleport = PlayerPrefs.GetInt("MovementType", 0);
+        setSubstitlesStatus.isOn = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Subtitles", 0) == 0;
+        teleport = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "MovementType", 0);
         SetLocomotionType(teleport);
-        learnedLanguage = PlayerPrefs.GetInt("StudyLanguage", 0);
-        role = PlayerPrefs.GetString("Role", "Assistant");
-        language = PlayerPrefs.GetString("Language", "English");
+        learnedLanguage = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0);
+        role = PlayerPrefs.GetString(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Role", "Assistant");
+        language = PlayerPrefs.GetString(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Language", "English");
         LocalizationManager.Language = language;
         teleportChosen.SetActive(teleport == 0);
         smoothChosen.SetActive(teleport == 1);
@@ -83,7 +83,7 @@ public class UIController : MonoBehaviour
     public void SetDialogueVolume() 
     {
         dialogueVolume = setDialogueVolumeStatus.value;
-        PlayerPrefs.SetFloat("dialogueVolume", dialogueVolume);
+        PlayerPrefs.SetFloat(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "dialogueVolume", dialogueVolume);
         if (dialogueVolume == 0)
             AppMixer.SetFloat("Dialogues", -80);
         else
@@ -96,7 +96,7 @@ public class UIController : MonoBehaviour
     {
         soundVolume = setSoundVolumeStatus.value;
         //appSettings.UpdateSettings();
-        PlayerPrefs.SetFloat("soundVolume", soundVolume);
+        PlayerPrefs.SetFloat(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "soundVolume", soundVolume);
         if (soundVolume == 0)
             AppMixer.SetFloat("Sounds", -80);
         else
@@ -109,7 +109,7 @@ public class UIController : MonoBehaviour
     {
         musicVolume = setMusicVolumeStatus.value;
         //appSettings.UpdateSettings();
-        PlayerPrefs.SetFloat("musicVolume", musicVolume);
+        PlayerPrefs.SetFloat(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "musicVolume", musicVolume);
         if (musicVolume == 0)
             AppMixer.SetFloat("Music", -80);
         else
@@ -122,14 +122,14 @@ public class UIController : MonoBehaviour
     {
         walkingSpeed = setWalkingSpeed.value;
         //appSettings.UpdateSettings();
-        PlayerPrefs.SetFloat("walkingSpeed", walkingSpeed);
+        PlayerPrefs.SetFloat(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "walkingSpeed", walkingSpeed);
         FindObjectOfType<XRMovementControls>().SetMovementSpeed(walkingSpeed);
     }
 
     public void SetLanguage(int lang)
     {
         learnedLanguage = lang;
-        PlayerPrefs.SetInt("StudyLanguage", lang);
+        PlayerPrefs.SetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", lang);
         englishLearningChosen.SetActive(lang==0);
         germanLearningChosen.SetActive(lang==1);
     }
@@ -137,7 +137,7 @@ public class UIController : MonoBehaviour
     public void SetLanguage(string lang)
     {
         language = lang;
-        PlayerPrefs.SetString("Language", lang);
+        PlayerPrefs.SetString(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Language", lang);
         LocalizationManager.Language = language;
         englishChosen.SetActive(language == "English");
         germanChosen.SetActive(language == "German");
@@ -152,7 +152,7 @@ public class UIController : MonoBehaviour
         teleport = LocomotionID;
         teleportChosen.SetActive(teleport == 0);
         smoothChosen.SetActive(teleport == 1);
-        PlayerPrefs.SetInt("MovementType", teleport);
+        PlayerPrefs.SetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "MovementType", teleport);
         Debug.Log("Looking for a thing");
         //Object.FindObjectOfType<XRMovementControls>().SwitchLocomotion(teleport);
         Debug.Log("found one");
@@ -168,13 +168,13 @@ public class UIController : MonoBehaviour
     public void SetGender(int genderID)
     {
         //teleportLeftHand = setTeleportHandStatus.value;
-        PlayerPrefs.SetInt("Gender", genderID);
+        PlayerPrefs.SetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Gender", genderID);
     }
 
     public void SetRole(string _role)
     {
         //teleportLeftHand = setTeleportHandStatus.value;
-        PlayerPrefs.SetString("Role", _role);
+        PlayerPrefs.SetString(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Role", _role);
     }
 
     public void SetSubtitles()
@@ -184,12 +184,12 @@ public class UIController : MonoBehaviour
             subtitles = 0;
         else
             subtitles = 1;
-        PlayerPrefs.SetInt("Subtitles", subtitles);
+        PlayerPrefs.SetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Subtitles", subtitles);
     }
 
     public void SetGuides(bool guides)
     {
-        PlayerPrefs.SetInt("GuidedMode", guides ? 1 : 0);
+        PlayerPrefs.SetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "GuidedMode", guides ? 1 : 0);
         
     }
 

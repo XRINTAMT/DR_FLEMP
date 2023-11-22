@@ -24,7 +24,6 @@ public class SittingWheelChair : MonoBehaviour
     {
         if (headCharacterFollow.inArea)
         {
-
             float dist = Vector3.Distance(this.transform.position, siitingPos.position);
             if (dist > 2.0)
             {
@@ -33,6 +32,11 @@ public class SittingWheelChair : MonoBehaviour
             transform.parent = siitingPos;
             transform.localPosition = Vector3.zero;
             transform.localEulerAngles = Vector3.zero;
+            Rigidbody _wheelchairRB = siitingPos.parent.GetComponent<Rigidbody>();
+            if(_wheelchairRB != null)
+            {
+                _wheelchairRB.mass = 1100;
+            }
             Task _wheelchairTask;
             if (siitingPos.TryGetComponent<Task>(out _wheelchairTask)){
                 _wheelchairTask.Complete(RightPatient ? 1 : 0);

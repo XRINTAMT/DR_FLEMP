@@ -7,7 +7,17 @@ public class SetSTTLanguage : MonoBehaviour
     [SerializeField] GameObject[] STTs;
     void Start()
     {
-        STTs[PlayerPrefs.GetInt("StudyLanguage", 0)].SetActive(true);
+        Activate();
+    }
+
+    public void Deactivate()
+    {
+        STTs[PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0)].SetActive(false);
+    }
+
+    public void Activate()
+    {
+        STTs[PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0)].SetActive(true);
     }
 
 }

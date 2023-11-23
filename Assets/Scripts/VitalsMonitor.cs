@@ -52,8 +52,10 @@ public class VitalsMonitor : MonoBehaviour
             //Debug.Log("{ \n \"name\": \"" + VitalValues[i].Name + "\",\n \"value\": " + (int)VitalValues[i].Value + "\n },");
         }
 
-        for (int i = 0; i < VitalValues.Length; i++)
-            Connect(i);
+        //for (int i = 0; i < VitalValues.Length; i++)
+        //    Connect(i);
+        Connect(4);
+        Connect(5);
     }
 
     //changes a given vital value linearly

@@ -53,6 +53,12 @@ namespace Assets.SimpleLocalization
             GetComponent<Text>().text = LocalizationManager.Localize(LocalizationKey);
         }
 
+        public void ChangeTag(string _newTag)
+        {
+            LocalizationKey = _newTag;
+            Localize();
+        }
+
         void Update()
         {
             /*

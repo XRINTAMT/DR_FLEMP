@@ -80,12 +80,27 @@ public class AnimationMovement : MonoBehaviour
     {
         animator.SetTrigger("StandUp");
         FindObjectOfType<SensorController>(true).sensorAnimation = true;
+        onPlace = false;
+        indexPoint = 0;
+        stopPointIndex = 0;
     }
     public void AnimationThermometer()
     {
         animator.SetTrigger("StandUp");
         FindObjectOfType<SensorController>(true).thermometerAnimation= true;
+        onPlace = false;
+        indexPoint = 0;
+        stopPointIndex = 0;
     }
+    public void AnimationBloodPressure()
+    {
+        animator.SetTrigger("StandUp");
+        FindObjectOfType<SensorController>(true).bloodPressureAnimation = true;
+        onPlace = false;
+        indexPoint = 0;
+        stopPointIndex = 0;
+    }
+
     public void StopEvent() 
     {
         if (moveObj.position == stopPoint[0].position) 

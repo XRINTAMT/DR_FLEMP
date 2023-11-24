@@ -54,8 +54,8 @@ public class VitalsMonitor : MonoBehaviour
 
         //for (int i = 0; i < VitalValues.Length; i++)
         //    Connect(i);
-        Connect(4);
-        Connect(5);
+        //Connect(4);
+        //Connect(5);
     }
 
     //changes a given vital value linearly

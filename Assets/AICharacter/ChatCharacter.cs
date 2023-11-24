@@ -43,7 +43,7 @@ public class ChatCharacter : MonoBehaviour
         PhrasesPool = info.ThinkingPhrasesPool;
         //STTInput = FindAnyObjectByType<InteractionHandler>();
         WitReact = FindAnyObjectByType<WitAutoReactivation>();
-        language = PlayerPrefs.GetInt("StudyLanguage", 0);
+        language = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0);
     }
 
     public void setTargeted(bool t)
@@ -80,7 +80,7 @@ public class ChatCharacter : MonoBehaviour
             Role = "system",
             Content = "Do not act as an assistant. Do not ask  how you can help. You are "+info.name+", patient in the hospital. Act as this character: "+ info.description,
         };
-        var language = PlayerPrefs.GetInt("StudyLanguage", 0) == 0 ? "English" : "German";
+        var language = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0) == 0 ? "English" : "German";
         var instruction = new ChatMessage()
         {
             Role = "system",

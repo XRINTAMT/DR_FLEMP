@@ -28,7 +28,7 @@ public class ChecklistMechanic : MonoBehaviour
 
     void ParseTheScenario() //use with caution, erases all the answers gathered from the player
     {
-        var langTag = PlayerPrefs.GetInt("StudyLanguage", 0) == 0 ? "" : "German";
+        var langTag = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0) == 0 ? "" : "German";
         CSVParser Scenario = new CSVParser("Scenarios/" + scenarioName + "/NursingTablets" +langTag);
         int i = -1;
         correctAnswers = new int[Scenario.rowData.Count];

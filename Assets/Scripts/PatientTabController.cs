@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using PersistentSaveSystem;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -11,6 +12,7 @@ public class PatientTabController : MonoBehaviour
     [SerializeField] Button buttonTab;
     [SerializeField] Button  buttonDone;
     [SerializeField] TMP_Text namePatient;
+    [SerializeField] private CompleteRoom cr;
     int chooseIndex;
     // Start is called before the first frame update
     void Start()
@@ -49,18 +51,21 @@ public class PatientTabController : MonoBehaviour
     void ButtonDone() 
     {
         Debug.Log("ButtonChoose");
-        //if (chooseIndex == 0) //if uncorrect
-        //{
-        //    if (SceneManager.GetActiveScene().name == "B11")
-        //        SceneManager.LoadScene("B11");
-        //    if (SceneManager.GetActiveScene().name == "B21")
-        //        SceneManager.LoadScene("B21");
-        //}
-
-        //if (chooseIndex==1) //if correct
-        //{
-        //    SceneManager.LoadScene("Lobby");
-        //}
+        if (namePatient.text != "Lizzy Parker") //if uncorrect
+        {
+            Debug.Log("Not lizzy chosen");
+            if (SceneManager.GetActiveScene().name == "B11")
+                SceneManager.LoadScene("B11");
+            if (SceneManager.GetActiveScene().name == "B21")
+                SceneManager.LoadScene("B21");
+        }
+        else //if correct
+        {
+            Debug.Log("lizzy chosen");
+            cr.Complete();
+            SceneManager.LoadScene("Lobby");
+            Debug.Log("lizzy chosen 2");
+        }
     
     }
    

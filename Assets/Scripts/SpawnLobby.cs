@@ -8,12 +8,8 @@ public class SpawnLobby : MonoBehaviour
     [SerializeField] Transform[] pos;
     public static int indexScene;
     public static string nameScene;
-
     Transform player;
-    // Start is called before the first frame update
-    void Awake()
-    {
-        Dictionary<string, int> Rooms = new Dictionary<string, int>
+    Dictionary<string, int> Rooms = new Dictionary<string, int>
         {
             { "MRDT Room", 1 },
             { "Diabetes Amnesis Room", 1 },
@@ -25,13 +21,26 @@ public class SpawnLobby : MonoBehaviour
             { "B21", 3 },
             { "B22", 3 }
         };
-
-        player = FindObjectOfType<AutoHandPlayer>().transform.root;
-
-        player.position = pos[Rooms[nameScene]].position;
-
+    
+    // Start is called before the first frame update
+    void Awake()
+    {
+        if (!nameScene.Equals("Lobby"))
+        {
+            Debug.Log(nameScene);
+            player = FindObjectOfType<AutoHandPlayer>().transform.root;
+            player.position = pos[Rooms[nameScene]].position;
+            Invoke("TurnPlayer", 0.01f);
+        }
+        
         //if (indexScene != 0)
         //    player.position = pos[indexScene - 1].position;
+    }
 
+    private void TurnPlayer()
+    {
+        Transform head = FindObjectOfType<AutoHandPlayer>().headCamera.transform;
+        Debug.Log("Turning the player to " + new Vector3(player.localRotation.eulerAngles.x, pos[Rooms[nameScene]].rotation.eulerAngles.y - head.localRotation.eulerAngles.y, player.localRotation.eulerAngles.z));
+        player.localRotation = Quaternion.Euler(new Vector3(player.localRotation.eulerAngles.x, pos[Rooms[nameScene]].rotation.eulerAngles.y - head.localRotation.eulerAngles.y, player.localRotation.eulerAngles.z));
     }
 }

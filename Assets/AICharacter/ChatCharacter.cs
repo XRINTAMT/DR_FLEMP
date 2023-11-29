@@ -125,6 +125,11 @@ public class ChatCharacter : MonoBehaviour
 
     public IEnumerator SendPrompt(List<ChatMessage> messages, ChatMessage userMessage, List<float> embedding)
     {
+        var originalUserMessage = new ChatMessage()
+        {
+            Role = "user",
+            Content = userMessage.Content,
+        };
         Debug.Log("sendPrompt started");
         var completionTask = _openAI.CreateChatCompletion(new CreateChatCompletionRequest()
         {
@@ -193,7 +198,7 @@ public class ChatCharacter : MonoBehaviour
         }
         else
         {
-            _history.NewEntry(userMessage, response, embedding);
+            _history.NewEntry(originalUserMessage, response, embedding);
             SendResponseToTTS(response.Content);
         }
 

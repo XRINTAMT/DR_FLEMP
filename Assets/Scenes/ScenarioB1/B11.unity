@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 18330492}
   - component: {fileID: 18330494}
   - component: {fileID: 18330493}
+  - component: {fileID: 18330495}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -202,17 +203,19 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 18330491}
-  m_CullTransparentMesh: 1
---- !u!1 &158747603 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3797720562065156253, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
-  m_PrefabInstance: {fileID: 6168094041601717832}
+--- !u!114 &18330495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
---- !u!223 &178924911 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 2156295710585527218, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
-  m_PrefabInstance: {fileID: 6168094041601717832}
-  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18330491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2404a37f3bd75444aa4ad05d0f228347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizationKey: BringThePatient
 --- !u!4 &200940836 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3570486940196760363, guid: 31a733e904832ca4eb099d3593c784a9, type: 3}
@@ -439,7 +442,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: LobbyEnvironment
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2466747849485839933, guid: 9e0a3d7c64d2f0147859033d9a57c809, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9e0a3d7c64d2f0147859033d9a57c809, type: 3}
 --- !u!4 &806342896 stripped
 Transform:

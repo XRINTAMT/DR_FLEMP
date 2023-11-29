@@ -16,7 +16,7 @@ public class ChatCharacter : MonoBehaviour
 {
     private InteractionHandler STTInput;
     [SerializeField] private CharacterInfo info;
-    private ChatHistory _history;
+    public ChatHistory _history;
     [SerializeField] private EmbeddingDB _embeddingDB;
     private OpenAIApi _openAI;
     public bool targeted = false;

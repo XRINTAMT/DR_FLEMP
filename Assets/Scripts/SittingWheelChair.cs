@@ -45,6 +45,23 @@ public class SittingWheelChair : MonoBehaviour
         }
         return "Sit in Wheelchair Fail: Which character are you talking to?";
     }
+
+    public void SitFromButton()
+    {
+        transform.parent = siitingPos;
+        transform.localPosition = Vector3.zero;
+        transform.localEulerAngles = Vector3.zero;
+        Rigidbody _wheelchairRB = siitingPos.parent.GetComponent<Rigidbody>();
+        if (_wheelchairRB != null)
+        {
+            _wheelchairRB.mass = 1100;
+        }
+        Task _wheelchairTask;
+        if (siitingPos.TryGetComponent<Task>(out _wheelchairTask))
+        {
+            _wheelchairTask.Complete(RightPatient ? 1 : 0);
+        }
+    }
     // Update is called once per frame
 
 }

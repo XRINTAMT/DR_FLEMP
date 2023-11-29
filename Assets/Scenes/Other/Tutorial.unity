@@ -1016,12 +1016,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0a56fe90377fae4489a71137d4920da, type: 3}
+--- !u!1 &992545131 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 945595624616057458, guid: e0a56fe90377fae4489a71137d4920da, type: 3}
+  m_PrefabInstance: {fileID: 992545130}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &992545132 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 992545132, guid: e0a56fe90377fae4489a71137d4920da, type: 3}
   m_PrefabInstance: {fileID: 992545130}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 992545131}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5801ba888f09d14c935867c99724706, type: 3}
@@ -1032,12 +1037,25 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1042908352, guid: e0a56fe90377fae4489a71137d4920da, type: 3}
   m_PrefabInstance: {fileID: 992545130}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 992545131}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9187233583c2dac4c9e328faa1cdc227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1042908353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992545131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b28847044175b43abbf4669c879c47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tag: B11
 --- !u!1001 &1067664178
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1201,9 +1219,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6505479564558509594, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8410936638553662369, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9114869301534304621, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+      propertyPath: sceneViewId
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}

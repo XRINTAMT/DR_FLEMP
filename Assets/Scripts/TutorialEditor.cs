@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Autohand;
+using PersistentSaveSystem;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -64,6 +65,7 @@ public class TutorialEditor : MonoBehaviour
 
             if (index == (ListTasks.Count - 1) && ListTasks[index].IsComplete)
             {
+                GetComponent<CompleteRoom>().Complete();
                 OnTutorialComplete?.Invoke();
             }
         }
@@ -91,7 +93,7 @@ public class TutorialEditor : MonoBehaviour
 public class TutorialTask
 {
     [Min(0f)]
-    [Tooltip("Через сколько запустить задачу с момента вызова StartTask()")]
+    [Tooltip("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ StartTask()")]
     public float Delay = 0f;
 
     public UnityEvent OnTaskStarted = new UnityEvent();

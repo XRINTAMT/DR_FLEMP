@@ -3686,19 +3686,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1018024047081267811, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1018024047081267811, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1018024047081267811, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 352.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1018024047081267811, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -154.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1018024047602702344, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: m_Name
@@ -3706,7 +3706,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1018024047602702344, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1018024048010907249, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: cam
@@ -3804,41 +3804,45 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScenarioChoice
       objectReference: {fileID: 0}
+    - target: {fileID: 1018024048213380913, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1018024048213380915, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3704670677864504068, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3704670677864504068, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3704670677864504068, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 352.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3704670677864504068, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -438.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3782178719885747241, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3782178719885747241, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3782178719885747241, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 352.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3782178719885747241, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -296.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: States.Array.data[0].OnPicked.Array.size
@@ -8331,6 +8335,7 @@ GameObject:
   - component: {fileID: 7221721196467700432}
   - component: {fileID: 5443192905851935858}
   - component: {fileID: 7221721196467700433}
+  - component: {fileID: 7221721196467700434}
   m_Layer: 0
   m_Name: handle
   m_TagString: Untagged
@@ -10892,6 +10897,42 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
+        m_TargetAssemblyTypeName: PersistentSaveSystem.ConditionalStateMachine, Assembly-CSharp
+        m_MethodName: SwitchState
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1018024048010907255}
+        m_TargetAssemblyTypeName: PersistentSaveSystem.CompleteRoom, Assembly-CSharp
+        m_MethodName: Complete
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7221721196467700434}
+        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
+        m_MethodName: Fire
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnMid:
     m_PersistentCalls:
       m_Calls: []
@@ -11080,6 +11121,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   lockHandOnGrab: 0
+--- !u!114 &7221721196467700434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2865637632964503776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9187233583c2dac4c9e328faa1cdc227, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7324795399892516941
 GameObject:
   m_ObjectHideFlags: 0

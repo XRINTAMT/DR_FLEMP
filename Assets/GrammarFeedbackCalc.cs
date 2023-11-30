@@ -27,12 +27,9 @@ public class GrammarFeedbackCalc : MonoBehaviour
 
     public void Activate()
     {
-        if (!running)
-        {
-            
-            running = true;
-            StartCoroutine("RequestFeedback");
-        }
+        Debug.Log("button click sent");
+        
+        StartCoroutine("RequestFeedback");
     }
     
     public IEnumerator RequestFeedback()

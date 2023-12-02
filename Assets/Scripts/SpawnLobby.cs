@@ -17,7 +17,7 @@ public class SpawnLobby : MonoBehaviour
             { "RecordedShiftChange", 1 },
             { "MultiplayerScene", 1 },
             { "B11", 3 },
-            { "B12", 3 },
+            { "B12", 4 },
             { "B21", 3 },
             { "B22", 3 }
         };

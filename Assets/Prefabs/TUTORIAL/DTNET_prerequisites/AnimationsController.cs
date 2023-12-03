@@ -76,21 +76,18 @@ public class AnimationsController : MonoBehaviour
             Debug.Log("Just loaded, gotta remove some highlights");
             for (int i = 0; i < placePoints.Count; i++)
             {
-                if (placePoints[i].GetComponentInChildren<Sensor>() != null)
+                MeshRenderer[] highlights = placePoints[i].GetComponentsInChildren<MeshRenderer>();
+                //Debug.Log("Mesh renderers in " + placePoints[i] + ": " + highlights.Length);
+                foreach (MeshRenderer highlight in highlights)
                 {
-                    MeshRenderer[] highlights = placePoints[i].GetComponentsInChildren<MeshRenderer>();
-                    //Debug.Log("Mesh renderers in " + placePoints[i] + ": " + highlights.Length);
-                    foreach(MeshRenderer highlight in highlights)
+                    if (highlight.material.color == highlightMaterial.color)
                     {
-                        if(highlight.material.color == highlightMaterial.color)
-                        {
-                            highlight.gameObject.SetActive(false);
-                            Debug.Log("Removed this highlight");
-                        }
-                        else
-                        {
-                            Debug.Log(highlight.material.color + " is not the same as " + highlightMaterial.color);
-                        }
+                        highlight.gameObject.SetActive(false);
+                        Debug.Log("Removed this highlight");
+                    }
+                    else
+                    {
+                        Debug.Log(highlight.material.color + " is not the same as " + highlightMaterial.color);
                     }
                 }
             }

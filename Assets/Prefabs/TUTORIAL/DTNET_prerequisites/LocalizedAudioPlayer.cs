@@ -41,10 +41,6 @@ public class LocalizedAudioPlayer : MonoBehaviour
             }
 
         }
-        if (!PhotonManager.offlineMode)
-        {
-            playPhrase?.Invoke(id, lang);
-        }
     }
 
     public void PlayPhrasePhoton(int id, string language)   //for multiplayer

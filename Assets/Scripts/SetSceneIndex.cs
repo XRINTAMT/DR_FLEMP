@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SetSceneIndex : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    void OnDestroy()
     {
         SpawnLobby.nameScene = SceneManager.GetActiveScene().name;
         //if (!SceneManager.GetActiveScene().name.Contains("Lobby"))

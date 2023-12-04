@@ -16,7 +16,7 @@ public class ChatCharacter : MonoBehaviour
 {
     private InteractionHandler STTInput;
     [SerializeField] private CharacterInfo info;
-    private ChatHistory _history;
+    public ChatHistory _history;
     [SerializeField] private EmbeddingDB _embeddingDB;
     private OpenAIApi _openAI;
     public bool targeted = false;
@@ -91,8 +91,9 @@ public class ChatCharacter : MonoBehaviour
         prompt.AddRange(deepHistory);
         prompt.AddRange(history);
         prompt.Add(background);
-        prompt.Add(userMessage);
         prompt.Add(instruction);
+        userMessage.Content = $"Nurse's message\n"+userMessage.Content+"\n\n{info.name}'s response:\n";
+        prompt.Add(userMessage);
         
         foreach(var m in prompt) Debug.Log(m.Content);
 
@@ -124,6 +125,11 @@ public class ChatCharacter : MonoBehaviour
 
     public IEnumerator SendPrompt(List<ChatMessage> messages, ChatMessage userMessage, List<float> embedding)
     {
+        var originalUserMessage = new ChatMessage()
+        {
+            Role = "user",
+            Content = userMessage.Content,
+        };
         Debug.Log("sendPrompt started");
         var completionTask = _openAI.CreateChatCompletion(new CreateChatCompletionRequest()
         {
@@ -192,7 +198,7 @@ public class ChatCharacter : MonoBehaviour
         }
         else
         {
-            _history.NewEntry(userMessage, response, embedding);
+            _history.NewEntry(originalUserMessage, response, embedding);
             SendResponseToTTS(response.Content);
         }
 

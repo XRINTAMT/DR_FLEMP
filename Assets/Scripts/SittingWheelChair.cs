@@ -54,7 +54,7 @@ public class SittingWheelChair : MonoBehaviour
         Rigidbody _wheelchairRB = siitingPos.parent.GetComponent<Rigidbody>();
         if (_wheelchairRB != null)
         {
-            _wheelchairRB.mass = 1100;
+            _wheelchairRB.mass = 100;
         }
         Task _wheelchairTask;
         if (siitingPos.TryGetComponent<Task>(out _wheelchairTask))

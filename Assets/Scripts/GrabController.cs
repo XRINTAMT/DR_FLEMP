@@ -5,19 +5,28 @@ using UnityEngine;
 
 public class GrabController : MonoBehaviour
 {
-    Grabbable grabbable;
-    public Grabbable nurseTablet;
+    public HipsEstimation hipsEstimation;
+    public Transform startPosTablet;
+    public Transform tablet;
+
+    bool setStartPos;
     // Start is called before the first frame update
     void Start()
     {
-        grabbable = GetComponent<Grabbable>();
-        grabbable.onGrab.AddListener(OnGrab);
+        
     }
-
-    void OnGrab(Hand hand, Grabbable grabbable) 
+    private void Update()
     {
-        hand.TryGrab(nurseTablet);
+        if (!setStartPos)
+        {
+            hipsEstimation.enabled = false;
+            tablet.transform.position = startPosTablet.transform.position;
+            tablet.transform.rotation = startPosTablet.transform.rotation;
+            setStartPos = true;
+
+        }
     }
+ 
     // Update is called once per frame
   
 }

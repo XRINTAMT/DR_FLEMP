@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Autohand;
 using UnityEngine;
 using ScenarioTaskSystem;
-
+using TMPro;
 public class SittingWheelChair : MonoBehaviour
 {
     public Transform siitingPos;
@@ -63,5 +63,32 @@ public class SittingWheelChair : MonoBehaviour
         }
     }
     // Update is called once per frame
-
+    public void Sit(TMP_Text text)
+    {
+        if (headCharacterFollow.inArea)
+        {
+            float dist = Vector3.Distance(this.transform.position, siitingPos.position);
+            if (dist > 2.0)
+            {
+                text.text= "Sit in Wheelchair Fail: Wheelchair is too far away";
+                return;
+            }
+            transform.parent = siitingPos;
+            transform.localPosition = Vector3.zero;
+            transform.localEulerAngles = Vector3.zero;
+            Rigidbody _wheelchairRB = siitingPos.parent.GetComponent<Rigidbody>();
+            if (_wheelchairRB != null)
+            {
+                _wheelchairRB.mass = 1100;
+            }
+            Task _wheelchairTask;
+            if (siitingPos.TryGetComponent<Task>(out _wheelchairTask))
+            {
+                _wheelchairTask.Complete(RightPatient ? 1 : 0);
+                text.transform.parent.parent.gameObject.SetActive(false);
+                text.text = "Sit in Wheelchair Success";
+            }
+        }
+      
+    }
 }

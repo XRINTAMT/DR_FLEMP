@@ -4,11 +4,14 @@ using Autohand;
 using UnityEngine;
 using ScenarioTaskSystem;
 using TMPro;
+using UnityEngine.Events;
+
 public class SittingWheelChair : MonoBehaviour
 {
     public Transform siitingPos;
     public HeadCharacterFollow headCharacterFollow;
     [field:SerializeField] public bool RightPatient { get; private set; }
+    public UnityEvent complete;
 
     // Start is called before the first frame update
     void Start()
@@ -70,7 +73,7 @@ public class SittingWheelChair : MonoBehaviour
             float dist = Vector3.Distance(this.transform.position, siitingPos.position);
             if (dist > 2.0)
             {
-                text.text= "Sit in Wheelchair Fail: Wheelchair is too far away";
+                text.text= "Wheelchair is too far away";
                 return;
             }
             transform.parent = siitingPos;
@@ -87,6 +90,7 @@ public class SittingWheelChair : MonoBehaviour
                 _wheelchairTask.Complete(RightPatient ? 1 : 0);
                 text.transform.parent.parent.gameObject.SetActive(false);
                 text.text = "Sit in Wheelchair Success";
+                complete.Invoke();
             }
         }
       

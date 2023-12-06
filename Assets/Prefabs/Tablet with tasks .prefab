@@ -80,7 +80,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Orthopedic surgeon visit
+  m_Text: Mixe movement
 --- !u!114 &525519021507297487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,19 +97,7 @@ MonoBehaviour:
   - eventID: 4
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 4271410902447671132}
-          m_TargetAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
-          m_MethodName: set_isOn
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
+        m_Calls: []
 --- !u!1 &50880061782441735
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,7 +448,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6354112495498173433
 RectTransform:
   m_ObjectHideFlags: 0
@@ -563,7 +551,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6975802035038168006}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: NurseTabletRecord, Assembly-CSharp
         m_MethodName: ShowExplaination
         m_Mode: 1
@@ -593,7 +581,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6384012773696203062
 RectTransform:
   m_ObjectHideFlags: 0
@@ -695,19 +683,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3407220813434285368}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6951799227976012041}
-        m_TargetAssemblyTypeName: NurseTabletRecord, Assembly-CSharp
-        m_MethodName: ShowExplaination
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &512636917028019475
 GameObject:
   m_ObjectHideFlags: 0
@@ -1182,7 +1158,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Respiratory
+  m_Text: Put patient in a wheelchair
 --- !u!114 &938863573260082691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1199,19 +1175,7 @@ MonoBehaviour:
   - eventID: 4
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 3534092208665794960}
-          m_TargetAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
-          m_MethodName: set_isOn
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
+        m_Calls: []
 --- !u!1 &801811222404893827
 GameObject:
   m_ObjectHideFlags: 0
@@ -1453,14 +1417,13 @@ GameObject:
   - component: {fileID: 3073506164467346169}
   - component: {fileID: 153832174656775446}
   - component: {fileID: 8751734054927894933}
-  - component: {fileID: 8382213164448060747}
   m_Layer: 0
   m_Name: TabletInfoPiece (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3073506164467346169
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1589,31 +1552,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8382213164448060747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 946443652459404919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fae9cb8db65bb94b934daac57851ba7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MainText: {fileID: 4992745882353132663}
-  AudioHintButton: {fileID: 5887731518568313632}
-  PopupManager: {fileID: 8652457915084767429}
-  ChecklistManager: {fileID: 8187033142533610550, guid: 2ac6a6ba8b9dc774eb5967e0ee4dfe4b, type: 3}
-  checkbox: {fileID: 1753039656111869953}
-  explainationText: "Doctor\u2019s instructions of what to do and not to do after
-    undergoing a surgery"
-  answerText:
-  - Answer 1
-  - Answer 2
-  - Answer 3
-  id: 4
-  HintButton: {fileID: 1267367534608032429}
 --- !u!1 &967477366691965544
 GameObject:
   m_ObjectHideFlags: 0
@@ -1869,7 +1807,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Vital signs
+  m_Text: Teleport
 --- !u!114 &682703074846880691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1886,19 +1824,7 @@ MonoBehaviour:
   - eventID: 4
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 3852107677247747104}
-          m_TargetAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
-          m_MethodName: set_isOn
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
+        m_Calls: []
 --- !u!1 &1181648323866204896
 GameObject:
   m_ObjectHideFlags: 0
@@ -2181,7 +2107,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5526703089797049716
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2284,7 +2210,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8382213164448060747}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: NurseTabletRecord, Assembly-CSharp
         m_MethodName: ShowExplaination
         m_Mode: 1
@@ -2590,7 +2516,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2604,26 +2530,14 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 4198864871749418674}
   toggleTransition: 1
   graphic: {fileID: 8719505651989963258}
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 292671399386361331}
-        m_TargetAssemblyTypeName: NurseTabletRecord, Assembly-CSharp
-        m_MethodName: CheckboxChecked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &1637191730597841567
 GameObject:
@@ -2962,14 +2876,13 @@ GameObject:
   - component: {fileID: 4507280191337492155}
   - component: {fileID: 1587764517736980820}
   - component: {fileID: 7880803637930577367}
-  - component: {fileID: 6951799227976012041}
   m_Layer: 0
   m_Name: TabletInfoPiece (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4507280191337492155
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3098,34 +3011,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6951799227976012041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1803739592648284725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fae9cb8db65bb94b934daac57851ba7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MainText: {fileID: 5864690620436324405}
-  AudioHintButton: {fileID: 5016788406437246818}
-  PopupManager: {fileID: 8652457915084767429}
-  ChecklistManager: {fileID: 8187033142533610550, guid: 2ac6a6ba8b9dc774eb5967e0ee4dfe4b, type: 3}
-  checkbox: {fileID: 900252228842378307}
-  explainationText: To be on telemetry / telemetry monitoring - telemetry monitoring
-    is when healthcare providers monitor the electrical activity of the heart for
-    an extended time.  A drip -  a short, small plastic tube. A needle is used to
-    put the drip into the vein so that fluids and medicines can go directly into
-    the blood.    Heparin - an anticoagulant used in the treatment of thrombosis.
-  answerText:
-  - Answer 1
-  - Answer 2
-  - Answer 3
-  id: 10
-  HintButton: {fileID: 413419568773687023}
 --- !u!1 &1833085313249142277
 GameObject:
   m_ObjectHideFlags: 0
@@ -3217,14 +3102,13 @@ GameObject:
   - component: {fileID: 4484412157587266676}
   - component: {fileID: 1638774835453842331}
   - component: {fileID: 7919856242590793496}
-  - component: {fileID: 6975802035038168006}
   m_Layer: 0
   m_Name: TabletInfoPiece (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4484412157587266676
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3353,30 +3237,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6975802035038168006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855181742905108730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fae9cb8db65bb94b934daac57851ba7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MainText: {fileID: 5896715386469077754}
-  AudioHintButton: {fileID: 4983778434074314157}
-  PopupManager: {fileID: 8652457915084767429}
-  ChecklistManager: {fileID: 8187033142533610550, guid: 2ac6a6ba8b9dc774eb5967e0ee4dfe4b, type: 3}
-  checkbox: {fileID: 921145333820073612}
-  explainationText: 'Refer to the pain of the patient '
-  answerText:
-  - Answer 1
-  - Answer 2
-  - Answer 3
-  id: 3
-  HintButton: {fileID: 363107690698675232}
 --- !u!1 &1891497667191118906
 GameObject:
   m_ObjectHideFlags: 0
@@ -3590,7 +3450,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Mediation intake
+  m_Text: Take the tablet
 --- !u!114 &2098390149512750227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3607,19 +3467,7 @@ MonoBehaviour:
   - eventID: 4
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2383222139006903040}
-          m_TargetAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
-          m_MethodName: set_isOn
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
+        m_Calls: []
 --- !u!1 &1917855575582705256
 GameObject:
   m_ObjectHideFlags: 0
@@ -3647,7 +3495,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1917855575582705256}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3656,8 +3504,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -36.004, y: 0}
-  m_SizeDelta: {x: -164.53, y: 0}
+  m_AnchoredPosition: {x: 33.2, y: 0}
+  m_SizeDelta: {x: -26, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5893418478497043445
 CanvasRenderer:
@@ -3692,7 +3540,7 @@ MonoBehaviour:
     m_FontSize: 42
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 56
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -3700,7 +3548,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Task 1
+  m_Text: Spin around
 --- !u!114 &2145268640915773806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3717,19 +3565,7 @@ MonoBehaviour:
   - eventID: 4
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2434647668667539197}
-          m_TargetAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
-          m_MethodName: set_isOn
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
+        m_Calls: []
 --- !u!1 &2104329838660281468
 GameObject:
   m_ObjectHideFlags: 0
@@ -4308,14 +4144,13 @@ GameObject:
   - component: {fileID: 542167328723046104}
   - component: {fileID: 3387804570282475831}
   - component: {fileID: 6076767685452639668}
-  - component: {fileID: 6445488571495690602}
   m_Layer: 0
   m_Name: TabletInfoPiece (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &542167328723046104
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4444,30 +4279,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6445488571495690602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2306708042899831382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fae9cb8db65bb94b934daac57851ba7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MainText: {fileID: 7523448101401739350}
-  AudioHintButton: {fileID: 8976816852322883329}
-  PopupManager: {fileID: 8652457915084767429}
-  ChecklistManager: {fileID: 8187033142533610550, guid: 2ac6a6ba8b9dc774eb5967e0ee4dfe4b, type: 3}
-  checkbox: {fileID: 3852107677247747104}
-  explainationText: Vitals - the body's important internal organs.
-  answerText:
-  - Answer 1
-  - Answer 2
-  - Answer 3
-  id: 5
-  HintButton: {fileID: 4375242417771382412}
 --- !u!1 &2443539245184453528
 GameObject:
   m_ObjectHideFlags: 0
@@ -4681,7 +4492,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Post-surgery instructions
+  m_Text: Release the object
 --- !u!114 &2618861972824790930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4698,19 +4509,7 @@ MonoBehaviour:
   - eventID: 4
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1753039656111869953}
-          m_TargetAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
-          m_MethodName: set_isOn
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
+        m_Calls: []
 --- !u!1 &2560123270029984434
 GameObject:
   m_ObjectHideFlags: 0
@@ -4855,14 +4654,13 @@ GameObject:
   - component: {fileID: 286220427468219240}
   - component: {fileID: 3133687204875463815}
   - component: {fileID: 5776981039508488196}
-  - component: {fileID: 6704742820868988122}
   m_Layer: 0
   m_Name: TabletInfoPiece (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &286220427468219240
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4991,31 +4789,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6704742820868988122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2629507450184439782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fae9cb8db65bb94b934daac57851ba7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MainText: {fileID: 7788511053579251174}
-  AudioHintButton: {fileID: 8713056787245972145}
-  PopupManager: {fileID: 8652457915084767429}
-  ChecklistManager: {fileID: 8187033142533610550, guid: 2ac6a6ba8b9dc774eb5967e0ee4dfe4b, type: 3}
-  checkbox: {fileID: 3534092208665794960}
-  explainationText: To be on oxygen -  breathing of a patient supported by additional
-    oxygen.
-  answerText:
-  - Answer 1
-  - Answer 2
-  - Answer 3
-  id: 9
-  HintButton: {fileID: 4091813186868882236}
 --- !u!1 &2641787476083485312
 GameObject:
   m_ObjectHideFlags: 0
@@ -5387,7 +5160,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -5401,7 +5174,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 741466916354109773}
   toggleTransition: 1
   graphic: {fileID: 5264300391836659205}
@@ -5713,7 +5486,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8499454140773752437
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5816,7 +5589,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5554470895229429322}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: NurseTabletRecord, Assembly-CSharp
         m_MethodName: ShowExplaination
         m_Mode: 1
@@ -6100,7 +5873,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -6114,7 +5887,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 113610057662818576}
   toggleTransition: 1
   graphic: {fileID: 4816365421454521944}
@@ -6210,14 +5983,13 @@ GameObject:
   - component: {fileID: 699285273400049060}
   - component: {fileID: 2391851614753665611}
   - component: {fileID: 6514300815586221768}
-  - component: {fileID: 6287183016815018518}
   m_Layer: 0
   m_Name: TabletInfoPiece (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &699285273400049060
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6346,30 +6118,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6287183016815018518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3328552298248096042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fae9cb8db65bb94b934daac57851ba7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MainText: {fileID: 7375451704668762922}
-  AudioHintButton: {fileID: 8261423941844067453}
-  PopupManager: {fileID: 8652457915084767429}
-  ChecklistManager: {fileID: 8187033142533610550, guid: 2ac6a6ba8b9dc774eb5967e0ee4dfe4b, type: 3}
-  checkbox: {fileID: 4271410902447671132}
-  explainationText: Information about the visits of the doctor to check on the patient
-  answerText:
-  - Answer 1
-  - Answer 2
-  - Answer 3
-  id: 6
-  HintButton: {fileID: 3640471850192729584}
 --- !u!1 &3357066585548843492
 GameObject:
   m_ObjectHideFlags: 0
@@ -7019,7 +6767,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8043955598134311465
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7122,7 +6870,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6287183016815018518}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: NurseTabletRecord, Assembly-CSharp
         m_MethodName: ShowExplaination
         m_Mode: 1
@@ -7145,14 +6893,13 @@ GameObject:
   - component: {fileID: 1432604541235124728}
   - component: {fileID: 4279666646245938711}
   - component: {fileID: 4625914175553043092}
-  - component: {fileID: 5554470895229429322}
   m_Layer: 0
   m_Name: TabletInfoPiece (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1432604541235124728
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7281,31 +7028,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5554470895229429322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3775312619396066678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fae9cb8db65bb94b934daac57851ba7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MainText: {fileID: 8939399255350646646}
-  AudioHintButton: {fileID: 7562536842780753953}
-  PopupManager: {fileID: 8652457915084767429}
-  ChecklistManager: {fileID: 8187033142533610550, guid: 2ac6a6ba8b9dc774eb5967e0ee4dfe4b, type: 3}
-  checkbox: {fileID: 2383222139006903040}
-  explainationText: 'Information about the patient''s current medications (antibiotics/pain
-    medication etc.) and instructions for the medication intake. '
-  answerText:
-  - Answer 1
-  - Answer 2
-  - Answer 3
-  id: 7
-  HintButton: {fileID: 2940977692936130988}
 --- !u!1 &3801009620459573387
 GameObject:
   m_ObjectHideFlags: 0
@@ -7742,7 +7464,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Cardiovascular
+  m_Text: Bring the wheelchair
 --- !u!114 &3490936156837630928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7759,19 +7481,7 @@ MonoBehaviour:
   - eventID: 4
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 900252228842378307}
-          m_TargetAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
-          m_MethodName: set_isOn
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
+        m_Calls: []
 --- !u!1 &3993927267100532426
 GameObject:
   m_ObjectHideFlags: 0
@@ -7948,7 +7658,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Level of pain
+  m_Text: Take the object
 --- !u!114 &3514089315869270303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7965,19 +7675,7 @@ MonoBehaviour:
   - eventID: 4
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 921145333820073612}
-          m_TargetAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
-          m_MethodName: set_isOn
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
+        m_Calls: []
 --- !u!1 &4055554086986510968
 GameObject:
   m_ObjectHideFlags: 0
@@ -8072,7 +7770,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7344624739405571301
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8174,19 +7872,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1314252593848262891}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6704742820868988122}
-        m_TargetAssemblyTypeName: NurseTabletRecord, Assembly-CSharp
-        m_MethodName: ShowExplaination
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &4158514730941343418
 GameObject:
   m_ObjectHideFlags: 0
@@ -8457,7 +8143,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4307205495314736299}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.9615383, y: 0.9615383, z: 0.9615383}
   m_ConstrainProportionsScale: 0
@@ -8484,7 +8170,7 @@ RectTransform:
   - {fileID: 2982309305051983923}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1.5384827, y: -56.9}
@@ -8595,7 +8281,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7031149188766796117
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8698,7 +8384,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6445488571495690602}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: NurseTabletRecord, Assembly-CSharp
         m_MethodName: ShowExplaination
         m_Mode: 1
@@ -9777,7 +9463,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -9791,26 +9477,14 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 7568886211721990487}
   toggleTransition: 1
   graphic: {fileID: 3048550484771638815}
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6287183016815018518}
-        m_TargetAssemblyTypeName: NurseTabletRecord, Assembly-CSharp
-        m_MethodName: CheckboxChecked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &5091582130808336749
 GameObject:
@@ -9823,7 +9497,6 @@ GameObject:
   - component: {fileID: 7002488389891392995}
   - component: {fileID: 5307520783830731276}
   - component: {fileID: 3674647323027187343}
-  - component: {fileID: 4600715031842994769}
   m_Layer: 0
   m_Name: TabletInfoPiece (2)
   m_TagString: Untagged
@@ -9959,33 +9632,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &4600715031842994769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5091582130808336749}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fae9cb8db65bb94b934daac57851ba7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MainText: {fileID: 1063786747210058605}
-  AudioHintButton: {fileID: 1891497667191118906}
-  PopupManager: {fileID: 8652457915084767429}
-  ChecklistManager: {fileID: 8187033142533610550, guid: 2ac6a6ba8b9dc774eb5967e0ee4dfe4b, type: 3}
-  checkbox: {fileID: 6043430215855783707}
-  explainationText: Code status - when an orthopedic patient goes to the hospital
-    for an operation, they have a set code status. The status is based on how the
-    patient is feeling and how well they are recovering. It ranges from 1-4, with
-    4 being the highest status.
-  answerText:
-  - Answer 1
-  - Answer 2
-  - Answer 3
-  id: 2
-  HintButton: {fileID: 6493073054856777143}
 --- !u!1 &5232217164403597934
 GameObject:
   m_ObjectHideFlags: 0
@@ -10438,7 +10084,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -10452,26 +10098,14 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 7437804702411874859}
   toggleTransition: 1
   graphic: {fileID: 2629212212620655971}
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6445488571495690602}
-        m_TargetAssemblyTypeName: NurseTabletRecord, Assembly-CSharp
-        m_MethodName: CheckboxChecked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &5580322214568552752
 GameObject:
@@ -10861,7 +10495,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -10875,26 +10509,14 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 7153565992630964123}
   toggleTransition: 1
   graphic: {fileID: 2306449069963694291}
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6704742820868988122}
-        m_TargetAssemblyTypeName: NurseTabletRecord, Assembly-CSharp
-        m_MethodName: CheckboxChecked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &5887731518568313632
 GameObject:
@@ -11319,7 +10941,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Isolation precautions
+  m_Text: Talk to the patent
 --- !u!114 &6054047872420196138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11336,19 +10958,7 @@ MonoBehaviour:
   - eventID: 4
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 7496330809405089977}
-          m_TargetAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
-          m_MethodName: set_isOn
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
+        m_Calls: []
 --- !u!1 &6115959619012911245
 GameObject:
   m_ObjectHideFlags: 0
@@ -11852,7 +11462,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4600715031842994769}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: NurseTabletRecord, Assembly-CSharp
         m_MethodName: ShowExplaination
         m_Mode: 1
@@ -12025,7 +11635,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -12039,7 +11649,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 8323944424446626038}
   toggleTransition: 1
   graphic: {fileID: 3512845307133958078}
@@ -12191,7 +11801,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -12205,26 +11815,14 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 8313622463561807115}
   toggleTransition: 1
   graphic: {fileID: 3466468786275428931}
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5554470895229429322}
-        m_TargetAssemblyTypeName: NurseTabletRecord, Assembly-CSharp
-        m_MethodName: CheckboxChecked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &7032603261536178122
 GameObject:
@@ -12324,7 +11922,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4390611947154347468
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12427,7 +12025,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 292671399386361331}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: NurseTabletRecord, Assembly-CSharp
         m_MethodName: ShowExplaination
         m_Mode: 1
@@ -12590,7 +12188,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Task 2
+  m_Text: Move
 --- !u!114 &7208900807520968917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12607,19 +12205,7 @@ MonoBehaviour:
   - eventID: 4
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 6343096078395041606}
-          m_TargetAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
-          m_MethodName: set_isOn
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
+        m_Calls: []
 --- !u!1 &7180028758279541567
 GameObject:
   m_ObjectHideFlags: 0
@@ -13197,7 +12783,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -13211,26 +12797,14 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 5339299085196051978}
   toggleTransition: 1
   graphic: {fileID: 674894880099522882}
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8382213164448060747}
-        m_TargetAssemblyTypeName: NurseTabletRecord, Assembly-CSharp
-        m_MethodName: CheckboxChecked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &7505525854310727132
 GameObject:
@@ -13392,7 +12966,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7533008805501036430}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13401,8 +12975,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -36.004, y: 0}
-  m_SizeDelta: {x: -164.53, y: 0}
+  m_AnchoredPosition: {x: 34.5, y: 0}
+  m_SizeDelta: {x: -23.4, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2584687977318937107
 CanvasRenderer:
@@ -13445,7 +13019,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Task 3
+  m_Text: Move to the highlighted area
 --- !u!114 &8057659444077181064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13462,19 +13036,7 @@ MonoBehaviour:
   - eventID: 4
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 6043430215855783707}
-          m_TargetAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
-          m_MethodName: set_isOn
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
+        m_Calls: []
 --- !u!1 &7562536842780753953
 GameObject:
   m_ObjectHideFlags: 0
@@ -14280,7 +13842,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -14294,26 +13856,14 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 6811022296192381063}
   toggleTransition: 1
   graphic: {fileID: 2144040917482205135}
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6975802035038168006}
-        m_TargetAssemblyTypeName: NurseTabletRecord, Assembly-CSharp
-        m_MethodName: CheckboxChecked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &8261423941844067453
 GameObject:
@@ -14511,7 +14061,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -14525,26 +14075,14 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 6787868965213438536}
   toggleTransition: 1
   graphic: {fileID: 2123429321989168384}
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6951799227976012041}
-        m_TargetAssemblyTypeName: NurseTabletRecord, Assembly-CSharp
-        m_MethodName: CheckboxChecked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &8405633389088576725
 GameObject:
@@ -15557,14 +15095,13 @@ GameObject:
   - component: {fileID: 6555856714646426177}
   - component: {fileID: 8250270076111019438}
   - component: {fileID: 659841808682594605}
-  - component: {fileID: 292671399386361331}
   m_Layer: 0
   m_Name: TabletInfoPiece (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6555856714646426177
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15693,31 +15230,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &292671399386361331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9042713604168918735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fae9cb8db65bb94b934daac57851ba7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MainText: {fileID: 3825128992963517647}
-  AudioHintButton: {fileID: 2443539245184453528}
-  PopupManager: {fileID: 8652457915084767429}
-  ChecklistManager: {fileID: 8187033142533610550, guid: 2ac6a6ba8b9dc774eb5967e0ee4dfe4b, type: 3}
-  checkbox: {fileID: 7496330809405089977}
-  explainationText: Isolation precautions create barriers between people and germs.
-    These types of precautions help prevent the spread of germs in the hospital.
-  answerText:
-  - Answer 1
-  - Answer 2
-  - Answer 3
-  id: 8
-  HintButton: {fileID: 7046661646617156117}
 --- !u!1 &9174259328142252157
 GameObject:
   m_ObjectHideFlags: 0

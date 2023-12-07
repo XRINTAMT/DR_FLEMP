@@ -5,6 +5,7 @@ using UnityEngine;
 using ScenarioTaskSystem;
 using TMPro;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class SittingWheelChair : MonoBehaviour
 {
@@ -66,7 +67,7 @@ public class SittingWheelChair : MonoBehaviour
         }
     }
     // Update is called once per frame
-    public void Sit(TMP_Text text)
+    public void Sit(Text text)
     {
         if (headCharacterFollow.inArea)
         {

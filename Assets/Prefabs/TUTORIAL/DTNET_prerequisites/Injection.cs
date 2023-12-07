@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using ScenarioTaskSystem;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Task))]
 public class Injection : MonoBehaviour
@@ -15,6 +16,7 @@ public class Injection : MonoBehaviour
         public float Epsilon;
     }
     [SerializeField] Pair[] DesiredResults;
+    [SerializeField] UnityEvent OnDone;
     public float Proximity { get; private set; } = 1;
 
     public Injection CheckCompletion(Dictionary<string, float> ingredients)
@@ -30,6 +32,8 @@ public class Injection : MonoBehaviour
         }
         Proximity = 1;
         GetComponent<Task>().Complete();
+        Debug.Log(name + " fits well");
+        OnDone.Invoke();
         return this;
     }
 }

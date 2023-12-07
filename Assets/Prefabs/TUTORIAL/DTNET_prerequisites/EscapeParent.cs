@@ -8,15 +8,7 @@ public class EscapeParent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!PhotonManager._viewerApp)
-        {
             grandpa = transform.parent.parent;
-            Debug.Log(grandpa.gameObject.name);
-        }
-        if (PhotonManager._viewerApp)
-        {
-            Destroy(GetComponent<Joint>());
-        }
 
     }
 

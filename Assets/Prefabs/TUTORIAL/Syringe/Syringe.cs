@@ -31,7 +31,6 @@ public class Syringe : DataSaver
     [SerializeField] Material LiquidTooMuch;
     [SerializeField] GameObject ExpiredHint;
 
-    TaskSpecificValues DataInterface;
     Ampule med;
     bool inserted;
     bool pulling;
@@ -58,7 +57,6 @@ public class Syringe : DataSaver
         med = null;
         if (!setupInInspector)
         {
-            DataInterface = GetComponent<TaskSpecificValues>();
             //Debug.Log("Getting syringe capacity: "+DataInterface.TryGetItem("SyringeCapacity", ref SyringeCapacity));
             PlayerObject player = FindObjectOfType<PlayerObject>();
             Head = player.Head;
@@ -246,11 +244,6 @@ public class Syringe : DataSaver
     // Update is called once per frame
     void Update()
     {
-        if (!setupInInspector)
-        {
-            DataInterface.TryGetItem("SyringeCapacity", ref SyringeCapacity);
-            DataInterface.TryGetItem("SyringeSensitivity", ref SyringeSensitivity);
-        }
         if (pulling)
         {
             float pullAmount = Mathf.Min(med.Amount, Time.deltaTime * SyringeSensitivity, SyringeCapacity - totalSubstance);
@@ -273,10 +266,6 @@ public class Syringe : DataSaver
             //AmountText.text = ingredients[med.Substance].ToString("0.0");
             AmountText.text = totalSubstance.ToString("0.0");
             CheckCompletion();
-            foreach (string ingred in ingredients.Keys.ToList())
-            {
-                DataInterface.SendDataItem(ingred, (int)ingredients[ingred]);
-            }
             UpdateGuidedLiquidColor(med.Substance);
         }
         else
@@ -315,10 +304,6 @@ public class Syringe : DataSaver
                         new Vector3(Liquid.transform.localScale.x,
                         Mathf.Lerp(0, MaxLiquidScale, totalSubstance / SyringeCapacity),
                         Liquid.transform.localScale.z);
-                }
-                foreach (string ingred in ingredients.Keys.ToList())
-                {
-                    DataInterface.SendDataItem(ingred, (int)ingredients[ingred]);
                 }
                 UpdateGuidedLiquidColor(med.Substance);
             }

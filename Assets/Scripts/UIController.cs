@@ -45,6 +45,7 @@ public class UIController : MonoBehaviour
     public static int teleport;
     public static int subtitles;
     public static int guides;
+    public bool tutorial;
     //SceneLoader sceneLoader;
     void Start()
     {
@@ -62,7 +63,7 @@ public class UIController : MonoBehaviour
         //setWalkingSpeed.value = PlayerPrefs.GetFloat("walkingSpeed", 1.5f);
         setSubstitlesStatus.isOn = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Subtitles", 0) == 0;
         teleport = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "MovementType", 0);
-        SetLocomotionType(teleport);
+        if (!tutorial) SetLocomotionType(teleport);
         learnedLanguage = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0);
         role = PlayerPrefs.GetString(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Role", "Assistant");
         language = PlayerPrefs.GetString(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Language", "English");

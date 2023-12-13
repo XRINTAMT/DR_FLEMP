@@ -38,7 +38,7 @@ public class CheckTutorialSyringe : MonoBehaviour
             {
                 Debug.Log(valueSyringe);
                 tutorialEditor.CompleteTask(countCompleteTask);
-                valueReached.Invoke();
+                
                 dial = false;
             }
         }
@@ -52,6 +52,7 @@ public class CheckTutorialSyringe : MonoBehaviour
                     placeSyringe.SetActive(true);
                     panelUICome30True.SetActive(true);
                     panelUICome30False.SetActive(false);
+                    valueReached.Invoke();
                 }
      
                 //Invoke()
@@ -65,6 +66,7 @@ public class CheckTutorialSyringe : MonoBehaviour
                     placeSyringe.SetActive(false);
                     panelUICome30True.SetActive(false);
                     panelUICome30False.SetActive(true);
+                    valueReachedBack.Invoke();
                 }
                 //tutorialEditor.CompleteTask(countCompleteTask);
                 //valueReachedBack.Invoke();

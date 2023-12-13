@@ -34,12 +34,6 @@ public class DialogueEvent : MonoBehaviour
         {
             if (Phrases[i].completed)
                 continue;
-            if (GetComponent<QD_DialogueDemo>().handler.currentMessageInfo.ID == Phrases[i].DialogueID)
-            {
-                Phrases[i].completed = true;
-                continue;
-            }
-
             completed = false;
         }
         if(completed)
@@ -54,7 +48,11 @@ public class DialogueEvent : MonoBehaviour
             }
             else if (GetComponent<QD_DialogueDemo>().handler.currentMessageInfo.ID != Phrases[i].DialogueID && Phrases[i].started)
             {
-                Phrases[i].started = false;
+                if (!Phrases[i].completed)
+                {
+                    Phrases[i].completed = true;
+                }
+                
             }
 
           

@@ -17,6 +17,7 @@ public class CheckTutorialSyringe : MonoBehaviour
     public UnityEvent valueReached = new UnityEvent();
     public UnityEvent valueReachedBack = new UnityEvent();
     int countCompleteTask;
+    float previousValue;
     public float valueSyringe;
     bool dial=true;
 
@@ -24,6 +25,7 @@ public class CheckTutorialSyringe : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        previousValue = 0;
         syringe = GetComponent<Syringe>();
     }
 
@@ -31,7 +33,11 @@ public class CheckTutorialSyringe : MonoBehaviour
     void Update()
     {
         valueSyringe = syringe.totalSubstance;
- 
+        if(valueSyringe == previousValue)
+        {
+            return;
+        }
+        previousValue = valueSyringe;
         if (dial)
         {
             if (valueSyringe >= value)

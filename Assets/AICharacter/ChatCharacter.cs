@@ -39,7 +39,7 @@ public class ChatCharacter : MonoBehaviour
     void Start()
     {
         _history = new ChatHistory();
-        _openAI = new OpenAIApi("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");
+        _openAI = new OpenAIApi("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");
         PhrasesPool = info.ThinkingPhrasesPool;
         //STTInput = FindAnyObjectByType<InteractionHandler>();
         WitReact = FindAnyObjectByType<WitAutoReactivation>();

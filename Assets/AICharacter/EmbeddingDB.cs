@@ -22,7 +22,7 @@ namespace AICharacter
         private OpenAIApi openai;
         void Start()
         {
-            openai = new OpenAIApi("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");
+            openai = new OpenAIApi("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");
         }
 
         void Update()

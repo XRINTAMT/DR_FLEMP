@@ -16,7 +16,7 @@ public class GrammarFeedbackCalc : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _openAI = new OpenAIApi("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");
+        _openAI = new OpenAIApi("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");
     }
 
     // Update is called once per frame

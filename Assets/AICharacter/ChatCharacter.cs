@@ -92,7 +92,7 @@ public class ChatCharacter : MonoBehaviour
         prompt.AddRange(history);
         prompt.Add(background);
         prompt.Add(instruction);
-        userMessage.Content = $"Nurse's message\n"+userMessage.Content+"\n\n{info.name}'s response:\n";
+        userMessage.Content = $"Nurse's message\n"+userMessage.Content+$"\n\n{info.name}'s response:\n";
         prompt.Add(userMessage);
         
         foreach(var m in prompt) Debug.Log(m.Content);

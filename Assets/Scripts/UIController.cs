@@ -51,7 +51,7 @@ public class UIController : MonoBehaviour
     {
         LoadSettingsIntoUI();
         //sceneLoader = FindObjectOfType<SceneLoader>();
-        if (SceneManager.GetActiveScene().name == "Lobby")
+        if (SceneManager.GetActiveScene().name == "Lobby" || SceneManager.GetActiveScene().name == "DTNETDemo")
             languageButton.interactable = true;
     }
 

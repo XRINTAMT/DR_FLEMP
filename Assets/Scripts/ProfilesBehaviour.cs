@@ -9,43 +9,82 @@ public class ProfilesBehaviour : MonoBehaviour
     [SerializeField] TMP_Dropdown dropdownLanguage;
     [SerializeField] TMP_InputField inputField;
     [SerializeField] string [] names;
-    [SerializeField] List <string> options = new List<string>();
-
+    List <string> options = new List<string>();
+    int playerId;
     // Start is called before the first frame update
     void Start()
     {
-        dropdownLanguage.onValueChanged.AddListener(ChooseLanguage);
+        //PlayerPrefs.SetString("NamesPlayer", "");
         //int count = PlayerPrefs.GetInt("CountPlayerID",0);
         //for (int i = 0; i < count; i++)
         //    options.Add("Player " + (options.Count+1));
-        names = PlayerPrefs.GetString("NamesPlayer").Split();
-       
-        for (int i = 0; i < names.Length; i++)
+        string nameValue = PlayerPrefs.GetString("NamesPlayer", "");
+        if (nameValue!="")
         {
-            options.Add(names[i]);
-        }
-        dropdownPatients.AddOptions(options);
-        PlayerPrefs.GetInt("CurrentPlayerID", 0);
+            names = nameValue.Split();
 
-        dropdownPatients.onValueChanged.AddListener(ChoosePlayer);
+            for (int i = 0; i < names.Length; i++)
+            {
+                options.Add(names[i]);
+            }
+            dropdownPatients.AddOptions(options);
+        }
+        
+
+     
+      
+        playerId=PlayerPrefs.GetInt("CurrentPlayerID", 0);
+
+        dropdownPatients.onValueChanged.AddListener(ChoosePlayer);        
+        dropdownLanguage.onValueChanged.AddListener(ChooseLanguage);
     }
     public void CreatePlayer() 
     {
         //options.Add("Player " + (options.Count+1));
-        if (PlayerPrefs.GetString("NamesPlayer") == "")
+        if (names.Length==0)
         {
             PlayerPrefs.SetString("NamesPlayer", inputField.text);
+
+            string nameValue = PlayerPrefs.GetString("NamesPlayer", "");
+            if (nameValue != "")
+            {
+                names = nameValue.Split();
+                options.Clear();
+                for (int i = 0; i < names.Length; i++)
+                {
+                    options.Add(names[i]);
+                }
+                dropdownPatients.ClearOptions();
+                dropdownPatients.AddOptions(options);
+            }
+
+            PlayerPrefs.SetInt("CurrentPlayerID", (options.Count - 1));
+            PlayerPrefs.SetInt("CountPlayerID", options.Count);
+            return;
         }
-        if (PlayerPrefs.GetString("NamesPlayer") != "")
+        if (names.Length > 0)
         {
             PlayerPrefs.SetString("NamesPlayer", PlayerPrefs.GetString("NamesPlayer") + "\n" + inputField.text);
-        }
-        options.Add(inputField.text);
-        dropdownPatients.ClearOptions();
-        dropdownPatients.AddOptions(options);
 
-        PlayerPrefs.SetInt("CurrentPlayerID", (options.Count-1));
-        PlayerPrefs.SetInt("CountPlayerID", options.Count);
+            string nameValue = PlayerPrefs.GetString("NamesPlayer", "");
+            if (nameValue != "")
+            {
+                names = nameValue.Split();
+                options.Clear();
+                for (int i = 0; i < names.Length; i++)
+                {
+                    options.Add(names[i]);
+                }
+                dropdownPatients.ClearOptions();
+                dropdownPatients.AddOptions(options);
+            }
+
+            PlayerPrefs.SetInt("CurrentPlayerID", (options.Count - 1));
+            PlayerPrefs.SetInt("CountPlayerID", options.Count);
+            return;
+        }
+     
+        
     }
 
     public void ChoosePlayer(int index) 
@@ -77,9 +116,5 @@ public class ProfilesBehaviour : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  
 }

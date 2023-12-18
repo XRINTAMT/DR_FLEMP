@@ -28,11 +28,11 @@ public class HintBehaviour : MonoBehaviour
         }
         if (startFirstTime)
         {
-            HintControllers[] hintControllers = FindObjectsOfType<HintControllers>();
-            for (int i = 0; i < hintControllers.Length; i++)
-            {
-                hintControllers[i].EnableHand();
-            }
+            //HintControllers[] hintControllers = FindObjectsOfType<HintControllers>();
+            //for (int i = 0; i < hintControllers.Length; i++)
+            //{
+            //    hintControllers[i].EnableHand();
+            //}
         }
         audioSource = GetComponent<AudioSource>();
         PlayAudio(0);

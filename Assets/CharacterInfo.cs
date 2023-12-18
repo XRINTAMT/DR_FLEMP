@@ -10,10 +10,18 @@ namespace AICharacter
         public string description;
         public RandomPool<AudioClip> ThinkingPhrasesPool;
         [SerializeField] private AudioClip[] thinkingPhrases;
+        [SerializeField] private AudioClip[] thinkingPhrasesGerman;
 
         private void Awake()
         {
-            ThinkingPhrasesPool = new RandomPool<AudioClip>(thinkingPhrases);
+            if(PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0) == 0)
+            {
+                ThinkingPhrasesPool = new RandomPool<AudioClip>(thinkingPhrases);
+            }
+            else
+            {
+                ThinkingPhrasesPool = new RandomPool<AudioClip>(thinkingPhrasesGerman);
+            }
         }
     }
 }

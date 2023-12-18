@@ -79,6 +79,12 @@ public class AnimationMovement : MonoBehaviour
     public void AnimationPutOnPulse() 
     {
         animator.SetTrigger("StandUp");
+        FindObjectOfType<SensorController>(true).sensorAnimation = true;
+    }
+    public void AnimationThermometer()
+    {
+        animator.SetTrigger("StandUp");
+        FindObjectOfType<SensorController>(true).thermometerAnimation= true;
     }
     public void StopEvent() 
     {

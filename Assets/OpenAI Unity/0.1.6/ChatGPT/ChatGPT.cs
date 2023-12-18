@@ -69,7 +69,7 @@ namespace OpenAI
             "Processing...", "", " "
         };
 
-        private OpenAIApi openai = new OpenAIApi("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");
+        private OpenAIApi openai = new OpenAIApi("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");
 
         private string userInput;
         //private string Instruction = "Act as a random stranger in a chat room and reply to the questions.\nQ: ";

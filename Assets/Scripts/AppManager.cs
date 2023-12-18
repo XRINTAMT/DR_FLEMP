@@ -36,9 +36,9 @@ public class AppManager : MonoBehaviour
 
     public void UpdateState()
     {
-        SetVolumeDialogue(PlayerPrefs.GetFloat("dialogueVolume"));
-        SetVolumeSound(PlayerPrefs.GetFloat("soundVolume"));
-        SetGuide(PlayerPrefs.GetInt("GuidedMode"));
+        SetVolumeDialogue(PlayerPrefs.GetFloat(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "dialogueVolume"));
+        SetVolumeSound(PlayerPrefs.GetFloat(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "soundVolume"));
+        SetGuide(PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "GuidedMode"));
     }
 
     public void SetVolumeDialogue(float volumeDialogue)

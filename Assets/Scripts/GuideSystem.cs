@@ -11,7 +11,7 @@ public class GuideSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.GetInt("GuidedMode") == 1)
+        if (PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "GuidedMode") == 1)
         {
             if (dialogueGuide != null) dialogueGuide.SetActive(true);
             if (arrowObservationSheet != null) arrowObservationSheet.SetActive(true);

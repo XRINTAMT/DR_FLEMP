@@ -55,17 +55,21 @@ namespace ChatGPT_Patient
             }
             if (CurrentTimeout <= 0 && !Done)
             {
-                OnTimeout.Invoke();
-                foreach(ChatCharacter _character in FindObjectsOfType<ChatCharacter>())
-                {
-                    _character.RecieveSTT(this);
-                }
-                CurrentTimeout = 0;
-                Done = true;
-                textArea.text = freshStateText;
-                Invoke("Clear", 1);
+                Submit();
             }
+        }
 
+        public void Submit()
+        {
+            OnTimeout.Invoke();
+            foreach (ChatCharacter _character in FindObjectsOfType<ChatCharacter>())
+            {
+                _character.RecieveSTT(this);
+            }
+            CurrentTimeout = 0;
+            Done = true;
+            textArea.text = freshStateText;
+            Invoke("Clear", 1);
         }
 
         // Add delegates
@@ -86,6 +90,7 @@ namespace ChatGPT_Patient
         public void Clear()
         {
             LastNonNullPhrase = "";
+            textArea.text = freshStateText;
         }
         
         // Remove delegates
@@ -184,6 +189,7 @@ namespace ChatGPT_Patient
         {
             SetActivation(!_active);
         }
+
         // Set activation
         public void SetActivation(bool toActivated)
         {

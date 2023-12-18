@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 [Serializable]
 public class SolutionsList
@@ -151,6 +152,7 @@ public class SentenceScrambleTab : MonoBehaviour
                 Clear();
                 OnCompletion.Invoke();
                 gridController.textDescription.text = "Its Done!";
+                SceneManager.LoadScene("Lobby");
                 return;
             }
 			CheckCompletion();

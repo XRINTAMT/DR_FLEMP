@@ -327,6 +327,30 @@ MonoBehaviour:
   onGrab:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1042908353}
+        m_TargetAssemblyTypeName: PersistentSaveSystem.CompleteRoom, Assembly-CSharp
+        m_MethodName: Complete
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 177928562}
+        m_TargetAssemblyTypeName: PersistentSaveSystem.CompleteRoom, Assembly-CSharp
+        m_MethodName: Complete
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1042908352}
         m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
         m_MethodName: Fire
@@ -334,7 +358,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 9
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -388,6 +412,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -4416067036207573766, guid: cd73c4f3d1f074c47b67418c4372ffd3, type: 3}
+--- !u!114 &177928562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177928558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b28847044175b43abbf4669c879c47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tag: B11
 --- !u!1 &270490050
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,14 +1051,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3409212890297177328, guid: e0a56fe90377fae4489a71137d4920da, type: 3}
+      propertyPath: m_Text
+      value: "Great! You have completed the tutorial! Grab the door handle to finish\n\nIn
+        the next task you are a trainee nurse following the admissions nurse. Listen
+        to the admissions nurse talking to the patient to learn what basic information
+        is taken in the examination room upon admission. Use the Tablet on your left
+        hand to follow the conversation. \r\nOnce you have listened to the dialogue
+        complete the quiz. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 3409212890297177328, guid: e0a56fe90377fae4489a71137d4920da, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3409212890297177328, guid: e0a56fe90377fae4489a71137d4920da, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0a56fe90377fae4489a71137d4920da, type: 3}
+--- !u!1 &992545131 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 945595624616057458, guid: e0a56fe90377fae4489a71137d4920da, type: 3}
+  m_PrefabInstance: {fileID: 992545130}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &992545132 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 992545132, guid: e0a56fe90377fae4489a71137d4920da, type: 3}
   m_PrefabInstance: {fileID: 992545130}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 992545131}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5801ba888f09d14c935867c99724706, type: 3}
@@ -1032,12 +1091,25 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1042908352, guid: e0a56fe90377fae4489a71137d4920da, type: 3}
   m_PrefabInstance: {fileID: 992545130}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 992545131}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9187233583c2dac4c9e328faa1cdc227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1042908353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992545131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b28847044175b43abbf4669c879c47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tag: B11
 --- !u!1001 &1067664178
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1201,9 +1273,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6505479564558509594, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8410936638553662369, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9114869301534304621, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+      propertyPath: sceneViewId
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}

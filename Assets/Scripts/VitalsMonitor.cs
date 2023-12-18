@@ -32,7 +32,7 @@ public class VitalsMonitor : MonoBehaviour
     //[SerializeField] TaskSpecificValues DataInterface;
     [SerializeField] UnityEvent OnAllConnected;
     private Coroutine AlarmCoroutine;
-    public Action<int> conneñt;
+    public Action<int> connect;
     public Action<bool> alarm;
     public Action<int,float> changeValue;
     VitalValue[] VitalValuesSaved;
@@ -52,8 +52,8 @@ public class VitalsMonitor : MonoBehaviour
             //Debug.Log("{ \n \"name\": \"" + VitalValues[i].Name + "\",\n \"value\": " + (int)VitalValues[i].Value + "\n },");
         }
 
-        for (int i = 0; i < VitalValues.Length; i++)
-            Connect(i);
+        //for (int i = 0; i < VitalValues.Length; i++)
+        //    Connect(i);
     }
 
     //changes a given vital value linearly
@@ -175,7 +175,7 @@ public class VitalsMonitor : MonoBehaviour
     {
         if (!PhotonManager._viewerApp) 
         {
-            conneñt?.Invoke(n);
+            connect?.Invoke(n);
         } 
 
         if (VitalValues[n].Connected)

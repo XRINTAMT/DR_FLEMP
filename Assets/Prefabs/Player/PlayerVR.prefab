@@ -3650,6 +3650,9 @@ GameObject:
   - component: {fileID: 6814577431278749833}
   - component: {fileID: 7397397486090623270}
   - component: {fileID: 2917994373552280262}
+  - component: {fileID: 2902237033087467240}
+  - component: {fileID: 8693165265008688959}
+  - component: {fileID: 3128940529503172944}
   m_Layer: 0
   m_Name: PlayerVR
   m_TagString: Untagged
@@ -3735,6 +3738,90 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportList: []
+--- !u!114 &2902237033087467240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6231535692498331914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fbab967b03b78f4093d38ef2637575f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  link: {fileID: 6231535693548155164}
+  button: 1
+  Pressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3128940529503172944}
+        m_TargetAssemblyTypeName: LongButtonPress, Assembly-CSharp
+        m_MethodName: Pressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Released:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3128940529503172944}
+        m_TargetAssemblyTypeName: LongButtonPress, Assembly-CSharp
+        m_MethodName: Released
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8693165265008688959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6231535692498331914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49ef674433ac8e74ba1c7f2e7a97d670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3128940529503172944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6231535692498331914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcc01f2803a930b4bb3afe6ebf403cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnHeldForLongEnough:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8693165265008688959}
+        m_TargetAssemblyTypeName: EmergencyReset, Assembly-CSharp
+        m_MethodName: ResetPosition
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Timeout: 1.5
 --- !u!1 &6231535692836141719
 GameObject:
   m_ObjectHideFlags: 0

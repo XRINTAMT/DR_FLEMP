@@ -533,10 +533,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2156295710585527119, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
       propertyPath: OnCompletion.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2156295710585527119, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
       propertyPath: OnCompletion.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2156295710585527119, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+      propertyPath: OnCompletion.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2156295710585527119, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
@@ -544,7 +548,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1558153177}
     - target: {fileID: 2156295710585527119, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+      propertyPath: OnCompletion.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1323465481}
+    - target: {fileID: 2156295710585527119, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
       propertyPath: OnCompletion.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2156295710585527119, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+      propertyPath: OnCompletion.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2156295710585527119, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
@@ -552,11 +564,23 @@ PrefabInstance:
       value: Complete
       objectReference: {fileID: 0}
     - target: {fileID: 2156295710585527119, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+      propertyPath: OnCompletion.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OpenEndPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 2156295710585527119, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
       propertyPath: OnCompletion.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: PersistentSaveSystem.CompleteRoom, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2156295710585527119, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+      propertyPath: OnCompletion.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: WellcomeScreenController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2156295710585527119, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
       propertyPath: OnCompletion.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2156295710585527119, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+      propertyPath: OnCompletion.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2156295710802554887, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
@@ -1433,6 +1457,17 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 5860064951444067458, guid: b3cec38e3ada8b64584fc5510ffa5258, type: 3}
   m_PrefabInstance: {fileID: 1259357629}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1323465481 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6806346404344684934, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+  m_PrefabInstance: {fileID: 1067664178}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e31264609b77b2429b9dcbd4aa7f2ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1452226416 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5942969740600845927, guid: 088690b0ee03c6e488d4854047047a0d, type: 3}
@@ -1765,6 +1800,9 @@ MonoBehaviour:
   sensor1: {fileID: 971324598}
   sensor2: {fileID: 211006439}
   sensor3: {fileID: 120359154}
+  thermometer1: {fileID: 0}
+  thermometer2: {fileID: 0}
+  thermometer3: {fileID: 0}
   putSensor:
     m_PersistentCalls:
       m_Calls:
@@ -1792,6 +1830,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  putThermometer:
+    m_PersistentCalls:
+      m_Calls: []
+  sensorAnimation: 0
+  thermometerAnimation: 0
 --- !u!1001 &1822919477
 PrefabInstance:
   m_ObjectHideFlags: 0

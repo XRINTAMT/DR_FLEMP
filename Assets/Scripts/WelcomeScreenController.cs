@@ -5,8 +5,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class WellcomeScreenController : MonoBehaviour
+public class WelcomeScreenController : MonoBehaviour
 {
+    [SerializeField] ScenarioRelations Scenarios;
     [SerializeField] string[] blackListScenes;
     [SerializeField] GameObject panelStart;
     [SerializeField] GameObject panelEnd;
@@ -14,13 +15,17 @@ public class WellcomeScreenController : MonoBehaviour
     [SerializeField] Text textEnd;
     [SerializeField] Button buttonStart;
     [SerializeField] Button buttonEnd;
+    [SerializeField] Button buttonContinue;
     string sceneName;
+    string nextScene;
     // Start is called before the first frame update
     void Awake()
     {
+        sceneName = SceneManager.GetActiveScene().name;
+        
         for (int i = 0; i < blackListScenes.Length; i++)
         {
-            if (blackListScenes[i] == SceneManager.GetActiveScene().name)
+            if (blackListScenes[i] == sceneName)
                 return;
         }
 
@@ -44,7 +49,15 @@ public class WellcomeScreenController : MonoBehaviour
     public void OpenEndPanel()
     {
         panelEnd.SetActive(true);
+        nextScene = Scenarios.GetNext(sceneName);
+        buttonContinue.gameObject.SetActive(nextScene != null);
     }
+
+    public void NextScene()
+    {
+        SceneManager.LoadScene(nextScene);
+    }
+
     void ContinueStart() 
     {
         if (FindObjectOfType<RecordedScenarioText>())
@@ -52,10 +65,12 @@ public class WellcomeScreenController : MonoBehaviour
       
         panelStart.SetActive(false);
     }
+
     void ContinueEnd()
     {
         SceneManager.LoadScene("Lobby");
     }
+
 
     // Update is called once per frame
     void Update()

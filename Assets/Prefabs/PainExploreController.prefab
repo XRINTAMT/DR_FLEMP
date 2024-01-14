@@ -371,6 +371,7 @@ GameObject:
   - component: {fileID: 7847587016139303792}
   - component: {fileID: 7847587016139303790}
   - component: {fileID: 7847587016139303791}
+  - component: {fileID: 4196110441490422780}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -440,6 +441,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: You inspected all pains!
+--- !u!114 &4196110441490422780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7847587016139303793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2404a37f3bd75444aa4ad05d0f228347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizationKey: EndB0
 --- !u!1 &7847587016258632170
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,6 +465,7 @@ GameObject:
   - component: {fileID: 7847587016258632169}
   - component: {fileID: 7847587016258632167}
   - component: {fileID: 7847587016258632168}
+  - component: {fileID: 937505922}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -520,7 +535,20 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Inspect all pain points. Bring your hand to the place of pain for inspection
-    and press the "Grip" button to complete the inspection
+    and press the "Trigger" button to complete the inspection
+--- !u!114 &937505922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7847587016258632170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2404a37f3bd75444aa4ad05d0f228347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizationKey: IntroB0
 --- !u!1 &7847587016295937763
 GameObject:
   m_ObjectHideFlags: 0
@@ -1217,6 +1245,7 @@ GameObject:
   - component: {fileID: 7847587017138705551}
   - component: {fileID: 7847587017138705548}
   - component: {fileID: 7847587017138705549}
+  - component: {fileID: 1102804561}
   m_Layer: 0
   m_Name: PainExploreController
   m_TagString: Untagged
@@ -1263,6 +1292,9 @@ MonoBehaviour:
   sliderPain2: {fileID: 7847587017625521680}
   sliderPain3: {fileID: 7847587016481974761}
   currentPain: {fileID: 0}
+  inspectedPain1: 0
+  inspectedPain2: 0
+  inspectedPain3: 0
 --- !u!114 &7847587017138705548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1276,7 +1308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   link: {fileID: 0}
-  button: 0
+  button: 4
   Pressed:
     m_PersistentCalls:
       m_Calls:
@@ -1308,7 +1340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   link: {fileID: 0}
-  button: 0
+  button: 4
   Pressed:
     m_PersistentCalls:
       m_Calls:
@@ -1327,6 +1359,23 @@ MonoBehaviour:
   Released:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1102804561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7847587017138705552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf2546973275f4caa0511552ee3aef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TableId: 1cFpx3YroZmzTAXxDMJFPoV3XswNN37Jd3QZNXIc6BIA
+  Sheets:
+  - Name: ScenarioB0
+    Id: 726311862
+  SaveFolder: {fileID: 102900000, guid: 4197e7ae77f69454ea2d68be0ca7903d, type: 3}
 --- !u!1 &7847587017264521857
 GameObject:
   m_ObjectHideFlags: 0
@@ -2220,6 +2269,7 @@ GameObject:
   - component: {fileID: 7847587017852824502}
   - component: {fileID: 7847587017852824500}
   - component: {fileID: 7847587017852824501}
+  - component: {fileID: 6487713975843551455}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -2289,3 +2339,16 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Continue
+--- !u!114 &6487713975843551455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7847587017852824503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2404a37f3bd75444aa4ad05d0f228347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizationKey: ContinueB0

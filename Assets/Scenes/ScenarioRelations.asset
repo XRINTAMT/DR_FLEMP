@@ -13,13 +13,17 @@ MonoBehaviour:
   m_Name: ScenarioRelations
   m_EditorClassIdentifier: 
   followingScenarios:
-  - Name: ShowcaseScene
-    Next: RecordedShiftChange
-  - Name: RecordedShiftChange
-    Next: MultiplayerScene
-  - Name: B11
-    Next: B12
-  - Name: B21
-    Next: B22
+  - Name: ScenarioB 0
+    Next: LobbyPrerecorded
+  - Name: LobbyPrerecorded
+    Next: B1_Showcase
   - Name: B1_Showcase
     Next: B11
+  - Name: B11
+    Next: B12
+  - Name: B12
+    Next: B21
+  - Name: B21
+    Next: B22
+  - Name: B22
+    Next: 

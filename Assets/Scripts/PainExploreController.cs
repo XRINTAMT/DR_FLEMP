@@ -62,6 +62,31 @@ public class PainExploreController : MonoBehaviour
     {
         currentPain = null;
     }
+    public void InsectPain1() 
+    {
+        inspectedPain1 = true;
+        if (inspectedPain1 && inspectedPain2 && inspectedPain3)
+        {
+            panelEnd.SetActive(true);
+        }
+
+    }
+    public void InsectPain2()
+    {
+        inspectedPain2 = true;
+        if (inspectedPain1 && inspectedPain2 && inspectedPain3)
+        {
+            panelEnd.SetActive(true);
+        }
+    }
+    public void InsectPain3()
+    {
+        inspectedPain3 = true;
+        if (inspectedPain1 && inspectedPain2 && inspectedPain3)
+        {
+            panelEnd.SetActive(true);
+        }
+    }
     public void InspectedPain() 
     {
         if (currentPain == null)

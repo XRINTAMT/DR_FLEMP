@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using UnityEngine.Events;
 
 
 public class ChecklistMechanic : MonoBehaviour
@@ -15,6 +16,7 @@ public class ChecklistMechanic : MonoBehaviour
     [SerializeField] GameObject ScorePanel;
     [SerializeField] Text ScoreText;
     public NurseTabletRecord[] TabletRecords;
+    public UnityEvent OnComplete;
     int[] givenAnswers;
     [HideInInspector]
     public bool indicate;
@@ -116,6 +118,7 @@ public class ChecklistMechanic : MonoBehaviour
         PlayerPrefs.SetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + scenarioTag, 1);
         ScorePanel.SetActive(true);
         ScoreText.text = CalculateScore() + "/" + correctAnswers.Length;
+        OnComplete.Invoke();
     }
 
     private int CalculateScore()

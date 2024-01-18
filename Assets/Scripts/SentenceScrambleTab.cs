@@ -152,7 +152,7 @@ public class SentenceScrambleTab : MonoBehaviour
                 Clear();
                 OnCompletion.Invoke();
                 gridController.textDescription.text = "Its Done!";
-                SceneManager.LoadScene("Lobby");
+                //SceneManager.LoadScene("Lobby");
                 return;
             }
 			CheckCompletion();

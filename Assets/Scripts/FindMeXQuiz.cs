@@ -17,6 +17,10 @@ public class FindMeXQuiz : MonoBehaviour
     private void Start()
     {
         InitializeItemIndices();
+    }
+
+    public void LaunchScenario()
+    {
         NewRandomItem();
     }
 

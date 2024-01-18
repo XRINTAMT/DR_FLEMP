@@ -714,6 +714,34 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 284806440017342572, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 284806440017342572, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 284806440017342572, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2036960919}
+    - target: {fileID: 284806440017342572, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 284806440017342572, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LaunchScenario
+      objectReference: {fileID: 0}
+    - target: {fileID: 284806440017342572, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FindMeXQuiz, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 284806440017342572, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 385502372080573707, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -2231,7 +2259,7 @@ MonoBehaviour:
     VoiceAudio:
     - {fileID: 0}
     - {fileID: 8300000, guid: 5e4e950e87b9d4745b22247087a3df76, type: 3}
-  language: 0
+  language: 1
 --- !u!114 &2036960919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2291,7 +2319,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 61285091f34eebd4a90ad4c50899dffd, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

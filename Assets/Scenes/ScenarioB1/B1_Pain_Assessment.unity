@@ -267,6 +267,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!83 &557721697
+AudioClip:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AudioClip_007
+  m_LoadType: 0
+  m_Channels: 1
+  m_Frequency: 24000
+  m_BitsPerSample: 32
+  m_Length: 0
+  m_IsTrackerFormat: 0
+  m_Ambisonic: 0
+  m_SubsoundIndex: 0
+  m_PreloadAudioData: 1
+  m_LoadInBackground: 0
+  m_Legacy3D: 0
+  m_Resource:
+    m_Source: 
+    m_Offset: 0
+    m_Size: 0
+  m_CompressionFormat: 0
+  m_EditorResource:
+    m_Source: 
+    m_Offset: 0
+    m_Size: 0
+  m_EditorCompressionFormat: 0
 --- !u!1 &558354222 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5823170500034408590, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
@@ -470,6 +498,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8882095195631336304, guid: 9e0a3d7c64d2f0147859033d9a57c809, type: 3}
   m_PrefabInstance: {fileID: 806342895}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &945807701 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 811822442214168272, guid: 088690b0ee03c6e488d4854047047a0d, type: 3}
+  m_PrefabInstance: {fileID: 5352402807288137940}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1070843603
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -588,31 +621,42 @@ MonoBehaviour:
   Phrases:
   - Speaker: lizzy_parker
     Highlight: 0
-    Timecode: 0500000005000000
+    Timecode: 0000000000000000
     Text:
-    - 'Hello, my name is Lizzy Parker.
-
-      I was riding my bike when I hit something
-      and fell. My head got hurt.'
-    - "Hallo, mein Name ist Lizzy Parker.\nIch fuhr mit dem Fahrrad, als ich etwas
-      traf und fiel. Mein Kopf wurde verletzt.\"\r"
+    - "I was riding my bike when she hit something and fell. Her head got hurt, and
+      it's been throbbing since. A kind person passing by called an ambulance, and
+      now she is here. The pain's pretty constant, and she\u2019s just hoping you
+      can help with the head wound."
+    - "Ich fuhr mit dem Fahrrad, als sie etwas schlug und fiel. Ihr Kopf wurde verletzt
+      und seitdem pochte er. Eine freundliche Person, die vorbeikam, nannte einen
+      Krankenwagen, und jetzt ist sie hier. Der Schmerz ist ziemlich konstant und
+      sie hofft nur, dass Sie mit der Kopfwunde helfen k\xF6nnen.\"\r"
     VoiceAudio:
     - {fileID: 0}
-    - {fileID: 8300000, guid: f1d92509b945e0742982b3b4c9dda0e0, type: 3}
+    - {fileID: 0}
   - Speaker: tom_stevens
     Highlight: 0
     Timecode: 0d0000000f000000
     Text:
-    - Yes
-    - "Ja\r"
+    - I've got this sharp, stabbing pain in the lower right side of my stomach that's
+      been bothering me for a while. It's consistent and not going away. I am concerned
+      it might be something like appendicitis, so I came to get it checked out. It's
+      definitely not something I have experienced before.
+    - "Ich habe diesen scharfen, stechenden Schmerz in der unteren rechten Seite
+      meines Magens, die mich schon eine Weile gest\xF6rt hat. Es ist konsequent
+      und geht nicht weg. Ich bin besorgt, dass es so etwas wie eine Blinddarmentz\xFCndung
+      sein k\xF6nnte, also bin ich gekommen, um es zu \xFCberpr\xFCfen. Es ist definitiv
+      nicht etwas, das ich zuvor erlebt habe.\"\r"
     VoiceAudio:
     - {fileID: 0}
-    - {fileID: 8300000, guid: 9d922288b1638514fa58983282aa056d, type: 3}
+    - {fileID: 0}
   - Speaker: roger_johnson
     Highlight: 0
     Timecode: 0f00000011000000
     Text:
-    - No
+    - I've got left knee pain. It is also really swollen. Sometimes the pain radiates
+      down. It's been making me really uneasy and I cannot walk well, so I came to
+      get it checked.
     - Nein
     VoiceAudio:
     - {fileID: 0}
@@ -850,9 +894,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c018d1c0268d41459ec2c2287535466, type: 3}
+--- !u!82 &1356918543 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6913075177177020749, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+  m_PrefabInstance: {fileID: 2230281220249692273}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1448637323 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7374194349392154319, guid: cce79147b20de38418b96558555e073c, type: 3}
+  m_PrefabInstance: {fileID: 2834390874163483239}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1668924959 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7455204113538551710, guid: cce79147b20de38418b96558555e073c, type: 3}
+  m_PrefabInstance: {fileID: 2834390874163483239}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1737427651 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7374194348514378084, guid: cce79147b20de38418b96558555e073c, type: 3}
   m_PrefabInstance: {fileID: 2834390874163483239}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1759675084
@@ -935,6 +994,44 @@ CanvasRenderer:
 --- !u!1 &1829536037 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6832100461234845623, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+  m_PrefabInstance: {fileID: 2230281220249692273}
+  m_PrefabAsset: {fileID: 0}
+--- !u!83 &1857008354
+AudioClip:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AudioClip_006
+  m_LoadType: 0
+  m_Channels: 1
+  m_Frequency: 24000
+  m_BitsPerSample: 32
+  m_Length: 0
+  m_IsTrackerFormat: 0
+  m_Ambisonic: 0
+  m_SubsoundIndex: 0
+  m_PreloadAudioData: 1
+  m_LoadInBackground: 0
+  m_Legacy3D: 0
+  m_Resource:
+    m_Source: 
+    m_Offset: 0
+    m_Size: 0
+  m_CompressionFormat: 0
+  m_EditorResource:
+    m_Source: 
+    m_Offset: 0
+    m_Size: 0
+  m_EditorCompressionFormat: 0
+--- !u!82 &1870294574 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 811822441579895163, guid: 088690b0ee03c6e488d4854047047a0d, type: 3}
+  m_PrefabInstance: {fileID: 5352402807288137940}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1911386829 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6913075178681808614, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
   m_PrefabInstance: {fileID: 2230281220249692273}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2054695230
@@ -1593,6 +1690,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6913075177177020749, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 557721697}
     - target: {fileID: 8595272395563488731, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1619,12 +1720,26 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6913075178681808615, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
   m_PrefabInstance: {fileID: 2230281220249692273}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1911386829}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b15403450229c3a4b8455a61d6143a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2230281220249692277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911386829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10387d4a5d48b194985a819307c00b2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioSource: {fileID: 1356918543}
+  _cloneAudioSource: 0
 --- !u!114 &2230281220249692279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1720,6 +1835,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7374194348514378084, guid: cce79147b20de38418b96558555e073c, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 1857008354}
     - target: {fileID: 8686486693497475380, guid: cce79147b20de38418b96558555e073c, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1794,12 +1913,26 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7374194349392154318, guid: cce79147b20de38418b96558555e073c, type: 3}
   m_PrefabInstance: {fileID: 2834390874163483239}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1448637323}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b15403450229c3a4b8455a61d6143a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2834390874163483243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448637323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10387d4a5d48b194985a819307c00b2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioSource: {fileID: 1737427651}
+  _cloneAudioSource: 0
 --- !u!114 &2834390874163483245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1813,6 +1946,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2834390874163483246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668924959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f9ba02a9c9293d43a804e1593724544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2834390874163483249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668924959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fab3a5d26a09d464cb3b5e1adbe9deb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2834390874163483250
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1985,13 +2142,39 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 811822442214168273, guid: 088690b0ee03c6e488d4854047047a0d, type: 3}
   m_PrefabInstance: {fileID: 5352402807288137940}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 945807701}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b15403450229c3a4b8455a61d6143a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5352402807288137944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945807701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10387d4a5d48b194985a819307c00b2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioSource: {fileID: 1870294574}
+  _cloneAudioSource: 0
 --- !u!114 &5352402807288137946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730945315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f9ba02a9c9293d43a804e1593724544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5352402807288137949
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2428,7 +2611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8299405044623766380, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8472896501008003547, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
       propertyPath: m_AnchorMax.y

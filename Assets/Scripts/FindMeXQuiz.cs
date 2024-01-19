@@ -13,10 +13,15 @@ public class FindMeXQuiz : MonoBehaviour
     [SerializeField] private UnityEvent OnQuizCompleted;
     [SerializeField] private List<int> ItemIndices;
     [SerializeField] private int CorrectItemIndex;
+    private bool sleep = true;
 
     private void Start()
     {
         InitializeItemIndices();
+    }
+
+    public void LaunchScenario()
+    {
         NewRandomItem();
     }
 
@@ -43,6 +48,7 @@ public class FindMeXQuiz : MonoBehaviour
         {
             CorrectItemIndex = ItemIndices[Random.Range(0, ItemIndices.Count)];
             PhrasesPlayer.PlayTag("Find_" + CorrectItemIndex.ToString());
+            Invoke("Wake", 2);
         }
         else
         {
@@ -50,8 +56,18 @@ public class FindMeXQuiz : MonoBehaviour
         }
     }
 
+    private void Wake()
+    {
+        sleep = false;
+    }
+
     public void ItemGrabbed(Grabbable _item)
     {
+        if (sleep)
+        {
+            return;
+        }
+        sleep = true;
         if (_item != Items[CorrectItemIndex])
         {
             PhrasesPlayer.PlayTag("Wrong_" + CorrectItemIndex.ToString());

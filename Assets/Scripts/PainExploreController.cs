@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class PainExploreController : MonoBehaviour
 {
-    [SerializeField] GameObject panelEnd;
     [SerializeField] Grabbable pain1;
     [SerializeField] Grabbable pain2;
     [SerializeField] Grabbable pain3;
@@ -67,7 +66,7 @@ public class PainExploreController : MonoBehaviour
         inspectedPain1 = true;
         if (inspectedPain1 && inspectedPain2 && inspectedPain3)
         {
-            panelEnd.SetActive(true);
+            FindObjectOfType<WelcomeScreenController>(true).OpenEndPanel();
         }
 
     }
@@ -76,7 +75,7 @@ public class PainExploreController : MonoBehaviour
         inspectedPain2 = true;
         if (inspectedPain1 && inspectedPain2 && inspectedPain3)
         {
-            panelEnd.SetActive(true);
+            FindObjectOfType<WelcomeScreenController>(true).OpenEndPanel();
         }
     }
     public void InsectPain3()
@@ -84,7 +83,7 @@ public class PainExploreController : MonoBehaviour
         inspectedPain3 = true;
         if (inspectedPain1 && inspectedPain2 && inspectedPain3)
         {
-            panelEnd.SetActive(true);
+            FindObjectOfType<WelcomeScreenController>(true).OpenEndPanel();
         }
     }
     public void InspectedPain() 
@@ -113,24 +112,10 @@ public class PainExploreController : MonoBehaviour
 
         if (inspectedPain1 && inspectedPain2 && inspectedPain3)
         {
-            panelEnd.SetActive(true);
+            FindObjectOfType<WelcomeScreenController>(true).OpenEndPanel();
+            //panelEnd.SetActive(true);
         }
-        //switch (index)
-        //{
-        //    case 1:
-        //        inspectedPain1 = true;
-        //        break;
-        //    case 2:
-        //        inspectedPain2 = true;
-        //        break;
-        //    case 3:
-        //        inspectedPain3 = true;
-        //        break;
-        //    default:
-        //        break;
-        //}
-
-
+        
     }
 
     // Update is called once per frame

@@ -13,6 +13,7 @@ public class PatientTabController : MonoBehaviour
     [SerializeField] Button  buttonDone;
     [SerializeField] TMP_Text namePatient;
     [SerializeField] private CompleteRoom cr;
+
     int chooseIndex;
     // Start is called before the first frame update
     void Start()
@@ -51,6 +52,7 @@ public class PatientTabController : MonoBehaviour
     void ButtonDone() 
     {
         Debug.Log("ButtonChoose");
+
         if (namePatient.text != "Lizzy Parker") //if uncorrect
         {
             Debug.Log("Not lizzy chosen");
@@ -63,8 +65,16 @@ public class PatientTabController : MonoBehaviour
         {
             Debug.Log("lizzy chosen");
             cr.Complete();
-            SceneManager.LoadScene("Lobby");
-            Debug.Log("lizzy chosen 2");
+
+            if (SceneManager.GetActiveScene().name == "B1_Pain_Assessment")
+            {
+                FindObjectOfType<WelcomeScreenController>(true).OpenEndPanel();
+            }
+            else
+            {
+                SceneManager.LoadScene("Lobby");
+                Debug.Log("lizzy chosen 2");
+            }
         }
     
     }

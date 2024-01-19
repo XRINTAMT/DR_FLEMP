@@ -53,11 +53,36 @@ MonoBehaviour:
     OnClipUnloaded:
       m_PersistentCalls:
         m_Calls: []
+    WebRequest:
+      OnRequestBegin:
+        m_PersistentCalls:
+          m_Calls: []
+      OnRequestCancel:
+        m_PersistentCalls:
+          m_Calls: []
+      OnRequestError:
+        m_PersistentCalls:
+          m_Calls: []
+      OnRequestFirstResponse:
+        m_PersistentCalls:
+          m_Calls: []
+      OnRequestReady:
+        m_PersistentCalls:
+          m_Calls: []
+      OnRequestComplete:
+        m_PersistentCalls:
+          m_Calls: []
     Stream:
       OnStreamBegin:
         m_PersistentCalls:
           m_Calls: []
       OnStreamReady:
+        m_PersistentCalls:
+          m_Calls: []
+      OnStreamClipUpdate:
+        m_PersistentCalls:
+          m_Calls: []
+      OnStreamComplete:
         m_PersistentCalls:
           m_Calls: []
       OnStreamCancel:
@@ -80,38 +105,45 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
   RequestSettings:
-    configuration: {fileID: 0}
+    configuration: {fileID: 11400000, guid: b48b6ce9fd2c0eb448b29ab66a197ef8, type: 2}
+    audioType: 0
+    audioStream: 1
   _presetVoiceSettings:
-  - settingsID: YoungMale
+  - SettingsId: YoungMale
+    PrependedText: 
+    AppendedText: 
     voice: Charlie
     style: default
     speed: 105
     pitch: 110
-    gain: 50
-  - settingsID: YoungFemale
+  - SettingsId: YoungFemale
+    PrependedText: 
+    AppendedText: 
     voice: Rebecca
     style: default
     speed: 104
     pitch: 125
-    gain: 50
-  - settingsID: Male
+  - SettingsId: Male
+    PrependedText: 
+    AppendedText: 
     voice: Cooper
     style: default
     speed: 100
     pitch: 80
-    gain: 50
-  - settingsID: SeniorMale
+  - SettingsId: SeniorMale
+    PrependedText: 
+    AppendedText: 
     voice: Cael
     style: default
     speed: 80
     pitch: 54
-    gain: 34
-  - settingsID: SeniorFemale
+  - SettingsId: SeniorFemale
+    PrependedText: 
+    AppendedText: 
     voice: Rubie
     style: default
     speed: 80
     pitch: 73
-    gain: 34
 --- !u!114 &3627599131962939471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,11 +175,19 @@ MonoBehaviour:
   _diskPath: TTS/
   _defaultSettings:
     DiskCacheLocation: 0
+    StreamFromDisk: 0
+    StreamBufferLength: 5
   _events:
     OnStreamBegin:
       m_PersistentCalls:
         m_Calls: []
     OnStreamReady:
+      m_PersistentCalls:
+        m_Calls: []
+    OnStreamClipUpdate:
+      m_PersistentCalls:
+        m_Calls: []
+    OnStreamComplete:
       m_PersistentCalls:
         m_Calls: []
     OnStreamCancel:

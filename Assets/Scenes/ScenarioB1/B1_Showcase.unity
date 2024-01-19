@@ -1465,6 +1465,17 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7354199785089821017, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+--- !u!114 &1067664179 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6806346404344684934, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+  m_PrefabInstance: {fileID: 1067664178}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e31264609b77b2429b9dcbd4aa7f2ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1076153147
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3913,6 +3924,18 @@ MonoBehaviour:
       - m_Target: {fileID: 8413932525653644975}
         m_TargetAssemblyTypeName: PersistentSaveSystem.CompleteRoom, Assembly-CSharp
         m_MethodName: Complete
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1067664179}
+        m_TargetAssemblyTypeName: WelcomeScreenController, Assembly-CSharp
+        m_MethodName: OpenEndPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -12,6 +12,9 @@ namespace PersistentSaveSystem
         {
             Debug.Log("Complete");
             PlayerPrefs.SetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + Tag, 1);
+            WelcomeScreenController _screen = FindObjectOfType<WelcomeScreenController>();
+            if(_screen)
+                _screen.OpenEndPanel();
         }
     }
 

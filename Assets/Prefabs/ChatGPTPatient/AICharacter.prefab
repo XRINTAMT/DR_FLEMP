@@ -1014,7 +1014,8 @@ MonoBehaviour:
   _speaker: {fileID: 0}
   _googleSpeaker: {fileID: 0}
   ChatLogs: {fileID: 0}
-  ManualLanguageSettingForDebug: 0
+  indicator: {fileID: 0}
+  painLevel: 0
 --- !u!114 &1083527520337386733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1030,6 +1031,7 @@ MonoBehaviour:
   name: 
   description: 
   thinkingPhrases: []
+  thinkingPhrasesGerman: []
 --- !u!114 &7750616982758472614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1742,6 +1744,10 @@ PrefabInstance:
       value: MrsJohnson Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8716993160309020030, guid: eb6b0aedc8512d840a1b9f1b6a319f78, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716993160309020030, guid: eb6b0aedc8512d840a1b9f1b6a319f78, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -1757,12 +1763,31 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 503870629, guid: eb6b0aedc8512d840a1b9f1b6a319f78, type: 3}
   m_PrefabInstance: {fileID: 4082341523917936630}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 4638594248874001032}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3505c7f5735c00b40a951c1dbe2ffb24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4638594248874001032 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8716993160309020030, guid: eb6b0aedc8512d840a1b9f1b6a319f78, type: 3}
+  m_PrefabInstance: {fileID: 4082341523917936630}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &5439745097441977904
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4638594248874001032}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.35
+  m_Height: 4
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &5410028526587762738 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8337055390089531332, guid: eb6b0aedc8512d840a1b9f1b6a319f78, type: 3}

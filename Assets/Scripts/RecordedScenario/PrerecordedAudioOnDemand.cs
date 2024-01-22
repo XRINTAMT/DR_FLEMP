@@ -100,6 +100,7 @@ namespace RecordedScenario
                     }
                     _speaker.Speaker.AudioSource.Stop();
 
+                    _name = ComputeSHA256Hash(_speaker.Name + _texts[1]);
                     //preprocess the german stuff here;
                     string _resourcesName = "Scenarios/" + scenarioName + "/TTS_AudioRecordings/German/" + _name;
 

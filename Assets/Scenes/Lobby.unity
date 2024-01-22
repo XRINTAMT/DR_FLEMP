@@ -4064,16 +4064,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
+      propertyPath: States.Array.data[1].Events.Array.data[2].Condition.Array.data[0]
+      value: MRDT Room
+      objectReference: {fileID: 0}
+    - target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
+      propertyPath: States.Array.data[1].Events.Array.data[3].Condition.Array.data[0]
+      value: Diabetes Amnesis Room
+      objectReference: {fileID: 0}
+    - target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: States.Array.data[1].Events.Array.data[5].Condition.Array.data[0]
       value: MRDT3
       objectReference: {fileID: 0}
     - target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: States.Array.data[2].Events.Array.data[2].Condition.Array.data[0]
-      value: A2
+      value: RecordedShiftChange
       objectReference: {fileID: 0}
     - target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: States.Array.data[2].Events.Array.data[3].Condition.Array.data[0]
-      value: A1
+      value: ShowcaseScene
       objectReference: {fileID: 0}
     - target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: States.Array.data[2].Events.Array.data[5].Condition.Array.data[0]
@@ -4112,12 +4120,16 @@ PrefabInstance:
       value: LobbyTutorial
       objectReference: {fileID: 0}
     - target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
+      propertyPath: States.Array.data[1].OnPicked.Array.data[2].Condition.Array.data[0]
+      value: MRDT Room
+      objectReference: {fileID: 0}
+    - target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: States.Array.data[2].OnPicked.Array.data[2].Condition.Array.data[0]
-      value: A1
+      value: ShowcaseScene
       objectReference: {fileID: 0}
     - target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: States.Array.data[2].OnPicked.Array.data[3].Condition.Array.data[0]
-      value: A2
+      value: RecordedShiftChange
       objectReference: {fileID: 0}
     - target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: States.Array.data[3].OnPicked.Array.data[4].Condition.Array.data[0]
@@ -4289,7 +4301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: States.Array.data[3].Events.Array.data[5].Event.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: States.Array.data[3].OnLeft.Array.data[0].Event.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
@@ -4317,7 +4329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: States.Array.data[4].Events.Array.data[5].Event.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: States.Array.data[4].OnLeft.Array.data[0].Event.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
@@ -4742,7 +4754,7 @@ PrefabInstance:
     - target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: States.Array.data[3].Events.Array.data[5].Event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1018024048010907246}
+      objectReference: {fileID: 1018024048010907256}
     - target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: States.Array.data[3].OnLeft.Array.data[0].Event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -4822,7 +4834,7 @@ PrefabInstance:
     - target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: States.Array.data[4].Events.Array.data[5].Event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1018024048010907246}
+      objectReference: {fileID: 1018024048010907256}
     - target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: States.Array.data[4].OnLeft.Array.data[0].Event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -5621,7 +5633,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: States.Array.data[3].Events.Array.data[5].Event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadScene
+      value: ToNext
       objectReference: {fileID: 0}
     - target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: States.Array.data[3].OnLeft.Array.data[0].Event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -5713,7 +5725,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: States.Array.data[4].Events.Array.data[5].Event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadScene
+      value: ToNext
       objectReference: {fileID: 0}
     - target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: States.Array.data[4].OnLeft.Array.data[0].Event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -6525,7 +6537,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: States.Array.data[3].Events.Array.data[5].Event.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SceneLoader, Assembly-CSharp
+      value: ToTheNextTask, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: States.Array.data[3].OnLeft.Array.data[0].Event.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -6573,7 +6585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: States.Array.data[4].Events.Array.data[5].Event.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SceneLoader, Assembly-CSharp
+      value: ToTheNextTask, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: States.Array.data[4].OnLeft.Array.data[0].Event.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -7165,7 +7177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: States.Array.data[3].Events.Array.data[5].Event.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: ScenarioB 0
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: States.Array.data[3].OnPicked.Array.data[0].Event.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
@@ -7197,7 +7209,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: States.Array.data[4].Events.Array.data[5].Event.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: ScenarioB 0
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7866860660966506898, guid: 8075edb03d0a24147892d16b7c795be7, type: 3}
       propertyPath: States.Array.data[4].OnPicked.Array.data[0].Event.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
@@ -7849,6 +7861,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tag: LobbyTutorial
+--- !u!114 &1018024048010907256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849378643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9deb5294858ba8a44a32a314cb16ff7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Scenarios: {fileID: 11400000, guid: 8beb137f35d3b4143b0e5423dbbfd02d, type: 2}
+  StartNode: ScenarioB 0
+  EndNode: Scene6
 --- !u!4 &1043077475467283527
 Transform:
   m_ObjectHideFlags: 0

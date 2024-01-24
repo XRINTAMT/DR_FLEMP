@@ -32,7 +32,7 @@ public class HeadCharacterFollow : MonoBehaviour
         defaultPos = new GameObject().transform;
         defaultPos.gameObject.name = "HeadDefaultPosition";
         defaultPos.parent = transform;
-        defaultPos.localPosition = new Vector3(0, 1.18f, 0.1f);
+        defaultPos.position = new Vector3(0, 1f, 0.1f);
         playerPos = new GameObject().transform;
         playerPos.gameObject.name = "HeadFollowTarget";
 

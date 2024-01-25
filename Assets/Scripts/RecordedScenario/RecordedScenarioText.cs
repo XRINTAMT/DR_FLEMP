@@ -299,6 +299,7 @@ namespace RecordedScenario
         public void Play()
         {
             running = true;
+            Debug.Log("Prerecorded scenario started");
         }
 
         public void Pause()

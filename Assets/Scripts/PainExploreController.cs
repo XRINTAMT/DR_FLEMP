@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Autohand;
 using UnityEngine;
 using UnityEngine.UI;
-
+using PersistentSaveSystem;
 public class PainExploreController : MonoBehaviour
 {
     [SerializeField] Grabbable pain1;
@@ -67,6 +67,7 @@ public class PainExploreController : MonoBehaviour
         if (inspectedPain1 && inspectedPain2 && inspectedPain3)
         {
             FindObjectOfType<WelcomeScreenController>(true).OpenEndPanel();
+            GetComponent<CompleteRoom>().Complete();
         }
 
     }
@@ -76,6 +77,7 @@ public class PainExploreController : MonoBehaviour
         if (inspectedPain1 && inspectedPain2 && inspectedPain3)
         {
             FindObjectOfType<WelcomeScreenController>(true).OpenEndPanel();
+            GetComponent<CompleteRoom>().Complete();
         }
     }
     public void InsectPain3()
@@ -84,6 +86,7 @@ public class PainExploreController : MonoBehaviour
         if (inspectedPain1 && inspectedPain2 && inspectedPain3)
         {
             FindObjectOfType<WelcomeScreenController>(true).OpenEndPanel();
+            GetComponent<CompleteRoom>().Complete();
         }
     }
     public void InspectedPain() 
@@ -113,6 +116,7 @@ public class PainExploreController : MonoBehaviour
         if (inspectedPain1 && inspectedPain2 && inspectedPain3)
         {
             FindObjectOfType<WelcomeScreenController>(true).OpenEndPanel();
+            GetComponent<CompleteRoom>().Complete();
             //panelEnd.SetActive(true);
         }
         

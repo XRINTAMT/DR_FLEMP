@@ -30,13 +30,13 @@ public class SpawnLobby : MonoBehaviour
     {
         Campaigns[0] = new Dictionary<string, int>
         {
-            { "MRDT1", 1 }
+            { "MRDT Room", 1 }
         };
         Campaigns[1] = new Dictionary<string, int>
         {
-            { "A1", 2 },
-            { "A2", 1 },
-            { "A3", 1 }
+            { "ShowcaseScene", 2 },
+            { "RecordedShiftChange", 1 },
+            { "MultiplayerScene", 1 }
         };
         Campaigns[2] = new Dictionary<string, int>
         {

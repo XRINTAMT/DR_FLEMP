@@ -93,29 +93,42 @@ public class BodyAnimation : MonoBehaviour
         int rand = 0;
         if (animator.transform.parent.parent)
         {
-            if (animator.transform.parent.parent.name.Contains("Male"))
-                rand = Random.Range(1, 4);
 
-            if (animator.transform.parent.parent.name.Contains("Female"))
+            if (animator.transform.parent.parent.name.Contains("SeniorFemale"))
+            {
                 rand = Random.Range(1, 3);
+                animator.SetTrigger("IdleSitting1");
+            }
+            if (animator.transform.parent.parent.name.Contains("YoungFemale"))
+            {
+                rand = Random.Range(1, 3);
+                animator.SetTrigger("IdleSitting2");
+            }
+            if (animator.transform.parent.parent.name.Contains("Male")) 
+            {
+                rand = Random.Range(1, 4);
+                animator.SetTrigger("IdleSitting3");
+            }
 
+
+        
         }
         
-        switch (rand)
-        {
-            case 1:
-                animator.SetTrigger("IdleSitting1");
-                break;
-            case 2:
-                animator.SetTrigger("IdleSitting2");
-                break;
-            case 3:
-                animator.SetTrigger("IdleSitting3");
-                break;
+        //switch (rand)
+        //{
+        //    case 1:
+        //        animator.SetTrigger("IdleSitting1");
+        //        break;
+        //    case 2:
+        //        animator.SetTrigger("IdleSitting2");
+        //        break;
+        //    case 3:
+        //        animator.SetTrigger("IdleSitting3");
+        //        break;
 
-            default:
-                break;
-        }
+        //    default:
+        //        break;
+        //}
     }
 
 

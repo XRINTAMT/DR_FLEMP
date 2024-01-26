@@ -94,7 +94,11 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: 94306ef0847f89541a69943d3f64783a, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 7dd00fca19d8af34596531916b91bac6, type: 2}
+      objectReference: {fileID: 9100000, guid: 0a9b766c8cf352f4d88f62b4a9adb62c, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 94306ef0847f89541a69943d3f64783a, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7634479467738841525, guid: 94306ef0847f89541a69943d3f64783a, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -241,6 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 2689501511946802622}
+  audioSource: {fileID: 0}
 --- !u!114 &503870627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,9 +259,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skinnedMeshRenderer: {fileID: 4334237160725973650}
-  audioPeer: {fileID: 503870628}
-  frequencyBand: 1
-  multiplier: 300
 --- !u!114 &503870628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,11 +286,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3505c7f5735c00b40a951c1dbe2ffb24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  defaultPos: {fileID: 0}
-  playerPos: {fileID: 0}
-  m_Animator: {fileID: 2689501511946802622}
   interpolationSpeed: 1
+  inArea: 0
+  alawaysInArea: 0
 --- !u!114 &503870630
 MonoBehaviour:
   m_ObjectHideFlags: 0

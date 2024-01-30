@@ -24,7 +24,10 @@ public class GraphController : MonoBehaviour
     {
         for(int i = 0; i < Graphs.Length; i++)
         {
-            Graphs[i].Player = gameObject.AddComponent<VideoPlayer>();
+            if (!Graphs[i].Player)
+            {
+                Graphs[i].Player = gameObject.AddComponent<VideoPlayer>();
+            }
             Graphs[i].Player.isLooping = true;
             Graphs[i].Player.clip = ClipsDatabase[Graphs[i].initialVideo];
             Graphs[i].currentVideo = Graphs[i].initialVideo;

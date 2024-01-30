@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Needle : MonoBehaviour
 {
-    [SerializeField] Syringe Srg;
+    [SerializeField] NewSyringe Srg;
 
     private void OnTriggerEnter(Collider other)
     {

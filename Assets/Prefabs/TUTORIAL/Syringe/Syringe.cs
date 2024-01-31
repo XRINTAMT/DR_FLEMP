@@ -60,7 +60,7 @@ public class Syringe : DataSaver
             //Debug.Log("Getting syringe capacity: "+DataInterface.TryGetItem("SyringeCapacity", ref SyringeCapacity));
             PlayerObject player = FindObjectOfType<PlayerObject>();
             Head = player.Head;
-            Pomp = GameObject.FindGameObjectWithTag("PumpSyringePlacePoint");
+            //if (!Pomp) Pomp = GameObject.FindGameObjectWithTag("PumpSyringePlacePoint");
             Manager = FindObjectOfType<InjectionManager>();
         }
         if (Guided)

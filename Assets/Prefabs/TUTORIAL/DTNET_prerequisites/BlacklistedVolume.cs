@@ -9,6 +9,7 @@ public class BlacklistedVolume : MonoBehaviour
         InteractiblesGoBack goback;
         if (other.TryGetComponent<InteractiblesGoBack>(out goback))
         {
+            Debug.Log(1234);
             goback.GoBack();
         }
     }

@@ -156,6 +156,9 @@ namespace RecordedScenario
                     }
                     _speaker.Speaker.AudioSource.Stop();
 
+                    if(_langNumber > 1)
+                    {
+                    
                     //preprocess the german stuff here;
                     _name = ComputeSHA256Hash(_row[0] + _texts[1]);
                     string _resourcesName = "Scenarios/" + scenarioName + "/TTS_AudioRecordings/German/" + _name;
@@ -207,7 +210,9 @@ namespace RecordedScenario
                         if (_speaker.GoogleSpeaker.SaveWIP == 1)
                             _voiceAudio[1] = Resources.Load<AudioClip>(_resourcesName);
                     }
+                    }
                     Phrases.Add(new Phrase(_row[0], _row[1] != "0", _timecodes, _texts, _voiceAudio));
+                    
                 }
                     
             }
@@ -310,11 +315,14 @@ namespace RecordedScenario
         private void Tick()
         {
             TimeElapsed += Time.deltaTime * TestScenarioSpeed;
-            if(previousTimeElapsed < (int)TimeElapsed)
+            int currentTick = Mathf.FloorToInt(TimeElapsed);
+
+            for (int tick = previousTimeElapsed + 1; tick <= currentTick; tick++)
             {
-                previousTimeElapsed = (int)TimeElapsed;
-                ProcessTick((int)TimeElapsed);
+                ProcessTick(tick);
             }
+
+            previousTimeElapsed = currentTick;
         }
 
         // Update is called once per frame

@@ -42,14 +42,16 @@ public class ARactivate : MonoBehaviour
         if (state)
         {
             //arCamera.transform.parent = autoHandPlayer.trackingContainer;
-            arCamera.SetActive(state);
-            autoHandPlayer.headCamera.GetComponent<Camera>().enabled = !state;
+            arCamera.SetActive(true);
+            //autoHandPlayer.headCamera.GetComponent<Camera>().enabled = !state;
+            autoHandPlayer.gameObject.SetActive(false);
 
         }
         if (!state)
         {
-            autoHandPlayer.headCamera.GetComponent<Camera>().enabled = !state;
-            arCamera.SetActive(state);
+            //autoHandPlayer.headCamera.GetComponent<Camera>().enabled = !state;
+            autoHandPlayer.gameObject.SetActive(true);
+            arCamera.SetActive(false);
             //arCamera.transform.parent = transform;
         }
         //arCamera.transform.localPosition = Vector3.zero;

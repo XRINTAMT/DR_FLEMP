@@ -109,7 +109,8 @@ public class NewSyringeMechanic : MonoBehaviour
     {
         if (other.tag == "AreaHaptic")
         {
-            syringeHandGrab.PlayHapticVibration(1000);
+            if (syringeHandGrab) syringeHandGrab.PlayHapticVibration(1000);
+         
         }
         if (other.tag == "Indicate")
         {
@@ -132,7 +133,7 @@ public class NewSyringeMechanic : MonoBehaviour
             {
                 bottleHandGrab.GetComponent<XRHandControllerLink>().enabled = false;
             }
-            syringeHandGrab.PlayHapticVibration(1000);
+
             //innen.isTrigger = true;
             grabbableSyringe.GetComponent<Stabber>().enabled = true;
         }

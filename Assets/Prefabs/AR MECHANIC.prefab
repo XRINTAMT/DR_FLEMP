@@ -701,7 +701,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Opeen the door to activate AR view
+  m_Text: Open the door to activate AR view
 --- !u!1 &708727587367936665
 GameObject:
   m_ObjectHideFlags: 0
@@ -1383,7 +1383,7 @@ MonoBehaviour:
   ignoreWeight: 0
   parentOnGrab: 0
   throwPower: 1
-  jointBreakForce: 3500
+  jointBreakForce: Infinity
   showAdvancedSettings: 1
   makeChildrenGrabbable: 1
   grabPriorityWeight: 1
@@ -1577,6 +1577,10 @@ MonoBehaviour:
   disableOnStart: 1
   cols1:
   - {fileID: 1677965252711062399}
+  - {fileID: 8165681385125838496}
+  - {fileID: 5396137763488154920}
+  - {fileID: 7612670388597557156}
+  - {fileID: 4575277487127962357}
   cols2:
   - {fileID: 557729487}
   - {fileID: 2002572911}
@@ -1728,7 +1732,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6132320589397445065}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2784,11 +2788,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7404974196911436308, guid: 0f92da428b7b3474a891c3e36525f133, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7404974196911436308, guid: 0f92da428b7b3474a891c3e36525f133, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7404974196911436308, guid: 0f92da428b7b3474a891c3e36525f133, type: 3}
       propertyPath: m_SizeDelta.x
@@ -2804,7 +2808,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7404974196911436308, guid: 0f92da428b7b3474a891c3e36525f133, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -856
       objectReference: {fileID: 0}
     - target: {fileID: 7488420562982814516, guid: 0f92da428b7b3474a891c3e36525f133, type: 3}
       propertyPath: m_Size
@@ -2812,7 +2816,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7488420562982814516, guid: 0f92da428b7b3474a891c3e36525f133, type: 3}
       propertyPath: m_Value
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7981637363098348677, guid: 0f92da428b7b3474a891c3e36525f133, type: 3}
       propertyPath: m_Enabled

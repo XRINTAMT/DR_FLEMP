@@ -17,19 +17,19 @@ public class ARactivate : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<AutoHandPlayer>())
-        {
-            state = true;
-            ViewAR();
-        }
+        //if (other.GetComponent<AutoHandPlayer>() || other.gameObject.layer == 29)
+        //{
+        //    state = !state;
+        //    ViewAR();
+        //}
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<AutoHandPlayer>())
-        {
-            state = false;
-            ViewAR();
-        }
+        //if (other.GetComponent<AutoHandPlayer>() || other.gameObject.layer == 29)
+        //{
+        //    state = false;
+        //    ViewAR();
+        //}
     }
 
     public void PressButtonAR() 
@@ -37,21 +37,27 @@ public class ARactivate : MonoBehaviour
         state = !state;
         ViewAR();
     }
+
+    public void GrabHandle() 
+    {
+        state = true;
+        ViewAR();
+    }
     public void ViewAR()
     {
         if (state)
         {
             //arCamera.transform.parent = autoHandPlayer.trackingContainer;
-            arCamera.SetActive(true);
+            arCamera.GetComponent<Camera>().enabled = true;
             //autoHandPlayer.headCamera.GetComponent<Camera>().enabled = !state;
-            autoHandPlayer.gameObject.SetActive(false);
+            autoHandPlayer.headCamera.GetComponent<Camera>().enabled=false;
 
         }
         if (!state)
         {
             //autoHandPlayer.headCamera.GetComponent<Camera>().enabled = !state;
-            autoHandPlayer.gameObject.SetActive(true);
-            arCamera.SetActive(false);
+            autoHandPlayer.headCamera.GetComponent<Camera>().enabled = false;
+            arCamera.GetComponent<Camera>().enabled = false;
             //arCamera.transform.parent = transform;
         }
         //arCamera.transform.localPosition = Vector3.zero;

@@ -22,7 +22,7 @@ public class HeadCharacterFollow : MonoBehaviour
     public bool inArea;
     public bool alawaysInArea;
     Transform targetPos;
-    void Start()
+    void Awake()
     {
         if (!Animator)
             Animator = GetComponent<Animator>();

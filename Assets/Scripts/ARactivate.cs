@@ -6,7 +6,8 @@ using UnityEngine;
 public class ARactivate : MonoBehaviour
 {
     public GameObject arCamera;
-    public GameObject[] obj;
+    public GameObject[] objHide;
+    public GameObject[] objAppear;
     AutoHandPlayer autoHandPlayer;
     bool state;
     // Start is called before the first frame update
@@ -18,31 +19,16 @@ public class ARactivate : MonoBehaviour
     {
         if (other.GetComponent<AutoHandPlayer>())
         {
-            arCamera.transform.parent = autoHandPlayer.trackingContainer;
-            arCamera.transform.localPosition = Vector3.zero;
-            arCamera.transform.localEulerAngles = Vector3.zero;
-            arCamera.SetActive(true);
-            autoHandPlayer.headCamera.GetComponent<Camera>().enabled = false;
-            for (int i = 0; i < obj.Length; i++)
-            {
-                obj[i].SetActive(false);
-            }
+            state = true;
+            ViewAR();
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.GetComponent<AutoHandPlayer>())
         {
-            autoHandPlayer.headCamera.GetComponent<Camera>().enabled = true;
-            arCamera.SetActive(false);
-            arCamera.transform.parent = transform;
-            arCamera.transform.localPosition = Vector3.zero;
-            arCamera.transform.localEulerAngles = Vector3.zero;
-
-            for (int i = 0; i < obj.Length; i++)
-            {
-                obj[i].SetActive(true);
-            }
+            state = false;
+            ViewAR();
         }
     }
 
@@ -55,7 +41,7 @@ public class ARactivate : MonoBehaviour
     {
         if (state)
         {
-            arCamera.transform.parent = autoHandPlayer.trackingContainer;
+            //arCamera.transform.parent = autoHandPlayer.trackingContainer;
             arCamera.SetActive(state);
             autoHandPlayer.headCamera.GetComponent<Camera>().enabled = !state;
 
@@ -64,14 +50,14 @@ public class ARactivate : MonoBehaviour
         {
             autoHandPlayer.headCamera.GetComponent<Camera>().enabled = !state;
             arCamera.SetActive(state);
-            arCamera.transform.parent = transform;
+            //arCamera.transform.parent = transform;
         }
-        arCamera.transform.localPosition = Vector3.zero;
-        arCamera.transform.localEulerAngles = Vector3.zero;
-        for (int i = 0; i < obj.Length; i++)
-        {
-            obj[i].SetActive(!state);
-        }
+        //arCamera.transform.localPosition = Vector3.zero;
+        //arCamera.transform.localEulerAngles = Vector3.zero;
+        for (int i = 0; i < objHide.Length; i++)
+            objHide[i].SetActive(!state);
+        for (int i = 0; i < objAppear.Length; i++)
+            objAppear[i].SetActive(state);
     }
   
     // Update is called once per frame

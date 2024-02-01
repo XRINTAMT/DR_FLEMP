@@ -187,5 +187,11 @@ public class AnimationMovement : MonoBehaviour
             Move();
         }
 
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            AnimationPutOnPulse();
+        }
+       
     }
+
 }

@@ -17,19 +17,23 @@ public class ARactivate : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        //if (other.GetComponent<AutoHandPlayer>() || other.gameObject.layer == 29)
-        //{
-        //    state = !state;
-        //    ViewAR();
-        //}
+        if (other.GetComponent<AutoHandPlayer>() /*|| other.gameObject.layer == 29*/)
+        {
+            state = true;
+            //ViewAR();
+        }
+        for (int i = 0; i < objAppear.Length; i++)
+            objAppear[i].SetActive(true);
     }
     private void OnTriggerExit(Collider other)
     {
-        //if (other.GetComponent<AutoHandPlayer>() || other.gameObject.layer == 29)
-        //{
-        //    state = false;
-        //    ViewAR();
-        //}
+        if (other.GetComponent<AutoHandPlayer>()/* || other.gameObject.layer == 29*/)
+        {
+            state = false;
+            //ViewAR();
+        }
+        for (int i = 0; i < objAppear.Length; i++)
+            objAppear[i].SetActive(false);
     }
 
     public void PressButtonAR() 
@@ -41,31 +45,31 @@ public class ARactivate : MonoBehaviour
     public void GrabHandle() 
     {
         state = true;
+
+        for (int i = 0; i < objHide.Length; i++)
+            objHide[i].SetActive(false);
+
         ViewAR();
     }
     public void ViewAR()
     {
         if (state)
         {
-            //arCamera.transform.parent = autoHandPlayer.trackingContainer;
-            arCamera.GetComponent<Camera>().enabled = true;
-            //autoHandPlayer.headCamera.GetComponent<Camera>().enabled = !state;
-            autoHandPlayer.headCamera.GetComponent<Camera>().enabled=false;
+            arCamera.SetActive(true);
+            autoHandPlayer.headCamera.GetComponent<Camera>().enabled = false;
 
         }
         if (!state)
         {
-            //autoHandPlayer.headCamera.GetComponent<Camera>().enabled = !state;
             autoHandPlayer.headCamera.GetComponent<Camera>().enabled = false;
-            arCamera.GetComponent<Camera>().enabled = false;
-            //arCamera.transform.parent = transform;
+            arCamera.SetActive(false);
         }
         //arCamera.transform.localPosition = Vector3.zero;
         //arCamera.transform.localEulerAngles = Vector3.zero;
-        for (int i = 0; i < objHide.Length; i++)
-            objHide[i].SetActive(!state);
-        for (int i = 0; i < objAppear.Length; i++)
-            objAppear[i].SetActive(state);
+        //for (int i = 0; i < objHide.Length; i++)
+        //    objHide[i].SetActive(!state);
+        //for (int i = 0; i < objAppear.Length; i++)
+        //    objAppear[i].SetActive(state);
     }
   
     // Update is called once per frame

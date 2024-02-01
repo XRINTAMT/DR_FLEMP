@@ -28,7 +28,7 @@ public class Wire : MonoBehaviour
 	[SerializeField] static float refreshTimeout = 2.5f;
 	float refreshProgress;
 
-	void Start()
+	void OnEnable()
 	{
 		refreshProgress = 5f;
 		LastTarget = Vector3.zero;

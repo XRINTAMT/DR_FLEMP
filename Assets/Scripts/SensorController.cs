@@ -8,6 +8,9 @@ public class SensorController : MonoBehaviour
     [SerializeField] GameObject sensor1;
     [SerializeField] GameObject sensor2;
     [SerializeField] GameObject sensor3;
+    [SerializeField] GameObject wire1;
+    [SerializeField] GameObject wire2;
+    [SerializeField] GameObject wire3;
     [SerializeField] GameObject thermometer1;
     [SerializeField] GameObject thermometer2;
     [SerializeField] GameObject thermometer3;
@@ -26,6 +29,8 @@ public class SensorController : MonoBehaviour
         {
             sensor1.SetActive(false);
             sensor2.SetActive(true);
+            wire1.SetActive(false);
+            wire2.SetActive(true);
         }
         if (thermometerAnimation)
         {
@@ -41,6 +46,8 @@ public class SensorController : MonoBehaviour
         {
             sensor2.SetActive(false);
             sensor3.SetActive(true);
+            wire2.SetActive(false);
+            wire3.SetActive(true);
             putSensor?.Invoke();
             sensorAnimation = false;
         }

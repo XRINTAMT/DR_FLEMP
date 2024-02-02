@@ -21,9 +21,10 @@ public class ARactivate : MonoBehaviour
         {
             state = true;
             //ViewAR();
+            for (int i = 0; i < objAppear.Length; i++)
+                objAppear[i].SetActive(true);
         }
-        for (int i = 0; i < objAppear.Length; i++)
-            objAppear[i].SetActive(true);
+
     }
     private void OnTriggerExit(Collider other)
     {
@@ -31,9 +32,10 @@ public class ARactivate : MonoBehaviour
         {
             state = false;
             //ViewAR();
+            for (int i = 0; i < objAppear.Length; i++)
+                objAppear[i].SetActive(false);
         }
-        for (int i = 0; i < objAppear.Length; i++)
-            objAppear[i].SetActive(false);
+       
     }
 
     public void PressButtonAR() 

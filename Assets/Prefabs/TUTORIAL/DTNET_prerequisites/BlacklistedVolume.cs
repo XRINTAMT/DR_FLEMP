@@ -9,7 +9,14 @@ public class BlacklistedVolume : MonoBehaviour
         InteractiblesGoBack goback;
         if (other.TryGetComponent<InteractiblesGoBack>(out goback))
         {
-            Debug.Log(1234);
+            goback.GoBack();
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        InteractiblesGoBack goback;
+        if (collision.gameObject.TryGetComponent<InteractiblesGoBack>(out goback))
+        {
             goback.GoBack();
         }
     }

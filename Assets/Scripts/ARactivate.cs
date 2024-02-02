@@ -6,6 +6,7 @@ using UnityEngine;
 public class ARactivate : MonoBehaviour
 {
     public GameObject arCamera;
+    public Canvas tts;
     public GameObject[] objHide;
     public GameObject[] objAppear;
     AutoHandPlayer autoHandPlayer;
@@ -20,6 +21,12 @@ public class ARactivate : MonoBehaviour
         if (other.GetComponent<AutoHandPlayer>() /*|| other.gameObject.layer == 29*/)
         {
             state = true;
+            tts.enabled = true;
+            for (int i = 0; i < objHide.Length; i++)
+                objHide[i].SetActive(false);
+
+            ViewAR();
+
             //ViewAR();
             for (int i = 0; i < objAppear.Length; i++)
                 objAppear[i].SetActive(true);
@@ -31,6 +38,7 @@ public class ARactivate : MonoBehaviour
         if (other.GetComponent<AutoHandPlayer>()/* || other.gameObject.layer == 29*/)
         {
             state = false;
+            tts.enabled = false;
             //ViewAR();
             for (int i = 0; i < objAppear.Length; i++)
                 objAppear[i].SetActive(false);

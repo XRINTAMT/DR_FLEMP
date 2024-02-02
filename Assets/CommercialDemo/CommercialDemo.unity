@@ -545,6 +545,10 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: -0.00000049670535
       objectReference: {fileID: 0}
+    - target: {fileID: 6185227559611510092, guid: 147ea8e05d2603542b7771fffeff07ec, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6969589412918341224, guid: 147ea8e05d2603542b7771fffeff07ec, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4089,9 +4093,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 708727587367936671, guid: 858e3fb1bb11c7641abe1bad83f22a1a, type: 3}
+      propertyPath: objAppear.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 708727587367936671, guid: 858e3fb1bb11c7641abe1bad83f22a1a, type: 3}
       propertyPath: objHide.Array.data[1]
       value: 
       objectReference: {fileID: 1162841031}
+    - target: {fileID: 708727587367936671, guid: 858e3fb1bb11c7641abe1bad83f22a1a, type: 3}
+      propertyPath: objAppear.Array.data[1]
+      value: 
+      objectReference: {fileID: 1095355929}
     - target: {fileID: 708727587903357322, guid: 858e3fb1bb11c7641abe1bad83f22a1a, type: 3}
       propertyPath: m_Name
       value: AR MECHANIC
@@ -11451,7 +11463,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8299405044623766380, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8319906816321231110, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
       propertyPath: m_Layer
@@ -11916,6 +11928,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1083613382}
   m_CullTransparentMesh: 1
+--- !u!1 &1095355929 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8299405044623766380, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+  m_PrefabInstance: {fileID: 1067664178}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1110234629
 GameObject:
   m_ObjectHideFlags: 0

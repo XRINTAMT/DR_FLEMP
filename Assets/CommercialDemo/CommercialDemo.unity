@@ -4085,6 +4085,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1734084759}
     m_Modifications:
     - target: {fileID: 708727587367936671, guid: 858e3fb1bb11c7641abe1bad83f22a1a, type: 3}
+      propertyPath: tts
+      value: 
+      objectReference: {fileID: 316696172}
+    - target: {fileID: 708727587367936671, guid: 858e3fb1bb11c7641abe1bad83f22a1a, type: 3}
       propertyPath: arCamera
       value: 
       objectReference: {fileID: 368302640}
@@ -4094,7 +4098,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 708727587367936671, guid: 858e3fb1bb11c7641abe1bad83f22a1a, type: 3}
       propertyPath: objAppear.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 708727587367936671, guid: 858e3fb1bb11c7641abe1bad83f22a1a, type: 3}
       propertyPath: objHide.Array.data[1]
@@ -11461,9 +11465,13 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8299405044327865040, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8299405044623766380, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8319906816321231110, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
       propertyPath: m_Layer

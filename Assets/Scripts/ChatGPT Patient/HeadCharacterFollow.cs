@@ -46,7 +46,7 @@ public class HeadCharacterFollow : MonoBehaviour
         startPos = defaultPos.position;
         startRot = defaultPos.rotation;
 
-        if (FindAnyObjectByType<RecordedScenarioText>() && SceneManager.GetActiveScene().name != "RecordedShiftChange")
+        if (FindAnyObjectByType<RecordedScenarioText>() && SceneManager.GetActiveScene().name != "RecordedShiftChange" && SceneManager.GetActiveScene().name != "B1_Pain_Assessment")
         {
             this.enabled = false;
         }

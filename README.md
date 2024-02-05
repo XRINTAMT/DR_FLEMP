@@ -20,9 +20,19 @@ Once a feature is complete move task to the Review column om Monday and submit a
 AutoHand: https://assetstore.unity.com/packages/tools/game-toolkits/auto-hand-vr-physics-interaction-165323
 //Add scripts that require manual replacement to gitignore or at least have them uploaded in the cloud and put a link here.
 
+Note: unlike hospital props, which is distributed per company (with unlimited seats), AutoHand is distributed per-seat, so the company would need to either re-assign the existing seats or buy some new ones to let anyone else run/build the project.
+
 Hospital props: https://assetstore.unity.com/packages/3d/props/hospital-props-vol-1-6-mega-pack-178128
 
-Note: unlike hospital props, which is distributed per company (with unlimited seats), AutoHand is distributed per-seat, so the company would need to either re-assign the existing seats or buy some new ones to let anyone else run/build the project.
+Hospital Corridor: https://assetstore.unity.com/packages/3d/environments/hospital-corridor-231428
+
+Operation room - surgery: https://assetstore.unity.com/packages/3d/environments/operation-room-surgery-245269
+
+Hospital Waiting Room: https://assetstore.unity.com/packages/3d/props/interior/hospital-waiting-room-59880
+
+Hospital Wardroom: https://assetstore.unity.com/packages/3d/environments/hospital-wardroom-253867
+
+Medical equipment: https://assetstore.unity.com/packages/3d/environments/medical-equipment-159924
 
 ### Free
 

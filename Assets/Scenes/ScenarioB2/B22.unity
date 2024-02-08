@@ -657,6 +657,21 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4653752823213026462, guid: 1d6b70e2d7638884a938e62e34b7572a, type: 3}
   m_PrefabInstance: {fileID: 1928643571}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &589199867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589199865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf6d4ac80ca77bb4ebc86ffafdbe47b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TemporalOffset: 2
+  TimeToGoBack: 1
+  Interactible: {fileID: 0}
 --- !u!1 &601944212
 GameObject:
   m_ObjectHideFlags: 0
@@ -1358,6 +1373,7 @@ GameObject:
   - component: {fileID: 1190155098}
   - component: {fileID: 1190155097}
   - component: {fileID: 1190155096}
+  - component: {fileID: 1190155101}
   m_Layer: 0
   m_Name: Pressure
   m_TagString: Untagged
@@ -1521,6 +1537,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1190155094}
   m_Mesh: {fileID: -3735522331077424080, guid: 2b9c38d6d5ab7c543a3bb780ba444e15, type: 3}
+--- !u!114 &1190155101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190155094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf6d4ac80ca77bb4ebc86ffafdbe47b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TemporalOffset: 2
+  TimeToGoBack: 1
+  Interactible: {fileID: 0}
 --- !u!4 &1197452170 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2561630338400082982, guid: cce79147b20de38418b96558555e073c, type: 3}
@@ -1619,6 +1650,7 @@ GameObject:
   - component: {fileID: 1354923246}
   - component: {fileID: 1354923245}
   - component: {fileID: 1354923244}
+  - component: {fileID: 1354923249}
   m_Layer: 0
   m_Name: Thermometer
   m_TagString: Untagged
@@ -1782,6 +1814,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1354923242}
   m_Mesh: {fileID: -9106282982122313210, guid: e3b1bd9bad32ac5418ef99ff1e2a38f2, type: 3}
+--- !u!114 &1354923249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354923242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf6d4ac80ca77bb4ebc86ffafdbe47b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TemporalOffset: 2
+  TimeToGoBack: 1
+  Interactible: {fileID: 0}
 --- !u!1 &1398625575
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6892694262426997646}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4746809477362135944
 BoxCollider:
@@ -173,6 +173,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ecacd3d32b26a944840301ec0252b2a, type: 3}
+--- !u!1 &7549048354274313713 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 8ecacd3d32b26a944840301ec0252b2a, type: 3}
+  m_PrefabInstance: {fileID: 2009298594867961080}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &7114609347665922304
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7549048354274313713}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.076644875, y: 2.3695652, z: 1.4910178}
+  m_Center: {x: -0.0016494058, y: -0.000007578028, z: -0.0000016531583}
 --- !u!1001 &4297445111498166048
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -180,6 +198,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 255232380769518574, guid: e8b537d4a10fd8345a47f1d4df8e2c08, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3354560877233550693, guid: e8b537d4a10fd8345a47f1d4df8e2c08, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -211,6 +233,10 @@ PrefabInstance:
     - target: {fileID: 4175805233606803338, guid: e8b537d4a10fd8345a47f1d4df8e2c08, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639426279462355125, guid: e8b537d4a10fd8345a47f1d4df8e2c08, type: 3}
+      propertyPath: m_Name
+      value: NewHandle
       objectReference: {fileID: 0}
     - target: {fileID: 7206977004502244526, guid: e8b537d4a10fd8345a47f1d4df8e2c08, type: 3}
       propertyPath: m_RootOrder
@@ -267,6 +293,10 @@ PrefabInstance:
     - target: {fileID: 8020774366511072788, guid: e8b537d4a10fd8345a47f1d4df8e2c08, type: 3}
       propertyPath: m_Name
       value: ShowcaseDoor Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8176730742905597895, guid: e8b537d4a10fd8345a47f1d4df8e2c08, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8843089585323482122, guid: e8b537d4a10fd8345a47f1d4df8e2c08, type: 3}
       propertyPath: m_Enabled

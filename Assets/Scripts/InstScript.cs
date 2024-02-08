@@ -10,8 +10,8 @@ public class InstScript : MonoBehaviour
     private Vector3 instObjectPosition;
     private float instObjectScale;
     private GameObject inst;
-    private Hand handRight;
-    private Hand handLeft;
+    public Hand handRight;
+    public Hand handLeft;
 
 
     // Use this for initialization
@@ -23,10 +23,22 @@ public class InstScript : MonoBehaviour
     }
 
   
-    void SpawnPoints() 
+    public void SpawnPoints() 
     {
         pointRight = Instantiate(pointPrefab, handRight.transform.position, Quaternion.identity);
         pointLeft = Instantiate(pointPrefab, handLeft.transform.position, Quaternion.identity);
+    }
+    public void CLosePoints()
+    {
+        if (pointLeft && pointRight)
+        {
+            Destroy(pointRight);
+            Destroy(pointLeft);
+            inst.GetComponent<Collider>().enabled = true;
+
+            Physics.IgnoreCollision(inst.GetComponent<Collider>(), iPad, true);
+            return;
+        }
     }
     public void SetHand(Hand hand) 
     {

@@ -43,6 +43,7 @@ public class FadeMessageManager : MonoBehaviour
     public void FadeWallFalse()
     {
         //StartCoroutine(fadeAnimationWallOut());
+        StopAllCoroutines();
         fadeBackground.color = alterAlpha(fadeBackground.color, 0);
     }
 

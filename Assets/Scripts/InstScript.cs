@@ -12,7 +12,7 @@ public class InstScript : MonoBehaviour
     private GameObject inst;
     public Hand handRight;
     public Hand handLeft;
-
+    bool editMode;
 
     // Use this for initialization
     void Start()
@@ -22,6 +22,13 @@ public class InstScript : MonoBehaviour
        
     }
 
+    public void TableEditMode(bool state) 
+    {
+        if (inst) inst.GetComponent<Collider>().enabled = !state;
+        editMode = state;
+        pointRight.gameObject.SetActive(state);
+        pointLeft.gameObject.SetActive(state);
+    }
   
     public void SpawnPoints() 
     {
@@ -109,7 +116,11 @@ public class InstScript : MonoBehaviour
         //    (pointRight.transform.position.z - pointRight.transform.position.z) * (pointRight.transform.position.z - pointRight.transform.position.z)
         //);
 
-        if (inst == null) inst = Instantiate(instObject);
+        if (inst == null)
+        {
+            inst = Instantiate(instObject);
+            Physics.IgnoreCollision(inst.GetComponent<Collider>(), iPad, true);
+        }
         if (inst.GetComponent<Collider>().enabled) inst.GetComponent<Collider>().enabled = false;
       
         inst.transform.position = instObjectPosition;
@@ -121,7 +132,7 @@ public class InstScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (pointLeft && pointRight)
+        if (editMode)
         {
             //pointLeft.transform.position = handLeft.transform.position;
             //pointRight.transform.position = handRight.transform.position;

@@ -185,12 +185,15 @@ public class SentenceScrambleTab : MonoBehaviour
         gridController.textDescription.text = "";
         for (int i = 0; i < correctSentences.Count; i++)
         {
-            if (sentence != correctSentences[i])
+            if (sentence == correctSentences[i])
             {
-                gridController.textDescription.text = gridController.textDescription.text+ correctSentences[i]+"\n" ;
+                check.gameObject.SetActive(false);
+                next.gameObject.SetActive(true);
                 return;
             }
         }
+
+        gridController.textDescription.text = gridController.textDescription.text + correctSentences[0];
         check.gameObject.SetActive(false);
         next.gameObject.SetActive(true);
 

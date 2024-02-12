@@ -12,21 +12,349 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae5a46bda3295124c99b0e6537ac7252, type: 3}
   m_Name: EnglishSettings
   m_EditorClassIdentifier: 
-  _clientAccessToken: HOKEABS7HPIQVSRSVWRPTTV75TQJ5QBP
+  _clientAccessToken: FX747VT3OFRNS6ARXLB6MVAOG4B46WK7
   _appInfo:
-    name: Built-in Models
-    id: voiceSDK_en
+    name: drflemp_equipment_quiz
+    id: 403838091988981
     lang: en
-    isPrivate: 0
-    createdAt: 
-    trainingStatus: 0
-    lastTrainDuration: 0
-    lastTrainedAt: 
-    nextTrainAt: 
-    intents: []
-    entities: []
-    traits: []
-    voices: []
+    isPrivate: 1
+    createdAt: 2024-01-16T07:44:32-0800
+    trainingStatus: 1
+    lastTrainDuration: 81
+    lastTrainedAt: 2024-01-16T08:20:28-0800
+    nextTrainAt: 2024-01-16T08:19:07-0800
+    intents:
+    - id: 362338523201833
+      name: Amogus_
+      entities:
+      - name: sphygmomanometer:sphygmomanometer
+        id: 1868036963636985
+    - id: 387756280575342
+      name: Sphygmomanometer
+      entities:
+      - name: sphygmomanometer:sphygmomanometer
+        id: 1868036963636985
+    entities:
+    - name: sphygmomanometer
+      id: 2092234054471374
+      lookups:
+      - keywords
+      roles:
+      - name: sphygmomanometer
+        id: 1868036963636985
+      keywords:
+      - keyword: amogus
+        synonyms:
+        - amogus
+      - keyword: sphygmomanometer
+        synonyms:
+        - amogus
+        - sphygmomanometer
+    - name: stethoscope
+      id: 1141970840514627
+      lookups:
+      - keywords
+      roles:
+      - name: stethoscope
+        id: 235635652920518
+      keywords:
+      - keyword: stethoscope
+        synonyms:
+        - stethoscope
+    traits:
+    - name: Amogus
+      id: 348702751348326
+      values:
+      - id: 2262199627310591
+        value: Amogus
+      - id: 890353152561215
+        value: sphygmomanometer
+    - name: ECG
+      id: 401795345565091
+      values:
+      - id: 752851483359349
+        value: ECG
+    - name: Perfusion_Pump
+      id: 916488630003810
+      values:
+      - id: 1710236509461564
+        value: Perfusion pump
+    - name: Sphygmomanometer_
+      id: 949609706533821
+      values:
+      - id: 1025922935140707
+        value: Sphygmomanometer
+    - name: Stethoscope_
+      id: 327690850239940
+      values:
+      - id: 3569196830061769
+        value: stethoscope
+    voices:
+    - name: wit$Rebecca
+      locale: en_US
+      gender: female
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: wit$Charlie
+      locale: en_US
+      gender: male
+      styles:
+      - default
+      - soft
+      - fast
+      - projected
+    - name: wit$Cooper
+      locale: en_US
+      gender: male
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: wit$Vampire
+      locale: en_US
+      gender: male
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: wit$Prospector
+      locale: en_US
+      gender: male
+      styles:
+      - default
+    - name: wit$Cody
+      locale: en_US
+      gender: male
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: wit$Remi
+      locale: en_US
+      gender: female
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: wit$Cam
+      locale: en_US
+      gender: male
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: wit$Connor
+      locale: en_US
+      gender: male
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: wit$Railey
+      locale: en_US
+      gender: female
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: wit$Cael
+      locale: en_US
+      gender: male
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: wit$Carl
+      locale: en_US
+      gender: male
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: wit$Rubie
+      locale: en_US
+      gender: female
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: wit$Overconfident
+      locale: en_US
+      gender: male
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: wit$Disaffected
+      locale: en_US
+      gender: female
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: wit$Hollywood
+      locale: en_US
+      gender: female
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: wit$Trendy
+      locale: en_US
+      gender: female
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: wit$Cartoon Baby
+      locale: en_US
+      gender: nonbinary
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: wit$Surfer
+      locale: en_US
+      gender: male
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: wit$Southern Accent
+      locale: en_US
+      gender: male
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: wit$Kenyan Accent
+      locale: en_US
+      gender: female
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: wit$Cartoon Kid
+      locale: en_US
+      gender: female
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: wit$Cartoon Villain
+      locale: en_US
+      gender: female
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: wit$Rosie
+      locale: en_CA
+      gender: female
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: wit$Colin
+      locale: en_CA
+      gender: male
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: wit$Pirate
+      locale: en_GB
+      gender: male
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: wit$British Butler
+      locale: en_GB
+      gender: male
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: wit$Whimsical
+      locale: en_GB
+      gender: female
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: wit$Wizard
+      locale: en_GB
+      gender: male
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
+    - name: wit$Cockney Accent
+      locale: en_GB
+      gender: nonbinary
+      styles:
+      - default
+      - soft
+      - formal
+      - fast
+      - projected
   _configurationId: 
   timeoutMS: 10000
   endpointConfiguration:

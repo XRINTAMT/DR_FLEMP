@@ -45,8 +45,8 @@ public class SentenceScrambleTab : MonoBehaviour
     public AudioClip audioCorrect;
     public AudioClip audioUncorrect;
     [SerializeField] UnityEvent OnCompletion;
-
- 
+    [SerializeField] Button next;
+    [SerializeField] Button check;
     // Start is called before the first frame update
     void Start()
     {
@@ -180,7 +180,21 @@ public class SentenceScrambleTab : MonoBehaviour
         }
     }
 
+    public void CheckBefore() 
+    {
+        gridController.textDescription.text = "";
+        for (int i = 0; i < correctSentences.Count; i++)
+        {
+            if (sentence != correctSentences[i])
+            {
+                gridController.textDescription.text = gridController.textDescription.text+ correctSentences[i]+"\n" ;
+                return;
+            }
+        }
+        check.gameObject.SetActive(false);
+        next.gameObject.SetActive(true);
 
+    }
     public void CheckSentence()
     {
         for (int i = 0; i < correctSentences.Count; i++)
@@ -208,6 +222,8 @@ public class SentenceScrambleTab : MonoBehaviour
                 CheckCompletion();
                 SetNewList();
                 audioSource.PlayOneShot(audioCorrect);
+                check.gameObject.SetActive(true);
+                next.gameObject.SetActive(false);
                 return;
             }
         }
@@ -219,7 +235,8 @@ public class SentenceScrambleTab : MonoBehaviour
         SetNewList();
         audioSource.PlayOneShot(audioUncorrect);
 
-
+        check.gameObject.SetActive(true);
+        next.gameObject.SetActive(false);
         //else
         //{
         //    indexList++;

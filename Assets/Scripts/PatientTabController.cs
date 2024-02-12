@@ -9,11 +9,14 @@ using UnityEngine.SceneManagement;
 public class PatientTabController : MonoBehaviour
 {
     [SerializeField] Button[] buttonsPatients;
+    [SerializeField] GameObject[] buttonsBackground;
     [SerializeField] Button buttonTab;
     [SerializeField] Button  buttonDone;
     [SerializeField] TMP_Text namePatient;
     [SerializeField] private CompleteRoom cr;
-
+    AudioSource audioSource;
+    public AudioClip correct;
+    public AudioClip uncorrect;
     int chooseIndex;
     // Start is called before the first frame update
     void Start()
@@ -35,7 +38,7 @@ public class PatientTabController : MonoBehaviour
             buttonsPatients[i].onClick.AddListener(()=> SelectPatient(index));
         }
 
-
+        audioSource = GetComponent<AudioSource>();
         buttonTab.onClick.AddListener(OpenTab);
         buttonDone.onClick.AddListener(ButtonDone);
     }
@@ -60,12 +63,15 @@ public class PatientTabController : MonoBehaviour
                 SceneManager.LoadScene("B11");
             if (SceneManager.GetActiveScene().name == "B21")
                 SceneManager.LoadScene("B21");
+            buttonsPatients[chooseIndex].interactable = false;
+            audioSource.PlayOneShot(uncorrect);
+            buttonsBackground[chooseIndex].SetActive(true);
         }
         else //if correct
         {
             Debug.Log("lizzy chosen");
             cr.Complete();
-
+            audioSource.PlayOneShot(correct);
             if (SceneManager.GetActiveScene().name == "B1_Pain_Assessment")
             {
                 FindObjectOfType<WelcomeScreenController>(true).OpenEndPanel();

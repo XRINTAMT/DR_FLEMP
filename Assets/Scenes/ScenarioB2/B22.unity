@@ -1363,6 +1363,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6231535692498331917, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
   m_PrefabInstance: {fileID: 1067664178}
   m_PrefabAsset: {fileID: 0}
+--- !u!137 &1067664180 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 392201258766526924, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+  m_PrefabInstance: {fileID: 1067664178}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1067664181 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 392201260560581146, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+  m_PrefabInstance: {fileID: 1067664178}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1190155094
 GameObject:
   m_ObjectHideFlags: 0
@@ -2659,6 +2669,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3603623009786221760, guid: 1d6b70e2d7638884a938e62e34b7572a, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4653752823213026462, guid: 1d6b70e2d7638884a938e62e34b7572a, type: 3}
       propertyPath: m_Name
       value: FingerSensor
@@ -3630,6 +3644,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9057936042419559326, guid: 52271f7ed14648a44a18c62262b831f9, type: 3}
+      propertyPath: leftRend
+      value: 
+      objectReference: {fileID: 1067664181}
+    - target: {fileID: 9057936042419559326, guid: 52271f7ed14648a44a18c62262b831f9, type: 3}
+      propertyPath: rightRend
+      value: 
+      objectReference: {fileID: 1067664180}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52271f7ed14648a44a18c62262b831f9, type: 3}
 --- !u!4 &1964866793 stripped

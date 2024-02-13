@@ -134,7 +134,7 @@ public class SentenceScrambleTab : MonoBehaviour
     void SetNewList() 
     {
         Clear();
-
+        gridController.textDescription.color = Color.white;
         gridController.textDescription.text = descriptions[indexList];
         gridController.rowsSentence.Add(Instantiate(gridController.rowSentence, gridController.contentSentence));
         gridController.rowsChoose.Add(Instantiate(gridController.rowChoose, gridController.contentChoose));
@@ -187,13 +187,15 @@ public class SentenceScrambleTab : MonoBehaviour
         {
             if (sentence == correctSentences[i])
             {
-                check.gameObject.SetActive(false);
-                next.gameObject.SetActive(true);
+                //check.gameObject.SetActive(false);
+                //next.gameObject.SetActive(true);
+                CheckSentence();
                 return;
             }
         }
-
-        gridController.textDescription.text = gridController.textDescription.text + correctSentences[0];
+        audioSource.PlayOneShot(audioUncorrect);
+        gridController.textDescription.text = correctSentences[0];
+        gridController.textDescription.color= Color.green;
         check.gameObject.SetActive(false);
         next.gameObject.SetActive(true);
 
@@ -236,7 +238,7 @@ public class SentenceScrambleTab : MonoBehaviour
         if (descriptions.Count <= indexList)
             indexList = 0;
         SetNewList();
-        audioSource.PlayOneShot(audioUncorrect);
+        //audioSource.PlayOneShot(audioUncorrect);
 
         check.gameObject.SetActive(true);
         next.gameObject.SetActive(false);

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ObjectUI : MonoBehaviour
 {
+    public GameObject item;
     [SerializeField] Transform head;
     [SerializeField] Canvas canvas;
     [SerializeField] Vector3 Offset;
@@ -19,6 +20,8 @@ public class ObjectUI : MonoBehaviour
     {
         Vector3 targetPosition = new Vector3(head.position.x, head.position.y, head.position.z);
         canvas.transform.LookAt(targetPosition);
-        canvas.transform.position = transform.position + Offset;
+        if (item)
+            canvas.transform.position = item.transform.position + Offset;
+
     }
 }

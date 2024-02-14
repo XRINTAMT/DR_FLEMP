@@ -6,48 +6,58 @@ using UnityEngine.UI;
 
 public class VocabIntroController : MonoBehaviour
 {
-    [Serializable]
-    public class Item
-    { 
-        public string name;
-        public string description;
-        public GameObject item;
-        public AudioClip audioClip;
-    }
-
-    [SerializeField] Item [] items;
-    [SerializeField] Text nameItem;
+    [SerializeField] ArObjectsPool arObjectsPool;
+    [SerializeField] Text titleItem;
+    [SerializeField] Text functionItem;
     [SerializeField] Button buttonRepeatAudio;
     [SerializeField] Button buttonNext;
+    [SerializeField] GameObject canvas;
+    [SerializeField] GameObject instItem;
     AudioSource audioSource;
-    int countIndex;
+    int soundIndex;
+    int itemIndex;
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
 
         buttonRepeatAudio.onClick.AddListener(RepeatAudio);
-        buttonNext.onClick.AddListener(NextItem);
+        buttonNext.onClick.AddListener(SetNewItem);
 
-        items[countIndex].item.SetActive(true);
-        nameItem.text = items[countIndex].name;
-        audioSource.PlayOneShot(items[countIndex].audioClip);
+        SetNewItem();
+
     }
 
     void RepeatAudio() 
     {
-        audioSource.PlayOneShot(items[countIndex].audioClip);
+        if (arObjectsPool.items[soundIndex].audioPronunciation)
+            audioSource.PlayOneShot(arObjectsPool.items[soundIndex].audioPronunciation);
     }
-    void NextItem()
+    void SetNewItem()
     {
-        countIndex++;
 
-        for (int i = 0; i < items.Length; i++)
-            items[i].item.SetActive(false);
+        //for (int i = 0; i < arObjectsPool.items.Length; i++)
+        //    arObjectsPool.items[i].item.SetActive(false);
+        canvas.transform.parent = null;
+        canvas.SetActive(false);
+        canvas.GetComponent<ObjectUI>().item = null;
 
-        items[countIndex].item.SetActive(true);
-        nameItem.text=items[countIndex].name;
-        audioSource.PlayOneShot(items[countIndex].audioClip);
+        if (instItem) Destroy(instItem);
+        instItem = Instantiate(arObjectsPool.items[itemIndex].item);
+
+        canvas.transform.parent = instItem.transform;
+        canvas.transform.localPosition = Vector3.zero;
+        canvas.transform.localEulerAngles = Vector3.zero;
+        canvas.GetComponent<ObjectUI>().item = instItem;
+        canvas.SetActive(true);
+
+        titleItem.text = arObjectsPool.items[itemIndex].title;
+        functionItem.text = arObjectsPool.items[itemIndex].function;
+        soundIndex = itemIndex;
+
+        itemIndex++;
+        if (itemIndex == arObjectsPool.items.Length)
+            itemIndex = 0;
     }
 
 }

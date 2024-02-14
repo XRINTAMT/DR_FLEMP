@@ -2180,7 +2180,7 @@ GameObject:
   - component: {fileID: 1141622883}
   - component: {fileID: 1141622884}
   m_Layer: 0
-  m_Name: Tablle
+  m_Name: TablleManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2215,9 +2215,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33736015ccd300439038ff0793e8460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  iPad: {fileID: 1942928984}
   pointLeft: {fileID: 860207396}
   pointRight: {fileID: 987363905}
   instObject: {fileID: 7692569259824444389, guid: 426fab1986e2b364090ddf841024b030, type: 3}
+  handRight: {fileID: 0}
+  handLeft: {fileID: 0}
 --- !u!1001 &1171894931
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2495,7 +2498,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8131355108963916676, guid: 693d0d3f79830f742a2e55cf03b83d7f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[8].m_MethodName
-      value: SetStartObject
+      value: DisableAllObjects
       objectReference: {fileID: 0}
     - target: {fileID: 8131355108963916676, guid: 693d0d3f79830f742a2e55cf03b83d7f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[9].m_MethodName
@@ -3234,7 +3237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6330822465488399616, guid: 77e8e9cda519387438855d8c59e966bf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 6330822465488399616, guid: 77e8e9cda519387438855d8c59e966bf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3875,6 +3878,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1942928984 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 7157473909044217539, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+  m_PrefabInstance: {fileID: 862561303}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1943021935
 PrefabInstance:
   m_ObjectHideFlags: 0

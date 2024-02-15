@@ -21,6 +21,7 @@ public class HeadCharacterFollow : MonoBehaviour
     protected Animator m_Animator;
     public bool inArea;
     public bool alawaysInArea;
+    public bool alwayysFollow;
     Transform targetPos;
     void Start()
     {
@@ -49,6 +50,11 @@ public class HeadCharacterFollow : MonoBehaviour
         if (FindAnyObjectByType<RecordedScenarioText>() && SceneManager.GetActiveScene().name != "RecordedShiftChange")
         {
             this.enabled = false;
+        }
+
+        if (alwayysFollow)
+        {
+            EnterArea();
         }
     }
     private void Update()

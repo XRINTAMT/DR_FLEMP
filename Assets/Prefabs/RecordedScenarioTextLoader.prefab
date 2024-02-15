@@ -1,0 +1,778 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8857427847784417374
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8857427847784417360}
+  - component: {fileID: 8857427847784417375}
+  m_Layer: 0
+  m_Name: RecordedScenarioTextLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8857427847784417360
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8857427847784417374}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.40560493, y: -0.015445747, z: 3.6743777}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8857427847784417375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8857427847784417374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab7f735f035768449b7865fcc5bce1ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scenarioName: B12_Recorded
+  PlayOnAwake: 1
+  PlayOnAwakeTimeout: 2
+  ScenarioEndTimeout: 2
+  OnScenarioEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  Speakers:
+  - Name: Ann
+    LocalizedName:
+    - Nurse Ann
+    - "Frau M\xFCller"
+    Speaker: {fileID: 0}
+    GoogleSpeaker: {fileID: 0}
+  - Name: Tom
+    LocalizedName:
+    - Tom Stevens
+    - Herr Stegmann
+    Speaker: {fileID: 0}
+    GoogleSpeaker: {fileID: 0}
+  AnimationEntities:
+  - Name: blood_pressure
+    AnimationEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: AnimationMovement, Assembly-CSharp
+          m_MethodName: AnimationBloodPressure
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - Name: thermometer
+    AnimationEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: AnimationMovement, Assembly-CSharp
+          m_MethodName: AnimationThermometer
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - Name: pulse_oxy
+    AnimationEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: AnimationMovement, Assembly-CSharp
+          m_MethodName: AnimationPutOnPulse
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  TranscriptTextbox: {fileID: 0}
+  TestScenarioSpeed: 1
+  Phrases:
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 0500000005000000
+    Text:
+    - Good morning! My name is Ann, and I'm an admissions nurse.
+    - "Guten Morgen! Ich hei\xDFe Frau M\xFCller und ich unterstz\xFCtze Sie bei
+      der Aufnahme. \r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: cb81fedd612951942b090d6ffc134bbf, type: 3}
+  - Speaker: Ann
+    Highlight: 1
+    Timecode: 0a0000000c000000
+    Text:
+    - Can I start by asking your full name?
+    - "Darf ich nach Ihrem vollst\xE4ndigen Namen fragen?\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 6c2384851328a3c4686c77a4dd3eadc3, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: 0e00000011000000
+    Text:
+    - Good morning. I'm Tom Stevens.
+    - "Guten Morgen! Mein Name ist Thomas Stegmann.\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 6a7223f81c3bd6b49bd4680d84e03ba1, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 1100000015000000
+    Text:
+    - "What\u2019s your date of birth?"
+    - "Wie ist Ihr Geburtsdatum?\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 5574cfdf9ebe1f6448b20366dc63c888, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: 1300000019000000
+    Text:
+    - 2 June 2005.
+    - "der 2. Juni 2005\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: f43b9550c3cc674419b0faf9b3ca2a8d, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 160000001d000000
+    Text:
+    - "Where do you live, Mr Stevens? What\u2019s your address?"
+    - "Wo wohnen Sie, Herr Stegmann? Wie lautet Ihre Anschrift?\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 19d9ebde42d81354ebf3954e78abc9d8, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: 1b00000023000000
+    Text:
+    - "It\u2019s apartment 7, 22 Park Street, D\xFCsseldorf. "
+    - "Charlottenstra\xDFe 49, 40210 D\xFCsseldorf  \"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 63373d516c88cb14d8bb08b9dd4a89d4, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 1f00000028000000
+    Text:
+    - Thank you, Mr Stevens. What is your phone number?
+    - "Vielen Dank, Herr Stegmann. Und wie ist Ihre Telefonnummer? \"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: f7a2fa4bddbd4294497444c84e8a6d7a, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: 2400000031000000
+    Text:
+    - +49 30 9018205
+    - "+49 30 9018205\"\"\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: fe7f987b867bc06438f933117c31ad5f, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 2900000036000000
+    Text:
+    - 'Mr Stevens, who is your next of kin? A person that we could call in an emergent
+      case. '
+    - "Herr Stegmann, haben Sie Angeh\xF6rige, die wir in einem Notfall anrufen k\xF6nnten?\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: d3397e3782d360344be5b96218967955, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: 2f0000003c000000
+    Text:
+    - "Well, I haven\u2019t thought of that. I guess, it\u2019s my mom, Betany Stevens.
+      The same phone number. Or my dad, John Stevens. "
+    - "Naja, dar\xFCber habe ich noch nicht nachgedacht. Ich sch\xE4tze, es ist meine
+      Mutter, Bettina Stegmann. Dieselbe Telefonnummer. Oder mein Vater, Jonah Stegmann.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 961575b650f621340bd2d4b89ebf44d7, type: 3}
+  - Speaker: Ann
+    Highlight: 1
+    Timecode: 3700000046000000
+    Text:
+    - Do you have any allergies?
+    - "Sind Sie allergisch gegen etwas?\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: f84b3a9587a4c6744a5f7716e9005613, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 3a0000004a000000
+    Text:
+    - Food? Medication?
+    - "Gegen Essen oder Medikamente?\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: b98468140d613f14abdad53802a41043, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: 3e0000004f000000
+    Text:
+    - Not very severe, but I sometimes feel allergic to some kinds of seafood.
+    - "Nicht sehr stark, aber ich reagiere manchmal allergisch auf einige Arten von
+      Meeresfr\xFCchten.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 5135fb1470e5fd644b9e513fb2aae753, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 4300000054000000
+    Text:
+    - 'Noted. Have you ever been to the hospital for any treatment? Do you have any
+      chronic diseases? '
+    - "Alles klar. Waren Sie schon einmal zur Behandlung im Krankenhaus? Haben Sie
+      chronische Krankheiten?\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: f7251d703cb41a7458854735cf7fbb5b, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: 490000005c000000
+    Text:
+    - No, none of that.
+    - "Nein, nichts davon.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: f731fa36394a2b14cb5fbfb1688c1694, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 4c0000005f000000
+    Text:
+    - Do you take any medication on regular basis?
+    - "Nehmen Sie regelm\xE4\xDFig Medikamente ein?\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: bad347e164403b34a97f1b6cc532c8f7, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: 5000000064000000
+    Text:
+    - No, just some painkillers. One or two pills during last night.
+    - "Nein, ab und zu Schmerztabletten. Eine oder zwei in der letzten Nacht. \"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 2a3b6b27c5563a44eb62c50d9c6cbdad, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 5500000069000000
+    Text:
+    - Mr. Stevens, how are you feeling?
+    - "Herr Stegmann, wie f\xFChlen Sie sich?\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 48fa48a8db75d9449b20f68eaa0d5f21, type: 3}
+  - Speaker: Ann
+    Highlight: 1
+    Timecode: 590000006d000000
+    Text:
+    - What is your reason for coming here?
+    - "Aus welchem Grund sind Sie zu uns gekommen?\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 88bb44f6b3078d24c8a350e91fb903e6, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: 5e00000072000000
+    Text:
+    - I've got this sharp, stabbing pain in the lower right side of my stomach that's
+      been bothering me for a while. It's consistent and not going away.
+    - "Ich habe seit einiger Zeit scharfe, stechende Schmerzen recht im Unterbauch.
+      Sie sind durchgehend und gehen nicht weg. \"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 3bf8cc207b5e0b14cac8be1627ace31c, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: 630000007a000000
+    Text:
+    - I'm concerned it might be something like appendicitis, so I came to get it
+      checked out. It's definitely not something I've experienced before.
+    - "Ich bef\xFCrchte, dass es eine Blinddarmentz\xFCndung sein k\xF6nnte, also
+      bin ich hierher gekommen, um es untersuchen zu lassen. Das ist definitiv nichts,
+      was ich schon mal erlebt habe.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 66fe18f599300eb4e9938dea592f6e5e, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 6a00000084000000
+    Text:
+    - Thank you. Mr Stevens. You will be taken care of right away. Please, sit still
+      and try not to make any sudden movements.
+    - "Ich danke Ihnen, Herr Stegmann. Man k\xFCmmert sich sofort um Sie. Bleiben
+      Sie bitte auf Ihrem Platz und machen Sie keine pl\xF6tzlichen Bewegungen.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: a6aad74db435a964288ccf819e5a80f9, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 7600000090000000
+    Text:
+    - Now, I'll need to take your vital signs for our examination sheet.
+    - "Jetzt muss ich Ihre Vitaldaten f\xFCr unseren Untersuchungsbogen aufnehmen.\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 9274cec9f3b33e74d9c15a9d6a12a7e1, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: 7b00000096000000
+    Text:
+    - Okay
+    - "Okay\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: dea3ff1a44f8bee4fbb23541ebf19d3e, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 7d00000099000000
+    Text:
+    - 'Let''s start with your blood pressure. '
+    - "Lass uns mit dem Blutdruck anfangen. \r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: e4a6afad7af9d7e49838f06b7157db29, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: 810000009c000000
+    Text:
+    - Okay
+    - "Okay\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: dea3ff1a44f8bee4fbb23541ebf19d3e, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 820000009e000000
+    Text:
+    - Do you have any known issues or concerns related to your blood pressure?
+    - "Haben Sie irgendwelche bekannten Probleme oder Sorgen bez\xFCglich Ihres Blutdrucks?\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 9239c353c398d3b42838fb12d4b01140, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: 87000000a4000000
+    Text:
+    - No, not that I'm aware of.
+    - "Nichts, dass ich w\xFCsste\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 5de7868371dfb0d459d8e6ec4b124187, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 8a000000a7000000
+    Text:
+    - I'm going to measure your blood pressure now. Please extend your arm, palm
+      up, and relax.
+    - "Ich werde jetzt Ihren Blutdruck messen. Bitte strecken Sie Ihren Arm aus,
+      Handfl\xE4che nach oben, und entspannen Sie sich.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 805b9408045150d48b9da67d46e149f7, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 92000000b1000000
+    Text:
+    - Your blood pressure is 136/80 mmHg. We'll keep an eye on that.
+    - "Ihr Blutdruck liegt bei 136 / 80 mm  Hg. Wir werden das im Auge behalten.\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 62940b9d42b8df146a79ba05694b0850, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: 99000000bb000000
+    Text:
+    - Alright
+    - "Alles klar. \r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: f5f52b36f53c2ab4f8bce34217c2225e, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 9e000000bf000000
+    Text:
+    - 'Now, I''ll check your heart rate. '
+    - "Jetzt werde ich Ihre Herzfrequenz messen.\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: ca7664e46bc69ee4c838cff9ab543906, type: 3}
+  - Speaker: Ann
+    Highlight: 1
+    Timecode: a2000000c4000000
+    Text:
+    - Any history of heart conditions or irregular heartbeats?
+    - "Gab es in der Vergangenheit Herzerkrankungen oder unregelm\xE4\xDFigen Herzschlag?\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: cb2f924afb350b34f8045db30764952a, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: a7000000cb000000
+    Text:
+    - No
+    - "Nein\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: ab6d67e6e1df1d34982771e78ac71dac, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: a9000000ce000000
+    Text:
+    - Okay, I'm going to check your heart rate now. Please stay still for a moment.
+    - "Okay, ich werde jetzt Ihre Herzfrequenz messen. Bitte bleiben Sie einen Moment
+      ruhig.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 867a220e92d3b4743b2f89e7d80d4126, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: b3000000d7000000
+    Text:
+    - Your heart rate is 96 beats per minute. It's slightly elevated, but that can
+      be due to pain and stress.
+    - "Ihre Herzfrequenz liegt bei 96 Schl\xE4gen pro Minute. Sie ist leicht erh\xF6ht,
+      aber das kann durch Schmerzen und Stress verursacht sein.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: ae1b8b6d4c6241744a7399e2b48b8c57, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: bb000000e1000000
+    Text:
+    - Okay
+    - "Okay\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: dea3ff1a44f8bee4fbb23541ebf19d3e, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: c0000000e2000000
+    Text:
+    - 'Next, I''ll measure your respiratory rate. '
+    - "Als n\xE4chstes werde ich Ihre Atemfrequenz messen.\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 351dc967ba7eb6d468d7157027b63bcf, type: 3}
+  - Speaker: Ann
+    Highlight: 1
+    Timecode: c5000000e7000000
+    Text:
+    - Have you experienced any shortness of breath or breathing difficulties lately?
+    - "Hatten Sie in letzter Zeit Kurzatmigkeit oder Schwierigkeiten beim Atmen?\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: cd613879f3b8baa4baa75b4271e00d3f, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: ca000000ed000000
+    Text:
+    - No, but it's a bit hard to breathe because of the pain.
+    - "Nein, aber das Atmen f\xE4llt mir wegen der Schmerzen etwas schwer.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 8746777f444d09148ab1570e72ac1f74, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: cf000000f2000000
+    Text:
+    - I'll observe your respiratory rate for a minute.
+    - "Ich werde kurz Ihre Atemfrequenz beobachten.\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 98175df14455ca84a94116b1af72b3a6, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: d7000000fa000000
+    Text:
+    - Your respiratory rate is 20 breaths per minute. Again, this could be related
+      to the pain.
+    - "Ihre Atemfrequenz liegt bei 20 Atemz\xFCgen pro Minute. Auch dies k\xF6nnte
+      mit den Schmerzen zusammenh\xE4ngen.\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 480f82b6f05301b489504def6c8caee1, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: df00000003010000
+    Text:
+    - Yes, it hurts.
+    - "Ja, das tut weh. \"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: b78f7c14b3bb2a44b93d7231c3474896, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: e300000006010000
+    Text:
+    - Now, let's check your temperature.
+    - "Jetzt messen wir Ihre Temperatur.\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: e3fe85fbaac98a74993f9167224b6aa9, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: e60000000b010000
+    Text:
+    - Any recent fever or chills?
+    - "Hatten Sie in letzter Zeit Fieber oder Sch\xFCttelfrost? \r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 1b22b688478af62479b3611cc7c090bf, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: ea00000010010000
+    Text:
+    - No, I've been feeling fine in that regard.
+    - "Nein, in dieser Hinsicht geht es mir gut.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 0b6559391b5d01548b296b29db869e9f, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: ee00000015010000
+    Text:
+    - Your temperature is 36.5 degrees Celsius, which is normal.
+    - "Ihre Temperatur liegt bei 36,5 Grad Celsius, was normal ist.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: bc1b3371b392a6744abf290e372668fc, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: f40000001c010000
+    Text:
+    - That's good to know.
+    - "Gut zu wissen.\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 28bea8ab1b072a945bbe47d300e554ee, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: f80000001f010000
+    Text:
+    - Finally, I'll measure your oxygen saturation.
+    - "Zum Schluss werde ich Ihre Sauerstoffs\xE4ttigung messen.\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: a139887e7f32aef4fb856f28ea2dd037, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: fd00000024010000
+    Text:
+    - Any history of lung problems or issues with oxygen levels?
+    - "Gab es in der Vergangenheit Lungen- oder Sauerstoffprobleme?\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 359f74ab5e1aed14f9a55dfac41c546e, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: 0201000029010000
+    Text:
+    - No, I've never had any lung issues.
+    - "Nein, ich hatte noch nie Lungenprobleme.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 3424c6d1edada4e4ab3c2b0917e85994, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 050100002c010000
+    Text:
+    - Great. I'll place this oximeter on your finger to measure your oxygen saturation.
+    - "Ich bringe Ihnen jetzt dieses Oximeter an den Finger an, um Ihre Sauerstoffs\xE4ttigung
+      zu messen.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: eaac81b8e1130144395f5eee899e032f, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 1901000040010000
+    Text:
+    - Your oxygen saturation is 98%, which is excellent.
+    - "Ihre Sauerstoffs\xE4ttigung liegt bei 98 %, was hervorragend ist.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: a6ff89f88fe8916419f970ab1fe5ea5d, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: 1f01000047010000
+    Text:
+    - That's a relief.
+    - "Was f\xFCr eine Erleichterung.\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 1d58c92306e646b44839d5cc0f7f86f5, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 230100004b010000
+    Text:
+    - 'Given your symptoms, we''ll need to perform some additional tests. '
+    - "Angesichts Ihrer Symptome m\xFCssen wir einige zus\xE4tzliche Tests durchf\xFChren.\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: a5a1b63586b9b76458c9219ccc371369, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 2801000051010000
+    Text:
+    - 'First, we''ll need a blood test to check for any signs of infection or inflammation. '
+    - " Zun\xE4chst ben\xF6tigen wir eine Blutuntersuchung, um Anzeichen einer Infektion
+      oder Entz\xFCndung festzustellen.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 53f109612b6d2c04b8a39611a08c0123, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 2e01000058010000
+    Text:
+    - 'Secondly, we''ll schedule an urgent ultrasound to further evaluate your condition. '
+    - "Zweitens werden wir eine dringende Ultraschalluntersuchung ansetzen, um Ihren
+      Zustand weiter zu beurteilen.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: c1ad701c81a5bd74e83957f93a9bdd77, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 3401000060010000
+    Text:
+    - Is that okay with you?
+    - "Ist das f\xFCr Sie in Ordnung?\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: c70cef5fef08c6e4caa4bc62d7443412, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: 3801000064010000
+    Text:
+    - Yes, that sounds necessary.
+    - "Ja, das scheint notwendig zu sein.\"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: c2f032a65aa1ed8469003f4bc2a8928f, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 3c01000068010000
+    Text:
+    - I'll make sure these are scheduled for you
+    - "Ich werde mich darum k\xFCmmern, dass Sie eingeplant werden. \"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 664d991dd3bb325479e3570ad9a29f0f, type: 3}
+  - Speaker: Ann
+    Highlight: 0
+    Timecode: 3f0100006d010000
+    Text:
+    - If you have any more questions or concerns, please feel free to ask.
+    - "Wenn Sie weitere Fragen oder Bedenken haben, stehen wir Ihnen gerne zur Verf\xFCgung.
+      \"\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 3ade53e990427b44f9b0da49361aeb42, type: 3}
+  - Speaker: Tom
+    Highlight: 0
+    Timecode: 4401000074010000
+    Text:
+    - Thank you, Ann. I appreciate your care and thoroughness.
+    - "Vielen Dank, Frau M\xFCller. Ich wei\xDF Ihre M\xFChe und Sorgfalt zu sch\xE4tzen."
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 1a4b3eb2d78f61c4497195b37eae8940, type: 3}
+  AnimationCalls:
+  - AnimationTag: blood_pressure
+    Timecode: 8b000000a8000000
+  - AnimationTag: thermometer
+    Timecode: e400000007010000
+  - AnimationTag: pulse_oxy
+    Timecode: 0a01000031010000
+  language: 0

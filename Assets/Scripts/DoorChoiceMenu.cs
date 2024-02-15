@@ -26,7 +26,7 @@ public class DoorChoiceMenu : MonoBehaviour
         }
     }
 
-    private void SubmitSelection()
+    public void SubmitSelection()
     {
         Toggle selectedToggle = GetSelectedToggle();
 

@@ -8,6 +8,8 @@ public class HandLayerController : MonoBehaviour
     Grabbable grabbable;
     Hand handRight;
     Hand handLeft;
+    public Renderer rightRend;
+    public Renderer leftRend;
     bool grabRight,grabLeft;
     // Start is called before the first frame update
     void Awake()
@@ -17,7 +19,10 @@ public class HandLayerController : MonoBehaviour
         grabbable = GetComponent<Grabbable>();
         grabbable.onGrab.AddListener(OnGrab);
         grabbable.onRelease.AddListener(OnRelease);
+
     }
+
+   
 
     public void OnGrab(Hand hand, Grabbable grabbable) 
     {
@@ -43,15 +48,18 @@ public class HandLayerController : MonoBehaviour
 
     void ChangeHandsLayer(int layer) 
     {
-        foreach (Renderer rend in handRight.GetComponentsInChildren<Renderer>(true))
-        {
-            rend.gameObject.layer = layer;
-        }
+        //foreach (Renderer rend in handRight.GetComponentsInChildren<Renderer>(true))
+        //{
+        //    rend.gameObject.layer = layer;
+        //}
 
-        foreach (Renderer rend in handLeft.GetComponentsInChildren<Renderer>(true))
-        {
-            rend.gameObject.layer = layer;
-        }
+        //foreach (Renderer rend in handLeft.GetComponentsInChildren<Renderer>(true))
+        //{
+        //    rend.gameObject.layer = layer;
+        //}
+
+        rightRend.gameObject.layer = layer;
+        leftRend.gameObject.layer = layer;
     }
     // Update is called once per frame
     void Update()

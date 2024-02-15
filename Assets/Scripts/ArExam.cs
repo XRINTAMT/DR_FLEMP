@@ -81,6 +81,10 @@ public class ArExam : MonoBehaviour
         buttonsAudio[1].onClick.AddListener(() => PlaySound(v2, buttonsAudio[1]));
         buttonsAudio[2].onClick.AddListener(() => PlaySound(v3, buttonsAudio[2]));
 
+        buttonsAudio[0].transform.GetChild(1).GetComponent<Text>().text = arObjectsPool.items[v1].title;
+        buttonsAudio[1].transform.GetChild(1).GetComponent<Text>().text = arObjectsPool.items[v2].title;
+        buttonsAudio[2].transform.GetChild(1).GetComponent<Text>().text = arObjectsPool.items[v3].title;
+
         correctButton = buttonsAudio[0];
     }
     void PlaySound(int index, Button button) 
@@ -97,19 +101,24 @@ public class ArExam : MonoBehaviour
         chooseButton.interactable = false;
         if (chooseButton==correctButton)
         {
-            SetNewItem();
             totalScore = totalScore + itemScore;
+            SetNewItem();
+            return;
         }
-        if (itemIndex != chooseIndex)
-        {
-            itemScore--;
+        //if (chooseButton != correctButton)
+        //{
+        //    itemScore--;
 
-            if (itemScore==1)
-            {
-                SetNewItem();
-                totalScore = totalScore + itemScore;
-            }
+        //    return;
+        //}
+
+        if (itemScore==1)
+        {
+            totalScore = totalScore + itemScore;
+            SetNewItem();
+            return;
         }
+        itemScore--;
     }
     // Update is called once per frame
     void Update()

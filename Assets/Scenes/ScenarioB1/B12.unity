@@ -2706,7 +2706,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
-  - Name: thermometer
+  - Name: temp
     AnimationEvent:
       m_PersistentCalls:
         m_Calls:
@@ -2722,7 +2722,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
-  - Name: pulse_oxy
+  - Name: pulse
     AnimationEvent:
       m_PersistentCalls:
         m_Calls:
@@ -3336,9 +3336,9 @@ MonoBehaviour:
   AnimationCalls:
   - AnimationTag: blood_pressure
     Timecode: 8b000000a8000000
-  - AnimationTag: thermometer
+  - AnimationTag: temp
     Timecode: e400000007010000
-  - AnimationTag: pulse_oxy
+  - AnimationTag: pulse
     Timecode: 0a01000031010000
   language: 0
 --- !u!4 &1972225608
@@ -3541,7 +3541,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 3.2e-44, y: 5.2672e-41, z: 1.02e-43, w: 5.832252e-19}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -4436,6 +4436,50 @@ PrefabInstance:
     - target: {fileID: 3880210399601174135, guid: 3100bb081911ea24081a3931e7a62424, type: 3}
       propertyPath: m_Name
       value: ROOM CABINET
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232206946055674790, guid: 3100bb081911ea24081a3931e7a62424, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: -3.448417e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232206946055674790, guid: 3100bb081911ea24081a3931e7a62424, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1.02e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192966111187831160, guid: 3100bb081911ea24081a3931e7a62424, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: -3.448417e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192966111187831160, guid: 3100bb081911ea24081a3931e7a62424, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1.02e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 7624881338631676880, guid: 3100bb081911ea24081a3931e7a62424, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: -3.448417e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7624881338631676880, guid: 3100bb081911ea24081a3931e7a62424, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1.02e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 7721211755257594854, guid: 3100bb081911ea24081a3931e7a62424, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: -3.448417e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7721211755257594854, guid: 3100bb081911ea24081a3931e7a62424, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1.02e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 8730380726233068566, guid: 3100bb081911ea24081a3931e7a62424, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 3e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 9156010851384414651, guid: 3100bb081911ea24081a3931e7a62424, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: -3.448417e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 9156010851384414651, guid: 3100bb081911ea24081a3931e7a62424, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1.02e-43
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3100bb081911ea24081a3931e7a62424, type: 3}

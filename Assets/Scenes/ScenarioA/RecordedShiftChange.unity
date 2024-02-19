@@ -214,6 +214,7 @@ MonoBehaviour:
   interpolationSpeed: 1
   inArea: 0
   alawaysInArea: 0
+  alwayysFollow: 0
 --- !u!1 &236624552 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b2d0d99568b46274a8aa96fe7db04129, type: 3}
@@ -234,6 +235,7 @@ MonoBehaviour:
   interpolationSpeed: 1
   inArea: 0
   alawaysInArea: 0
+  alwayysFollow: 0
 --- !u!95 &236624554 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: b2d0d99568b46274a8aa96fe7db04129, type: 3}
@@ -1930,6 +1932,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3938529276102036416, guid: b3cec38e3ada8b64584fc5510ffa5258, type: 3}
+      propertyPath: m_BlendShapeWeights.Array.size
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 3938529276102036416, guid: b3cec38e3ada8b64584fc5510ffa5258, type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[15]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3938529276102036416, guid: b3cec38e3ada8b64584fc5510ffa5258, type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[16]
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4560604174816310963, guid: b3cec38e3ada8b64584fc5510ffa5258, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -2631,6 +2645,7 @@ MonoBehaviour:
   interpolationSpeed: 1
   inArea: 0
   alawaysInArea: 0
+  alwayysFollow: 0
 --- !u!1 &1778389897 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 748862119852955521, guid: 088690b0ee03c6e488d4854047047a0d, type: 3}

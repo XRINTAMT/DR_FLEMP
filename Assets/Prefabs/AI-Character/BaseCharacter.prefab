@@ -2688,6 +2688,7 @@ MonoBehaviour:
   interpolationSpeed: 1
   inArea: 0
   alawaysInArea: 0
+  alwayysFollow: 0
 --- !u!1 &1538931787561461453
 GameObject:
   m_ObjectHideFlags: 0
@@ -4141,6 +4142,7 @@ MonoBehaviour:
   interpolationSpeed: 1
   inArea: 0
   alawaysInArea: 0
+  alwayysFollow: 0
 --- !u!1 &2215397930005968365
 GameObject:
   m_ObjectHideFlags: 0
@@ -4754,6 +4756,7 @@ MonoBehaviour:
   interpolationSpeed: 1
   inArea: 0
   alawaysInArea: 0
+  alwayysFollow: 0
 --- !u!1 &2413414215972923830
 GameObject:
   m_ObjectHideFlags: 0
@@ -8458,7 +8461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSources:
-  - {fileID: 2778475835057526509}
+  - {fileID: 4684765930719426679}
   useBuffer: 1
 --- !u!1 &4170266892781973043
 GameObject:
@@ -10231,18 +10234,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b15403450229c3a4b8455a61d6143a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  presetVoiceID: YoungMale
-  AudioSource: {fileID: 2778475835057526509}
-  prependedText: 
-  appendedText: 
   _events:
     OnTextPlaybackStart:
       m_PersistentCalls:
         m_Calls: []
-    OnTextPlaybackFinished:
+    OnTextPlaybackCancelled:
       m_PersistentCalls:
         m_Calls: []
-    OnTextPlaybackCancelled:
+    OnTextPlaybackFinished:
       m_PersistentCalls:
         m_Calls: []
     OnAudioClipPlaybackReady:
@@ -10251,40 +10250,103 @@ MonoBehaviour:
     OnAudioClipPlaybackStart:
       m_PersistentCalls:
         m_Calls: []
+    OnAudioClipPlaybackCancelled:
+      m_PersistentCalls:
+        m_Calls: []
     OnAudioClipPlaybackFinished:
       m_PersistentCalls:
         m_Calls: []
-    OnAudioClipPlaybackCancelled:
+    _onInit:
+      m_PersistentCalls:
+        m_Calls: []
+    _onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+    _onLoadBegin:
+      m_PersistentCalls:
+        m_Calls: []
+    _onLoadAbort:
+      m_PersistentCalls:
+        m_Calls: []
+    _onLoadFailed:
+      m_PersistentCalls:
+        m_Calls: []
+    _onLoadSuccess:
+      m_PersistentCalls:
+        m_Calls: []
+    _onPlaybackReady:
+      m_PersistentCalls:
+        m_Calls: []
+    _onPlaybackStart:
+      m_PersistentCalls:
+        m_Calls: []
+    _onPlaybackCancelled:
+      m_PersistentCalls:
+        m_Calls: []
+    _onPlaybackClipUpdated:
+      m_PersistentCalls:
+        m_Calls: []
+    _onPlaybackComplete:
+      m_PersistentCalls:
+        m_Calls: []
+    _onPlaybackQueueBegin:
+      m_PersistentCalls:
+        m_Calls: []
+    _onPlaybackQueueComplete:
       m_PersistentCalls:
         m_Calls: []
     OnClipDataQueued:
       m_PersistentCalls:
         m_Calls: []
+    OnClipLoadBegin:
+      m_PersistentCalls:
+        m_Calls: []
     OnClipDataLoadBegin:
       m_PersistentCalls:
         m_Calls: []
-    OnClipDataLoadFailed:
-      m_PersistentCalls:
-        m_Calls: []
-    OnClipDataLoadSuccess:
+    OnClipLoadAbort:
       m_PersistentCalls:
         m_Calls: []
     OnClipDataLoadAbort:
       m_PersistentCalls:
         m_Calls: []
+    OnClipLoadFailed:
+      m_PersistentCalls:
+        m_Calls: []
+    OnClipDataLoadFailed:
+      m_PersistentCalls:
+        m_Calls: []
+    OnClipLoadSuccess:
+      m_PersistentCalls:
+        m_Calls: []
+    OnClipDataLoadSuccess:
+      m_PersistentCalls:
+        m_Calls: []
     OnClipDataPlaybackReady:
+      m_PersistentCalls:
+        m_Calls: []
+    OnStartSpeaking:
       m_PersistentCalls:
         m_Calls: []
     OnClipDataPlaybackStart:
       m_PersistentCalls:
         m_Calls: []
-    OnClipDataPlaybackFinished:
+    OnCancelledSpeaking:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: WitAutoReactivation, Assembly-CSharp
+          m_MethodName: Ignore
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     OnClipDataPlaybackCancelled:
-      m_PersistentCalls:
-        m_Calls: []
-    OnStartSpeaking:
       m_PersistentCalls:
         m_Calls: []
     OnFinishedSpeaking:
@@ -10302,34 +10364,21 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-    OnCancelledSpeaking:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: WitAutoReactivation, Assembly-CSharp
-          m_MethodName: Ignore
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    OnClipLoadBegin:
+    OnClipDataPlaybackFinished:
       m_PersistentCalls:
         m_Calls: []
-    OnClipLoadFailed:
-      m_PersistentCalls:
-        m_Calls: []
-    OnClipLoadSuccess:
-      m_PersistentCalls:
-        m_Calls: []
-    OnClipLoadAbort:
-      m_PersistentCalls:
-        m_Calls: []
-  _tts: {fileID: 0}
+  PrependedText: 
+  AppendedText: 
+  _ttsService: {fileID: 2267670477850200636}
+  presetVoiceID: YoungMale
+  customWitVoiceSettings:
+    SettingsId: 
+    PrependedText: 
+    AppendedText: 
+    voice: Charlie
+    style: default
+    speed: 100
+    pitch: 100
 --- !u!1 &4685867529851672064
 GameObject:
   m_ObjectHideFlags: 0
@@ -11217,6 +11266,7 @@ MonoBehaviour:
   interpolationSpeed: 1
   inArea: 0
   alawaysInArea: 0
+  alwayysFollow: 0
 --- !u!1 &5028695855193881346
 GameObject:
   m_ObjectHideFlags: 0
@@ -12512,6 +12562,7 @@ MonoBehaviour:
   interpolationSpeed: 1
   inArea: 0
   alawaysInArea: 0
+  alwayysFollow: 0
 --- !u!1 &5635488421998669639
 GameObject:
   m_ObjectHideFlags: 0
@@ -20550,6 +20601,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a89561c2ba096ad4dbf37bbb423d6f3c, type: 3}
+--- !u!114 &2267670477850200636 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4852061571279439023, guid: a89561c2ba096ad4dbf37bbb423d6f3c, type: 3}
+  m_PrefabInstance: {fileID: 6642138758001561235}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b3124b830442d45b9f357ff99b152f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2267670477850200639 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4852061571279439020, guid: a89561c2ba096ad4dbf37bbb423d6f3c, type: 3}

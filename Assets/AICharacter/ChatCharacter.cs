@@ -75,12 +75,18 @@ public class ChatCharacter : MonoBehaviour
     {
         var deepHistory = _history.GetDeepHistory(numberOfDeepHistoryEntries, 2, embedding);
         var history = _history.GetHistory(numberOfHistoryEntries);
+        
+        var language = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0) == 0 ? "English" : "German";
+        bool german = (language == "German");
+
+        string name = german ? info.germanName : info.name;
+        string description = german ? info.germanDescription : info.description;
+        
         var background = new ChatMessage()
         {
             Role = "system",
-            Content = "Do not act as an assistant. Do not ask  how you can help. You are "+info.name+", patient in the hospital. Act as this character: "+ info.description,
+            Content = "Do not act as an assistant. Do not ask  how you can help. You are "+name+", patient in the hospital. Act as this character: "+ description,
         };
-        var language = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0) == 0 ? "English" : "German";
         var instruction = new ChatMessage()
         {
             Role = "system",
@@ -92,7 +98,7 @@ public class ChatCharacter : MonoBehaviour
         prompt.AddRange(history);
         prompt.Add(background);
         prompt.Add(instruction);
-        userMessage.Content = $"Nurse's message\n"+userMessage.Content+$"\n\n{info.name}'s response:\n";
+        userMessage.Content = $"Nurse's message\n"+userMessage.Content+$"\n\n{name}'s response:\n";
         prompt.Add(userMessage);
         
         foreach(var m in prompt) Debug.Log(m.Content);

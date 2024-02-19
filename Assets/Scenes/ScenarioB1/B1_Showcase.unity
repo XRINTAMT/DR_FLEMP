@@ -274,7 +274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5446130272837922905, guid: 0a07db11ba7f2d64399a6f527095fbba, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5446130272837922906, guid: 0a07db11ba7f2d64399a6f527095fbba, type: 3}
       propertyPath: m_RootOrder
@@ -528,6 +528,10 @@ PrefabInstance:
     - target: {fileID: 4738932218667688023, guid: 727cfee5d49895d4898a09487ff910e4, type: 3}
       propertyPath: m_Name
       value: SM_Computer_02e
+      objectReference: {fileID: 0}
+    - target: {fileID: 4738932218667688023, guid: 727cfee5d49895d4898a09487ff910e4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8619687816273695300, guid: 727cfee5d49895d4898a09487ff910e4, type: 3}
       propertyPath: m_RootOrder
@@ -2187,6 +2191,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Computer_02d
       objectReference: {fileID: 0}
+    - target: {fileID: 4559910694313927167, guid: fdb447d4b17ccfc458281795f161713b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fdb447d4b17ccfc458281795f161713b, type: 3}
 --- !u!1001 &1222480896
@@ -2729,11 +2737,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5446130272837922906, guid: 0a07db11ba7f2d64399a6f527095fbba, type: 3}
   m_PrefabInstance: {fileID: 1492295908}
   m_PrefabAsset: {fileID: 0}
---- !u!225 &1516921383 stripped
-CanvasGroup:
-  m_CorrespondingSourceObject: {fileID: 3925511567957290949, guid: 0a07db11ba7f2d64399a6f527095fbba, type: 3}
-  m_PrefabInstance: {fileID: 507579147}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1532467818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3127,11 +3130,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c018d1c0268d41459ec2c2287535466, type: 3}
---- !u!225 &1827880253 stripped
-CanvasGroup:
-  m_CorrespondingSourceObject: {fileID: 3925511567957290949, guid: 0a07db11ba7f2d64399a6f527095fbba, type: 3}
-  m_PrefabInstance: {fileID: 4562359372952069136}
-  m_PrefabAsset: {fileID: 0}
 --- !u!225 &1837247481 stripped
 CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 3925511567957290949, guid: 0a07db11ba7f2d64399a6f527095fbba, type: 3}
@@ -3807,6 +3805,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShowcaseSign
       objectReference: {fileID: 0}
+    - target: {fileID: 5446130272837922905, guid: 0a07db11ba7f2d64399a6f527095fbba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5446130272837922906, guid: 0a07db11ba7f2d64399a6f527095fbba, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -4047,7 +4049,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8348b7786eec8fb43ac51e557659ba64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CallsNeeded: 8
+  CallsNeeded: 6
   OnAccumulated:
     m_PersistentCalls:
       m_Calls:
@@ -4100,12 +4102,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup:
-  - {fileID: 1827880253}
   - {fileID: 1581238933}
   - {fileID: 1912010454}
   - {fileID: 1837247481}
   - {fileID: 1560600693}
-  - {fileID: 1516921383}
   - {fileID: 856450334}
   - {fileID: 1416430702}
 --- !u!4 &8413932526186927178 stripped

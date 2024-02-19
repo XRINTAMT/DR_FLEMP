@@ -46,6 +46,7 @@ namespace PersistentSaveSystem
                 if (Events.Length > _EventID)
                 {
                     Events[_EventID].Invoke();
+                    Debug.Log($"Event: {_EventID}, State: {Name}, firing" );
                     return;
                 }
                 Debug.LogError("No such event in that state");
@@ -72,11 +73,13 @@ namespace PersistentSaveSystem
 
         [SerializeField] State[] States;
         private int CurrentState;
+        public bool loadState = true;
 
         private void Start()
         {
             States[CurrentState].Picked();
-            SwitchState(PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "SelectedStage", 0));
+            if(loadState)
+                SwitchState(PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "SelectedStage", 0));
         }
 
         public void SwitchState(int _State)

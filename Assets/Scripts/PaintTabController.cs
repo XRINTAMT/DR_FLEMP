@@ -14,6 +14,21 @@ public class PaintTabController : MonoBehaviour
         germanPanel.SetActive(language == "German");
     }
 
+    
+    public void SetTab(int language) 
+    {
+        if (language == 0)
+        {
+            englishPanel.SetActive(true);
+            germanPanel.SetActive(false);
+        }
+        if (language == 1)
+        {
+            englishPanel.SetActive(false);
+            germanPanel.SetActive(true);
+        }
+       
+    }
     // Update is called once per frame
     void Update()
     {

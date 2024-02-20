@@ -1402,6 +1402,240 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9ba02a9c9293d43a804e1593724544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1138862221 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 490235363895477841, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+  m_PrefabInstance: {fileID: 1368745375}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138862213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae96c84d25a3f7e4c9923942dade668e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1138862224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138862213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fab3a5d26a09d464cb3b5e1adbe9deb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1138862225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138862213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f9ba02a9c9293d43a804e1593724544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1138862226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138862213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fab3a5d26a09d464cb3b5e1adbe9deb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1138862227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138862213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f9ba02a9c9293d43a804e1593724544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1163794172
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1163794174}
+  - component: {fileID: 1163794173}
+  m_Layer: 0
+  m_Name: AR1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1163794173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163794172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 506366a9bb5893143a31e1f157785a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scenarioName: AR1
+  OnScenarioEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  Speakers:
+  - Name: VoiceModel
+    LocalizedName: []
+    Speaker: {fileID: 1029492128}
+    GoogleSpeaker: {fileID: 1138862221}
+  Phrases:
+  - Speaker: VoiceModel
+    Tag: Surgical scissors
+    Text:
+    - Surgical scissors
+    - "Chirurgische Schere\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 0}
+  - Speaker: VoiceModel
+    Tag: Syringe
+    Text:
+    - Syringe
+    - "Spritze\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 0}
+  - Speaker: VoiceModel
+    Tag: Dropper
+    Text:
+    - Dropper
+    - "Tropfer\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 0}
+  - Speaker: VoiceModel
+    Tag: Tweezer
+    Text:
+    - Tweezer
+    - "Pinzette\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 0}
+  - Speaker: VoiceModel
+    Tag: Scalpel
+    Text:
+    - Scalpel
+    - "Skalpell\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 0}
+  - Speaker: VoiceModel
+    Tag: Laryngoscope
+    Text:
+    - Laryngoscope
+    - "Laryngoskop\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 0}
+  - Speaker: VoiceModel
+    Tag: Tubing clamp
+    Text:
+    - Tubing clamp
+    - "Schlauchklemme\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 0}
+  - Speaker: VoiceModel
+    Tag: Gauze
+    Text:
+    - Gauze
+    - "Gaze\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 0}
+  - Speaker: VoiceModel
+    Tag: Surgical bowl
+    Text:
+    - Surgical bowl
+    - "Chirurgische Sch\xFCssel\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 0}
+  - Speaker: VoiceModel
+    Tag: Kidney tray
+    Text:
+    - Kidney tray
+    - "Nierenschale\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 0}
+  - Speaker: VoiceModel
+    Tag: Stethoscope
+    Text:
+    - Stethoscope
+    - "Stethoskop\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 0}
+  - Speaker: VoiceModel
+    Tag: Outlet forceps
+    Text:
+    - Outlet forceps
+    - "Ausgangspinzette\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 0}
+  - Speaker: VoiceModel
+    Tag: Oxygen mask
+    Text:
+    - Oxygen mask
+    - "Sauerstoffmaske\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 0}
+  - Speaker: VoiceModel
+    Tag: Bandage scissors
+    Text:
+    - Bandage scissors
+    - "Verbandschere\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 0}
+  - Speaker: VoiceModel
+    Tag: Resuscitator bag
+    Text:
+    - Resuscitator bag
+    - Resuscitator -Tasche
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 0}
+  language: 0
+--- !u!4 &1163794174
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163794172}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.40560493, y: -0.015445747, z: 3.6743777}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1259357629
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1558,7 +1792,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 111445110623832839, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
       propertyPath: _diskPath
-      value: RecordedAudio/
+      value: AR1/
       objectReference: {fileID: 0}
     - target: {fileID: 111445110623832839, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
       propertyPath: _defaultSettings.DiskCacheLocation
@@ -1997,7 +2231,7 @@ GameObject:
   - component: {fileID: 1972225608}
   - component: {fileID: 1972225607}
   m_Layer: 0
-  m_Name: RecordedScenarioTextLoader
+  m_Name: ThinkingPhrases
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

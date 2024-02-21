@@ -37,7 +37,8 @@ public class WelcomeScreenController : MonoBehaviour
             FindObjectOfType<RecordedScenarioText>().PlayOnAwake = false;
 
         panelStart.SetActive(true);
-        textStart.text = GetWelcomeText();
+        textStart.text = GetPopupText(0);
+        textEnd.text = GetPopupText(1);
     }
 
     string Parse(int rowIndex, int column)
@@ -47,9 +48,9 @@ public class WelcomeScreenController : MonoBehaviour
         return text;
     }
 
-    private string GetWelcomeText()
+    private string GetPopupText(int _type)
     {
-        List<string[]> csvData = (new CSVParser("Scenarios/Intros")).rowData;
+        List<string[]> csvData = (new CSVParser($"Scenarios/Intros")).rowData;
 
         int language = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0);
 
@@ -58,7 +59,7 @@ public class WelcomeScreenController : MonoBehaviour
 
         if (matchingRow != null)
         {
-            return matchingRow[language + 1];
+            return matchingRow[2 * _type + language + 1];
         }
         else
         {
@@ -90,12 +91,5 @@ public class WelcomeScreenController : MonoBehaviour
     void ContinueEnd()
     {
         SceneManager.LoadScene("Lobby");
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

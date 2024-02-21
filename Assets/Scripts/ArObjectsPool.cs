@@ -8,9 +8,12 @@ using UnityEngine;
  {
     public string title;
     public string function;
+    public string keyTitle;
+    public string keyFunction;
     public GameObject item;
-    public AudioClip audioPronunciation;
- }
+    public AudioClip titleAudioEnglish;
+    public AudioClip titleAudioGerman;
+}
 
 public class ArObjectsPool : MonoBehaviour
 {

@@ -18,9 +18,11 @@ public class ArExam : MonoBehaviour
     public int v1,v2,v3;
     public Button correctButton;
     public Button chooseButton;
+    string language;
     // Start is called before the first frame update
     void Start()
     {
+        language = PlayerPrefs.GetString(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Language", "English");
         audioSource = GetComponent<AudioSource>();
         buttonApply.onClick.AddListener(Apply);
         SetNewItem();
@@ -31,16 +33,16 @@ public class ArExam : MonoBehaviour
             buttonsAudio[i].interactable = true;
 
         itemScore = 3;
-        canvas.transform.parent = null;
         canvas.SetActive(false);
+        canvas.transform.parent = null;
         canvas.GetComponent<ObjectUI>().item = null;
 
         //arObjectsPool.items[itemIndex].item.SetActive(true);
         if (instItem) Destroy(instItem);
         instItem = Instantiate(arObjectsPool.items[itemIndex].item);
         canvas.transform.parent = instItem.transform;
-        canvas.transform.localPosition = Vector3.zero;
-        canvas.transform.localEulerAngles = Vector3.zero;
+        //canvas.transform.localPosition = Vector3.zero;
+        //canvas.transform.localEulerAngles = Vector3.zero;
         canvas.GetComponent<ObjectUI>().item = instItem;
         canvas.SetActive(true);
 
@@ -77,20 +79,26 @@ public class ArExam : MonoBehaviour
         }
 
 
+        buttonsAudio[0].onClick.RemoveAllListeners();
+        buttonsAudio[1].onClick.RemoveAllListeners();
+        buttonsAudio[2].onClick.RemoveAllListeners();
+
         buttonsAudio[0].onClick.AddListener(() => PlaySound(v1, buttonsAudio[0]));
         buttonsAudio[1].onClick.AddListener(() => PlaySound(v2, buttonsAudio[1]));
         buttonsAudio[2].onClick.AddListener(() => PlaySound(v3, buttonsAudio[2]));
 
-        buttonsAudio[0].transform.GetChild(1).GetComponent<Text>().text = arObjectsPool.items[v1].title;
-        buttonsAudio[1].transform.GetChild(1).GetComponent<Text>().text = arObjectsPool.items[v2].title;
-        buttonsAudio[2].transform.GetChild(1).GetComponent<Text>().text = arObjectsPool.items[v3].title;
+        //buttonsAudio[0].transform.GetChild(1).GetComponent<Text>().text = arObjectsPool.items[v1].title;
+        //buttonsAudio[1].transform.GetChild(1).GetComponent<Text>().text = arObjectsPool.items[v2].title;
+        //buttonsAudio[2].transform.GetChild(1).GetComponent<Text>().text = arObjectsPool.items[v3].title;
 
         correctButton = buttonsAudio[0];
     }
     void PlaySound(int index, Button button) 
     {
-        if (arObjectsPool.items[index].audioPronunciation)
-            audioSource.PlayOneShot(arObjectsPool.items[index].audioPronunciation);
+        if (language=="English")
+            audioSource.PlayOneShot(arObjectsPool.items[index].titleAudioEnglish);
+        if (language == "German")
+            audioSource.PlayOneShot(arObjectsPool.items[index].titleAudioGerman);
         chooseButton = button;
         chooseIndex = index;
     

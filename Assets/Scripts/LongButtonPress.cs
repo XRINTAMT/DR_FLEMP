@@ -4,6 +4,7 @@ using UnityEngine.Events;
 public class LongButtonPress : MonoBehaviour
 {
     public UnityEvent OnHeldForLongEnough;
+    public UnityEvent OnBriefClick;
     public float Timeout = 2.0f;
 
     private bool buttonPressed;
@@ -29,6 +30,17 @@ public class LongButtonPress : MonoBehaviour
 
     public void Released()
     {
+        Debug.Log("released");
+        if (buttonPressed)
+        {
+            float heldDuration = Time.time - pressTime;
+            Debug.Log(heldDuration);
+            if (heldDuration < Timeout)
+            {
+                Debug.Log("TurningTHeMenuOn");
+                OnBriefClick.Invoke();
+            }
+        }
         buttonPressed = false;
     }
 }

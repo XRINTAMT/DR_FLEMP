@@ -14,10 +14,27 @@ public class PatientTabController : MonoBehaviour
     [SerializeField] Button  buttonDone;
     [SerializeField] TMP_Text namePatient;
     [SerializeField] private CompleteRoom cr;
+    [SerializeField] Animator animator;
     AudioSource audioSource;
     public AudioClip correct;
     public AudioClip uncorrect;
     int chooseIndex;
+
+    private void Awake()
+    {
+        var characters = FindObjectsOfType<AICharacter.CharacterInfo>();
+        for (int i = 0; i < characters.Length; i++)
+        {
+            if (characters[i].name == "Lizzy Parker")
+            {
+                Debug.Log(characters[i].name);
+                foreach (var anim in characters[i].transform.parent.GetComponentsInChildren<Animator>())
+                {
+                    animator = anim;
+                }
+            }
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +58,7 @@ public class PatientTabController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         buttonTab.onClick.AddListener(OpenTab);
         buttonDone.onClick.AddListener(ButtonDone);
+
     }
 
     void OpenTab() 
@@ -72,6 +90,11 @@ public class PatientTabController : MonoBehaviour
             Debug.Log("lizzy chosen");
             cr.Complete();
             audioSource.PlayOneShot(correct);
+            if (animator) 
+            {
+                animator.applyRootMotion = true;
+                animator.SetTrigger("StandUp2");
+            }
             if (SceneManager.GetActiveScene().name == "B1_Pain_Assessment")
             {
                 FindObjectOfType<WelcomeScreenController>(true).OpenEndPanel();

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.SimpleLocalization;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,13 +13,15 @@ public class VocabIntroController : MonoBehaviour
     [SerializeField] Button buttonRepeatAudio;
     [SerializeField] Button buttonNext;
     [SerializeField] GameObject canvas;
-    [SerializeField] GameObject instItem;
+    GameObject instItem;
     AudioSource audioSource;
     int soundIndex;
     int itemIndex;
+    string language;
     // Start is called before the first frame update
     void Start()
     {
+        language = PlayerPrefs.GetString(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Language", "English");
         audioSource = GetComponent<AudioSource>();
 
         buttonRepeatAudio.onClick.AddListener(RepeatAudio);
@@ -30,8 +33,10 @@ public class VocabIntroController : MonoBehaviour
 
     void RepeatAudio() 
     {
-        if (arObjectsPool.items[soundIndex].audioPronunciation)
-            audioSource.PlayOneShot(arObjectsPool.items[soundIndex].audioPronunciation);
+        if (language == "English")
+            audioSource.PlayOneShot(arObjectsPool.items[soundIndex].titleAudioEnglish);
+        if (language == "English")
+            audioSource.PlayOneShot(arObjectsPool.items[soundIndex].titleAudioGerman);
     }
     void SetNewItem()
     {
@@ -46,10 +51,15 @@ public class VocabIntroController : MonoBehaviour
         instItem = Instantiate(arObjectsPool.items[itemIndex].item);
 
         canvas.transform.parent = instItem.transform;
-        canvas.transform.localPosition = Vector3.zero;
-        canvas.transform.localEulerAngles = Vector3.zero;
+        //canvas.transform.localPosition = Vector3.zero;
+        //canvas.transform.localEulerAngles = Vector3.zero;
         canvas.GetComponent<ObjectUI>().item = instItem;
         canvas.SetActive(true);
+
+        //titleItem.GetComponent<LocalizedText>().LocalizationKey = arObjectsPool.items[itemIndex].keyTitle;
+        //titleItem.GetComponent<LocalizedText>().Localize();
+        //functionItem.GetComponent<LocalizedText>().LocalizationKey = arObjectsPool.items[itemIndex].keyFunction;
+        //functionItem.GetComponent<LocalizedText>().Localize();
 
         titleItem.text = arObjectsPool.items[itemIndex].title;
         functionItem.text = arObjectsPool.items[itemIndex].function;

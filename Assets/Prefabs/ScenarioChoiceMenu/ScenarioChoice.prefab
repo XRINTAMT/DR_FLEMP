@@ -2779,7 +2779,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &1018024048213380912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3478,6 +3478,7 @@ MonoBehaviour:
               m_BoolArgument: 0
             m_CallState: 2
       Condition: []
+  loadState: 1
 --- !u!114 &1018024048010907249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3881,6 +3882,10 @@ PrefabInstance:
       value: ScenarioB1
       objectReference: {fileID: 0}
     - target: {fileID: 2445194987377873198, guid: 89d20ef32d311a042b8bf7940f10db38, type: 3}
+      propertyPath: m_SpriteState.m_SelectedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c222cd02c447941edb09ecb6433229ce, type: 3}
+    - target: {fileID: 2445194987377873198, guid: 89d20ef32d311a042b8bf7940f10db38, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7866860660966506898}
@@ -4010,6 +4015,10 @@ PrefabInstance:
       propertyPath: LocalizationKey
       value: ScenarioA
       objectReference: {fileID: 0}
+    - target: {fileID: 2445194987377873198, guid: 89d20ef32d311a042b8bf7940f10db38, type: 3}
+      propertyPath: m_SpriteState.m_SelectedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c222cd02c447941edb09ecb6433229ce, type: 3}
     - target: {fileID: 2445194987377873198, guid: 89d20ef32d311a042b8bf7940f10db38, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -4273,16 +4282,56 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2445194986498158050, guid: 89d20ef32d311a042b8bf7940f10db38, type: 3}
       propertyPath: m_Text
-      value: MRDT
+      value: Tutorial
+      objectReference: {fileID: 0}
+    - target: {fileID: 2445194986498158053, guid: 89d20ef32d311a042b8bf7940f10db38, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2445194986498158053, guid: 89d20ef32d311a042b8bf7940f10db38, type: 3}
       propertyPath: LocalizationKey
       value: MRDT
       objectReference: {fileID: 0}
     - target: {fileID: 2445194987377873198, guid: 89d20ef32d311a042b8bf7940f10db38, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2445194987377873198, guid: 89d20ef32d311a042b8bf7940f10db38, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2445194987377873198, guid: 89d20ef32d311a042b8bf7940f10db38, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7866860660966506898}
+    - target: {fileID: 2445194987377873198, guid: 89d20ef32d311a042b8bf7940f10db38, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1018024048010907249}
+    - target: {fileID: 2445194987377873198, guid: 89d20ef32d311a042b8bf7940f10db38, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2445194987377873198, guid: 89d20ef32d311a042b8bf7940f10db38, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2445194987377873198, guid: 89d20ef32d311a042b8bf7940f10db38, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 2445194987377873198, guid: 89d20ef32d311a042b8bf7940f10db38, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: SceneLoader, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2445194987377873198, guid: 89d20ef32d311a042b8bf7940f10db38, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: Tutorial
+      objectReference: {fileID: 0}
+    - target: {fileID: 2445194987377873198, guid: 89d20ef32d311a042b8bf7940f10db38, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2445194987377873200, guid: 89d20ef32d311a042b8bf7940f10db38, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

@@ -13,21 +13,23 @@ public class VocabIntroController : MonoBehaviour
     [SerializeField] Button buttonRepeatAudio;
     [SerializeField] Button buttonNext;
     [SerializeField] GameObject canvas;
+    [SerializeField] AudioSource audioSource;
     GameObject instItem;
-    AudioSource audioSource;
+    
     int soundIndex;
     int itemIndex;
     string language;
+    InstScript instScript;
     // Start is called before the first frame update
     void Start()
     {
+        instScript = FindObjectOfType<InstScript>();
         language = PlayerPrefs.GetString(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Language", "English");
-        audioSource = GetComponent<AudioSource>();
 
         buttonRepeatAudio.onClick.AddListener(RepeatAudio);
         buttonNext.onClick.AddListener(SetNewItem);
 
-        SetNewItem();
+        //SetNewItem();
 
     }
 
@@ -38,23 +40,32 @@ public class VocabIntroController : MonoBehaviour
         if (language == "English")
             audioSource.PlayOneShot(arObjectsPool.items[soundIndex].titleAudioGerman);
     }
-    void SetNewItem()
+
+    public void Skip() 
+    {
+        canvas.GetComponent<Canvas>().enabled = false;
+        canvas.transform.parent = null;
+        if (instItem) Destroy(instItem);
+        instItem = null;
+    }
+
+    public void SetNewItem()
     {
 
         //for (int i = 0; i < arObjectsPool.items.Length; i++)
         //    arObjectsPool.items[i].item.SetActive(false);
         canvas.transform.parent = null;
-        canvas.SetActive(false);
+        canvas.GetComponent<Canvas>().enabled = false;
         canvas.GetComponent<ObjectUI>().item = null;
 
         if (instItem) Destroy(instItem);
-        instItem = Instantiate(arObjectsPool.items[itemIndex].item);
+        instItem = Instantiate(arObjectsPool.items[itemIndex].item, instScript.arTable.transform.position + new Vector3(0, 0.2f, 0), Quaternion.identity);
 
         canvas.transform.parent = instItem.transform;
         //canvas.transform.localPosition = Vector3.zero;
         //canvas.transform.localEulerAngles = Vector3.zero;
         canvas.GetComponent<ObjectUI>().item = instItem;
-        canvas.SetActive(true);
+        canvas.GetComponent<Canvas>().enabled = true;
 
         //titleItem.GetComponent<LocalizedText>().LocalizationKey = arObjectsPool.items[itemIndex].keyTitle;
         //titleItem.GetComponent<LocalizedText>().Localize();

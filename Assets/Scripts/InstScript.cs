@@ -5,13 +5,12 @@ using UnityEngine;
 public class InstScript : MonoBehaviour
 {
     //public GameObject pointPrefab;
-    public Collider iPad;
-    public GameObject pointLeft, pointRight, instObject;
+    [SerializeField] Collider iPad;
+    public GameObject arTable;
+    public GameObject pointLeft, pointRight;
     private Vector3 instObjectPosition;
-    private float instObjectScale;
-    private GameObject inst;
-    public Hand handRight;
-    public Hand handLeft;
+    Hand handRight;
+    Hand handLeft;
     bool editMode;
 
     // Use this for initialization
@@ -21,11 +20,14 @@ public class InstScript : MonoBehaviour
         pointLeft.GetComponent<Grabbable>().onGrab.AddListener(SetHand);
         pointRight.GetComponent<Grabbable>().onRelease.AddListener(ReleaseHand);
         pointLeft.GetComponent<Grabbable>().onRelease.AddListener(ReleaseHand);
+
+        Physics.IgnoreCollision(arTable.GetComponent<Collider>(), iPad, true);
+        TableEditMode(true);
     }
 
     public void TableEditMode(bool state) 
     {
-        if (inst) inst.GetComponent<Collider>().enabled = !state;
+        if (arTable) arTable.GetComponent<Collider>().enabled = !state;
         editMode = state;
         pointRight.gameObject.SetActive(state);
         pointLeft.gameObject.SetActive(state);
@@ -136,17 +138,17 @@ public class InstScript : MonoBehaviour
         //    (pointRight.transform.position.z - pointRight.transform.position.z) * (pointRight.transform.position.z - pointRight.transform.position.z)
         //);
 
-        if (inst == null)
-        {
-            inst = Instantiate(instObject);
-            Physics.IgnoreCollision(inst.GetComponent<Collider>(), iPad, true);
-        }
-        if (inst.GetComponent<Collider>().enabled) inst.GetComponent<Collider>().enabled = false;
-      
-        inst.transform.position = instObjectPosition;
+        //if (arTable == null)
+        //{
+        //    arTable = Instantiate(instObject);
+        //    Physics.IgnoreCollision(arTable.GetComponent<Collider>(), iPad, true);
+        //}
+        if (arTable.GetComponent<Collider>().enabled) arTable.GetComponent<Collider>().enabled = false;
+
+        arTable.transform.position = instObjectPosition;
         //inst.transform.localScale = new Vector3(sideA, instObjectScale, sideB);
         //inst.transform.localScale = new Vector3(sideX, sideY, sideZ);
-        inst.transform.localScale = new Vector3(sideX, 0.1f, sideZ);
+        arTable.transform.localScale = new Vector3(sideX, 0.1f, sideZ);
 
     }
     // Update is called once per frame

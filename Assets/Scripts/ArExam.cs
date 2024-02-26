@@ -12,39 +12,47 @@ public class ArExam : MonoBehaviour
     [SerializeField] int itemScore;
     [SerializeField] GameObject canvas;
     [SerializeField] GameObject instItem;
-    private AudioSource audioSource;
+    [SerializeField] AudioSource audioSource;
     int itemIndex;
     int chooseIndex;
     public int v1,v2,v3;
     public Button correctButton;
     public Button chooseButton;
     string language;
+    InstScript instScript;
     // Start is called before the first frame update
     void Start()
     {
+        instScript = FindObjectOfType<InstScript>();
         language = PlayerPrefs.GetString(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Language", "English");
-        audioSource = GetComponent<AudioSource>();
         buttonApply.onClick.AddListener(Apply);
-        SetNewItem();
+        //SetNewItem();
     }
-    void SetNewItem() 
+    public void Skip()
+    {
+        canvas.GetComponent<Canvas>().enabled = false;
+        canvas.transform.parent = null;
+        if (instItem) Destroy(instItem);
+        instItem = null;
+    }
+    public void SetNewItem() 
     {
         for (int i = 0; i < buttonsAudio.Count; i++)
             buttonsAudio[i].interactable = true;
 
         itemScore = 3;
-        canvas.SetActive(false);
+        canvas.GetComponent<Canvas>().enabled = false;
         canvas.transform.parent = null;
         canvas.GetComponent<ObjectUI>().item = null;
 
         //arObjectsPool.items[itemIndex].item.SetActive(true);
         if (instItem) Destroy(instItem);
-        instItem = Instantiate(arObjectsPool.items[itemIndex].item);
+        instItem = Instantiate(arObjectsPool.items[itemIndex].item,instScript.arTable.transform.position+new Vector3(0,0.2f,0),Quaternion.identity);
         canvas.transform.parent = instItem.transform;
         //canvas.transform.localPosition = Vector3.zero;
         //canvas.transform.localEulerAngles = Vector3.zero;
         canvas.GetComponent<ObjectUI>().item = instItem;
-        canvas.SetActive(true);
+        canvas.GetComponent<Canvas>().enabled = true;
 
         ShuffleButtonsAudio(buttonsAudio);
 

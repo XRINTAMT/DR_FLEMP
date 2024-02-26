@@ -93,6 +93,7 @@ public class PatientTabController : MonoBehaviour
             if (animator) 
             {
                 animator.applyRootMotion = true;
+                //animator.Rebind();
                 animator.SetTrigger("StandUp2");
             }
             if (SceneManager.GetActiveScene().name == "B1_Pain_Assessment")

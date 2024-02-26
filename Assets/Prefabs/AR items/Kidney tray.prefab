@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8744163000867995779
+--- !u!1 &573154150712868933
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8744163000867995778}
-  - component: {fileID: 8744163000867995780}
-  - component: {fileID: 8744163000867995781}
-  - component: {fileID: 8744163000867995782}
-  - component: {fileID: 8744163000867995801}
-  - component: {fileID: 8744163000867995783}
+  - component: {fileID: 3580108202934465110}
+  - component: {fileID: 5545092011554621536}
+  - component: {fileID: 2290246047665632409}
+  - component: {fileID: 5545092011554621541}
+  - component: {fileID: 5545092011554621542}
+  - component: {fileID: 5545092011554621543}
   m_Layer: 0
-  m_Name: Stethoscope
+  m_Name: Kidney tray
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8744163000867995778
+--- !u!4 &3580108202934465110
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8744163000867995779}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.9, z: 0.5}
+  m_GameObject: {fileID: 573154150712868933}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.9, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8744163000867995780
+--- !u!33 &5545092011554621536
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8744163000867995779}
-  m_Mesh: {fileID: 8513255720437299605, guid: d5bfd6aee8d152540858d6d7db950a1a, type: 3}
---- !u!23 &8744163000867995781
+  m_GameObject: {fileID: 573154150712868933}
+  m_Mesh: {fileID: -1624858338702781401, guid: 82eecc6cfc3ac884f89ebae2901e6382, type: 3}
+--- !u!23 &2290246047665632409
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8744163000867995779}
+  m_GameObject: {fileID: 573154150712868933}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 43a03c0d0be4b934daf7d9a90ee6aaff, type: 2}
+  - {fileID: 2100000, guid: ea6eb0674994eb84b95400c8a52221fc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,27 +86,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8744163000867995782
+--- !u!64 &5545092011554621541
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8744163000867995779}
+  m_GameObject: {fileID: 573154150712868933}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 8513255720437299605, guid: d5bfd6aee8d152540858d6d7db950a1a, type: 3}
---- !u!54 &8744163000867995801
+  m_Mesh: {fileID: -1624858338702781401, guid: 82eecc6cfc3ac884f89ebae2901e6382, type: 3}
+--- !u!54 &5545092011554621542
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8744163000867995779}
+  m_GameObject: {fileID: 573154150712868933}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -116,13 +116,13 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8744163000867995783
+--- !u!114 &5545092011554621543
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8744163000867995779}
+  m_GameObject: {fileID: 573154150712868933}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f14b79ec867b09d43999b2e0614ef871, type: 3}
@@ -158,7 +158,7 @@ MonoBehaviour:
   onGrab:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8744163000867995801}
+      - m_Target: {fileID: 5545092011554621542}
         m_TargetAssemblyTypeName: UnityEngine.Rigidbody, UnityEngine
         m_MethodName: set_isKinematic
         m_Mode: 6

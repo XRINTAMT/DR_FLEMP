@@ -12,37 +12,47 @@ public class ArExam : MonoBehaviour
     [SerializeField] int itemScore;
     [SerializeField] GameObject canvas;
     [SerializeField] GameObject instItem;
-    private AudioSource audioSource;
+    [SerializeField] AudioSource audioSource;
     int itemIndex;
     int chooseIndex;
     public int v1,v2,v3;
     public Button correctButton;
     public Button chooseButton;
+    string language;
+    InstScript instScript;
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        instScript = FindObjectOfType<InstScript>();
+        language = PlayerPrefs.GetString(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Language", "English");
         buttonApply.onClick.AddListener(Apply);
-        SetNewItem();
+        //SetNewItem();
     }
-    void SetNewItem() 
+    public void Skip()
+    {
+        canvas.GetComponent<Canvas>().enabled = false;
+        canvas.transform.parent = null;
+        if (instItem) Destroy(instItem);
+        instItem = null;
+    }
+    public void SetNewItem() 
     {
         for (int i = 0; i < buttonsAudio.Count; i++)
             buttonsAudio[i].interactable = true;
 
         itemScore = 3;
+        canvas.GetComponent<Canvas>().enabled = false;
         canvas.transform.parent = null;
-        canvas.SetActive(false);
         canvas.GetComponent<ObjectUI>().item = null;
 
         //arObjectsPool.items[itemIndex].item.SetActive(true);
         if (instItem) Destroy(instItem);
-        instItem = Instantiate(arObjectsPool.items[itemIndex].item);
+        instItem = Instantiate(arObjectsPool.items[itemIndex].item,instScript.arTable.transform.position+new Vector3(0,0.2f,0),Quaternion.identity);
         canvas.transform.parent = instItem.transform;
-        canvas.transform.localPosition = Vector3.zero;
-        canvas.transform.localEulerAngles = Vector3.zero;
+        //canvas.transform.localPosition = Vector3.zero;
+        //canvas.transform.localEulerAngles = Vector3.zero;
         canvas.GetComponent<ObjectUI>().item = instItem;
-        canvas.SetActive(true);
+        canvas.GetComponent<Canvas>().enabled = true;
 
         ShuffleButtonsAudio(buttonsAudio);
 
@@ -77,16 +87,26 @@ public class ArExam : MonoBehaviour
         }
 
 
+        buttonsAudio[0].onClick.RemoveAllListeners();
+        buttonsAudio[1].onClick.RemoveAllListeners();
+        buttonsAudio[2].onClick.RemoveAllListeners();
+
         buttonsAudio[0].onClick.AddListener(() => PlaySound(v1, buttonsAudio[0]));
         buttonsAudio[1].onClick.AddListener(() => PlaySound(v2, buttonsAudio[1]));
         buttonsAudio[2].onClick.AddListener(() => PlaySound(v3, buttonsAudio[2]));
+
+        //buttonsAudio[0].transform.GetChild(1).GetComponent<Text>().text = arObjectsPool.items[v1].title;
+        //buttonsAudio[1].transform.GetChild(1).GetComponent<Text>().text = arObjectsPool.items[v2].title;
+        //buttonsAudio[2].transform.GetChild(1).GetComponent<Text>().text = arObjectsPool.items[v3].title;
 
         correctButton = buttonsAudio[0];
     }
     void PlaySound(int index, Button button) 
     {
-        if (arObjectsPool.items[index].audioPronunciation)
-            audioSource.PlayOneShot(arObjectsPool.items[index].audioPronunciation);
+        if (language=="English")
+            audioSource.PlayOneShot(arObjectsPool.items[index].titleAudioEnglish);
+        if (language == "German")
+            audioSource.PlayOneShot(arObjectsPool.items[index].titleAudioGerman);
         chooseButton = button;
         chooseIndex = index;
     
@@ -97,19 +117,24 @@ public class ArExam : MonoBehaviour
         chooseButton.interactable = false;
         if (chooseButton==correctButton)
         {
-            SetNewItem();
             totalScore = totalScore + itemScore;
+            SetNewItem();
+            return;
         }
-        if (itemIndex != chooseIndex)
-        {
-            itemScore--;
+        //if (chooseButton != correctButton)
+        //{
+        //    itemScore--;
 
-            if (itemScore==1)
-            {
-                SetNewItem();
-                totalScore = totalScore + itemScore;
-            }
+        //    return;
+        //}
+
+        if (itemScore==1)
+        {
+            totalScore = totalScore + itemScore;
+            SetNewItem();
+            return;
         }
+        itemScore--;
     }
     // Update is called once per frame
     void Update()

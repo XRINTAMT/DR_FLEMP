@@ -33,7 +33,7 @@ public class SentenceScrambleTab : MonoBehaviour
     List<string> descriptions = new List<string>();
     //List<SolutionsList> solutionsList = new List<SolutionsList>();
     public List<SolutionsListGroup> solutionsListGroup = new List<SolutionsListGroup>();
-    List<AdditionalWordsList> additionalWordList = new List<AdditionalWordsList>();
+    public List<AdditionalWordsList> additionalWordList = new List<AdditionalWordsList>();
     //[HideInInspector]
     public List<string> allWords = new List<string>();
     public List<string> correctSentences = new List<string>();
@@ -47,13 +47,28 @@ public class SentenceScrambleTab : MonoBehaviour
     [SerializeField] UnityEvent OnCompletion;
     [SerializeField] Button next;
     [SerializeField] Button check;
+    int[] langugeRaw = new int[] {0,1,2};
     // Start is called before the first frame update
     void Start()
     {
+        if (PlayerPrefs.GetString(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Language", "English") == "English")
+        {
+            langugeRaw[0] = 0;
+            langugeRaw[1] = 1;
+            langugeRaw[2] = 2;
+        }
+        if (PlayerPrefs.GetString(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Language", "English") == "German")
+        {
+            langugeRaw[0] = 3;
+            langugeRaw[1] = 4;
+            langugeRaw[2] = 5;
+        }
+
         gridController = GetComponent<GridController>();
         Parse();
         SetNewList();
         audioSource = GetComponent<AudioSource>();
+
     }
 
     void Parse() 
@@ -62,7 +77,7 @@ public class SentenceScrambleTab : MonoBehaviour
 
         for (int i = 1; i < cSVParser.rowData.Count; i++)
         {
-            descriptions.Add(cSVParser.rowData[i][0]);
+            descriptions.Add(cSVParser.rowData[i][langugeRaw[0]]);
             //solutionsList.Add(new SolutionsList());
             solutionsListGroup.Add(new SolutionsListGroup());
             additionalWordList.Add(new AdditionalWordsList());
@@ -70,7 +85,7 @@ public class SentenceScrambleTab : MonoBehaviour
         }
         for (int i = 1; i < cSVParser.rowData.Count; i++)
         {
-            string inputString = cSVParser.rowData[i][1];
+            string inputString = cSVParser.rowData[i][langugeRaw[1]];
             var groups = inputString.Split(';');
             //var words = inputString.Split(' ');
 
@@ -87,23 +102,23 @@ public class SentenceScrambleTab : MonoBehaviour
         }
         for (int i = 1; i < cSVParser.rowData.Count; i++)
         {
-            string inputString = cSVParser.rowData[i][2];
+            string inputString = cSVParser.rowData[i][langugeRaw[2]];
             var words = inputString.Split(' ');
 
-            //for (int j = 0; j < words.Length; j++)
-            //    additionalWordList[i - 1].additionalWords.Add(words[j]);
+            for (int j = 0; j < words.Length; j++)
+                additionalWordList[i - 1].additionalWords.Add(words[j]);
 
 
-            for (int j = 0; j < words.Length; j++) 
-            {
-                for (int k = 0; k < additionalWordList[i - 1].additionalWords.Count; k++)
-                {
-                    if (additionalWordList[i - 1].additionalWords[k] != words[j])
-                    {
-                        additionalWordList[i - 1].additionalWords.Add(words[j]);
-                    }
-                }
-            }
+            //for (int j = 0; j < words.Length; j++) 
+            //{
+            //    for (int k = 0; k < additionalWordList[i - 1].additionalWords.Count; k++)
+            //    {
+            //        if (additionalWordList[i - 1].additionalWords[k] != words[j])
+            //        {
+            //            additionalWordList[i - 1].additionalWords.Add(words[j]);
+            //        }
+            //    }
+            //}
 
         }
 
@@ -157,9 +172,17 @@ public class SentenceScrambleTab : MonoBehaviour
                 correctSentences[^1] = correctSentences[^1] + " " + solutionsListGroup[indexList].group[i].solutions[j];
             }
         }
+
+
+
         for (int i = 0; i < additionalWordList[indexList].additionalWords.Count; i++)
         {
-            allWords.Add(additionalWordList[indexList].additionalWords[i]);
+            if (!allWords.Contains(additionalWordList[indexList].additionalWords[i]))
+            {
+                //allWords.Add(additionalWordList[indexList].additionalWords[i]);
+                allWords.Add(additionalWordList[indexList].additionalWords[i]);
+            }
+           
         }
 
         Shuffle(allWords);

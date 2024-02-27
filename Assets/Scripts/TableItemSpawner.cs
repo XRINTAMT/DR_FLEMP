@@ -13,7 +13,7 @@ public class TableItemSpawner : MonoBehaviour
             return;
         }
 
-        Shuffle(itemsToSpawn);
+        //Shuffle(itemsToSpawn);
 
         int itemCount = itemsToSpawn.Length;
         Debug.Log(itemCount);

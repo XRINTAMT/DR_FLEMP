@@ -1,0 +1,706 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8844406663273580457
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8844406663273580456}
+  - component: {fileID: 8844406663273580455}
+  m_Layer: 0
+  m_Name: TableItems
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8844406663273580456
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8844406663273580457}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8844406663794633496}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8844406663273580455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8844406663273580457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34869d9981057e94fae7f0f07a67e02d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemsToSpawn:
+  - {fileID: 3019320984006493571, guid: 2630a5ea325e05748bd2e0e59ea2895d, type: 3}
+  - {fileID: 7331809108382155084, guid: 84b7eb989863f16429ec23337989f047, type: 3}
+  - {fileID: 6753952734440887745, guid: eff08a85884395140b12d4615d626729, type: 3}
+  - {fileID: 6753952734440887745, guid: 20adcfc5f55d55245845dc309ba6f94a, type: 3}
+  - {fileID: 7480632394332554831, guid: 104beb0f670b1fc408fa821b3a69351d, type: 3}
+  - {fileID: 6753952734440887745, guid: eff08a85884395140b12d4615d626729, type: 3}
+  - {fileID: 6753952734440887745, guid: eff08a85884395140b12d4615d626729, type: 3}
+  - {fileID: 5917231458681398986, guid: 282e28de937627043a73844278c1795c, type: 3}
+  - {fileID: 5156333017095908823, guid: 9d52d6ce3ada8fc488f63cbe946457fc, type: 3}
+  - {fileID: 573154150712868933, guid: 0dfe5c1b97ce61947a05c391b20bdd6f, type: 3}
+  - {fileID: 8744163000867995779, guid: 748a31b9bc69ea94f969a528be427ae4, type: 3}
+  - {fileID: 6753952734440887745, guid: eff08a85884395140b12d4615d626729, type: 3}
+  - {fileID: 3071221238445067495, guid: 0a868216dfaa2694684d2c7cf30f2fa8, type: 3}
+  - {fileID: 6753952734440887745, guid: eff08a85884395140b12d4615d626729, type: 3}
+  - {fileID: 6753952734440887745, guid: eff08a85884395140b12d4615d626729, type: 3}
+  table: {fileID: 0}
+--- !u!1 &8844406663794633498
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8844406663794633496}
+  - component: {fileID: 8844406663794633497}
+  - component: {fileID: 8844406663794633495}
+  - component: {fileID: 8844406663794633494}
+  m_Layer: 0
+  m_Name: AR2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8844406663794633496
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8844406663794633498}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4063293556748987669}
+  - {fileID: 8844406663273580456}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8844406663794633497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8844406663794633498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 506366a9bb5893143a31e1f157785a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scenarioName: AR2
+  OnScenarioEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  Speakers:
+  - Name: Narrator
+    LocalizedName:
+    - Narrator
+    Speaker: {fileID: 2687954358560976279}
+    GoogleSpeaker: {fileID: 8966683862973832481}
+  Phrases:
+  - Speaker: Narrator
+    Tag: Find_0
+    Text:
+    - Grab Surgical scissors
+    - "Schnappen Sie sich eine chirurgische Schere\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: d7074473b3f685546aa985ef22b801f6, type: 3}
+  - Speaker: Narrator
+    Tag: Find_1
+    Text:
+    - Grab a Syringe
+    - "Schnapp dir eine Spritze\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 4645d6a1d79615145aa2d8f0bc795dc9, type: 3}
+  - Speaker: Narrator
+    Tag: Find_2
+    Text:
+    - Grab a Dropper
+    - "Schnapper schnapper\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 4c88b6c9b07a16b4d924a3c60925b926, type: 3}
+  - Speaker: Narrator
+    Tag: Find_3
+    Text:
+    - Grab a Tweezer
+    - "Schnapp dir einen Pinzetten\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 2d8c696c5240a964bbd70c3a1efea0ef, type: 3}
+  - Speaker: Narrator
+    Tag: Find_4
+    Text:
+    - Grab a Scalpel
+    - "Schnapp dir ein Skalpell\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 9611d52d01c817f4d83b4995a36a5b20, type: 3}
+  - Speaker: Narrator
+    Tag: Find_5
+    Text:
+    - Grab a Laryngoscope
+    - "Nehmen Sie sich ein Laryngoskop\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 95749e62eb12b8b499ed0c2030c0cedc, type: 3}
+  - Speaker: Narrator
+    Tag: Find_6
+    Text:
+    - Grab a Tubing clamp
+    - "Schnappen Sie sich eine Schlauchklemme\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 044838f4bd85b0d42b5c1521d6973c46, type: 3}
+  - Speaker: Narrator
+    Tag: Find_7
+    Text:
+    - Grab a Gauze
+    - "Schnapp dir einen Gaze\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 19e917debff7e66438fde30156bfa030, type: 3}
+  - Speaker: Narrator
+    Tag: Find_8
+    Text:
+    - Grab a Surgical bowl
+    - "Nehmen Sie eine chirurgische Sch\xFCssel\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 61516e7a73abf07479799e3b4c71044d, type: 3}
+  - Speaker: Narrator
+    Tag: Find_9
+    Text:
+    - Grab a Kidney tray
+    - "Schnapp dir eine Nierenschale\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: d61925ff1d645c7458f0e9f6032dc9aa, type: 3}
+  - Speaker: Narrator
+    Tag: Find_10
+    Text:
+    - Grab a Stethoscope
+    - "Schnapp dir ein Stethoskop\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 037837d1b40351e4b93da9e7f1ef1109, type: 3}
+  - Speaker: Narrator
+    Tag: Find_11
+    Text:
+    - Grab an Outlet forceps
+    - "Schnappen Sie sich eine Outlet -Pinzette\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: d92669660f9f70346be32bae3974e194, type: 3}
+  - Speaker: Narrator
+    Tag: Find_12
+    Text:
+    - Grab an Oxygen mask
+    - "Schnapp dir eine Sauerstoffmaske\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: d492cd4e2f80b5047a005c7689b48231, type: 3}
+  - Speaker: Narrator
+    Tag: Find_13
+    Text:
+    - Grab a Bandage scissors
+    - "Schnappen Sie sich eine Verbandschere\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 81b469c01bb138c40a3b2478dec7b87b, type: 3}
+  - Speaker: Narrator
+    Tag: Find_14
+    Text:
+    - Grab a Resuscitator bag
+    - "Nehmen Sie eine Wiederbelebungsbeutel\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: ec9958fbdc6cb1f42b625a5322e80f33, type: 3}
+  - Speaker: Narrator
+    Tag: Wrong_0
+    Text:
+    - These are not Surgical scissors
+    - "Dies sind keine chirurgische Scheren\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 8eeddf7d4abde3a43afdec9b409c0afe, type: 3}
+  - Speaker: Narrator
+    Tag: Wrong_1
+    Text:
+    - This is not a Syringe
+    - "Dies ist keine Spritze\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 2f4927927227d774eb16168610b7702f, type: 3}
+  - Speaker: Narrator
+    Tag: Wrong_2
+    Text:
+    - This is not a Dropper
+    - "Dies ist kein Tropper\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 9e29587d307d7894dadf80b18e52dd5b, type: 3}
+  - Speaker: Narrator
+    Tag: Wrong_3
+    Text:
+    - This is not a Tweezer
+    - "Dies ist kein Pinzetten\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 8633b3dbec002964f9f9b5f99b4bc926, type: 3}
+  - Speaker: Narrator
+    Tag: Wrong_4
+    Text:
+    - This is not a Scalpel
+    - "Dies ist kein Skalpell\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: f55f9fa9cfe045f4da84379e2b40985e, type: 3}
+  - Speaker: Narrator
+    Tag: Wrong_5
+    Text:
+    - This is not a Laryngoscope
+    - "Dies ist kein Laryngoskop\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 535d87a751bc88d4ebdeab14f56f3d25, type: 3}
+  - Speaker: Narrator
+    Tag: Wrong_6
+    Text:
+    - This is not a Tubing clamp
+    - "Dies ist keine Schlauchklemme\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 0251d49c08db5f843bd4d948adcf1d03, type: 3}
+  - Speaker: Narrator
+    Tag: Wrong_7
+    Text:
+    - This is not a Gauze
+    - "Dies ist kein Gaze\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 169d22220ac5f9341a5df8d2f85b65f6, type: 3}
+  - Speaker: Narrator
+    Tag: Wrong_8
+    Text:
+    - This is not a Surgical bowl
+    - "Dies ist keine chirurgische Sch\xFCssel\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 3875ad0339411164b9091f9bb2a1db17, type: 3}
+  - Speaker: Narrator
+    Tag: Wrong_9
+    Text:
+    - This is not a Kidney tray
+    - "Dies ist keine Nierenschale\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 296ae2618c342294d933af23373fcd46, type: 3}
+  - Speaker: Narrator
+    Tag: Wrong_10
+    Text:
+    - This is not a Stethoscope
+    - "Dies ist kein Stethoskop\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 268849b6dee19c54dbcd03f04484fa3a, type: 3}
+  - Speaker: Narrator
+    Tag: Wrong_11
+    Text:
+    - This is not an Outlet forceps
+    - "Dies ist keine Ausgangspinzette\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: d2b97274a103e2645b3a7dece4d85673, type: 3}
+  - Speaker: Narrator
+    Tag: Wrong_12
+    Text:
+    - This is not an Oxygen mask
+    - "Dies ist keine Sauerstoffmaske\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: fec8e7ae40c8f3345b4dd903a7814c2c, type: 3}
+  - Speaker: Narrator
+    Tag: Wrong_13
+    Text:
+    - This is not a Bandage scissors
+    - "Dies ist keine Verbandschere\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: f91ae4e0b7faaa64ab04b3c2d6f7d8f4, type: 3}
+  - Speaker: Narrator
+    Tag: Wrong_14
+    Text:
+    - This is not a Resuscitator bag
+    - "Dies ist keine Resuscitator -Tasche\r"
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: b2ae174557a3c0b47b22f80e39b2f997, type: 3}
+  - Speaker: Narrator
+    Tag: Good
+    Text:
+    - Good!
+    - Gut!
+    VoiceAudio:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: eadbab6fcf4a4cb46b838e2758c8927c, type: 3}
+  language: 0
+--- !u!114 &8844406663794633495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8844406663794633498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e27775376e80d7947ae914a886572110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PhrasesPlayer: {fileID: 8844406663794633497}
+  Items: []
+  ItemsParent: {fileID: 8844406663273580456}
+  OnQuizCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  ItemIndices: 
+  CorrectItemIndex: 0
+  DestroyOnGuess: 1
+--- !u!114 &8844406663794633494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8844406663794633498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 292a83d2cb7abe74c85efb570f5dc5c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8844406663273580455}
+        m_TargetAssemblyTypeName: TableItemSpawner, Assembly-CSharp
+        m_MethodName: SpawnItems
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8844406663794633495}
+        m_TargetAssemblyTypeName: FindMeXQuiz, Assembly-CSharp
+        m_MethodName: UpdateItemsFromParent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8844406663794633495}
+        m_TargetAssemblyTypeName: FindMeXQuiz, Assembly-CSharp
+        m_MethodName: LaunchScenario
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1001 &8844406662922722160
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8844406663794633496}
+    m_Modifications:
+    - target: {fileID: 111445110623832839, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: _defaultSettings.DiskCacheLocation
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 804658917209695614, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1897429586186098475, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1897429586186098475, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.9999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2599516513214212625, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849956775008249886, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104840480366159011, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104840480366159011, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104840480366159011, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -97.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070319448878913495, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4476482180277217086, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4695796528835684637, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4695796528835684637, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752260183373974771, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.0009746484
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752260183373974771, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.012068194
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818309499567834057, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818309500122658402, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_Name
+      value: Male Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818309500122658405, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818309500122658405, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818309500122658405, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818309500122658405, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818309500122658405, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818309500122658405, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818309500122658405, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818309500122658405, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818309500122658405, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818309500122658405, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818309500122658405, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818309500860453738, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6450919612273987222, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6450919612273987222, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6450919612273987222, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 3138.9001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6450919612273987222, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1712
+      objectReference: {fileID: 0}
+    - target: {fileID: 6450919612273987222, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1593.4501
+      objectReference: {fileID: 0}
+    - target: {fileID: 6450919612273987222, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -856
+      objectReference: {fileID: 0}
+    - target: {fileID: 6913075178681808615, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: _tts
+      value: 
+      objectReference: {fileID: 8878366989558173814}
+    - target: {fileID: 6913075178681808615, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: AudioSource
+      value: 
+      objectReference: {fileID: 2687954357607965245}
+    - target: {fileID: 8595272395563488731, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8595272395563488731, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -97.2
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2230281221087660545, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+    - {fileID: 2230281221087660544, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+--- !u!1 &2624994040159153351 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6832100461234845623, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+  m_PrefabInstance: {fileID: 8844406662922722160}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8844406662922721414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2624994040159153351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f9ba02a9c9293d43a804e1593724544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8844406662922721415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2624994040159153351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fab3a5d26a09d464cb3b5e1adbe9deb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8844406662922721418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2624994040159153351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f9ba02a9c9293d43a804e1593724544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8844406662922721419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2624994040159153351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fab3a5d26a09d464cb3b5e1adbe9deb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!82 &2687954357607965245 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6913075177177020749, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+  m_PrefabInstance: {fileID: 8844406662922722160}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2687954358560976279 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6913075178681808615, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+  m_PrefabInstance: {fileID: 8844406662922722160}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b15403450229c3a4b8455a61d6143a6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &4063293556748987669 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4818309500122658405, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+  m_PrefabInstance: {fileID: 8844406662922722160}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8878366989558173814 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 111445110623832838, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+  m_PrefabInstance: {fileID: 8844406662922722160}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b3124b830442d45b9f357ff99b152f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8966683862973832481 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 490235363895477841, guid: 97949c4ee1fbc1b4598b87e1283a42e6, type: 3}
+  m_PrefabInstance: {fileID: 8844406662922722160}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2624994040159153351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae96c84d25a3f7e4c9923942dade668e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -46,6 +46,12 @@ namespace ChatGPT_Patient
         public bool IsActive => _active;
         private bool _active = false;
         public bool Done = true;
+        public bool Muted = false;
+
+        public void Mute(bool _mute)
+        {
+            Muted = _mute;
+        }
 
         private void Update()
         {
@@ -61,6 +67,10 @@ namespace ChatGPT_Patient
 
         public void Submit()
         {
+            if (Muted)
+            {
+                return;
+            }
             OnTimeout.Invoke();
             foreach (ChatCharacter _character in FindObjectsOfType<ChatCharacter>())
             {

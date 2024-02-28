@@ -12,6 +12,7 @@ public class ChangeIndicatorColor : MonoBehaviour
     void Start()
     {
         showcaseController = FindObjectOfType<ShowcaseController>();
+        indicator.color = Color.red;
     }
 
     public void Enter() 
@@ -31,7 +32,7 @@ public class ChangeIndicatorColor : MonoBehaviour
             indicator.color = Color.grey;
 
         if (!activate)
-            indicator.color = Color.white;
+            indicator.color = Color.red;
 
     }
     

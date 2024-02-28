@@ -8,9 +8,9 @@ using UnityEngine;
 public class GridController : MonoBehaviour
 {
     public TextMeshProUGUI textDescription;
-    [HideInInspector]
+
     public List<RowSentence> rowsSentence = new List<RowSentence>();
-    [HideInInspector]
+
     public List<RowSentence> rowsChoose = new List<RowSentence>();
     public Transform contentSentence;
     public Transform contentChoose;
@@ -145,8 +145,22 @@ public class GridController : MonoBehaviour
             Destroy(rowsChoose[rowsChoose.Count - 1].gameObject);
             rowsChoose.RemoveAt(rowsChoose.Count - 1);
         }
+
+        StartCoroutine(CheckRows());
     }
-   
+    IEnumerator CheckRows()
+    {
+        yield return new WaitForEndOfFrame();
+
+        for (int i = 0; i < rowsChoose.Count; i++)
+        {
+            if (rowsChoose[i].GetComponentsInChildren<ButtonSentence>().Length == 0)
+            {
+                rowsChoose[i].gameObject.SetActive(false);
+            }
+        }
+
+    }
 
     public void UpdatePostionsNewWordSentence(RowSentence row, ButtonSentence word)
     {

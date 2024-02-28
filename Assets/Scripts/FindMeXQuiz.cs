@@ -10,10 +10,13 @@ public class FindMeXQuiz : MonoBehaviour
 {
     [SerializeField] private PrerecordedAudioOnDemand PhrasesPlayer;
     [SerializeField] private List<Grabbable> Items;
+    [SerializeField] private Transform ItemsParent;
     [SerializeField] private UnityEvent OnQuizCompleted;
     [SerializeField] private List<int> ItemIndices;
     [SerializeField] private int CorrectItemIndex;
+    [SerializeField] private bool DestroyOnGuess;
     private bool sleep = true;
+    
 
     private void Start()
     {
@@ -27,6 +30,12 @@ public class FindMeXQuiz : MonoBehaviour
 
     private void InitializeItemIndices()
     {
+        if (Items == null)
+            return;
+
+        if (Items.Count == 0)
+            return;
+
         ItemIndices = Enumerable.Range(0, Items.Count).ToList();
 
         foreach (int index in ItemIndices.ToList())
@@ -40,6 +49,19 @@ public class FindMeXQuiz : MonoBehaviour
                 Items[index].onGrab.AddListener((_hand, _grabbable) => ItemGrabbed(_grabbable));
             }
         }
+    }
+
+    public void UpdateItemsFromParent()
+    {
+        foreach (Transform child in ItemsParent)
+        {
+            Grabbable grabbable = child.GetComponent<Grabbable>();
+            if (grabbable != null)
+            {
+                Items.Add(grabbable);
+            }
+        }
+        InitializeItemIndices();
     }
 
     private void NewRandomItem()
@@ -76,6 +98,11 @@ public class FindMeXQuiz : MonoBehaviour
         {
             PhrasesPlayer.PlayTag("Good");
             ItemIndices.Remove(CorrectItemIndex);
+            if (DestroyOnGuess)
+            {
+                _item.ForceHandsRelease();
+                _item.gameObject.SetActive(false);
+            }
         }
         Invoke("NewRandomItem", 5);
     }

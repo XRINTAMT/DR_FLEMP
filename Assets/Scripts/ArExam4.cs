@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Autohand;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class ArExam4 : MonoBehaviour
@@ -13,6 +14,10 @@ public class ArExam4 : MonoBehaviour
     [SerializeField] Text[] textPlates;
     [SerializeField] Transform itemsPivot;
     [SerializeField] Transform platesPivot;
+    [SerializeField] AudioSource audioSource;
+    public int correct;
+    public int incorrect;
+    public UnityEvent complete;    
     InstScript instScript;
     CollisionIgnores collisionIgnores;
     string language;
@@ -62,9 +67,25 @@ public class ArExam4 : MonoBehaviour
         {
             placePoint.transform.parent.gameObject.SetActive(false);
             Debug.Log("correct");
+            audioSource.Play();
+            correct++;
+            
+        }
+        if (placePoint.name != grabbable.name)
+        {
+            Debug.Log("incorrect");
+            incorrect++;
+        }
+        if (correct==arObjectsPool.items.Length)
+        {
+            complete?.Invoke();
+            int totalScore = ((correct / (correct + incorrect) * 100));
+            Debug.Log("Complete " + totalScore);
         }
 
     }
+
+
     public void OnRemove(PlacePoint placePoint, Grabbable grabbable)
     {
         //placePoint.GetComponentInParent<Grabbable>().enabled = true;

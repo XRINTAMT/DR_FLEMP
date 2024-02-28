@@ -15,9 +15,11 @@ public class ArExam4 : MonoBehaviour
     [SerializeField] Transform platesPivot;
     InstScript instScript;
     CollisionIgnores collisionIgnores;
+    string language;
     // Start is called before the first frame update
     void Start()
     {
+        language = PlayerPrefs.GetString(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Language", "English");
 
         instScript = FindObjectOfType<InstScript>();
         collisionIgnores = GetComponent<CollisionIgnores>();
@@ -58,6 +60,7 @@ public class ArExam4 : MonoBehaviour
         Debug.Log(placePoint.name);
         if (placePoint.name==grabbable.name)
         {
+            placePoint.transform.parent.gameObject.SetActive(false);
             Debug.Log("correct");
         }
 

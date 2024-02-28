@@ -43,6 +43,7 @@ public class JoinRoomController : MonoBehaviour
             if (roomInfo[i].Name == _roomCode)
             {
                 nameRoom = _roomCode;
+                PhotonManager.onlineMode = true;
                 PhotonNetwork.JoinRoom(_roomCode);
                 return;
             }

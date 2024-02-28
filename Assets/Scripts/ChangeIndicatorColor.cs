@@ -31,7 +31,7 @@ public class ChangeIndicatorColor : MonoBehaviour
             indicator.color = Color.grey;
 
         if (!activate)
-            indicator.color = Color.red;
+            indicator.color = Color.white;
 
     }
     

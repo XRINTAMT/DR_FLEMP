@@ -28,6 +28,10 @@ public class ChatCharacter : MonoBehaviour
     private RandomPool<AudioClip> PhrasesPool;
     private WitAutoReactivation WitReact;
     [SerializeField] private Text ChatLogs;
+    [SerializeField] private Text TabletLogs;
+    [SerializeField] private GameObject FloatingLogs;
+    [SerializeField] private GameObject LogsTab;
+    private Text LogsLink;
     private string[] sentences;
     private int language;
 
@@ -44,6 +48,19 @@ public class ChatCharacter : MonoBehaviour
         //STTInput = FindAnyObjectByType<InteractionHandler>();
         WitReact = FindAnyObjectByType<WitAutoReactivation>();
         language = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0);
+        if(PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "LogToTablet", 1) == 1)
+        {
+            LogsLink = TabletLogs;
+            FloatingLogs.SetActive(false);
+            LogsTab.SetActive(true);
+        }
+        else
+        {
+            LogsLink = ChatLogs;
+            FloatingLogs.SetActive(true);
+            LogsTab.SetActive(false);
+        }
+       
     }
 
     public void setTargeted(bool t)
@@ -66,7 +83,7 @@ public class ChatCharacter : MonoBehaviour
         Debug.Log(info.name+": "+stt);
         _speaker.AudioSource.clip = PhrasesPool.Draw();
         _speaker.AudioSource.Play();
-        ChatLogs.text += "<b>Nurse:</b> " + stt + '\n';
+        LogsLink.text += "<b>Nurse:</b> " + stt + '\n';
         StartCoroutine(openAIChat(stt));
 
     }
@@ -213,7 +230,7 @@ public class ChatCharacter : MonoBehaviour
     private void SendResponseToTTS(string response)
     {
         Debug.Log("should be pronounced using TTS: " + response);
-        ChatLogs.text += "<b>" + info.name + ":</b> " + response + '\n';
+        LogsLink.text += "<b>" + info.name + ":</b> " + response + '\n';
         sentences = response.Split(new char[] { '\n', '.', '?', ';', '!' });
         if(language == 0)
         {

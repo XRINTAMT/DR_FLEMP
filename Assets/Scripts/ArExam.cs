@@ -8,7 +8,7 @@ public class ArExam : MonoBehaviour
     [SerializeField] ArObjectsPool arObjectsPool;
     [SerializeField] List <Button> buttonsAudio;
     [SerializeField] Button buttonApply;
-    [SerializeField] int totalScore;
+    public int totalScore;
     [SerializeField] int itemScore;
     [SerializeField] GameObject canvas;
     [SerializeField] GameObject instItem;

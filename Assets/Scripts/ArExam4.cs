@@ -15,12 +15,17 @@ public class ArExam4 : MonoBehaviour
     [SerializeField] Transform itemsPivot;
     [SerializeField] Transform platesPivot;
     [SerializeField] AudioSource audioSource;
-    public int correct;
-    public int incorrect;
+    [SerializeField] ArExam arExam;
+    [SerializeField] GameObject scoreUi;
+    [SerializeField] Text scoreExam3;
+    [SerializeField] Text scoreExam4;
+    public float correct;
+    public float incorrect;
     public UnityEvent complete;    
     InstScript instScript;
     CollisionIgnores collisionIgnores;
     string language;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,8 +53,6 @@ public class ArExam4 : MonoBehaviour
             placePoints[i].OnPlace.AddListener(OnPlace);
             placePoints[i].OnRemove.AddListener(OnRemove);
         }
-
- 
     }
 
     public void Activate(bool state) 
@@ -79,8 +82,13 @@ public class ArExam4 : MonoBehaviour
         if (correct==arObjectsPool.items.Length)
         {
             complete?.Invoke();
-            int totalScore = ((correct / (correct + incorrect) * 100));
-            Debug.Log("Complete " + totalScore);
+            float ts = (correct / (correct + incorrect)) * 100;
+            scoreUi.transform.parent = platesPivot.transform;
+            scoreUi.transform.localPosition = new Vector3(0, 0, 0);
+            scoreExam3.text = ""+arExam.totalScore;
+            scoreExam4.text = "" + Mathf.RoundToInt(ts) + "%";
+            scoreUi.SetActive(true);
+            Debug.Log("Complete " + ts);
         }
 
     }

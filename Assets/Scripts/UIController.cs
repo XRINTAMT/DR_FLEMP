@@ -62,7 +62,7 @@ public class UIController : MonoBehaviour
         setMusicVolumeStatus.value = PlayerPrefs.GetFloat(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "musicVolume", 0.5f);
         //setWalkingSpeed.value = PlayerPrefs.GetFloat("walkingSpeed", 1.5f);
         setSubstitlesStatus.isOn = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Subtitles", 0) == 0;
-        teleport = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "MovementType", 0);
+        teleport = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "MovementType", 2);
         if (!tutorial) SetLocomotionType(teleport);
         learnedLanguage = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0);
         role = PlayerPrefs.GetString(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Role", "Assistant");

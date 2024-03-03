@@ -9,7 +9,7 @@ public class InstScript : MonoBehaviour
     [SerializeField] XRHandControllerLink controllerLink;
     [SerializeField] Collider iPad;
     [SerializeField] float rotationSpeed;
-    private float angle;
+    [SerializeField] public float angle;
     public GameObject arTable;
     public GameObject pointLeft, pointRight;
     private Vector3 instObjectPosition;
@@ -66,7 +66,7 @@ public class InstScript : MonoBehaviour
         pointLeft.GetComponent<Grabbable>().enabled = true;
     }
 
-    void UpdateScale()
+    private void UpdateScale()
     {
         Vector3 direction = pointRight.transform.position - pointLeft.transform.position;
         Vector3 newPointRightPosition = pointLeft.transform.position + (Quaternion.Euler(0, angle, 0) * direction);
@@ -80,8 +80,21 @@ public class InstScript : MonoBehaviour
         if (arTable.GetComponent<Collider>().enabled) arTable.GetComponent<Collider>().enabled = false;
 
         arTable.transform.localPosition = (pointLeft.transform.localPosition + pointRight.transform.localPosition) / 2f;
-        arTable.transform.localScale = new Vector3(sideX, 0.1f, sideZ);
+        arTable.transform.localScale = new Vector3(sideX, 0.04f, sideZ);
         arTable.transform.rotation = tableRotation;
+    }
+
+    private void UpdateCorners()
+    {
+        if (handRight)
+        {
+            pointLeft.transform.position = new Vector3(pointLeft.transform.position.x, pointRight.transform.position.y/* + sideY*/, pointLeft.transform.position.z);
+        }
+
+        if (handLeft)
+        {
+            pointRight.transform.position = new Vector3(pointRight.transform.position.x, pointLeft.transform.position.y/* + sideY*/, pointRight.transform.position.z);
+        }
     }
 
     void Update()
@@ -97,6 +110,7 @@ public class InstScript : MonoBehaviour
                     angle += xInput * rotationSpeed * Time.deltaTime;
                 }
             }
+            UpdateCorners();
             UpdateScale();
         }
     }

@@ -31,7 +31,10 @@ public class ChecklistMechanic : MonoBehaviour
         var langTag = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0) == 0 ? "" : "German";
         CSVParser Scenario = new CSVParser("Scenarios/" + scenarioName + "/NursingTablets" +langTag);
         int i = -1;
-        correctAnswers = new int[Scenario.rowData.Count];
+        if (shuffleAnswers)
+        {
+            correctAnswers = new int[Scenario.rowData.Count];
+        }
         givenAnswers = new int[Scenario.rowData.Count];
         if(Scenario.rowData[0].Length == 7) //normal scenario
         {
@@ -59,26 +62,44 @@ public class ChecklistMechanic : MonoBehaviour
         }
         else //no hint scenario
         {
-            Debug.Log("handling a scenario with no hints or audiohints");
-            foreach (string[] row in Scenario.rowData)
+            if (shuffleAnswers)
             {
-                if (i != -1 && TabletRecords.Length > i)
+                foreach (string[] row in Scenario.rowData)
                 {
-                    string[] _answers = new string[3];
-                    int _correct = Random.Range(0, 3);
-                    correctAnswers[i] = _correct;
-                    for (int j = 0; j < _correct; j++)
+                    if (i != -1 && TabletRecords.Length > i)
                     {
-                        _answers[j] = row[2 + j];
+                        string[] _answers = new string[3];
+                        int _correct = Random.Range(0, 3);
+                        correctAnswers[i] = _correct;
+                        for (int j = 0; j < _correct; j++)
+                        {
+                            _answers[j] = row[2 + j];
+                        }
+                        _answers[_correct] = row[1];
+                        for (int j = _correct + 1; j <= 2; j++)
+                        {
+                            _answers[j] = row[1 + j];
+                        }
+                        TabletRecords[i].SetData(row[0], _answers, null);
                     }
-                    _answers[_correct] = row[1];
-                    for (int j = _correct + 1; j <= 2; j++)
-                    {
-                        _answers[j] = row[1 + j];
-                    }
-                    TabletRecords[i].SetData(row[0], _answers, null);
+                    i++;
                 }
-                i++;
+            }
+            else
+            {
+                foreach (string[] row in Scenario.rowData)
+                {
+                    if (i != -1 && TabletRecords.Length > i)
+                    {
+                        string[] _answers = new string[row.Length - 1];
+                        for (int j = 1; j < row.Length; j++)
+                        {
+                            _answers[j - 1] = row[j];
+                        }
+                        TabletRecords[i].SetData(row[0], _answers, null);
+                    }
+                    i++;
+                }
             }
         }
 

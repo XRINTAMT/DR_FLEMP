@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.IO;
 using UnityEngine.Events;
 
 
@@ -20,6 +17,7 @@ public class ChecklistMechanic : MonoBehaviour
     int[] givenAnswers;
     [HideInInspector]
     public bool indicate;
+    [SerializeField] private bool shuffleAnswers = true;
     Timer timer;
     public void Awake()
     {

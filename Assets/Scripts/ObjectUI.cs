@@ -20,8 +20,16 @@ public class ObjectUI : MonoBehaviour
     {
         Vector3 targetPosition = new Vector3(head.position.x, head.position.y, head.position.z);
         canvas.transform.LookAt(targetPosition);
-        if (item)
+        if (item && canvas.transform.position != item.transform.position + Offset) 
+        {
             canvas.transform.position = item.transform.position + Offset;
+            StartCoroutine(ActivateCanvas());
+        }
+    }
+    IEnumerator ActivateCanvas() 
+    {
+        yield return new WaitForEndOfFrame();
+        canvas.enabled = true;
 
     }
 }

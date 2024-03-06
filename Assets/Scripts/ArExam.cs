@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class ArExam : MonoBehaviour
@@ -23,6 +24,7 @@ public class ArExam : MonoBehaviour
     public Button chooseButton;
     string language;
     InstScript instScript;
+    public UnityEvent complete;
     // Start is called before the first frame update
     void Start()
     {
@@ -61,9 +63,11 @@ public class ArExam : MonoBehaviour
 
         itemIndex++;
 
-        if (itemIndex == arObjectsPool.items.Length)
+        if (itemIndex == arObjectsPool.items.Length) 
+        {
+            complete?.Invoke();
             itemIndex = 0;
-
+        }
     }
 
     void ShuffleButtonsAudio<T>(List<T> values)

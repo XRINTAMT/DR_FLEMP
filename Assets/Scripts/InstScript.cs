@@ -30,6 +30,7 @@ public class InstScript : MonoBehaviour
     public void TableEditMode(bool state) 
     {
         if (arTable) arTable.GetComponent<Collider>().enabled = !state;
+        arTable.GetComponent<MeshRenderer>().enabled = state;
         editMode = state;
         pointRight.gameObject.SetActive(state);
         pointLeft.gameObject.SetActive(state);

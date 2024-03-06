@@ -9,6 +9,7 @@ public class ArExam4 : MonoBehaviour
 {
     [SerializeField] ArObjectsPool arObjectsPool;
     [SerializeField] PlacePoint[] placePoints;
+    [SerializeField] PlacePoint[] placePointsItems;
     [SerializeField] Collider [] platesColliders;
     [SerializeField] Transform [] spawnItemPoints;
     [SerializeField] Text[] textPlates;
@@ -43,6 +44,10 @@ public class ArExam4 : MonoBehaviour
             coll1.Add(obj.GetComponent<Collider>());
 
             textPlates[i].text = arObjectsPool.items[i].function;
+
+            placePointsItems[i].transform.parent = obj.transform;
+            placePointsItems[i].transform.localPosition = Vector3.zero;
+            placePointsItems[i].transform.localEulerAngles = Vector3.zero;
         }
       
         collisionIgnores.cols1 = coll1.ToArray();
@@ -52,6 +57,12 @@ public class ArExam4 : MonoBehaviour
         {
             placePoints[i].OnPlace.AddListener(OnPlace);
             placePoints[i].OnRemove.AddListener(OnRemove);
+        }
+
+        for (int i = 0; i < placePointsItems.Length; i++)
+        {
+            placePointsItems[i].OnPlace.AddListener(OnPlace);
+            placePointsItems[i].OnRemove.AddListener(OnRemove);
         }
     }
 

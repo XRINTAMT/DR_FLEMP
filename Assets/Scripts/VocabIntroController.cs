@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Assets.SimpleLocalization;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class VocabIntroController : MonoBehaviour
@@ -20,6 +21,7 @@ public class VocabIntroController : MonoBehaviour
     int itemIndex;
     string language;
     InstScript instScript;
+    public UnityEvent complete;
     // Start is called before the first frame update
     void Start()
     {
@@ -77,8 +79,11 @@ public class VocabIntroController : MonoBehaviour
         soundIndex = itemIndex;
 
         itemIndex++;
-        if (itemIndex == arObjectsPool.items.Length)
+        if (itemIndex == arObjectsPool.items.Length) 
+        {
+            complete?.Invoke();
             itemIndex = 0;
+        }
     }
 
 }

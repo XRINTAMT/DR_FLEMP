@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Assets.SimpleLocalization;
 using Autohand;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ArExam4 : MonoBehaviour
 {
     [SerializeField] ArObjectsPool arObjectsPool;
     [SerializeField] PlacePoint[] placePoints;
-    [SerializeField] PlacePoint[] placePointsItems;
     [SerializeField] Collider [] platesColliders;
     [SerializeField] Transform [] spawnItemPoints;
     [SerializeField] Text[] textPlates;
@@ -25,53 +26,63 @@ public class ArExam4 : MonoBehaviour
     public UnityEvent complete;    
     InstScript instScript;
     CollisionIgnores collisionIgnores;
-    string language;
-
+    public int language;
     // Start is called before the first frame update
     void Start()
     {
-        language = PlayerPrefs.GetString(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Language", "English");
-
         instScript = FindObjectOfType<InstScript>();
         collisionIgnores = GetComponent<CollisionIgnores>();
-        List <Collider> coll1 = new List<Collider>();
-      
+        language= PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0);
+
+        List<Collider> coll1 = new List<Collider>();
+
         for (int i = 0; i < arObjectsPool.items.Length; i++)
         {
             GameObject obj = Instantiate(arObjectsPool.items[i].item, spawnItemPoints[i].position, Quaternion.identity);
             obj.transform.parent = spawnItemPoints[i];
             obj.transform.localPosition = Vector3.zero;
-            coll1.Add(obj.GetComponent<Collider>());
+            //coll1.Add(obj.GetComponent<Collider>());
+            foreach (var coll in obj.GetComponentsInChildren<Collider>())
+            {
+                coll1.Add(coll);
+            }
 
-            textPlates[i].text = arObjectsPool.items[i].function;
+            if (language == 0)
+            {
+                textPlates[i].text = arObjectsPool.items[i].functionEnglish;
+            }
+            if (language == 1)
+            {
+                textPlates[i].text = arObjectsPool.items[i].functionGerman;
+            }
 
-            placePointsItems[i].transform.parent = obj.transform;
-            placePointsItems[i].transform.localPosition = Vector3.zero;
-            placePointsItems[i].transform.localEulerAngles = Vector3.zero;
         }
-      
+
+
         collisionIgnores.cols1 = coll1.ToArray();
         collisionIgnores.cols2 = platesColliders;
+
+
+        for (int i = 0; i < coll1.Count; i++)
+            for (int j = 0; j < platesColliders.Length; j++)
+                Physics.IgnoreCollision(coll1[i], platesColliders[j], true);
 
         for (int i = 0; i < placePoints.Length; i++)
         {
             placePoints[i].OnPlace.AddListener(OnPlace);
-            placePoints[i].OnRemove.AddListener(OnRemove);
+            //placePoints[i].OnRemove.AddListener(OnRemove);
         }
 
-        for (int i = 0; i < placePointsItems.Length; i++)
-        {
-            placePointsItems[i].OnPlace.AddListener(OnPlace);
-            placePointsItems[i].OnRemove.AddListener(OnRemove);
-        }
     }
+
 
     public void Activate(bool state) 
     {
         itemsPivot.gameObject.SetActive(state);
         platesPivot.gameObject.SetActive(state);
     }
-   
+
+  
     public void OnPlace(PlacePoint placePoint, Grabbable grabbable) 
     {
         //placePoint.GetComponentInParent<Grabbable>().enabled = false;
@@ -104,12 +115,15 @@ public class ArExam4 : MonoBehaviour
 
     }
 
-
     public void OnRemove(PlacePoint placePoint, Grabbable grabbable)
     {
         //placePoint.GetComponentInParent<Grabbable>().enabled = true;
     }
 
+    public void ReturnToMenu() 
+    {
+        SceneManager.LoadScene(0);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -119,7 +133,16 @@ public class ArExam4 : MonoBehaviour
         }
         if (itemsPivot.transform.position != instScript.arTable.transform.position + new Vector3(0, 0.05f, 0f))
         {
-            itemsPivot.transform.position = instScript.arTable.transform.position + new Vector3(0, 0.05f, 0f);
+            itemsPivot.transform.position = instScript.arTable.transform.position + new Vector3(0, 0.05f, 0.2f);
         }
+        if (platesPivot.transform.rotation != instScript.arTable.transform.rotation)
+        {
+            platesPivot.transform.rotation = instScript.arTable.transform.rotation;
+        }
+        if (itemsPivot.transform.rotation != instScript.arTable.transform.rotation)
+        {
+            itemsPivot.transform.rotation = instScript.arTable.transform.rotation;
+        }
+        
     }
 }

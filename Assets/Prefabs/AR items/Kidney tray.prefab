@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 8774449467814734983}
   - component: {fileID: 373147979842043439}
   - component: {fileID: 175033961808944875}
+  - component: {fileID: 4036216286181473141}
   m_Layer: 0
   m_Name: Kidney mesh
   m_TagString: Untagged
@@ -289,3 +290,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -1624858338702781401, guid: 82eecc6cfc3ac884f89ebae2901e6382, type: 3}
+--- !u!114 &4036216286181473141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2832560960910155468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad72a440cda7d614bad465276db209f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TemporalOffset: 2
+  TimeToGoBack: 1
+  Interactible: {fileID: 3580108202934465110}

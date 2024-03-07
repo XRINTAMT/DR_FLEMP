@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Assets.SimpleLocalization;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -22,14 +23,14 @@ public class ArExam : MonoBehaviour
     public int v1,v2,v3;
     public Button correctButton;
     public Button chooseButton;
-    string language;
+    int language;
     InstScript instScript;
     public UnityEvent complete;
     // Start is called before the first frame update
     void Start()
     {
         instScript = FindObjectOfType<InstScript>();
-        language = PlayerPrefs.GetString(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Language", "English");
+        language = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0);
         buttonApply.onClick.AddListener(Apply);
         //SetNewItem();
     }
@@ -52,7 +53,7 @@ public class ArExam : MonoBehaviour
 
         //arObjectsPool.items[itemIndex].item.SetActive(true);
         if (instItem) Destroy(instItem);
-        instItem = Instantiate(arObjectsPool.items[itemIndex].item,instScript.arTable.transform.position+new Vector3(0, 0.05f, 0),Quaternion.identity);
+        instItem = Instantiate(arObjectsPool.items[itemIndex].item,instScript.arTable.transform.position+new Vector3(0, 0.05f, 0), instScript.arTable.transform.rotation);
         canvas.transform.parent = instItem.transform;
         //canvas.transform.localPosition = Vector3.zero;
         //canvas.transform.localEulerAngles = Vector3.zero;
@@ -65,6 +66,7 @@ public class ArExam : MonoBehaviour
 
         if (itemIndex == arObjectsPool.items.Length) 
         {
+            Skip();
             complete?.Invoke();
             itemIndex = 0;
         }
@@ -110,9 +112,9 @@ public class ArExam : MonoBehaviour
     }
     void PlaySound(int index, Button button) 
     {
-        if (language=="English")
+        if (language == 0)
             audioSource.PlayOneShot(arObjectsPool.items[index].titleAudioEnglish);
-        if (language == "German")
+        if (language == 1)
             audioSource.PlayOneShot(arObjectsPool.items[index].titleAudioGerman);
         chooseButton = button;
         chooseIndex = index;

@@ -44,6 +44,7 @@ public class TableItemSpawner : MonoBehaviour
                 spawnPosition.y = tableCenter.y + 0.02f; // Adjust height
                 GameObject newItem = Instantiate(itemsToSpawn[index], spawnPosition, Quaternion.identity);
                 newItem.transform.SetParent(transform);
+                newItem.name = itemsToSpawn[index].name;
             }
         }
     }

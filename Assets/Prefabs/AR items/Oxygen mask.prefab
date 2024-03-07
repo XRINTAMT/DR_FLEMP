@@ -317,6 +317,7 @@ GameObject:
   - component: {fileID: 5269441206884630297}
   - component: {fileID: 1781841455006669110}
   - component: {fileID: 8107811335798359404}
+  - component: {fileID: 4890778211201966248}
   m_Layer: 0
   m_Name: Oxygen mesh
   m_TagString: Untagged
@@ -406,3 +407,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -6963600172689466893, guid: 18669812858ba6a41978d4d1d6f31244, type: 3}
+--- !u!114 &4890778211201966248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5761753381773161826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad72a440cda7d614bad465276db209f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TemporalOffset: 2
+  TimeToGoBack: 1
+  Interactible: {fileID: 3022002677377486783}

@@ -16,18 +16,16 @@ public class VocabIntroController : MonoBehaviour
     [SerializeField] GameObject canvas;
     [SerializeField] AudioSource audioSource;
     GameObject instItem;
-    
+    int language;
     int soundIndex;
     int itemIndex;
-    string language;
     InstScript instScript;
     public UnityEvent complete;
     // Start is called before the first frame update
     void Start()
     {
         instScript = FindObjectOfType<InstScript>();
-        language = PlayerPrefs.GetString(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Language", "English");
-
+        language = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0);
         buttonRepeatAudio.onClick.AddListener(RepeatAudio);
         buttonNext.onClick.AddListener(SetNewItem);
 
@@ -37,9 +35,9 @@ public class VocabIntroController : MonoBehaviour
 
     void RepeatAudio() 
     {
-        if (language == "English")
+        if (language==0)
             audioSource.PlayOneShot(arObjectsPool.items[soundIndex].titleAudioEnglish);
-        if (language == "German")
+        if (language==1)
             audioSource.PlayOneShot(arObjectsPool.items[soundIndex].titleAudioGerman);
     }
 
@@ -53,7 +51,6 @@ public class VocabIntroController : MonoBehaviour
 
     public void SetNewItem()
     {
-
         //for (int i = 0; i < arObjectsPool.items.Length; i++)
         //    arObjectsPool.items[i].item.SetActive(false);
         canvas.transform.parent = null;
@@ -61,7 +58,7 @@ public class VocabIntroController : MonoBehaviour
         canvas.GetComponent<ObjectUI>().item = null;
 
         if (instItem) Destroy(instItem);
-        instItem = Instantiate(arObjectsPool.items[itemIndex].item, instScript.arTable.transform.position + new Vector3(0, 0.05f, 0), Quaternion.identity);
+        instItem = Instantiate(arObjectsPool.items[itemIndex].item, instScript.arTable.transform.position + new Vector3(0, 0.05f, 0), instScript.arTable.transform.rotation);
 
         canvas.transform.parent = instItem.transform;
         //canvas.transform.localPosition = Vector3.zero;
@@ -69,19 +66,24 @@ public class VocabIntroController : MonoBehaviour
         canvas.GetComponent<ObjectUI>().item = instItem;
         //canvas.GetComponent<Canvas>().enabled = true;
 
-        //titleItem.GetComponent<LocalizedText>().LocalizationKey = arObjectsPool.items[itemIndex].keyTitle;
-        //titleItem.GetComponent<LocalizedText>().Localize();
-        //functionItem.GetComponent<LocalizedText>().LocalizationKey = arObjectsPool.items[itemIndex].keyFunction;
-        //functionItem.GetComponent<LocalizedText>().Localize();
-
-        titleItem.text = arObjectsPool.items[itemIndex].title;
-        functionItem.text = arObjectsPool.items[itemIndex].function;
+        if (language == 0)
+        {
+            titleItem.text = arObjectsPool.items[itemIndex].titleEnglish;
+            functionItem.text = arObjectsPool.items[itemIndex].functionEnglish;
+        }
+        if (language == 1)
+        {
+            titleItem.text = arObjectsPool.items[itemIndex].titleGerman;
+            functionItem.text = arObjectsPool.items[itemIndex].functionGerman;
+        }
+      
         soundIndex = itemIndex;
 
         itemIndex++;
         if (itemIndex == arObjectsPool.items.Length) 
         {
             complete?.Invoke();
+            Skip();
             itemIndex = 0;
         }
     }

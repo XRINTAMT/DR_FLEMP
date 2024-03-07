@@ -16,11 +16,9 @@ public class DynamicPatientInfo : MonoBehaviour
         Debug.Log(filePath); 
         CSVParser parser = new CSVParser(filePath);
         List<string[]> characterData = parser.rowData;
-
         for (int i = 0; i < characterData.Count; i++)
         {
             string[] row = characterData[i];
-
             // Filter out empty strings
             List<string> nonEmptyElements = new List<string>();
             foreach (string element in row)
@@ -31,14 +29,12 @@ public class DynamicPatientInfo : MonoBehaviour
                     nonEmptyElements.Add(trimmedElement);
                 }
             }
-
             // Randomly select a column index from non-empty elements
             int randomColumnIndex = Random.Range(0, nonEmptyElements.Count);
             patientDescription += nonEmptyElements[randomColumnIndex] + " ";
             int correctAnswerIndex = randomColumnIndex;
             Checklist.correctAnswers[i] = correctAnswerIndex;
         }
-
         Patient.description = patientDescription;
         Patient.germanDescription = patientDescription;
     }

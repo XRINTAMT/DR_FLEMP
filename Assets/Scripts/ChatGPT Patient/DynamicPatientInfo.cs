@@ -40,5 +40,6 @@ public class DynamicPatientInfo : MonoBehaviour
         }
 
         Patient.description = patientDescription;
+        Patient.germanDescription = patientDescription;
     }
 }

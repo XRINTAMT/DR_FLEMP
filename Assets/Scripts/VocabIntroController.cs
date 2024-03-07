@@ -37,7 +37,7 @@ public class VocabIntroController : MonoBehaviour
     {
         if (language == "English")
             audioSource.PlayOneShot(arObjectsPool.items[soundIndex].titleAudioEnglish);
-        if (language == "English")
+        if (language == "German")
             audioSource.PlayOneShot(arObjectsPool.items[soundIndex].titleAudioGerman);
     }
 
@@ -59,13 +59,13 @@ public class VocabIntroController : MonoBehaviour
         canvas.GetComponent<ObjectUI>().item = null;
 
         if (instItem) Destroy(instItem);
-        instItem = Instantiate(arObjectsPool.items[itemIndex].item, instScript.arTable.transform.position + new Vector3(0, 0.2f, 0), Quaternion.identity);
+        instItem = Instantiate(arObjectsPool.items[itemIndex].item, instScript.arTable.transform.position + new Vector3(0, 0.05f, 0), Quaternion.identity);
 
         canvas.transform.parent = instItem.transform;
         //canvas.transform.localPosition = Vector3.zero;
         //canvas.transform.localEulerAngles = Vector3.zero;
         canvas.GetComponent<ObjectUI>().item = instItem;
-        canvas.GetComponent<Canvas>().enabled = true;
+        //canvas.GetComponent<Canvas>().enabled = true;
 
         //titleItem.GetComponent<LocalizedText>().LocalizationKey = arObjectsPool.items[itemIndex].keyTitle;
         //titleItem.GetComponent<LocalizedText>().Localize();

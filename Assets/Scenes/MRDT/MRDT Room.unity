@@ -3705,7 +3705,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6231535692498331917, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.168
+      value: 4.704
       objectReference: {fileID: 0}
     - target: {fileID: 6231535692498331917, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3713,7 +3713,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6231535692498331917, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1.802
       objectReference: {fileID: 0}
     - target: {fileID: 6231535692498331917, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3823,6 +3823,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8134128262410813934, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
   m_PrefabInstance: {fileID: 1067664178}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1067664181 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7183706670547048724, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+  m_PrefabInstance: {fileID: 1067664178}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1067664182 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 832279113980505643, guid: afae716f9fc94d048b8fbfee94c44606, type: 3}
+  m_PrefabInstance: {fileID: 1067664178}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1162980077
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6785,6 +6801,14 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3561040011591001275, guid: cce79147b20de38418b96558555e073c, type: 3}
+      propertyPath: LogsTab
+      value: 
+      objectReference: {fileID: 1067664181}
+    - target: {fileID: 3561040011591001275, guid: cce79147b20de38418b96558555e073c, type: 3}
+      propertyPath: TabletLogs
+      value: 
+      objectReference: {fileID: 1067664182}
     - target: {fileID: 3642552873884196183, guid: cce79147b20de38418b96558555e073c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -7033,6 +7057,7 @@ MonoBehaviour:
   - {fileID: 565824570}
   - {fileID: 1619052216}
   - {fileID: 1050590980}
+  ItemsParent: {fileID: 0}
   OnQuizCompleted:
     m_PersistentCalls:
       m_Calls:
@@ -7048,20 +7073,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2083044715}
-        m_TargetAssemblyTypeName: PersistentSaveSystem.CompleteRoom, Assembly-CSharp
-        m_MethodName: Complete
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   ItemIndices: 
   CorrectItemIndex: 0
+  DestroyOnGuess: 0
 --- !u!114 &2083044718
 MonoBehaviour:
   m_ObjectHideFlags: 0

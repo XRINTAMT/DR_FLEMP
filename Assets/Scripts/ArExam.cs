@@ -8,11 +8,14 @@ public class ArExam : MonoBehaviour
     [SerializeField] ArObjectsPool arObjectsPool;
     [SerializeField] List <Button> buttonsAudio;
     [SerializeField] Button buttonApply;
-    [SerializeField] int totalScore;
+    public int totalScore;
     [SerializeField] int itemScore;
     [SerializeField] GameObject canvas;
     [SerializeField] GameObject instItem;
     [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioSource audioSource2;
+    [SerializeField] AudioClip Correct;
+    [SerializeField] AudioClip Incorrect;
     int itemIndex;
     int chooseIndex;
     public int v1,v2,v3;
@@ -47,12 +50,12 @@ public class ArExam : MonoBehaviour
 
         //arObjectsPool.items[itemIndex].item.SetActive(true);
         if (instItem) Destroy(instItem);
-        instItem = Instantiate(arObjectsPool.items[itemIndex].item,instScript.arTable.transform.position+new Vector3(0,0.2f,0),Quaternion.identity);
+        instItem = Instantiate(arObjectsPool.items[itemIndex].item,instScript.arTable.transform.position+new Vector3(0, 0.05f, 0),Quaternion.identity);
         canvas.transform.parent = instItem.transform;
         //canvas.transform.localPosition = Vector3.zero;
         //canvas.transform.localEulerAngles = Vector3.zero;
         canvas.GetComponent<ObjectUI>().item = instItem;
-        canvas.GetComponent<Canvas>().enabled = true;
+        //canvas.GetComponent<Canvas>().enabled = true;
 
         ShuffleButtonsAudio(buttonsAudio);
 
@@ -115,9 +118,16 @@ public class ArExam : MonoBehaviour
     void Apply() 
     {
         chooseButton.interactable = false;
+
+        if (chooseButton != correctButton)
+        {
+            audioSource2.PlayOneShot(Incorrect);
+        }
+
         if (chooseButton==correctButton)
         {
             totalScore = totalScore + itemScore;
+            audioSource2.PlayOneShot(Correct);
             SetNewItem();
             return;
         }

@@ -106,4 +106,12 @@ public class FindMeXQuiz : MonoBehaviour
         }
         Invoke("NewRandomItem", 5);
     }
+
+    public void Skip() 
+    {
+        for (int i = 0; i < Items.Count; i++)
+        {
+            Items[i].gameObject.SetActive(false);
+        }
+    }
 }

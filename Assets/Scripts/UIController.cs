@@ -62,7 +62,7 @@ public class UIController : MonoBehaviour
         setMusicVolumeStatus.value = PlayerPrefs.GetFloat(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "musicVolume", 0.5f);
         //setWalkingSpeed.value = PlayerPrefs.GetFloat("walkingSpeed", 1.5f);
         setSubstitlesStatus.isOn = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Subtitles", 0) == 0;
-        teleport = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "MovementType", 0);
+        teleport = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "MovementType", 2);
         if (!tutorial) SetLocomotionType(teleport);
         learnedLanguage = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0);
         role = PlayerPrefs.GetString(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Role", "Assistant");
@@ -71,8 +71,8 @@ public class UIController : MonoBehaviour
         teleportChosen.SetActive(teleport == 0);
         smoothChosen.SetActive(teleport == 1);
         mixedChosen.SetActive(teleport == 2);
-        englishLearningChosen.SetActive(learnedLanguage == 0);
-        germanLearningChosen.SetActive(learnedLanguage == 1);
+        if (englishLearningChosen) englishLearningChosen.SetActive(learnedLanguage == 0);
+        if (germanLearningChosen) germanLearningChosen.SetActive(learnedLanguage == 1);
         englishChosen.SetActive(language == "English");
         germanChosen.SetActive(language == "German");
         lithuanianChosen.SetActive(language == "Lithuanian");
@@ -154,10 +154,8 @@ public class UIController : MonoBehaviour
         teleportChosen.SetActive(teleport == 0);
         smoothChosen.SetActive(teleport == 1);
         PlayerPrefs.SetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "MovementType", teleport);
-        Debug.Log("Looking for a thing");
         //Object.FindObjectOfType<XRMovementControls>().SwitchLocomotion(teleport);
-        Debug.Log("found one");
-        if(Realtime)
+        if(Realtime && FindObjectOfType<XRMovementControls>())
             FindObjectOfType<XRMovementControls>().SwitchLocomotion(teleport);
     }
     public void SetHandType(int hand)

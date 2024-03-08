@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3667863345357202764}
   - component: {fileID: 4107694753802720820}
   - component: {fileID: 8229600792155240990}
+  - component: {fileID: 5932926910473261766}
   m_Layer: 0
   m_Name: Scalpel
   m_TagString: Untagged
@@ -189,3 +190,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   lockHandOnGrab: 0
+--- !u!114 &5932926910473261766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7480632394332554831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad72a440cda7d614bad465276db209f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TemporalOffset: 2
+  TimeToGoBack: 1
+  Interactible: {fileID: 7480632394332554830}

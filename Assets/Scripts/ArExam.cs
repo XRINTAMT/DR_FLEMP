@@ -13,6 +13,7 @@ public class ArExam : MonoBehaviour
     public int totalScore;
     [SerializeField] int itemScore;
     [SerializeField] GameObject canvas;
+    [SerializeField] GameObject cannvasPanel;
     [SerializeField] GameObject instItem;
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioSource audioSource2;
@@ -37,12 +38,25 @@ public class ArExam : MonoBehaviour
     public void Skip()
     {
         canvas.GetComponent<Canvas>().enabled = false;
+        //cannvasPanel.SetActive(false);
         canvas.transform.parent = null;
         if (instItem) Destroy(instItem);
         instItem = null;
     }
     public void SetNewItem() 
     {
+        if (itemIndex == arObjectsPool.items.Length)
+        {
+            Skip();
+            complete?.Invoke();
+            itemIndex = 0;
+            buttonApply.onClick.RemoveAllListeners();
+            cannvasPanel.SetActive(false);
+            canvas.GetComponent<Canvas>().enabled = false;
+            return;
+        }
+
+
         for (int i = 0; i < buttonsAudio.Count; i++)
             buttonsAudio[i].interactable = true;
 
@@ -64,12 +78,7 @@ public class ArExam : MonoBehaviour
 
         itemIndex++;
 
-        if (itemIndex == arObjectsPool.items.Length) 
-        {
-            Skip();
-            complete?.Invoke();
-            itemIndex = 0;
-        }
+      
     }
 
     void ShuffleButtonsAudio<T>(List<T> values)
@@ -114,8 +123,11 @@ public class ArExam : MonoBehaviour
     {
         if (language == 0)
             audioSource.PlayOneShot(arObjectsPool.items[index].titleAudioEnglish);
-        if (language == 1)
+        else
             audioSource.PlayOneShot(arObjectsPool.items[index].titleAudioGerman);
+        
+        //if (language == 1)
+        //    audioSource.PlayOneShot(arObjectsPool.items[index].titleAudioGerman);
         chooseButton = button;
         chooseIndex = index;
     

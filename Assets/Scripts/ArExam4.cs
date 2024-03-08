@@ -50,12 +50,20 @@ public class ArExam4 : MonoBehaviour
             if (language == 0)
             {
                 textPlates[i].text = arObjectsPool.items[i].functionEnglish;
+                if (textPlates[i].text =="")
+                {
+                    textPlates[i].text = "NoneEnglishText";
+                }
+               
             }
-            if (language == 1)
+            else
             {
                 textPlates[i].text = arObjectsPool.items[i].functionGerman;
+                if (textPlates[i].text == "")
+                {
+                    textPlates[i].text = "NoneGermanText";
+                }
             }
-
         }
 
 
@@ -105,8 +113,8 @@ public class ArExam4 : MonoBehaviour
         {
             complete?.Invoke();
             float ts = (correct / (correct + incorrect)) * 100;
-            scoreUi.transform.parent = platesPivot.transform;
-            scoreUi.transform.localPosition = new Vector3(0, 0, 0);
+            //scoreUi.transform.parent = platesPivot.transform;
+            //scoreUi.transform.localPosition = new Vector3(0, 0, 0);
             scoreExam3.text = ""+arExam.totalScore;
             scoreExam4.text = "" + Mathf.RoundToInt(ts) + "%";
             scoreUi.SetActive(true);

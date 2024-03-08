@@ -14,11 +14,12 @@ public class VocabIntroController : MonoBehaviour
     [SerializeField] Button buttonRepeatAudio;
     [SerializeField] Button buttonNext;
     [SerializeField] GameObject canvas;
+    [SerializeField] GameObject cannvasPanel;
     [SerializeField] AudioSource audioSource;
     GameObject instItem;
     int language;
     int soundIndex;
-    int itemIndex;
+    public int itemIndex;
     InstScript instScript;
     public UnityEvent complete;
     // Start is called before the first frame update
@@ -37,20 +38,36 @@ public class VocabIntroController : MonoBehaviour
     {
         if (language==0)
             audioSource.PlayOneShot(arObjectsPool.items[soundIndex].titleAudioEnglish);
-        if (language==1)
+        else
             audioSource.PlayOneShot(arObjectsPool.items[soundIndex].titleAudioGerman);
+
+        //if (language==1)
+        //    audioSource.PlayOneShot(arObjectsPool.items[soundIndex].titleAudioGerman);
     }
 
     public void Skip() 
     {
         canvas.GetComponent<Canvas>().enabled = false;
         canvas.transform.parent = null;
+        cannvasPanel.SetActive(false);
         if (instItem) Destroy(instItem);
         instItem = null;
     }
 
     public void SetNewItem()
     {
+
+        if (itemIndex == arObjectsPool.items.Length)
+        {
+            complete?.Invoke();
+            Skip();
+            itemIndex = 100;
+            buttonNext.onClick.RemoveAllListeners();
+            canvas.GetComponent<Canvas>().enabled = false;
+            cannvasPanel.SetActive(false);
+            return;
+        }
+       
         //for (int i = 0; i < arObjectsPool.items.Length; i++)
         //    arObjectsPool.items[i].item.SetActive(false);
         canvas.transform.parent = null;
@@ -80,12 +97,6 @@ public class VocabIntroController : MonoBehaviour
         soundIndex = itemIndex;
 
         itemIndex++;
-        if (itemIndex == arObjectsPool.items.Length) 
-        {
-            complete?.Invoke();
-            Skip();
-            itemIndex = 0;
-        }
     }
 
 }

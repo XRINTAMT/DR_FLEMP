@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [Serializable]
  public class Item
@@ -21,12 +22,11 @@ public class ArObjectsPool : MonoBehaviour
 {
     public Item [] items;
     int[] langugeRaw = new int[] { 0, 1, 2 };
-
     private void Start()
     {
-        Parse();
+        
     }
-    void Parse()
+    public void Parse()
     {
         CSVParser cSVParserItems = new CSVParser("Scenarios/" + "AR1" + "/ArItems");
         CSVParser cSVParserFunctions = new CSVParser("Scenarios/" + "AR1" + "/ArFunctions");

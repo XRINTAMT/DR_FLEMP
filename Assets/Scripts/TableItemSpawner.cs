@@ -1,3 +1,4 @@
+using Autohand;
 using UnityEngine;
 
 public class TableItemSpawner : MonoBehaviour
@@ -41,9 +42,10 @@ public class TableItemSpawner : MonoBehaviour
                 float zOffset = (i - (rows - 1) / 2f) * spacingZ;
                 Vector3 offset = Quaternion.Euler(0, -table.angle, 0) * new Vector3(xOffset, 0, zOffset);
                 Vector3 spawnPosition = tableCenter + offset;
-                spawnPosition.y = tableCenter.y + 0.02f; // Adjust height
+                spawnPosition.y = tableCenter.y + 0.05f; // Adjust height
                 GameObject newItem = Instantiate(itemsToSpawn[index], spawnPosition, Quaternion.identity);
                 newItem.transform.SetParent(transform);
+                newItem.GetComponent<Grabbable>().heldIgnoreColliders.Add(table.arTable.GetComponent<Collider>());
             }
         }
     }

@@ -11,6 +11,8 @@ public class InstScript : MonoBehaviour
     [SerializeField] float rotationSpeed;
     [SerializeField] public float angle;
     public GameObject arTable;
+    public GameObject uiInstruction;
+    public GameObject uiScore;
     public GameObject pointLeft, pointRight;
     private Vector3 instObjectPosition;
     Hand handRight;
@@ -30,6 +32,7 @@ public class InstScript : MonoBehaviour
     public void TableEditMode(bool state) 
     {
         if (arTable) arTable.GetComponent<Collider>().enabled = !state;
+        arTable.GetComponent<MeshRenderer>().enabled = state;
         editMode = state;
         pointRight.gameObject.SetActive(state);
         pointLeft.gameObject.SetActive(state);
@@ -112,6 +115,15 @@ public class InstScript : MonoBehaviour
             }
             UpdateCorners();
             UpdateScale();
+
+            if (uiInstruction.transform.position != arTable.transform.position + new Vector3(0, 0.3f, 0))
+            {
+                uiInstruction.transform.position = arTable.transform.position + new Vector3(0, 0.3f, 0);
+            }
+            if (uiScore.transform.position != arTable.transform.position + new Vector3(0, 0.3f, 0))
+            {
+                uiScore.transform.position = arTable.transform.position + new Vector3(0, 0.3f, 0);
+            }
         }
     }
 }

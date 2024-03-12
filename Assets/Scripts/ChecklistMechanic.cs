@@ -12,6 +12,7 @@ public class ChecklistMechanic : MonoBehaviour
     [SerializeField] string scenarioTag;
     [SerializeField] GameObject ScorePanel;
     [SerializeField] Text ScoreText;
+    [SerializeField] private bool InitOnStartup = true;
     public NurseTabletRecord[] TabletRecords;
     public UnityEvent OnComplete;
     int[] givenAnswers;
@@ -21,13 +22,14 @@ public class ChecklistMechanic : MonoBehaviour
     Timer timer;
     public void Awake()
     {
-        TabletRecords = GetComponentsInChildren<NurseTabletRecord>();
-        ParseTheScenario();
+        if(InitOnStartup)
+            ParseTheScenario();
         timer = GetComponent<Timer>();
     }
 
-    void ParseTheScenario() //use with caution, erases all the answers gathered from the player
+    public void ParseTheScenario() //use with caution, erases all the answers gathered from the player
     {
+        TabletRecords = GetComponentsInChildren<NurseTabletRecord>();
         var langTag = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0) == 0 ? "" : "German";
         CSVParser Scenario = new CSVParser("Scenarios/" + scenarioName + "/NursingTablets" +langTag);
         int i = -1;
@@ -102,7 +104,34 @@ public class ChecklistMechanic : MonoBehaviour
                 }
             }
         }
+    }
 
+    public void ParseTheScenarioRandomized(int[][] RandomizedMatrix) //use with caution, erases all the answers gathered from the player
+    {
+        TabletRecords = GetComponentsInChildren<NurseTabletRecord>();
+        Debug.Log("Started parsing this shit");
+        var langTag = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0) == 0 ? "" : "German";
+        CSVParser Scenario = new CSVParser("Scenarios/" + scenarioName + "/NursingTablets" + langTag);
+        int i = -1;
+        if (shuffleAnswers)
+        {
+            correctAnswers = new int[Scenario.rowData.Count];
+        }
+        givenAnswers = new int[Scenario.rowData.Count];
+        foreach (string[] row in Scenario.rowData)
+        {
+            if (i != -1 && TabletRecords.Length > i)
+            {
+                Debug.Log("Actually PROCESSING " + row[0]);
+                string[] _answers = new string[RandomizedMatrix[i].Length];
+                for (int j = 0; j < RandomizedMatrix[i].Length; j++)
+                {
+                    _answers[j] = row[RandomizedMatrix[i][j] + 1];
+                }
+                TabletRecords[i].SetData(row[0], _answers, null);
+            }
+            i++;
+        }
     }
 
     public void SaveAnswer(int _id, int _answer)

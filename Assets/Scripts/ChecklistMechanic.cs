@@ -12,12 +12,15 @@ public class ChecklistMechanic : MonoBehaviour
     [SerializeField] string scenarioTag;
     [SerializeField] GameObject ScorePanel;
     [SerializeField] Text ScoreText;
+    [SerializeField] Text[] FormularyText;
     [SerializeField] private bool InitOnStartup = true;
+    [SerializeField] RectTransform FormularyRoot;
     public NurseTabletRecord[] TabletRecords;
     public UnityEvent OnComplete;
     int[] givenAnswers;
     [HideInInspector]
     public bool indicate;
+    private string[][] AnswerTexts;
     [SerializeField] private bool shuffleAnswers = true;
     Timer timer;
     public void Awake()
@@ -27,9 +30,15 @@ public class ChecklistMechanic : MonoBehaviour
         timer = GetComponent<Timer>();
     }
 
+    private void Start()
+    {
+        LayoutRebuilder.MarkLayoutForRebuild(FormularyRoot);
+    }
+
     public void ParseTheScenario() //use with caution, erases all the answers gathered from the player
     {
         TabletRecords = GetComponentsInChildren<NurseTabletRecord>();
+        AnswerTexts = new string[TabletRecords.Length][];
         var langTag = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0) == 0 ? "" : "German";
         CSVParser Scenario = new CSVParser("Scenarios/" + scenarioName + "/NursingTablets" +langTag);
         int i = -1;
@@ -38,6 +47,10 @@ public class ChecklistMechanic : MonoBehaviour
             correctAnswers = new int[Scenario.rowData.Count];
         }
         givenAnswers = new int[Scenario.rowData.Count];
+        for(int k = 0; k < givenAnswers.Length; k++)
+        {
+            givenAnswers[k] = -1;
+        }
         if(Scenario.rowData[0].Length == 7) //normal scenario
         {
             Debug.Log("handling a normal scenario with hints and audiohints");
@@ -58,6 +71,7 @@ public class ChecklistMechanic : MonoBehaviour
                         _answers[j] = row[2 + j];
                     }
                     TabletRecords[i].SetData(row[0], _answers, row[1]);
+                    AnswerTexts[i] = _answers;
                 }
                 i++;
             }
@@ -109,6 +123,7 @@ public class ChecklistMechanic : MonoBehaviour
     public void ParseTheScenarioRandomized(int[][] RandomizedMatrix) //use with caution, erases all the answers gathered from the player
     {
         TabletRecords = GetComponentsInChildren<NurseTabletRecord>();
+        AnswerTexts = new string[TabletRecords.Length][];
         Debug.Log("Started parsing this shit");
         var langTag = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0) == 0 ? "" : "German";
         CSVParser Scenario = new CSVParser("Scenarios/" + scenarioName + "/NursingTablets" + langTag);
@@ -118,6 +133,10 @@ public class ChecklistMechanic : MonoBehaviour
             correctAnswers = new int[Scenario.rowData.Count];
         }
         givenAnswers = new int[Scenario.rowData.Count];
+        for (int k = 0; k < givenAnswers.Length; k++)
+        {
+            givenAnswers[k] = -1;
+        }
         foreach (string[] row in Scenario.rowData)
         {
             if (i != -1 && TabletRecords.Length > i)
@@ -129,6 +148,7 @@ public class ChecklistMechanic : MonoBehaviour
                     _answers[j] = row[RandomizedMatrix[i][j] + 1];
                 }
                 TabletRecords[i].SetData(row[0], _answers, null);
+                AnswerTexts[i] = _answers;
             }
             i++;
         }
@@ -144,6 +164,12 @@ public class ChecklistMechanic : MonoBehaviour
         else
         {
             //run code if the wrong answer is given
+        }
+        if(FormularyText.Length > 0)
+        {
+            FormularyText[_id].text = AnswerTexts[_id][_answer];
+            LayoutRebuilder.MarkLayoutForRebuild(FormularyRoot);
+            //LayoutRebuilder.ForceRebuildLayoutImmediate(FormularyRoot);
         }
         CheckCompletion();
 
@@ -203,10 +229,5 @@ public class ChecklistMechanic : MonoBehaviour
             _checkbox.isOn = false;
         }
         ParseTheScenario();
-    }
-
-    void Update()
-    {
-        
     }
 }

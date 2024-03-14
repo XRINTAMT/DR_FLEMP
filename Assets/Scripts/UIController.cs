@@ -55,7 +55,7 @@ public class UIController : MonoBehaviour
         if (SceneManager.GetActiveScene().name != "Lobby") 
         {
             if (languageButton) languageButton.SetActive(false);
-            if (languageButtonStudy) languageButtonStudy.SetActive(false);
+            //if (languageButtonStudy) languageButtonStudy.SetActive(false);
         }
     }
 

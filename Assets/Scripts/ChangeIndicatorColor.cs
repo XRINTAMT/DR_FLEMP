@@ -15,6 +15,11 @@ public class ChangeIndicatorColor : MonoBehaviour
         indicator.color = Color.red;
     }
 
+    public void Reset()
+    {
+        indicator.color = Color.red;
+    }
+
     public void Enter() 
     {
         indicator.color = Color.green;

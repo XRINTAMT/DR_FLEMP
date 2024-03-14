@@ -15,6 +15,7 @@ public class PatientTabController : MonoBehaviour
     [SerializeField] TMP_Text namePatient;
     [SerializeField] private CompleteRoom cr;
     [SerializeField] Animator animator;
+    [SerializeField] string correctPatientName;
     AudioSource audioSource;
     public AudioClip correct;
     public AudioClip uncorrect;
@@ -25,7 +26,7 @@ public class PatientTabController : MonoBehaviour
         var characters = FindObjectsOfType<AICharacter.CharacterInfo>();
         for (int i = 0; i < characters.Length; i++)
         {
-            if (characters[i].name == "Lizzy Parker")
+            if (characters[i].name == correctPatientName)
             {
                 Debug.Log(characters[i].name);
                 foreach (var anim in characters[i].transform.parent.GetComponentsInChildren<Animator>())
@@ -72,22 +73,14 @@ public class PatientTabController : MonoBehaviour
     }
     void ButtonDone() 
     {
-        Debug.Log("ButtonChoose");
-
-        if (namePatient.text != "Lizzy Parker") //if uncorrect
+        if (namePatient.text != correctPatientName) //if uncorrect
         {
-            Debug.Log("Not lizzy chosen");
-            if (SceneManager.GetActiveScene().name == "B11")
-                SceneManager.LoadScene("B11");
-            if (SceneManager.GetActiveScene().name == "B21")
-                SceneManager.LoadScene("B21");
             buttonsPatients[chooseIndex].interactable = false;
             audioSource.PlayOneShot(uncorrect);
             buttonsBackground[chooseIndex].SetActive(true);
         }
         else //if correct
         {
-            Debug.Log("lizzy chosen");
             cr.Complete();
             audioSource.PlayOneShot(correct);
             if (animator) 
@@ -96,15 +89,7 @@ public class PatientTabController : MonoBehaviour
                 //animator.Rebind();
                 animator.SetTrigger("StandUp2");
             }
-            if (SceneManager.GetActiveScene().name == "B1_Pain_Assessment")
-            {
-                FindObjectOfType<WelcomeScreenController>(true).OpenEndPanel();
-            }
-            else
-            {
-                SceneManager.LoadScene("Lobby");
-                Debug.Log("lizzy chosen 2");
-            }
+            FindObjectOfType<WelcomeScreenController>(true).OpenEndPanel();
         }
     
     }

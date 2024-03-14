@@ -71,8 +71,8 @@ public class UIController : MonoBehaviour
         teleportChosen.SetActive(teleport == 0);
         smoothChosen.SetActive(teleport == 1);
         mixedChosen.SetActive(teleport == 2);
-        englishLearningChosen.SetActive(learnedLanguage == 0);
-        germanLearningChosen.SetActive(learnedLanguage == 1);
+        if (englishLearningChosen) englishLearningChosen.SetActive(learnedLanguage == 0);
+        if (germanLearningChosen) germanLearningChosen.SetActive(learnedLanguage == 1);
         englishChosen.SetActive(language == "English");
         germanChosen.SetActive(language == "German");
         lithuanianChosen.SetActive(language == "Lithuanian");
@@ -154,10 +154,8 @@ public class UIController : MonoBehaviour
         teleportChosen.SetActive(teleport == 0);
         smoothChosen.SetActive(teleport == 1);
         PlayerPrefs.SetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "MovementType", teleport);
-        Debug.Log("Looking for a thing");
         //Object.FindObjectOfType<XRMovementControls>().SwitchLocomotion(teleport);
-        Debug.Log("found one");
-        if(Realtime)
+        if(Realtime && FindObjectOfType<XRMovementControls>())
             FindObjectOfType<XRMovementControls>().SwitchLocomotion(teleport);
     }
     public void SetHandType(int hand)

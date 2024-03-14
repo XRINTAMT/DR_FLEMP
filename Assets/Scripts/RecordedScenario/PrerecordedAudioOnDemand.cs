@@ -169,9 +169,7 @@ namespace RecordedScenario
                         }
                         else
                         {
-                            string _name = ComputeSHA256Hash(_phrase.Speaker + _phrase.Text[1]);
-                            string _resourcesName = "Scenarios/" + scenarioName + "/TTS_AudioRecordings/German/" + _name;
-                            AudioClip _toPlay = Resources.Load<AudioClip>(_resourcesName);
+                            AudioClip _toPlay = _phrase.VoiceAudio[language];
                             if (_toPlay != null)
                                 _speaker.GoogleSpeaker.PlaySaved(_toPlay);
                             else

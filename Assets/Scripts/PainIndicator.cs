@@ -9,6 +9,7 @@ public class PainIndicator : MonoBehaviour
     int _painCount;
     [SerializeField] Color [] colorPain;
     Material material;
+    [SerializeField] GameObject Sprite;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,7 @@ public class PainIndicator : MonoBehaviour
     public void SetPain(int paintCount) 
     {
         material.color = colorPain[painCount];
+        Sprite.SetActive(true);
     }
     // Update is called once per frame
     void Update()

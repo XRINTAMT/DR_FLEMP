@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 7740019328222247469}
   - component: {fileID: 7740019328222247467}
   - component: {fileID: 7740019328222247466}
+  - component: {fileID: 647082425878998895}
   m_Layer: 0
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -163,6 +164,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: New Text
+--- !u!114 &647082425878998895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7740019328222247468}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2404a37f3bd75444aa4ad05d0f228347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizationKey: 
 --- !u!1 &7740019328499075657
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,6 +728,7 @@ GameObject:
   - component: {fileID: 7740019329694453922}
   - component: {fileID: 7740019329694453920}
   - component: {fileID: 7740019329694453923}
+  - component: {fileID: 2407145057015656443}
   m_Layer: 0
   m_Name: GrabPlacePoint
   m_TagString: Untagged
@@ -840,6 +855,20 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   lockHandOnGrab: 0
+--- !u!114 &2407145057015656443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7740019329694453925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b373d5a808ad34d4285291a2c974f70c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  placePoint: {fileID: 7740019329436206754}
+  grabbablePlate: {fileID: 7740019329694453923}
 --- !u!1 &7827287089535394828
 GameObject:
   m_ObjectHideFlags: 0

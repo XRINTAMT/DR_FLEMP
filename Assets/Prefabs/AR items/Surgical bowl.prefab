@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 6932228279270700101}
   - component: {fileID: 2959753851236824124}
   - component: {fileID: 8980837853783712127}
+  - component: {fileID: 6839917742283596682}
   m_Layer: 0
   m_Name: Surgical mesh
   m_TagString: Untagged
@@ -289,3 +290,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2846409900328582795, guid: fef50a18204ad6e4c9ff559f9d245f57, type: 3}
+--- !u!114 &6839917742283596682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8574981364781521884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad72a440cda7d614bad465276db209f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TemporalOffset: 2
+  TimeToGoBack: 1
+  Interactible: {fileID: 5156333017095908822}

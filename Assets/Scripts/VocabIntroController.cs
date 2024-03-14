@@ -33,7 +33,12 @@ public class VocabIntroController : MonoBehaviour
         //SetNewItem();
 
     }
-
+    public void Replay() 
+    {
+        itemIndex = 0;
+        SetNewItem();
+        cannvasPanel.SetActive(true);
+    }
     void RepeatAudio() 
     {
         if (language==0)
@@ -62,7 +67,7 @@ public class VocabIntroController : MonoBehaviour
             complete?.Invoke();
             Skip();
             itemIndex = 100;
-            buttonNext.onClick.RemoveAllListeners();
+            //buttonNext.onClick.RemoveAllListeners();
             canvas.GetComponent<Canvas>().enabled = false;
             cannvasPanel.SetActive(false);
             return;

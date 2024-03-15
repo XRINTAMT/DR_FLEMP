@@ -8,6 +8,7 @@ public class GuideSystem : MonoBehaviour
     [SerializeField] GameObject canvas;
     [SerializeField] GameObject dialogueGuide;
     [SerializeField] GameObject arrowObservationSheet;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,8 @@ public class GuideSystem : MonoBehaviour
             if (dialogueGuide != null) dialogueGuide.SetActive(true);
             if (arrowObservationSheet != null) arrowObservationSheet.SetActive(true);
         }
+
+        GetComponent<TutorialEditor>().OnTutorialStart.Invoke();
     }
 
     public void GuidePanelActivate(int numberTask) 

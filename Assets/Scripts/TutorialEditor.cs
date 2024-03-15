@@ -38,6 +38,11 @@ public class TutorialEditor : MonoBehaviour
         StartTask(0);
         OnTutorialStart?.Invoke();
     }
+    public void EndTutorial()
+    {
+        StartTask(0);
+        OnTutorialComplete?.Invoke();
+    }
 
 
     public void LocomtionSystem(bool teleport) 

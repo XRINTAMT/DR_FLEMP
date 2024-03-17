@@ -16,9 +16,7 @@ public class CSVParser
 
         // Split the CSV file's contents into rows using the newline character as a delimiter
         string[] rows = lineSplitter.Split(csvFile.text);
-
-        Debug.Log(rows.Length);
-
+      
         // Create a regular expression to match cells that are encapsulated in quotes
         Regex csvParser = new Regex(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
 

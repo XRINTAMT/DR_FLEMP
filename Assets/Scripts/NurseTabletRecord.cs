@@ -24,6 +24,7 @@ public class NurseTabletRecord : MonoBehaviour
 
     public void SetData(string _questionText, string[] _answerText, string _explainText)
     {
+        Debug.Log("Setting data regarding " + _questionText);
         questionText = _questionText;
         MainText.text = _questionText;
         answerText = _answerText;

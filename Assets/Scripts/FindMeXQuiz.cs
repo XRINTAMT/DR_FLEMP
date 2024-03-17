@@ -53,6 +53,7 @@ public class FindMeXQuiz : MonoBehaviour
 
     public void UpdateItemsFromParent()
     {
+        Items.Clear();
         foreach (Transform child in ItemsParent)
         {
             Grabbable grabbable = child.GetComponent<Grabbable>();
@@ -105,5 +106,13 @@ public class FindMeXQuiz : MonoBehaviour
             }
         }
         Invoke("NewRandomItem", 5);
+    }
+
+    public void Skip() 
+    {
+        for (int i = 0; i < Items.Count; i++)
+        {
+            Items[i].gameObject.SetActive(false);
+        }
     }
 }

@@ -1,9 +1,10 @@
+using Autohand;
 using UnityEngine;
 
 public class TableItemSpawner : MonoBehaviour
 {
     public GameObject[] itemsToSpawn; 
-    public InstScript table; 
+    public InstScript table;
 
     public void SpawnItems()
     {
@@ -12,15 +13,13 @@ public class TableItemSpawner : MonoBehaviour
             Debug.LogWarning("Table or items to spawn not assigned.");
             return;
         }
-
-        //Shuffle(itemsToSpawn);
-
         int itemCount = itemsToSpawn.Length;
         Debug.Log(itemCount);
 
-        Vector3 tableCenter = (table.pointLeft.transform.position + table.pointRight.transform.position) / 2;
-        float tableWidth = Mathf.Abs(table.pointRight.transform.position.x - table.pointLeft.transform.position.x);
-        float tableLength = Mathf.Abs(table.pointRight.transform.position.z - table.pointLeft.transform.position.z);
+        Vector3 direction = table.pointRight.transform.position - table.pointLeft.transform.position;
+        Vector3 rotatedDirection = Quaternion.Euler(0, table.angle, 0) * direction;
+        float tableWidth = Mathf.Abs(rotatedDirection.x);
+        float tableLength = Mathf.Abs(rotatedDirection.z);
 
         float aspectRatio = tableWidth / tableLength;
 
@@ -31,20 +30,27 @@ public class TableItemSpawner : MonoBehaviour
         float spacingX = tableWidth / columns;
         float spacingZ = tableLength / rows;
 
+        Vector3 tableCenter = (table.pointLeft.transform.position + table.pointRight.transform.position) / 2;
+
         for (int i = 0; i < rows; i++)
         {
             for (int j = 0; j < columns; j++)
             {
                 int index = i * columns + j;
-                if (index >= itemCount) return; 
-                float xPos = tableCenter.x - tableWidth / 2 + j * spacingX + spacingX / 2;
-                float zPos = tableCenter.z - tableLength / 2 + i * spacingZ + spacingZ / 2;
-                Vector3 itemPosition = new Vector3(xPos, tableCenter.y + 0.05f, zPos);
-                GameObject newItem = Instantiate(itemsToSpawn[index], itemPosition, Quaternion.identity);
+                if (index >= itemCount) return;
+                float xOffset = (j - (columns - 1) / 2f) * spacingX;
+                float zOffset = (i - (rows - 1) / 2f) * spacingZ;
+                Vector3 offset = Quaternion.Euler(0, -table.angle, 0) * new Vector3(xOffset, 0, zOffset);
+                Vector3 spawnPosition = tableCenter + offset;
+                spawnPosition.y = tableCenter.y + 0.05f; // Adjust height
+                GameObject newItem = Instantiate(itemsToSpawn[index], spawnPosition, Quaternion.identity);
                 newItem.transform.SetParent(transform);
+                newItem.GetComponent<Grabbable>().heldIgnoreColliders.Add(table.arTable.GetComponent<Collider>());
             }
         }
     }
+
+
 
     void Shuffle(GameObject[] array)
     {

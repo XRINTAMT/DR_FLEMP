@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Assets.SimpleLocalization;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class ArExam : MonoBehaviour
@@ -8,35 +10,70 @@ public class ArExam : MonoBehaviour
     [SerializeField] ArObjectsPool arObjectsPool;
     [SerializeField] List <Button> buttonsAudio;
     [SerializeField] Button buttonApply;
-    [SerializeField] int totalScore;
+    public int totalScore;
     [SerializeField] int itemScore;
     [SerializeField] GameObject canvas;
+    [SerializeField] GameObject cannvasPanel;
     [SerializeField] GameObject instItem;
     [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioSource audioSource2;
+    [SerializeField] AudioClip Correct;
+    [SerializeField] AudioClip Incorrect;
     int itemIndex;
     int chooseIndex;
     public int v1,v2,v3;
     public Button correctButton;
     public Button chooseButton;
-    string language;
+    int language;
     InstScript instScript;
+    public UnityEvent complete;
+    [SerializeField] Text localScoreCorrect;
+    [SerializeField] Text localScoreIncorrect;
+    [SerializeField] int correct;
+    [SerializeField] int incorrect;
     // Start is called before the first frame update
     void Start()
     {
         instScript = FindObjectOfType<InstScript>();
-        language = PlayerPrefs.GetString(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Language", "English");
+        language = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0);
         buttonApply.onClick.AddListener(Apply);
         //SetNewItem();
+    }
+    public void Replay() 
+    {
+        itemIndex = 0;
+        SetNewItem();
+        cannvasPanel.SetActive(true);
+        correct = 0;
+        incorrect = 0;
+
+        itemScore = 0;
+        totalScore = 0;
     }
     public void Skip()
     {
         canvas.GetComponent<Canvas>().enabled = false;
+        //cannvasPanel.SetActive(false);
         canvas.transform.parent = null;
         if (instItem) Destroy(instItem);
         instItem = null;
     }
     public void SetNewItem() 
     {
+        if (itemIndex == arObjectsPool.items.Length)
+        {
+            Skip();
+            complete?.Invoke();
+            itemIndex = 0;
+            //buttonApply.onClick.RemoveAllListeners();
+            cannvasPanel.SetActive(false);
+            canvas.GetComponent<Canvas>().enabled = false;
+            localScoreCorrect.text = "" + correct;
+            localScoreIncorrect.text = "" + incorrect;
+            return;
+        }
+
+
         for (int i = 0; i < buttonsAudio.Count; i++)
             buttonsAudio[i].interactable = true;
 
@@ -47,20 +84,18 @@ public class ArExam : MonoBehaviour
 
         //arObjectsPool.items[itemIndex].item.SetActive(true);
         if (instItem) Destroy(instItem);
-        instItem = Instantiate(arObjectsPool.items[itemIndex].item,instScript.arTable.transform.position+new Vector3(0,0.2f,0),Quaternion.identity);
+        instItem = Instantiate(arObjectsPool.items[itemIndex].item,instScript.arTable.transform.position+new Vector3(0, 0.05f, 0), instScript.arTable.transform.rotation);
         canvas.transform.parent = instItem.transform;
         //canvas.transform.localPosition = Vector3.zero;
         //canvas.transform.localEulerAngles = Vector3.zero;
         canvas.GetComponent<ObjectUI>().item = instItem;
-        canvas.GetComponent<Canvas>().enabled = true;
+        //canvas.GetComponent<Canvas>().enabled = true;
 
         ShuffleButtonsAudio(buttonsAudio);
 
         itemIndex++;
 
-        if (itemIndex == arObjectsPool.items.Length)
-            itemIndex = 0;
-
+      
     }
 
     void ShuffleButtonsAudio<T>(List<T> values)
@@ -103,10 +138,13 @@ public class ArExam : MonoBehaviour
     }
     void PlaySound(int index, Button button) 
     {
-        if (language=="English")
+        if (language == 0)
             audioSource.PlayOneShot(arObjectsPool.items[index].titleAudioEnglish);
-        if (language == "German")
+        else
             audioSource.PlayOneShot(arObjectsPool.items[index].titleAudioGerman);
+        
+        //if (language == 1)
+        //    audioSource.PlayOneShot(arObjectsPool.items[index].titleAudioGerman);
         chooseButton = button;
         chooseIndex = index;
     
@@ -115,9 +153,18 @@ public class ArExam : MonoBehaviour
     void Apply() 
     {
         chooseButton.interactable = false;
+
+        if (chooseButton != correctButton)
+        {
+            audioSource2.PlayOneShot(Incorrect);
+            incorrect++;
+        }
+
         if (chooseButton==correctButton)
         {
             totalScore = totalScore + itemScore;
+            audioSource2.PlayOneShot(Correct);
+            correct++;
             SetNewItem();
             return;
         }

@@ -29,7 +29,12 @@ public class NurseTabletPopupManager : MonoBehaviour
         QuestionText.text = _question;
         for(int i = 0; i < AnswerText.Length; i++)
         {
-            AnswerText[i].text = _answer[i];
+            AnswerText[i].transform.parent.gameObject.SetActive(i < _answer.Length);
+            if (i < _answer.Length)
+            {
+                AnswerText[i].text = _answer[i];
+            }
+            
         }
         id = _questionID;
     }

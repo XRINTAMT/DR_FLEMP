@@ -1,26 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using Autohand;
+using Autohand.Demo;
 using UnityEngine;
+
 public class InstScript : MonoBehaviour
 {
-    //public GameObject pointPrefab;
+    [SerializeField] XRHandControllerLink controllerLink;
     [SerializeField] Collider iPad;
+    [SerializeField] float rotationSpeed;
+    [SerializeField] public float angle;
     public GameObject arTable;
+    public GameObject uiInstruction;
+    public GameObject uiScore;
     public GameObject pointLeft, pointRight;
     private Vector3 instObjectPosition;
     Hand handRight;
     Hand handLeft;
     bool editMode;
 
-    // Use this for initialization
     void Start()
     {
         pointRight.GetComponent<Grabbable>().onGrab.AddListener(SetHand);
         pointLeft.GetComponent<Grabbable>().onGrab.AddListener(SetHand);
         pointRight.GetComponent<Grabbable>().onRelease.AddListener(ReleaseHand);
         pointLeft.GetComponent<Grabbable>().onRelease.AddListener(ReleaseHand);
-
         Physics.IgnoreCollision(arTable.GetComponent<Collider>(), iPad, true);
         TableEditMode(true);
     }
@@ -28,59 +32,25 @@ public class InstScript : MonoBehaviour
     public void TableEditMode(bool state) 
     {
         if (arTable) arTable.GetComponent<Collider>().enabled = !state;
+        arTable.GetComponent<MeshRenderer>().enabled = state;
         editMode = state;
         pointRight.gameObject.SetActive(state);
         pointLeft.gameObject.SetActive(state);
     }
   
-    //public void SpawnPoints() 
-    //{
-    //    pointRight = Instantiate(pointPrefab, handRight.transform.position, Quaternion.identity);
-    //    pointLeft = Instantiate(pointPrefab, handLeft.transform.position, Quaternion.identity);
-    //}
-    //public void CLosePoints()
-    //{
-    //    if (pointLeft && pointRight)
-    //    {
-    //        Destroy(pointRight);
-    //        Destroy(pointLeft);
-    //        inst.GetComponent<Collider>().enabled = true;
-
-    //        Physics.IgnoreCollision(inst.GetComponent<Collider>(), iPad, true);
-    //        return;
-    //    }
-    //}
     public void SetHand(Hand hand, Grabbable grabbable) 
     {
         if (!hand.left) 
         {
             handRight = hand;
             pointLeft.GetComponent<Grabbable>().enabled = false;
-            //pointLeft.transform.parent = pointRight.transform;
-            //pointRight.GetComponent<Renderer>().enabled = true;
         }
         
         if (hand.left) 
         {
             handLeft = hand;
             pointRight.GetComponent<Grabbable>().enabled = false;
-            //pointRight.transform.parent = pointLeft.transform;
-            //pointLeft.GetComponent<Renderer>().enabled = true;
         }
-        //if (handRight && handLeft)
-        //{
-        //    if (pointLeft && pointRight)
-        //    {
-        //        Destroy(pointRight);
-        //        Destroy(pointLeft);
-        //        return;
-        //    }
-        //    if (!pointLeft && !pointRight)
-        //    {
-        //        SpawnPoints();
-        //        return;
-        //    }
-        //}
 
     }
     public void ReleaseHand(Hand hand, Grabbable grabbable)
@@ -88,36 +58,37 @@ public class InstScript : MonoBehaviour
         if (!hand.left) 
         {
             handRight = null;
-            //pointRight.GetComponent<Renderer>().enabled = false;
         }
 
         if (hand.left) 
         {
             handLeft = null;
-            //pointLeft.GetComponent<Renderer>().enabled = false;
         }
 
         pointRight.GetComponent<Grabbable>().enabled = true;
         pointLeft.GetComponent<Grabbable>().enabled = true;
-
-        //pointRight.transform.parent = transform;
-        //pointLeft.transform.parent = transform;
-        //if (!handRight && !handLeft)
-        //{
-        //    inst.GetComponent<Collider>().enabled = true;
-
-        //    Physics.IgnoreCollision(inst.GetComponent<Collider>(),iPad, true);
-        //}
-
     }
-    void UpdateScale() 
+
+    private void UpdateScale()
     {
-        float distance = Vector2.Distance(pointLeft.transform.position, pointRight.transform.position);
+        Vector3 direction = pointRight.transform.position - pointLeft.transform.position;
+        Vector3 newPointRightPosition = pointLeft.transform.position + (Quaternion.Euler(0, angle, 0) * direction);
 
-        float sideX = Mathf.Abs(pointRight.transform.position.x - pointLeft.transform.position.x);
-        float sideY = Mathf.Abs(pointRight.transform.position.y - pointLeft.transform.position.y);
-        float sideZ = Mathf.Abs(pointRight.transform.position.z - pointLeft.transform.position.z);
+        float sideX = Mathf.Abs(newPointRightPosition.x - pointLeft.transform.position.x);
+        float sideZ = Mathf.Abs(newPointRightPosition.z - pointLeft.transform.position.z);
+        instObjectPosition = (pointLeft.transform.position + newPointRightPosition) / 2;
 
+        Quaternion tableRotation = Quaternion.Euler(0, -angle, 0);
+
+        if (arTable.GetComponent<Collider>().enabled) arTable.GetComponent<Collider>().enabled = false;
+
+        arTable.transform.localPosition = (pointLeft.transform.localPosition + pointRight.transform.localPosition) / 2f;
+        arTable.transform.localScale = new Vector3(sideX, 0.04f, sideZ);
+        arTable.transform.rotation = tableRotation;
+    }
+
+    private void UpdateCorners()
+    {
         if (handRight)
         {
             pointLeft.transform.position = new Vector3(pointLeft.transform.position.x, pointRight.transform.position.y/* + sideY*/, pointLeft.transform.position.z);
@@ -127,42 +98,32 @@ public class InstScript : MonoBehaviour
         {
             pointRight.transform.position = new Vector3(pointRight.transform.position.x, pointLeft.transform.position.y/* + sideY*/, pointRight.transform.position.z);
         }
-
-        //pointRight.transform.position = pointLeft.transform.position;
-        //instObjectPosition = new Vector3((point1.transform.position.x + point2.transform.position.x) / 2, (point2.transform.position.y + ground.transform.position.y) / 2, (point1.transform.position.z + point2.transform.position.z) / 2);
-        instObjectPosition = new Vector3((pointLeft.transform.position.x + pointRight.transform.position.x) / 2, (pointLeft.transform.position.y + pointRight.transform.position.y) / 2, (pointLeft.transform.position.z + pointRight.transform.position.z) / 2);
-
-        //instObjectScale = Mathf.Sqrt(
-        //    (pointRight.transform.position.x - pointRight.transform.position.x) * (pointRight.transform.position.x - pointRight.transform.position.x) +
-        //    (pointRight.transform.position.y - ground.transform.position.y) * (pointRight.transform.position.y - ground.transform.position.y) +
-        //    (pointRight.transform.position.z - pointRight.transform.position.z) * (pointRight.transform.position.z - pointRight.transform.position.z)
-        //);
-
-        //if (arTable == null)
-        //{
-        //    arTable = Instantiate(instObject);
-        //    Physics.IgnoreCollision(arTable.GetComponent<Collider>(), iPad, true);
-        //}
-        if (arTable.GetComponent<Collider>().enabled) arTable.GetComponent<Collider>().enabled = false;
-
-        arTable.transform.position = instObjectPosition;
-        //inst.transform.localScale = new Vector3(sideA, instObjectScale, sideB);
-        //inst.transform.localScale = new Vector3(sideX, sideY, sideZ);
-        arTable.transform.localScale = new Vector3(sideX, 0.1f, sideZ);
-
     }
-    // Update is called once per frame
+
     void Update()
     {
         if (editMode)
         {
-            //pointLeft.transform.position = handLeft.transform.position;
-            //pointRight.transform.position = handRight.transform.position;
-
+            if (controllerLink != null)
+            {
+                Vector2 inputVector = controllerLink.GetAxis2D(Common2DAxis.primaryAxis);
+                float xInput = inputVector.x;
+                if (Mathf.Abs(xInput) > 0.1f)
+                {
+                    angle += xInput * rotationSpeed * Time.deltaTime;
+                }
+            }
+            UpdateCorners();
             UpdateScale();
+
+            if (uiInstruction.transform.position != arTable.transform.position + new Vector3(0, 0.3f, 0))
+            {
+                uiInstruction.transform.position = arTable.transform.position + new Vector3(0, 0.3f, 0);
+            }
+            if (uiScore.transform.position != arTable.transform.position + new Vector3(0, 0.3f, 0))
+            {
+                uiScore.transform.position = arTable.transform.position + new Vector3(0, 0.3f, 0);
+            }
         }
-
-
-       
     }
 }

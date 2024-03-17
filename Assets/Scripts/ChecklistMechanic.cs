@@ -228,6 +228,15 @@ public class ChecklistMechanic : MonoBehaviour
         {
             _checkbox.isOn = false;
         }
+        for (int k = 0; k < givenAnswers.Length; k++)
+        {
+            givenAnswers[k] = -1;
+        }
+        ScorePanel.SetActive(false);
         ParseTheScenario();
+        foreach(NurseTabletRecord rec in TabletRecords)
+        {
+            rec.AudioHintButton.SetActive(false);
+        }
     }
 }

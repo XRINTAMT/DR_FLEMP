@@ -82,6 +82,12 @@ public class PlayersList : MonoBehaviour
         {
             tablet.Reset();
         }
+        ChangeIndicatorColor[] ShowcaseIndicators = FindObjectsOfType<ChangeIndicatorColor>();
+        foreach (ChangeIndicatorColor indicator in ShowcaseIndicators)
+        {
+            indicator.Reset();
+        }
+        
     }
 
     [PunRPC]

@@ -28,6 +28,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.67460775, y: 0.67460775, z: 0.67460775}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2557380234905735362}
   m_RootOrder: 1
@@ -162,6 +163,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2557380236172592664}
   - {fileID: 2557380234850544930}
@@ -240,6 +242,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: 0.000000014901159, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2557380235660398112}
   m_Father: {fileID: 2557380234905735362}
@@ -315,6 +318,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.000033319186}
   m_LocalScale: {x: 0.67460775, y: 0.67460775, z: 0.67460775}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2557380235995792264}
   m_Father: {fileID: 2557380235510581719}
@@ -381,6 +385,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2557380235660398112}
   m_RootOrder: 0
@@ -414,6 +419,7 @@ MonoBehaviour:
   demo: {fileID: 6245669740157714677}
   text: 
   dialogue: {fileID: 0}
+  guideDialogieUI: {fileID: 0}
 --- !u!114 &2557380235995792271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -587,6 +593,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 0.67460775, y: 0.67460775, z: 0.67460775}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2557380234905735362}
   m_RootOrder: 0
@@ -722,6 +729,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: 0.000000005587935, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 3.7299998}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6245669740157714679}
   - {fileID: 6384679230354117789}
@@ -826,6 +834,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 25, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6384679229433247157}
   m_Father: {fileID: 2557380236278803095}
@@ -853,6 +862,10 @@ MonoBehaviour:
     ID: 0
     NextID: 0
     Type: 0
+  SavedMessage:
+    ID: 0
+    NextID: 0
+    Type: 0
 --- !u!114 &6245669740157714677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -865,6 +878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d283aedfc0b144feebe7a3d00af1eac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  number: 0
   handler: {fileID: 6245669740157714678}
   speakerName: {fileID: 6384679230443014276}
   messageText: {fileID: 6384679231026108260}
@@ -888,7 +902,7 @@ AudioSource:
   m_GameObject: {fileID: 6245669740157714672}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -5777517433311026113, guid: 533525c12077ba84f93f99e6cea3d93c, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -1002,6 +1016,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: 0.000000005587935, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.67460775, y: 0.67460775, z: 0.67460775}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6384679229965676979}
   m_Father: {fileID: 6384679231011318622}
@@ -1066,6 +1081,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6384679231422621478}
   - {fileID: 6384679230335668136}
@@ -1145,6 +1161,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: 0.000000005587935, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.67460775, y: 0.67460775, z: 0.67460775}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6384679231413888159}
   m_Father: {fileID: 6384679229433247157}
@@ -1211,6 +1228,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6384679229382434815}
   m_RootOrder: 0
@@ -1244,6 +1262,7 @@ MonoBehaviour:
   demo: {fileID: 6384679230931913124}
   text: 
   dialogue: {fileID: 0}
+  guideDialogieUI: {fileID: 0}
 --- !u!114 &6384679229965676977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1417,6 +1436,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 0.14364974, y: 0.14364977, z: 0.14364974}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6384679230745137324}
   m_RootOrder: 3
@@ -1499,6 +1519,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 25, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6384679230745137324}
   m_Father: {fileID: 2557380236278803095}
@@ -1526,6 +1547,10 @@ MonoBehaviour:
     ID: 0
     NextID: 0
     Type: 0
+  SavedMessage:
+    ID: 0
+    NextID: 0
+    Type: 0
 --- !u!114 &6384679230077559802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1538,6 +1563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d283aedfc0b144feebe7a3d00af1eac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  number: 0
   handler: {fileID: 6384679230077559801}
   speakerName: {fileID: 6384679230891195170}
   messageText: {fileID: 6384679230040294201}
@@ -1561,7 +1587,7 @@ AudioSource:
   m_GameObject: {fileID: 6384679230077559300}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -5777517433311026113, guid: 533525c12077ba84f93f99e6cea3d93c, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -1676,6 +1702,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 0.14364974, y: 0.14364977, z: 0.14364974}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6384679230902539194}
   m_RootOrder: 2
@@ -1755,6 +1782,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 0.14364974, y: 0.14364977, z: 0.14364974}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6384679230902539194}
   m_RootOrder: 3
@@ -1838,6 +1866,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6384679231445335301}
   m_RootOrder: 0
@@ -1871,6 +1900,7 @@ MonoBehaviour:
   demo: {fileID: 6384679230077559802}
   text: 
   dialogue: {fileID: 0}
+  guideDialogieUI: {fileID: 0}
 --- !u!114 &6384679230217015406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2044,6 +2074,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.67460775, y: 0.67460775, z: 0.67460775}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6384679231011318622}
   m_RootOrder: 1
@@ -2084,8 +2115,7 @@ MonoBehaviour:
   m_text: Message Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f5ba820a8971fa449b12f4c76629933c, type: 2}
-  m_sharedMaterial: {fileID: -3438387809978036471, guid: f5ba820a8971fa449b12f4c76629933c,
-    type: 2}
+  m_sharedMaterial: {fileID: -3438387809978036471, guid: f5ba820a8971fa449b12f4c76629933c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2179,6 +2209,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 0.67460775, y: 0.67460775, z: 0.67460775}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6384679231011318622}
   m_RootOrder: 0
@@ -2219,8 +2250,7 @@ MonoBehaviour:
   m_text: 'Alex:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f5ba820a8971fa449b12f4c76629933c, type: 2}
-  m_sharedMaterial: {fileID: -3438387809978036471, guid: f5ba820a8971fa449b12f4c76629933c,
-    type: 2}
+  m_sharedMaterial: {fileID: -3438387809978036471, guid: f5ba820a8971fa449b12f4c76629933c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2314,6 +2344,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.67460775, y: 0.67460775, z: 0.67460775}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6384679229433247157}
   m_RootOrder: 1
@@ -2354,8 +2385,7 @@ MonoBehaviour:
   m_text: Message Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f5ba820a8971fa449b12f4c76629933c, type: 2}
-  m_sharedMaterial: {fileID: -3438387809978036471, guid: f5ba820a8971fa449b12f4c76629933c,
-    type: 2}
+  m_sharedMaterial: {fileID: -3438387809978036471, guid: f5ba820a8971fa449b12f4c76629933c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2449,6 +2479,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 0.67460775, y: 0.67460775, z: 0.67460775}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6384679230902539194}
   m_RootOrder: 0
@@ -2489,8 +2520,7 @@ MonoBehaviour:
   m_text: 'Alex:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f5ba820a8971fa449b12f4c76629933c, type: 2}
-  m_sharedMaterial: {fileID: -3438387809978036471, guid: f5ba820a8971fa449b12f4c76629933c,
-    type: 2}
+  m_sharedMaterial: {fileID: -3438387809978036471, guid: f5ba820a8971fa449b12f4c76629933c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2584,6 +2614,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 0.14364974, y: 0.14364977, z: 0.14364974}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6384679231011318622}
   m_RootOrder: 3
@@ -2666,6 +2697,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 25, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6384679230902539194}
   m_Father: {fileID: 2557380236278803095}
@@ -2693,6 +2725,10 @@ MonoBehaviour:
     ID: 0
     NextID: 0
     Type: 0
+  SavedMessage:
+    ID: 0
+    NextID: 0
+    Type: 0
 --- !u!114 &6384679230354117788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2705,6 +2741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d283aedfc0b144feebe7a3d00af1eac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  number: 0
   handler: {fileID: 6384679230354117779}
   speakerName: {fileID: 6384679230191795368}
   messageText: {fileID: 6384679230193595701}
@@ -2728,7 +2765,7 @@ AudioSource:
   m_GameObject: {fileID: 6384679230354117790}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -5777517433311026113, guid: 533525c12077ba84f93f99e6cea3d93c, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -2843,6 +2880,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 0.14364974, y: 0.14364977, z: 0.14364974}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6384679229433247157}
   m_RootOrder: 2
@@ -2922,6 +2960,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6384679231130773366}
   - {fileID: 6384679231233792969}
@@ -3002,6 +3041,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.67460775, y: 0.67460775, z: 0.67460775}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6384679230902539194}
   m_RootOrder: 1
@@ -3042,8 +3082,7 @@ MonoBehaviour:
   m_text: Message Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f5ba820a8971fa449b12f4c76629933c, type: 2}
-  m_sharedMaterial: {fileID: -3438387809978036471, guid: f5ba820a8971fa449b12f4c76629933c,
-    type: 2}
+  m_sharedMaterial: {fileID: -3438387809978036471, guid: f5ba820a8971fa449b12f4c76629933c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3137,6 +3176,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 0.14364974, y: 0.14364977, z: 0.14364974}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6384679231011318622}
   m_RootOrder: 2
@@ -3216,6 +3256,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 0.14364974, y: 0.14364977, z: 0.14364974}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6384679230745137324}
   m_RootOrder: 2
@@ -3295,6 +3336,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6384679230336209982}
   - {fileID: 6384679230864677895}
@@ -3376,6 +3418,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 25, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6384679231011318622}
   m_Father: {fileID: 2557380236278803095}
@@ -3403,6 +3446,10 @@ MonoBehaviour:
     ID: 0
     NextID: 0
     Type: 0
+  SavedMessage:
+    ID: 0
+    NextID: 0
+    Type: 0
 --- !u!114 &6384679230931913124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3415,6 +3462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d283aedfc0b144feebe7a3d00af1eac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  number: 0
   handler: {fileID: 6384679230931913115}
   speakerName: {fileID: 6384679230877200960}
   messageText: {fileID: 6384679230339042603}
@@ -3438,7 +3486,7 @@ AudioSource:
   m_GameObject: {fileID: 6384679230931913126}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -5777517433311026113, guid: 533525c12077ba84f93f99e6cea3d93c, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -3553,6 +3601,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6384679230329365644}
   - {fileID: 6384679230248895006}
@@ -3633,6 +3682,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 0.14364974, y: 0.14364977, z: 0.14364974}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6384679229433247157}
   m_RootOrder: 3
@@ -3716,6 +3766,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6384679231371271878}
   m_RootOrder: 0
@@ -3749,6 +3800,7 @@ MonoBehaviour:
   demo: {fileID: 6384679230354117788}
   text: 
   dialogue: {fileID: 0}
+  guideDialogieUI: {fileID: 0}
 --- !u!114 &6384679231056316628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3922,6 +3974,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 0.67460775, y: 0.67460775, z: 0.67460775}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6384679230745137324}
   m_RootOrder: 0
@@ -3962,8 +4015,7 @@ MonoBehaviour:
   m_text: 'Alex:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f5ba820a8971fa449b12f4c76629933c, type: 2}
-  m_sharedMaterial: {fileID: -3438387809978036471, guid: f5ba820a8971fa449b12f4c76629933c,
-    type: 2}
+  m_sharedMaterial: {fileID: -3438387809978036471, guid: f5ba820a8971fa449b12f4c76629933c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4057,6 +4109,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.67460775, y: 0.67460775, z: 0.67460775}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6384679230745137324}
   m_RootOrder: 1
@@ -4097,8 +4150,7 @@ MonoBehaviour:
   m_text: Message Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f5ba820a8971fa449b12f4c76629933c, type: 2}
-  m_sharedMaterial: {fileID: -3438387809978036471, guid: f5ba820a8971fa449b12f4c76629933c,
-    type: 2}
+  m_sharedMaterial: {fileID: -3438387809978036471, guid: f5ba820a8971fa449b12f4c76629933c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4191,6 +4243,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: 0.000000005587935, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.67460775, y: 0.67460775, z: 0.67460775}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6384679231056316630}
   m_Father: {fileID: 6384679230902539194}
@@ -4257,6 +4310,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6384679229557131827}
   m_RootOrder: 0
@@ -4290,6 +4344,7 @@ MonoBehaviour:
   demo: {fileID: 6245669740157714677}
   text: 
   dialogue: {fileID: 0}
+  guideDialogieUI: {fileID: 0}
 --- !u!114 &6384679231413888157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4463,6 +4518,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 0.67460775, y: 0.67460775, z: 0.67460775}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6384679229433247157}
   m_RootOrder: 0
@@ -4503,8 +4559,7 @@ MonoBehaviour:
   m_text: 'Alex:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f5ba820a8971fa449b12f4c76629933c, type: 2}
-  m_sharedMaterial: {fileID: -3438387809978036471, guid: f5ba820a8971fa449b12f4c76629933c,
-    type: 2}
+  m_sharedMaterial: {fileID: -3438387809978036471, guid: f5ba820a8971fa449b12f4c76629933c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4597,6 +4652,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: 0.000000005587935, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.67460775, y: 0.67460775, z: 0.67460775}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6384679230217015400}
   m_Father: {fileID: 6384679230745137324}

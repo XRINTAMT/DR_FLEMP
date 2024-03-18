@@ -8,7 +8,7 @@ public class HeadCharacterFollow : MonoBehaviour
 { 
     [SerializeField] float interpolationSpeed=1;
 
-    Transform player;
+    public Transform player;
     Transform defaultPos;
     Transform playerPos;
     Transform m_trLookAt = null;

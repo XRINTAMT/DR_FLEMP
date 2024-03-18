@@ -16,7 +16,7 @@ public class TutorialEditor : MonoBehaviour
 
     private void Start()
     {
-        StartTutorial();
+        //StartTutorial();
         AutoHandPlayer.movementType = MovementType.Move;
         InstBlockDoor();
     }

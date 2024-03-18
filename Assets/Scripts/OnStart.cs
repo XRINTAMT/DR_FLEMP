@@ -12,6 +12,11 @@ public class OnStart : MonoBehaviour
             Event.Invoke();
     }
 
+    public void Replay() 
+    {
+        if (Event != null)
+            Event.Invoke();
+    }
     // Update is called once per frame
     void Update()
     {

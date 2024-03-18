@@ -27,6 +27,10 @@ public class ArExam : MonoBehaviour
     int language;
     InstScript instScript;
     public UnityEvent complete;
+    [SerializeField] Text localScoreCorrect;
+    [SerializeField] Text localScoreIncorrect;
+    [SerializeField] int correct;
+    [SerializeField] int incorrect;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +38,17 @@ public class ArExam : MonoBehaviour
         language = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0);
         buttonApply.onClick.AddListener(Apply);
         //SetNewItem();
+    }
+    public void Replay() 
+    {
+        itemIndex = 0;
+        SetNewItem();
+        cannvasPanel.SetActive(true);
+        correct = 0;
+        incorrect = 0;
+
+        itemScore = 0;
+        totalScore = 0;
     }
     public void Skip()
     {
@@ -50,9 +65,11 @@ public class ArExam : MonoBehaviour
             Skip();
             complete?.Invoke();
             itemIndex = 0;
-            buttonApply.onClick.RemoveAllListeners();
+            //buttonApply.onClick.RemoveAllListeners();
             cannvasPanel.SetActive(false);
             canvas.GetComponent<Canvas>().enabled = false;
+            localScoreCorrect.text = "" + correct;
+            localScoreIncorrect.text = "" + incorrect;
             return;
         }
 
@@ -140,12 +157,14 @@ public class ArExam : MonoBehaviour
         if (chooseButton != correctButton)
         {
             audioSource2.PlayOneShot(Incorrect);
+            incorrect++;
         }
 
         if (chooseButton==correctButton)
         {
             totalScore = totalScore + itemScore;
             audioSource2.PlayOneShot(Correct);
+            correct++;
             SetNewItem();
             return;
         }

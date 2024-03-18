@@ -16,7 +16,7 @@ public class TutorialEditor : MonoBehaviour
 
     private void Start()
     {
-        StartTutorial();
+        //StartTutorial();
         AutoHandPlayer.movementType = MovementType.Move;
         InstBlockDoor();
     }
@@ -37,6 +37,11 @@ public class TutorialEditor : MonoBehaviour
     {
         StartTask(0);
         OnTutorialStart?.Invoke();
+    }
+    public void EndTutorial()
+    {
+        StartTask(0);
+        OnTutorialComplete?.Invoke();
     }
 
 

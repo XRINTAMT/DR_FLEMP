@@ -17,7 +17,10 @@ public class UnscaleMove : MonoBehaviour
 
     public void Pause() 
     {
-        Time.timeScale = 0;
+        if (FindObjectOfType<TutorialEditor>(true) && !FindObjectOfType<TutorialEditor>(true).enabled)
+        {
+            Time.timeScale = 0;
+        }
     }
     public void Play()
     {

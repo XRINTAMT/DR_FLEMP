@@ -5,13 +5,11 @@ using Assets.SimpleLocalization;
 
 public class DoorChoiceMenu : MonoBehaviour
 {
-    [SerializeField] private Button submitButton;
     [SerializeField] private LocalizedText infoText;
     private ToggleGroup toggleGroup;
 
     private void Start()
     {
-        submitButton.onClick.AddListener(SubmitSelection);
         toggleGroup = GetComponent<ToggleGroup>();
 
         foreach (Toggle toggle in toggleGroup.GetComponentsInChildren<Toggle>())

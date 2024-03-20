@@ -51,13 +51,25 @@ public class SentenceScrambleTab : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.GetString(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Language", "English") == "English")
+        //if (PlayerPrefs.GetString(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Language", "English") == "English")
+        //{
+        //    langugeRaw[0] = 0;
+        //    langugeRaw[1] = 1;
+        //    langugeRaw[2] = 2;
+        //}
+        //if (PlayerPrefs.GetString(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Language", "English") == "German")
+        //{
+        //    langugeRaw[0] = 3;
+        //    langugeRaw[1] = 4;
+        //    langugeRaw[2] = 5;
+        //}
+        if (PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0) == 0)
         {
             langugeRaw[0] = 0;
             langugeRaw[1] = 1;
             langugeRaw[2] = 2;
         }
-        if (PlayerPrefs.GetString(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Language", "English") == "German")
+        if (PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0) == 1)
         {
             langugeRaw[0] = 3;
             langugeRaw[1] = 4;

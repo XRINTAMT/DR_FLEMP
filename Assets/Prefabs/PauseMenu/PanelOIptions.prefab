@@ -290,10 +290,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   setDialogueVolumeStatus: {fileID: 4802981937565361581}
   setSoundVolumeStatus: {fileID: 4802981935743084258}
-  setMusicVolumeStatus: {fileID: 8812472524222433228}
   setWalkingSpeed: {fileID: 8612975236974673138}
   setSubstitlesStatus: {fileID: 4802981937547449210}
-  setGuidesStatus: {fileID: 0}
+  setGuidesStatus: {fileID: 1415270664929225618}
   teleportChosen: {fileID: 4802981935729439377}
   smoothChosen: {fileID: 4802981937202606755}
   mixedChosen: {fileID: 4241370455060604490}
@@ -310,6 +309,12 @@ MonoBehaviour:
   Realtime: 1
   languageButton: {fileID: 1073689483710181527}
   languageButtonStudy: {fileID: 4802981937285386713}
+  GuidesLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  OverlayGuidesLayer:
+    serializedVersion: 2
+    m_Bits: 512
   tutorial: 0
 --- !u!114 &5334551491860406917
 MonoBehaviour:
@@ -337,6 +342,8 @@ MonoBehaviour:
     Id: 390932488
   - Name: DTNET-Tutorial-Demo
     Id: 1276887612
+  - Name: WaitingRoomGuidedMode
+    Id: 321426474
   SaveFolder: {fileID: 102900000, guid: 4197e7ae77f69454ea2d68be0ca7903d, type: 3}
 --- !u!1 &1660070315829016523
 GameObject:
@@ -2783,6 +2790,10 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7930281196554604015}
+    - target: {fileID: 5841741488569020858, guid: b268375c73dbc7c4d85ad87b661fe2a9, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 365499149862584258}
     - target: {fileID: 6486758714832039875, guid: b268375c73dbc7c4d85ad87b661fe2a9, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2853,6 +2864,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5612500336827339940, guid: b268375c73dbc7c4d85ad87b661fe2a9, type: 3}
   m_PrefabInstance: {fileID: 4807035996131711528}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1415270664929225618 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5841741488569020858, guid: b268375c73dbc7c4d85ad87b661fe2a9, type: 3}
+  m_PrefabInstance: {fileID: 4807035996131711528}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4241370455060604490 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8676846794510646370, guid: b268375c73dbc7c4d85ad87b661fe2a9, type: 3}
@@ -2949,17 +2971,6 @@ GameObject:
 --- !u!114 &8612975236974673138 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3832961981366544090, guid: b268375c73dbc7c4d85ad87b661fe2a9, type: 3}
-  m_PrefabInstance: {fileID: 4807035996131711528}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8812472524222433228 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4105652099547225572, guid: b268375c73dbc7c4d85ad87b661fe2a9, type: 3}
   m_PrefabInstance: {fileID: 4807035996131711528}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

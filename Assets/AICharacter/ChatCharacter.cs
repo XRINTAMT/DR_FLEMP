@@ -10,6 +10,7 @@ using Meta.WitAi.TTS.Utilities;
 using UnityEngine.UI;
 using GoogleTextToSpeech.Scripts;
 using UnityEngine.Serialization;
+using UnityEngine.Events;
 using CharacterInfo = AICharacter.CharacterInfo;
 
 public class ChatCharacter : MonoBehaviour
@@ -37,9 +38,10 @@ public class ChatCharacter : MonoBehaviour
 
     [SerializeField] private PainIndicator indicator;
     [SerializeField] private int painLevel;
+    [SerializeField] private UnityEvent OnPainLevelShown;
+    [SerializeField] private bool IndicatorFired;
     
     
-
     void Start()
     {
         _history = new ChatHistory();
@@ -249,8 +251,13 @@ public class ChatCharacter : MonoBehaviour
 
     private bool ShowPainIndicator()
     {
-        Debug.Log("ShowPainIndicator called");
-        indicator.painCount = painLevel + 1;
+        if (!IndicatorFired)
+        {
+            Debug.Log("ShowPainIndicator called");
+            indicator.painCount = painLevel + 1;
+            OnPainLevelShown.Invoke();
+            IndicatorFired = true;
+        }
         return true;
     }
 

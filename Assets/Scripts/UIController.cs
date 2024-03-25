@@ -13,7 +13,6 @@ public class UIController : MonoBehaviour
 {
     [SerializeField] private Slider setDialogueVolumeStatus;
     [SerializeField] private Slider setSoundVolumeStatus;
-    [SerializeField] private Slider setMusicVolumeStatus;
     [SerializeField] private Slider setWalkingSpeed;
     //[SerializeField] private Dropdown setLanguageStatus;
     //[SerializeField] private Dropdown setTeleportHandStatus;
@@ -36,6 +35,8 @@ public class UIController : MonoBehaviour
     [SerializeField] private bool Realtime;
     [SerializeField] GameObject languageButton;
     [SerializeField] GameObject languageButtonStudy;
+    [SerializeField] LayerMask GuidesLayer;
+    [SerializeField] LayerMask OverlayGuidesLayer;
     public static float dialogueVolume;
     public static float soundVolume;
     public static float musicVolume;
@@ -63,9 +64,10 @@ public class UIController : MonoBehaviour
     {
         setDialogueVolumeStatus.value = PlayerPrefs.GetFloat(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "dialogueVolume", 0.5f);
         setSoundVolumeStatus.value = PlayerPrefs.GetFloat(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "soundVolume", 0.5f);
-        setMusicVolumeStatus.value = PlayerPrefs.GetFloat(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "musicVolume", 0.5f);
         //setWalkingSpeed.value = PlayerPrefs.GetFloat("walkingSpeed", 1.5f);
         setSubstitlesStatus.isOn = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Subtitles", 0) == 0;
+        setGuidesStatus.isOn = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "GuidedMode", 0) == 1;
+        SetGuides();
         teleport = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "MovementType", 2);
         if (!tutorial) SetLocomotionType(teleport);
         learnedLanguage = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0);
@@ -107,19 +109,6 @@ public class UIController : MonoBehaviour
         else
         {
             AppMixer.SetFloat("Sounds", Mathf.Log(soundVolume) * 20);
-        }
-    }
-
-    public void SetMusicVolume()
-    {
-        musicVolume = setMusicVolumeStatus.value;
-        //appSettings.UpdateSettings();
-        PlayerPrefs.SetFloat(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "musicVolume", musicVolume);
-        if (musicVolume == 0)
-            AppMixer.SetFloat("Music", -80);
-        else
-        {
-            AppMixer.SetFloat("Music", Mathf.Log(musicVolume) * 20);
         }
     }
 
@@ -190,10 +179,28 @@ public class UIController : MonoBehaviour
         PlayerPrefs.SetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Subtitles", subtitles);
     }
 
-    public void SetGuides(bool guides)
+    public void SetGuides()
     {
+        bool guides = setGuidesStatus.isOn;
+        Debug.Log(guides);
         PlayerPrefs.SetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "GuidedMode", guides ? 1 : 0);
-        
+        Debug.Log(Camera.main.name);
+        if (guides)
+        {
+            Camera.main.cullingMask |= GuidesLayer;
+            foreach (var cam in Camera.allCameras)
+            {
+                cam.cullingMask |= OverlayGuidesLayer;
+            }
+        }
+        else
+        {
+            Camera.main.cullingMask &= ~GuidesLayer;
+            foreach (var cam in Camera.allCameras)
+            {
+                cam.cullingMask &= ~OverlayGuidesLayer;
+            }
+        }
     }
 
     public void LoadScene(string name)

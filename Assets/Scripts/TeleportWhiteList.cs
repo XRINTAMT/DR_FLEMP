@@ -11,11 +11,11 @@ public class TeleportWhiteList : MonoBehaviour
         var ground = GameObject.FindGameObjectsWithTag("Ground");
         for (int i = 0; i < teleportList.Length; i++)
         {
-            teleportList[i].layer = 25;
+            teleportList[i].layer = 24;
         }
         for (int i = 0; i < ground.Length; i++)
         {
-            ground[i].layer = 25;
+            ground[i].layer = 24;
         }
     }
 

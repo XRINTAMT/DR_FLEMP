@@ -103,8 +103,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interpolationSpeed: 1
+  player: {fileID: 0}
   inArea: 0
   alawaysInArea: 0
+  alwayysFollow: 0
 --- !u!1001 &1500479677683934343
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -184,8 +186,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interpolationSpeed: 1
+  player: {fileID: 0}
   inArea: 0
   alawaysInArea: 0
+  alwayysFollow: 0
 --- !u!137 &2528386637222378110 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 4018446791756275449, guid: b2d0d99568b46274a8aa96fe7db04129, type: 3}
@@ -391,6 +395,26 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5778457628746357905, guid: 088690b0ee03c6e488d4854047047a0d, type: 3}
+      propertyPath: thinkingPhrasesGerman.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5778457628746357905, guid: 088690b0ee03c6e488d4854047047a0d, type: 3}
+      propertyPath: thinkingPhrasesGerman.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: d22c06a2cc2c7714cb5abcec557fd00d, type: 3}
+    - target: {fileID: 5778457628746357905, guid: 088690b0ee03c6e488d4854047047a0d, type: 3}
+      propertyPath: thinkingPhrasesGerman.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: d3f9e450d9cf3fe45b17980be496e83b, type: 3}
+    - target: {fileID: 5778457628746357905, guid: 088690b0ee03c6e488d4854047047a0d, type: 3}
+      propertyPath: thinkingPhrasesGerman.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2f8e66b0a0dd1d24ea3958aded077a0c, type: 3}
+    - target: {fileID: 5778457628746357905, guid: 088690b0ee03c6e488d4854047047a0d, type: 3}
+      propertyPath: thinkingPhrasesGerman.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 28706e7bc07214343aeda525d6d76b97, type: 3}
     - target: {fileID: 5928521411915013930, guid: 088690b0ee03c6e488d4854047047a0d, type: 3}
       propertyPath: m_Controller
       value: 

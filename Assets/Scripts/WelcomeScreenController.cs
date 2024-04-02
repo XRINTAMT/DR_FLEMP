@@ -90,6 +90,6 @@ public class WelcomeScreenController : MonoBehaviour
 
     void ContinueEnd()
     {
-        SceneManager.LoadScene("Lobby");
+        //SceneManager.LoadScene("Lobby");
     }
 }

@@ -5117,6 +5117,8 @@ GameObject:
   - component: {fileID: 8520627100999514485}
   - component: {fileID: 1974736032539401923}
   - component: {fileID: 5028561555737898347}
+  - component: {fileID: 5253821021051031940}
+  - component: {fileID: 4457559898133973800}
   m_Layer: 0
   m_Name: AutoHandPlayer
   m_TagString: Untagged
@@ -5215,6 +5217,8 @@ MonoBehaviour:
   AHPlayer: {fileID: 1974736032539401923}
   TeleportRight: {fileID: 4242200216360339430}
   TeleportLeft: {fileID: 5970110623873593962}
+  rightController: {fileID: 5253821021051031940}
+  leftController: {fileID: 4457559898133973800}
 --- !u!114 &1974736032539401923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5237,11 +5241,6 @@ MonoBehaviour:
   maxMoveSpeed: 1.5
   moveAcceleration: 10
   groundedDrag: 4
-  teleporterL: {fileID: 8526975859873385951}
-  teleporterR: {fileID: 1492519613945094725}
-  xrTeleporterLinkLeft: {fileID: 0}
-  xrTeleporterLinkRight: {fileID: 0}
-  xRHandPlayerControllerLink: {fileID: 5220823535286729069}
   snapTurning: 1
   snapTurnAngle: 30
   smoothTurnSpeed: 10
@@ -5275,8 +5274,6 @@ MonoBehaviour:
   platformingLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  speed: 0
-  fixedDeltaTime: 0
 --- !u!114 &5028561555737898347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5291,6 +5288,94 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIPointRight: {fileID: 8680239238539024918}
   UIPointLeft: {fileID: 5724499406560430238}
+--- !u!114 &5253821021051031940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7303177955932709532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fbab967b03b78f4093d38ef2637575f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  link: {fileID: 6231535691718400714}
+  button: 6
+  Pressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8520627100999514485}
+        m_TargetAssemblyTypeName: XRMovementControls, Assembly-CSharp
+        m_MethodName: PressAxis
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Released:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8520627100999514485}
+        m_TargetAssemblyTypeName: XRMovementControls, Assembly-CSharp
+        m_MethodName: UnpressAxis
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4457559898133973800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7303177955932709532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fbab967b03b78f4093d38ef2637575f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  link: {fileID: 6231535693548155164}
+  button: 6
+  Pressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8520627100999514485}
+        m_TargetAssemblyTypeName: XRMovementControls, Assembly-CSharp
+        m_MethodName: PressAxis
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Released:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8520627100999514485}
+        m_TargetAssemblyTypeName: XRMovementControls, Assembly-CSharp
+        m_MethodName: UnpressAxis
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7400410977112002271
 GameObject:
   m_ObjectHideFlags: 0

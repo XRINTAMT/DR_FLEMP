@@ -109,7 +109,7 @@ namespace Autohand
 
             // Show the ray when they attemp to press
             if (!autoShowTarget && hover) ShowRay(true);
-           
+
             if (lastHit.collider != null)
             {
                 // Fire the Unity event
@@ -164,15 +164,6 @@ namespace Autohand
                     inputModule.transform.parent = AutoHandExtensions.transformParent;
                 }
             }
-
-            //gameObject.layer = 13;
-            //hitPointMarker.layer = 13;
-
-            //if (hitPointMarker.transform.GetChild(0)!=null)
-            //{
-            //    hitPointMarker.transform.GetChild(0).gameObject.layer = 13;
-            //}
-    
         }
 
         private void Update()

@@ -13,6 +13,12 @@ public class XRMovementControls : MonoBehaviour
     [SerializeField] GameObject TeleportLeft;
     [SerializeField] XRControllerEvent rightController;
     [SerializeField] XRControllerEvent leftController;
+    [SerializeField] GameObject nurseTablet;
+    [SerializeField] GameObject hips;
+    [SerializeField] Vector3 positionRight;
+    [SerializeField] Vector3 positionLeft;
+    [SerializeField] Vector3 rotationRight;
+    [SerializeField] Vector3 rotationLeft;
     public static TypeMovement movementType;
     public static HandMovement movementHand;
     bool teleportEnable;
@@ -28,6 +34,26 @@ public class XRMovementControls : MonoBehaviour
             SwitchLocomotion(2);
     }
 
+    void SetNurseTablet() 
+    {
+        if (nurseTablet)
+        {
+            if (movementHand  == HandMovement.Left)
+            {
+                hips.transform.localScale = new Vector3(1, 1, 1);
+                //nurseTablet.transform.localPosition = positionLeft;
+                //nurseTablet.transform.localEulerAngles = rotationLeft;
+            }
+
+            if (movementHand == HandMovement.Right)
+            {
+                hips.transform.localScale = new Vector3(-1, -1, 1);
+                //nurseTablet.transform.localPosition = positionRight;
+                //nurseTablet.transform.localEulerAngles = rotationRight;
+            }
+        }
+    
+    }
     public void SwitchLocomotion(int type)
     {
         switch (type)
@@ -54,6 +80,8 @@ public class XRMovementControls : MonoBehaviour
                     rightController.enabled = false;
                     leftController.enabled = true;
                     startTeleportation = true;
+
+                    SetNurseTablet();
                 }
                 if (movementHand == HandMovement.Right)
                 {
@@ -75,6 +103,8 @@ public class XRMovementControls : MonoBehaviour
                     rightController.enabled = true;
                     leftController.enabled = false;
                     startTeleportation = true;
+
+                    SetNurseTablet();
                 }
                 break;
 
@@ -100,6 +130,8 @@ public class XRMovementControls : MonoBehaviour
                     rightController.enabled = false;
                     leftController.enabled = false;
                     startTeleportation = false;
+
+                    SetNurseTablet();
                 }
                 if (movementHand == HandMovement.Right)
                 {
@@ -121,6 +153,8 @@ public class XRMovementControls : MonoBehaviour
                     rightController.enabled = false;
                     leftController.enabled = false;
                     startTeleportation = false;
+
+                    SetNurseTablet();
                 }
                 break;
 
@@ -147,6 +181,8 @@ public class XRMovementControls : MonoBehaviour
                     rightController.enabled = false;
                     leftController.enabled = false;
                     startTeleportation = false;
+
+                    SetNurseTablet();
                 }
                 if (movementHand == HandMovement.Right)
                 {
@@ -168,6 +204,8 @@ public class XRMovementControls : MonoBehaviour
                     rightController.enabled = false;
                     leftController.enabled = false;
                     startTeleportation = false;
+
+                    SetNurseTablet();
                 }
                 break;
         }
@@ -202,6 +240,8 @@ public class XRMovementControls : MonoBehaviour
                     rightController.enabled = true;
                     leftController.enabled = false;
                     startTeleportation = true;
+
+                    SetNurseTablet();
                 }
                 if (movementType == TypeMovement.Move)
                 {
@@ -223,6 +263,8 @@ public class XRMovementControls : MonoBehaviour
                     rightController.enabled = false;
                     leftController.enabled = false;
                     startTeleportation = false;
+
+                    SetNurseTablet();
                 }
                 if (movementType == TypeMovement.Mixed)
                 {
@@ -244,6 +286,8 @@ public class XRMovementControls : MonoBehaviour
                     rightController.enabled = false;
                     leftController.enabled = false;
                     startTeleportation = false;
+
+                    SetNurseTablet();
                 }
 
                 break;
@@ -270,6 +314,8 @@ public class XRMovementControls : MonoBehaviour
                     rightController.enabled = false;
                     leftController.enabled = true;
                     startTeleportation = true;
+
+                    SetNurseTablet();
                 }
                 if (movementType == TypeMovement.Move)
                 {
@@ -291,6 +337,8 @@ public class XRMovementControls : MonoBehaviour
                     rightController.enabled = false;
                     leftController.enabled = false;
                     startTeleportation = false;
+
+                    SetNurseTablet();
                 }
                 if (movementType == TypeMovement.Mixed)
                 {
@@ -312,6 +360,8 @@ public class XRMovementControls : MonoBehaviour
                     rightController.enabled = false;
                     leftController.enabled = false;
                     startTeleportation = false;
+
+                    SetNurseTablet();
                 }
 
                 break;

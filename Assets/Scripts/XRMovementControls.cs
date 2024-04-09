@@ -40,16 +40,16 @@ public class XRMovementControls : MonoBehaviour
         {
             if (movementHand  == HandMovement.Left)
             {
-                hips.transform.localScale = new Vector3(1, 1, 1);
-                //nurseTablet.transform.localPosition = positionLeft;
-                //nurseTablet.transform.localEulerAngles = rotationLeft;
+                //hips.transform.localScale = new Vector3(1, 1, 1);
+                nurseTablet.transform.localPosition = positionLeft;
+                nurseTablet.transform.localEulerAngles = rotationLeft;
             }
 
             if (movementHand == HandMovement.Right)
             {
-                hips.transform.localScale = new Vector3(-1, -1, 1);
-                //nurseTablet.transform.localPosition = positionRight;
-                //nurseTablet.transform.localEulerAngles = rotationRight;
+                //hips.transform.localScale = new Vector3(-1, -1, 1);
+                nurseTablet.transform.localPosition = positionRight;
+                nurseTablet.transform.localEulerAngles = rotationRight;
             }
         }
     
@@ -438,10 +438,10 @@ public class XRMovementControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (startTeleportation) 
-        {
-            TeleportationMovement();
-        }
+        //if (startTeleportation) 
+        //{
+        //    //TeleportationMovement();
+        //}
     }
 
     public enum TypeMovement

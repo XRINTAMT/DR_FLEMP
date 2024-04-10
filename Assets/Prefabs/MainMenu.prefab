@@ -13793,7 +13793,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   setDialogueVolumeStatus: {fileID: 1927955495213955757}
   setSoundVolumeStatus: {fileID: 1927955493945063906}
-  setMusicVolumeStatus: {fileID: 2462016270307236044}
   setWalkingSpeed: {fileID: 3450188912252838898}
   setSubstitlesStatus: {fileID: 1927955495229590650}
   setGuidesStatus: {fileID: 0}
@@ -13813,6 +13812,12 @@ MonoBehaviour:
   Realtime: 1
   languageButton: {fileID: 0}
   languageButtonStudy: {fileID: 0}
+  GuidesLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  OverlayGuidesLayer:
+    serializedVersion: 2
+    m_Bits: 0
   tutorial: 0
 --- !u!114 &1328216095505563013
 MonoBehaviour:
@@ -19887,7 +19892,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 2, y: 1.535}
+  m_AnchoredPosition: {x: 2, y: 1.5349731}
   m_SizeDelta: {x: 1000, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &6856019803527105818
@@ -19933,7 +19938,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &6856019803527105816
 MonoBehaviour:
   m_ObjectHideFlags: 0

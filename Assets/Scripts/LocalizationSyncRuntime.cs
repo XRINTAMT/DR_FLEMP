@@ -12,13 +12,20 @@ namespace Assets.SimpleLocalization
 {
 	public class LocalizationSyncRuntime : MonoBehaviour
 	{
+		[SerializeField] GameObject passwordPanel;
+		[SerializeField] InputField input;
 		public string TableId;
 		public Sheet [] Sheets;
 		private const string UrlPattern = "https://docs.google.com/spreadsheets/d/{0}/export?format=csv&gid={1}";
 		public List<string> keyList = new List<string>();
 		public UnityEvent activate;
+		string savedPassword;
 
-		private void Start()
+        private void Awake()
+        {
+			savedPassword = PlayerPrefs.GetString("password", "");
+        }
+        private void Start()
         {
 			StartCoroutine(SyncCoroutine());
 		}
@@ -55,7 +62,6 @@ namespace Assets.SimpleLocalization
 				{
 					var sheet = Sheets.Single(i => url == string.Format(UrlPattern, TableId, i.Id));
 					var data = request.downloadHandler.text;
-					Debug.Log(request.downloadHandler.text);
 					ParserColumn(request.downloadHandler.text, 0);
 				}
 				else
@@ -64,6 +70,7 @@ namespace Assets.SimpleLocalization
 				}
 			}
 
+			CheckSavedPassword(savedPassword);
 		}
 
 		void ParserColumn(string text,int column) 
@@ -81,18 +88,38 @@ namespace Assets.SimpleLocalization
 			}
 		}
 
-		public void CheckKey(InputField input) 
+		public void CheckSavedPassword(string password)
 		{
+
+			for (int i = 0; i < keyList.Count; i++)
+			{
+				if (keyList[i] == password)
+				{
+					activate?.Invoke();
+					return;
+				}
+			}
+
+			passwordPanel.SetActive(true);
+
+		}
+		public void CheckInputPassword() 
+		{
+
             for (int i = 0; i < keyList.Count; i++)
             {
                 if (keyList[i] == input.text)
                 {
-				  activate?.Invoke();
-				  return;
-			    }
+					PlayerPrefs.SetString("password", input.text);
+
+					activate?.Invoke();
+					return;
+
+				}
             }
 
-			input.text = "The key is not available";
+			input.text = "Password is not available";
 		}
+
 	}
 }

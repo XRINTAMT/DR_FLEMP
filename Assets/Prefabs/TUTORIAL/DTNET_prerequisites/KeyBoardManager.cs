@@ -31,6 +31,11 @@ public class KeyBoardManager : MonoBehaviour
         int x1 = input.text.Length - 1;
         input.text = input.text.Remove(x1);
     }
+
+    public void DelAllKey()
+    {
+        input.text = "";
+    }
     // Update is called once per frame
     void Update()
     {

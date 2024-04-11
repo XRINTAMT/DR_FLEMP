@@ -15,15 +15,15 @@ public class CheckInternetConnection : MonoBehaviour
 
     System.Collections.IEnumerator PingGoogle()
     {
-        Debug.Log("Trying to connect to google");
-        string googleIPAddress = "8.8.8.8";
-        Ping ping = new Ping(googleIPAddress);
+        Debug.Log("Trying to connect to Cloudflare...");
+        string IPAddress = "1.1.1.1";
+        Ping ping = new Ping(IPAddress);
         float startTime = Time.time;
-        while (!ping.isDone && Time.time - startTime < 2)
+        while (!(ping.time > 0) && Time.time - startTime < 2)
         {
             yield return null;
         }
-        if (ping.isDone)
+        if (ping.time > 0)
         {
             Debug.Log("Connected to Google");
             if (OnConnected != null)

@@ -19,6 +19,7 @@ namespace Assets.SimpleLocalization
 		private const string UrlPattern = "https://docs.google.com/spreadsheets/d/{0}/export?format=csv&gid={1}";
 		public List<string> keyList = new List<string>();
 		public UnityEvent activate;
+		public UnityEvent onLoadedSpreadsheets;
 		string savedPassword;
 
         private void Awake()
@@ -69,7 +70,7 @@ namespace Assets.SimpleLocalization
 					throw new Exception(request.error);
 				}
 			}
-
+			onLoadedSpreadsheets.Invoke();
 			CheckSavedPassword(savedPassword);
 		}
 

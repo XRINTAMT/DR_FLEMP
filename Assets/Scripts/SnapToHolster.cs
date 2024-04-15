@@ -9,6 +9,7 @@ public class SnapToHolster : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] UnityEvent OnRelease;
     [SerializeField] UnityEvent OnCameBack;
+    [SerializeField] Collider ItemsCollider;
 
     private Transform prevParent;
     private Quaternion initRotation;
@@ -24,16 +25,9 @@ public class SnapToHolster : MonoBehaviour
         prevParent = transform.parent;
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        if (prevParent != followTransform && transform.parent == followTransform)
-        {
-            initRotation = transform.rotation;
-            initMagnitude = (followTransform.position - transform.position).magnitude;
-            OnRelease.Invoke();
-            isFollowing = true;
-            rb.isKinematic = true;
-        }
+        
         if (isFollowing)
         {
             Vector3 direction = followTransform.position - transform.position;
@@ -57,7 +51,24 @@ public class SnapToHolster : MonoBehaviour
                 transform.rotation = followTransform.rotation;
             }
         }
+        if (prevParent != followTransform && transform.parent == followTransform)
+        {
+            initRotation = transform.rotation;
+            initMagnitude = (followTransform.position - transform.position).magnitude;
+            OnRelease.Invoke();
+            isFollowing = true;
+            rb.isKinematic = true;
+        }
+        if (transform.parent == followTransform)
+        {
+            if (!ItemsCollider.enabled) // means that this thing didn't work for whatever reason
+            {
+                ItemsCollider.enabled = true;
+                isFollowing = false;
+            }
+        }
         prevParent = transform.parent;
+        
     }
 
 }

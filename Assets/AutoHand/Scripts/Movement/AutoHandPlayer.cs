@@ -5,6 +5,9 @@ using Autohand.Demo;
 using System;
 using NaughtyAttributes;
 using UnityEngine.Serialization;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace Autohand {
     [RequireComponent(typeof(Rigidbody)), RequireComponent(typeof(CapsuleCollider)), DefaultExecutionOrder(-30)]
@@ -25,13 +28,10 @@ namespace Autohand {
             }
         }
 
-       
+
 
         [AutoHeader("Auto Hand Player")]
         public bool ignoreMe;
-
-
-
 
         [Tooltip("The tracked headCamera object")]
         public Camera headCamera;
@@ -54,15 +54,6 @@ namespace Autohand {
         [EnableIf("useMovement")]
         [Tooltip("Movement acceleration when isGrounded")]
         public float groundedDrag = 4f;
-        public Teleporter teleporterL;
-        public Teleporter teleporterR;
-        [HideInInspector] public XRTeleporterLink xrTeleporterLinkLeft;
-        [HideInInspector] public XRTeleporterLink xrTeleporterLinkRight;
-        public XRHandPlayerControllerLink xRHandPlayerControllerLink;
-        bool teleportEnable;
-        //public static bool teleportMove = true;
-        public static MovementType movementType;
-        public static MovementHand movementHand;
 
         [AutoToggleHeader("Snap Turning")]
         [Tooltip("Whether or not to use snap turning or smooth turning"), Min(0)]
@@ -148,9 +139,6 @@ namespace Autohand {
 
         public Rigidbody body { get; private set; }
 
-        //DELETEME
-        public float speed;
-        public float fixedDeltaTime;
 
         float turnResetzone = 0.3f;
         float groundedOffset = 0.05f;
@@ -165,9 +153,9 @@ namespace Autohand {
         float playerHeight = 0;
         bool lastCrouching;
         float lastCrouchingHeight;
-        Quaternion startRot;
         Vector3 targetTrackedPos;
         Vector3 lastUpdatePosition;
+        bool editorSelected;
 
         Hand lastRightHand;
         Hand lastLeftHand;
@@ -192,7 +180,6 @@ namespace Autohand {
 
         public virtual void Start() {
 
-            startRot = headCamera.transform.rotation;
             lastUpdatePosition = transform.position;
 
             gameObject.layer = LayerMask.NameToLayer(HandPlayerLayer);
@@ -215,24 +202,16 @@ namespace Autohand {
             StartCoroutine(CheckForTrackingStart());
 
             handPlayerMask = AutoHandExtensions.GetPhysicsLayerMask(gameObject.layer);
+#if UNITY_EDITOR
+                if (Selection.activeGameObject == gameObject)
+                {
+                    Selection.activeGameObject = null;
+                    Debug.Log("Auto Hand: highlighting hand component in the inspector can cause lag and quality reduction at runtime in VR. (Automatically deselecting at runtime) Remove this code at any time.", this);
+                    editorSelected = true;
+                }
 
-            xrTeleporterLinkLeft = teleporterL.GetComponent<XRTeleporterLink>();
-            xrTeleporterLinkRight = teleporterR.GetComponent<XRTeleporterLink>();
-
-            if (movementHand==MovementHand.Left)
-            {
-                teleporterL.gameObject.SetActive(true);
-                teleporterR.gameObject.SetActive(false);
-                xRHandPlayerControllerLink.moveController = handLeft.GetComponent<XRHandControllerLink>();
-                xRHandPlayerControllerLink.turnController = handRight.GetComponent<XRHandControllerLink>();
-            }
-            if (movementHand == MovementHand.Right)
-            {
-                teleporterL.gameObject.SetActive(false);
-                teleporterR.gameObject.SetActive(true);
-                xRHandPlayerControllerLink.moveController = handRight.GetComponent<XRHandControllerLink>();
-                xRHandPlayerControllerLink.turnController = handLeft.GetComponent<XRHandControllerLink>();
-            }
+                Application.quitting += () => { if (editorSelected && Selection.activeGameObject == null) Selection.activeGameObject = gameObject; };
+#endif
         }
 
         protected virtual void OnEnable() {
@@ -253,7 +232,7 @@ namespace Autohand {
             lastHeadPos = headCamera.transform.position;
             while(!trackingStarted) {
                 if(headCamera.transform.position != lastHeadPos) {
-                    OnHeadTrackingStarted();
+                    //OnHeadTrackingStarted();
                     trackingStarted = true;
                 }
                 lastHeadPos = headCamera.transform.position;
@@ -271,9 +250,8 @@ namespace Autohand {
                 headFollower.transform.position = headCamera.transform.position;
                 headFollower.name = "Head Follower";
                 headFollower.parent = transform.parent;
-                headFollower.gameObject.AddComponent<FadeWall>();
+
                 var col = headFollower.gameObject.AddComponent<SphereCollider>();
-                col.isTrigger = true;
                 col.material = bodyCapsule.material;
                 col.radius = bodyCapsule.radius;
 
@@ -376,131 +354,10 @@ namespace Autohand {
 
         /// <summary>Sets move direction for this fixedupdate</summary>
         public virtual void Move(Vector2 axis, bool useDeadzone = true, bool useRelativeDirection = false) {
-
-
-            switch (movementType)
-            {
-                case MovementType.Teleport:
-
-                    if (movementHand==MovementHand.Left)
-                    {
-                        if (moveDirection.x > 0 || moveDirection.x < 0) moveDirection.x = 0;
-                        if (moveDirection.z > 0 || moveDirection.z < 0) moveDirection.z = 0;
-                        if (moveDirection.y > 0 || moveDirection.y < 0) moveDirection.y = 0;
-
-                        if (xrTeleporterLinkLeft.enabled)
-                            xrTeleporterLinkLeft.enabled = false;
-                        if (axis != Vector2.zero && !teleportEnable)
-                        {
-                            teleporterL.StartTeleport();
-                            teleportEnable = true;
-                        }
-                        if (axis == Vector2.zero && teleportEnable)
-                        {
-                            teleporterL.Teleport();
-                            teleportEnable = false;
-                        }
-                    }
-                    if (movementHand == MovementHand.Right)
-                    {
-                        if (moveDirection.x > 0 || moveDirection.x < 0) moveDirection.x = 0;
-                        if (moveDirection.z > 0 || moveDirection.z < 0) moveDirection.z = 0;
-                        if (moveDirection.y > 0 || moveDirection.y < 0) moveDirection.y = 0;
-
-                        if (xrTeleporterLinkRight.enabled)
-                            xrTeleporterLinkRight.enabled = false;
-                        if (axis != Vector2.zero && !teleportEnable)
-                        {
-                            teleporterR.StartTeleport();
-                            teleportEnable = true;
-                        }
-                        if (axis == Vector2.zero && teleportEnable)
-                        {
-                            teleporterR.Teleport();
-                            teleportEnable = false;
-                        }
-                    }
-
-
-                    break;
-                case MovementType.Move:
-
-                    if (movementHand == MovementHand.Left)
-                    {
-                        moveDirection.x = (!useDeadzone || Mathf.Abs(axis.x) > movementDeadzone) ? axis.x : 0;
-                        moveDirection.z = (!useDeadzone || Mathf.Abs(axis.y) > movementDeadzone) ? axis.y : 0;
-
-                        if (useRelativeDirection)
-                            moveDirection = transform.rotation * moveDirection;
-                        if (xrTeleporterLinkLeft.enabled)
-                            xrTeleporterLinkLeft.enabled = false;
-                    }
-                    if (movementHand == MovementHand.Right)
-                    {
-                        moveDirection.x = (!useDeadzone || Mathf.Abs(axis.x) > movementDeadzone) ? axis.x : 0;
-                        moveDirection.z = (!useDeadzone || Mathf.Abs(axis.y) > movementDeadzone) ? axis.y : 0;
-                        if (useRelativeDirection)
-                            moveDirection = transform.rotation * moveDirection;
-                        if (xrTeleporterLinkRight.enabled)
-                            xrTeleporterLinkRight.enabled = false;
-                    }
-
-
-                
-                    break;
-                case MovementType.Mixed:
-
-                    if (movementHand == MovementHand.Left)
-                    {
-                        moveDirection.x = (!useDeadzone || Mathf.Abs(axis.x) > movementDeadzone) ? axis.x : 0;
-                        moveDirection.z = (!useDeadzone || Mathf.Abs(axis.y) > movementDeadzone) ? axis.y : 0;
-                        if (useRelativeDirection)
-                            moveDirection = transform.rotation * moveDirection;
-                        if (!xrTeleporterLinkLeft.enabled)
-                            xrTeleporterLinkLeft.enabled = true;
-                    }
-                    if (movementHand == MovementHand.Right)
-                    {
-                        moveDirection.x = (!useDeadzone || Mathf.Abs(axis.x) > movementDeadzone) ? axis.x : 0;
-                        moveDirection.z = (!useDeadzone || Mathf.Abs(axis.y) > movementDeadzone) ? axis.y : 0;
-                        if (useRelativeDirection)
-                            moveDirection = transform.rotation * moveDirection;
-                        if (!xrTeleporterLinkRight.enabled)
-                            xrTeleporterLinkRight.enabled = true;
-                    }
-
-                   
-
-                    break;
-                default:
-                    break;
-            }
-            //if (teleportMove)
-            //{
-            //    if (axis != Vector2.zero && !teleportEnable)
-            //    {
-            //        //xrTeleporterLink.Teleport();
-            //        teleporterL.StartTeleport();
-            //        teleportEnable = true;
-            //    }
-            //    if (axis == Vector2.zero && teleportEnable)
-            //    {
-            //        teleporterL.Teleport();
-            //        teleportEnable = false;
-            //    }
-            //}
-
-            //if (!teleportMove)
-            //{
-            //    moveDirection.x = (!useDeadzone || Mathf.Abs(axis.x) > movementDeadzone) ? axis.x : 0;
-            //    moveDirection.z = (!useDeadzone || Mathf.Abs(axis.y) > movementDeadzone) ? axis.y : 0;
-            //    if (useRelativeDirection)
-            //        moveDirection = transform.rotation * moveDirection;
-            //}
-            //moveDirection.x = (!useDeadzone || Mathf.Abs(axis.x) > movementDeadzone) ? axis.x : 0;
-            //moveDirection.z = (!useDeadzone || Mathf.Abs(axis.y) > movementDeadzone) ? axis.y : 0;
-            //if (useRelativeDirection)
-            //    moveDirection = transform.rotation * moveDirection;
+            moveDirection.x = (!useDeadzone || Mathf.Abs(axis.x) > movementDeadzone) ? axis.x : 0;
+            moveDirection.z = (!useDeadzone || Mathf.Abs(axis.y) > movementDeadzone) ? axis.y : 0;
+            if(useRelativeDirection)
+                moveDirection = transform.rotation * moveDirection;
         }
 
         public virtual void Turn(float turnAxis) {
@@ -538,23 +395,51 @@ namespace Autohand {
             //1. Moves velocity towards desired push direction
             if(pushAxis != Vector3.zero) {
                 body.velocity = Vector3.MoveTowards(body.velocity, pushAxis, pushingAcceleration * Time.fixedDeltaTime);
-                body.velocity *= 1 - pushingDrag * Time.fixedDeltaTime;
+                body.velocity *= 1 - Mathf.Clamp01(pushingDrag* Time.fixedDeltaTime);
             }
 
             //2. Moves velocity towards desired climb direction
             if(climbAxis != Vector3.zero) {
                 body.velocity = Vector3.MoveTowards(body.velocity, climbAxis, climbingAcceleration * Time.fixedDeltaTime);
-                body.velocity *= 1 - climbingDrag * Time.fixedDeltaTime;
+                body.velocity *= 1 - Mathf.Clamp01(climbingDrag * Time.fixedDeltaTime);
             }
 
             //3. Moves velocity towards desired movement direction
             if(move != Vector3.zero && CanInputMove()) {
-                body.velocity = Vector3.MoveTowards(body.velocity, move * maxMoveSpeed, moveAcceleration * Time.fixedDeltaTime);
+                var newVel = Vector3.MoveTowards(body.velocity, move * maxMoveSpeed, moveAcceleration * Time.fixedDeltaTime);
+                if (move.x < 0){
+                    if (body.velocity.x > -maxMoveSpeed && newVel.x <= -maxMoveSpeed) newVel.x = -maxMoveSpeed;
+                    else if (body.velocity.x < -maxMoveSpeed) newVel.x = body.velocity.x;
+                    //else if (newVel.x >= -maxMoveSpeed) newVel.x = -newVel.x;
+                }
+                else
+                {
+                    if (body.velocity.x < maxMoveSpeed && newVel.x >= maxMoveSpeed) newVel.x = maxMoveSpeed;
+                    else if (body.velocity.x > maxMoveSpeed) newVel.x = body.velocity.x;
+                    //else if (newVel.x <= maxMoveSpeed) newVel.x = newVel.x;
+
+                }
+
+                if (move.z < 0)
+                {
+                    if (body.velocity.z > -maxMoveSpeed && newVel.z <= -maxMoveSpeed) newVel.z = -maxMoveSpeed;
+                    else if (body.velocity.z < -maxMoveSpeed) newVel.z = body.velocity.z;
+                    //else if (newVel.z >= -maxMoveSpeed) newVel.z = -newVel.z;
+                }
+                else
+                {
+                    if (body.velocity.z < maxMoveSpeed && newVel.z >= maxMoveSpeed) newVel.z = maxMoveSpeed;
+                    else if (body.velocity.z > maxMoveSpeed) newVel.z = body.velocity.z;
+                    //else if (newVel.z <= maxMoveSpeed) newVel.z = newVel.z;
+
+                }
+
+                body.velocity = newVel;
             }
 
             //4. This creates extra drag when grounded to simulate foot strength, or if flying greats drag in every direction when not moving
             if (move.magnitude <= movementDeadzone && isGrounded)
-                body.velocity *= (1 - groundedDrag * (Time.realtimeSinceStartup - lastUpdateTime));
+                body.velocity *= (1 - Mathf.Clamp01(groundedDrag * (Time.fixedDeltaTime - lastUpdateTime)));
 
 
             //5. Checks if gravity should be turned off
@@ -569,7 +454,7 @@ namespace Autohand {
 
             //*moveDirection = Vector3.zero;
             ignoreIterpolationFrame = false;
-            lastUpdateTime = Time.realtimeSinceStartup;
+            lastUpdateTime = Time.fixedDeltaTime;
         }
 
 
@@ -616,21 +501,51 @@ namespace Autohand {
         }
 
         protected virtual void InterpolateMovement() {
-            var deltaTime = (Time.realtimeSinceStartup - lastUpdateTime);
+            var deltaTime = (Time.deltaTime - lastUpdateTime);
             var startRightHandPos = handRight.transform.position;
             var startLeftHandPos = handLeft.transform.position;            
             
+
             if(body.drag > 0)
-                body.velocity *= (1 - body.drag * deltaTime);
+                body.velocity *= (1 - Mathf.Clamp01(body.drag * deltaTime));
 
             var move = AlterDirection(moveDirection);
             if (move.magnitude <= movementDeadzone && isGrounded)
-                body.velocity *= (1 - groundedDrag * deltaTime);
+                body.velocity *= (1 - Mathf.Clamp01(groundedDrag * deltaTime));
 
             var yVel = body.velocity.y;
             //Smooth moves body based on velocity
-            body.position = Vector3.MoveTowards(body.position, body.position + body.velocity, body.velocity.magnitude * deltaTime);
 
+            var newVel = Vector3.MoveTowards(body.velocity, move * maxMoveSpeed, moveAcceleration * Time.fixedDeltaTime);
+            if (move.x < 0)
+            {
+                if (body.velocity.x > -maxMoveSpeed && newVel.x <= -maxMoveSpeed) newVel.x = -maxMoveSpeed;
+                else if (body.velocity.x < -maxMoveSpeed) newVel.x = body.velocity.x;
+                //else if (newVel.x >= -maxMoveSpeed) newVel.x = -newVel.x;
+            }
+            else
+            {
+                if (body.velocity.x < maxMoveSpeed && newVel.x >= maxMoveSpeed) newVel.x = maxMoveSpeed;
+                else if (body.velocity.x > maxMoveSpeed) newVel.x = body.velocity.x;
+                //else if (newVel.x <= maxMoveSpeed) newVel.x = newVel.x;
+
+            }
+
+            if (move.z < 0)
+            {
+                if (body.velocity.z > -maxMoveSpeed && newVel.z <= -maxMoveSpeed) newVel.z = -maxMoveSpeed;
+                else if (body.velocity.z < -maxMoveSpeed) newVel.z = body.velocity.z;
+                //else if (newVel.z >= -maxMoveSpeed) newVel.z = -newVel.z;
+            }
+            else
+            {
+                if (body.velocity.z < maxMoveSpeed && newVel.z >= maxMoveSpeed) newVel.z = maxMoveSpeed;
+                else if (body.velocity.z > maxMoveSpeed) newVel.z = body.velocity.z;
+                //else if (newVel.z <= maxMoveSpeed) newVel.z = newVel.z;
+
+            }
+            
+            body.position = Vector3.MoveTowards(body.position, body.position + newVel, newVel.magnitude * deltaTime);
 
             //6. This will keep velocity if consistent when moving while falling
             if (body.useGravity)
@@ -685,7 +600,7 @@ namespace Autohand {
             }
 
             lastUpdatePosition = transform.position;
-            lastUpdateTime = Time.realtimeSinceStartup;
+            lastUpdateTime = Time.deltaTime;
         }
 
 
@@ -848,6 +763,7 @@ namespace Autohand {
                         body.position = transform.position;
                         body.rotation = transform.rotation;
 
+                        deltaRot.eulerAngles = new Vector3(0, deltaRot.eulerAngles.y, 0);
                         trackingContainer.rotation *= deltaRot;
 
                         lastPlatformPosition = closestHit.transform.position;
@@ -1166,15 +1082,4 @@ namespace Autohand {
 
 
     }
-}
-public enum MovementType 
-{
-    Teleport,
-    Move,
-    Mixed
-}
-public enum MovementHand
-{
-    Left,
-    Right,
 }

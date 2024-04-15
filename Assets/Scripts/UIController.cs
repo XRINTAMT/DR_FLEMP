@@ -87,8 +87,8 @@ public class UIController : MonoBehaviour
         if (teleportChosen) teleportChosen.SetActive(teleport == 0);
         if (smoothChosen) smoothChosen.SetActive(teleport == 1);
         if (mixedChosen) mixedChosen.SetActive(teleport == 2);
-        if (leftHandChoosen) leftHandChoosen.SetActive(hand == 0);
-        if (rightHandChoosen) rightHandChoosen.SetActive(hand == 1);
+        if (leftHandChoosen) leftHandChoosen.SetActive(hand == 1);
+        if (rightHandChoosen) rightHandChoosen.SetActive(hand == 0);
         if (englishLearningChosen) englishLearningChosen.SetActive(learnedLanguage == 0);
         if (germanLearningChosen) germanLearningChosen.SetActive(learnedLanguage == 1);
         if (englishChosen) englishChosen.SetActive(language == "English");

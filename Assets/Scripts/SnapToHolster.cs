@@ -10,6 +10,7 @@ public class SnapToHolster : MonoBehaviour
     [SerializeField] UnityEvent OnRelease;
     [SerializeField] UnityEvent OnCameBack;
     [SerializeField] Collider ItemsCollider;
+    [SerializeField] IgnoreAllColliders Ignorer;
 
     private Transform prevParent;
     private Quaternion initRotation;
@@ -27,15 +28,11 @@ public class SnapToHolster : MonoBehaviour
 
     void FixedUpdate()
     {
-        
         if (isFollowing)
         {
             Vector3 direction = followTransform.position - transform.position;
             transform.position += direction.normalized * Mathf.Min(direction.magnitude, Time.deltaTime * speed);
-
             transform.rotation = Quaternion.Lerp(initRotation, followTransform.rotation, 1 - (direction.magnitude / initMagnitude));
-
-
             if (direction.magnitude < 0.000001f)
             {
                 transform.parent = followTransform;
@@ -65,10 +62,10 @@ public class SnapToHolster : MonoBehaviour
             {
                 ItemsCollider.enabled = true;
                 isFollowing = false;
+                Ignorer.UpdateIgnores();
             }
         }
         prevParent = transform.parent;
-        
     }
 
 }

@@ -2,37 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.SceneManagement;
 
 public class MultipleCameraModes : MonoBehaviour
 {
     [SerializeField] Camera mainCamera;
     ViewportHintManager HintManager;
-    Camera Player1Camera;
-    Camera Player2Camera;
+    public Camera Player1Camera;
+    public Camera Player2Camera;
     int mode = 0;
 
+    private void Awake()
+    {
+        if (SceneManager.GetActiveScene().name == "MultiplayerScene") enabled = true;
+    }
     void Start()
     {
         HintManager = FindObjectOfType<ViewportHintManager>();
     }
 
-    void Update()
+    public void SetCameras() 
     {
         if (Player1Camera == null || Player2Camera == null)
         {
             PlayerInfo[] Players = FindObjectsOfType<PlayerInfo>();
-            foreach(PlayerInfo _player in Players)
+            foreach (PlayerInfo _player in Players)
             {
-                if(_player.playerRole == PlayerInfo.PlayerRole.OnComing)
+                if (_player.playerRole == PlayerInfo.PlayerRole.OnComing)
                 {
                     Player1Camera = _player.GetComponentInChildren<Camera>();
                 }
-                if(_player.playerRole == PlayerInfo.PlayerRole.OffGoing)
+                if (_player.playerRole == PlayerInfo.PlayerRole.OffGoing)
                 {
                     Player2Camera = _player.GetComponentInChildren<Camera>();
                 }
             }
         }
+    }
+    void Update()
+    {
+
         if (Input.GetKeyUp(KeyCode.Tab))
         {
             if (Player1Camera == null)

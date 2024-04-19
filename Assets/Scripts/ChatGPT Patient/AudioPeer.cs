@@ -16,15 +16,21 @@ public class AudioPeer : MonoBehaviour {
     private float[] audioBandBuffers = new float[8];
 
     void Update() {
-        if (audioSources.Count == 0) {
+        if (audioSources.Count == 0) 
+        {
             return;
         }
-        ReadSamples();
-        CalculateFrequencyBands();
-        if (useBuffer) {
-            BufferFrequencyBands();
+
+        if (audioSources[0].isPlaying)
+        {
+            ReadSamples();
+            CalculateFrequencyBands();
+            if (useBuffer)
+            {
+                BufferFrequencyBands();
+            }
+            CalculateAudioBands();
         }
-        CalculateAudioBands();
     }
 
     private void ReadSamples() {

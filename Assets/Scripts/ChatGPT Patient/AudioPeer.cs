@@ -15,22 +15,44 @@ public class AudioPeer : MonoBehaviour {
     private float[] audioBands = new float[8];
     private float[] audioBandBuffers = new float[8];
 
+    private void Awake()
+    {
+        audioSources.Clear();
+        foreach (var audioSource in transform.root.GetComponentsInChildren<AudioSource>(true))
+        {
+            audioSources.Add(audioSource);
+        }
+    }
     void Update() {
         if (audioSources.Count == 0) 
         {
             return;
         }
 
-        if (audioSources[0].isPlaying)
+
+        for (int i = 0; i < audioSources.Count; i++)
         {
-            ReadSamples();
-            CalculateFrequencyBands();
-            if (useBuffer)
+            if (audioSources[i].isPlaying)
             {
-                BufferFrequencyBands();
+                ReadSamples();
+                CalculateFrequencyBands();
+                if (useBuffer)
+                {
+                    BufferFrequencyBands();
+                }
+                CalculateAudioBands();
             }
-            CalculateAudioBands();
         }
+        //if (audioSources[0].isPlaying)
+        //{
+        //    ReadSamples();
+        //    CalculateFrequencyBands();
+        //    if (useBuffer)
+        //    {
+        //        BufferFrequencyBands();
+        //    }
+        //    CalculateAudioBands();
+        //}
     }
 
     private void ReadSamples() {

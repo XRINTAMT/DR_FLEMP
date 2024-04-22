@@ -51,6 +51,12 @@ public class UIController : MonoBehaviour
     public static int guides;
     public bool tutorial;
     //SceneLoader sceneLoader;
+
+    private void Awake()
+    {
+        OVRPlugin.systemDisplayFrequency = 72.0f;
+    }
+    
     void Start()
     {
         LoadSettingsIntoUI();

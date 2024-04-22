@@ -4498,12 +4498,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6231535693470526075}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edfa1cec9f6159c4c80615cc3793b47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 6231535693470526049}
+  Player1Camera: {fileID: 0}
+  Player2Camera: {fileID: 0}
 --- !u!1 &6231535693512444790
 GameObject:
   m_ObjectHideFlags: 0
@@ -6617,7 +6619,7 @@ MonoBehaviour:
   headTransform: {fileID: 6231535693470526074}
   hipsOffsetTransform: {fileID: 4569916505809107539}
   hipsOffset: {x: 0, y: -0.8, z: 0}
-  rotationThreshold: 90
+  rotationThreshold: 30
   timeThreshold: 0.5
   rotationSpeed: 10
 --- !u!1 &8534247568691258368

@@ -155,6 +155,11 @@ public class PlayersList : MonoBehaviour
             playersList[playersList.Count - 1].SetRoles();
             if(playersList.Count > 1)
                 playersList[playersList.Count - 2].SetRoles();
+
+            if (FindObjectOfType<MultipleCameraModes>(true))
+            {
+                FindObjectOfType<MultipleCameraModes>().SetCameras();
+            }
             setRoles = false;
         }
     }

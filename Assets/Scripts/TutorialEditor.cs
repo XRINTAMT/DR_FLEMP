@@ -6,6 +6,7 @@ using PersistentSaveSystem;
 using UnityEngine;
 using UnityEngine.Events;
 
+
 public class TutorialEditor : MonoBehaviour
 {
     public List<TutorialTask> ListTasks = new List<TutorialTask>();
@@ -17,7 +18,7 @@ public class TutorialEditor : MonoBehaviour
     private void Start()
     {
         //StartTutorial();
-        AutoHandPlayer.movementType = MovementType.Move;
+        //FindObjectOfType<XRMovementControls>().SwitchLocomotion(1);
         InstBlockDoor();
     }
     void InstBlockDoor() 
@@ -35,6 +36,8 @@ public class TutorialEditor : MonoBehaviour
 
     public void StartTutorial()
     {
+        FindObjectOfType<XRMovementControls>().SwitchMovementHand(0);
+        FindObjectOfType<XRMovementControls>().SwitchLocomotion(1);
         StartTask(0);
         OnTutorialStart?.Invoke();
     }
@@ -47,9 +50,15 @@ public class TutorialEditor : MonoBehaviour
 
     public void LocomtionSystem(bool teleport) 
     {
-        if (!teleport) AutoHandPlayer.movementType = MovementType.Move;
-       
-        if (teleport) AutoHandPlayer.movementType = MovementType.Teleport;
+        if (!teleport) 
+        {
+            FindObjectOfType<XRMovementControls>().SwitchLocomotion(1);
+        }
+
+        if (teleport) 
+        {
+            FindObjectOfType<XRMovementControls>().SwitchLocomotion(0);
+        } 
        
     }
     public void StartTask(int index)

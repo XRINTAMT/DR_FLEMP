@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Autohand.Demo;
 using Autohand;
+using static XRMovementControls;
 
 public class XRMovementControlsTutorial : MonoBehaviour
 {
@@ -36,25 +37,15 @@ public class XRMovementControlsTutorial : MonoBehaviour
 
     public void SwitchLocomotionTeleport()
     {
-        AutoHandPlayer.movementType = MovementType.Teleport;
-        //Teleport.SetActive(true);
+        FindObjectOfType<XRMovementControls>().SwitchLocomotion(0);
     }
     public void SwitchLocomotionMove()
     {
-        AutoHandPlayer.movementType = MovementType.Move;
-        //Teleport.SetActive(false);
+        FindObjectOfType<XRMovementControls>().SwitchLocomotion(1);
     }
     public void SwitchLocomotionMixed()
     {
-        AutoHandPlayer.movementType = MovementType.Mixed;
-        Teleporter[] array = FindObjectsOfType<Teleporter>(true);
-        for (int i = 0; i < array.Length; i++)
-        {
-            array[i].enabled = true;
-            array[i].gameObject.SetActive(true);
-            array[i].GetComponent<XRTeleporterLink>().enabled=true;
-        }
-        //Teleport.SetActive(true);
+        FindObjectOfType<XRMovementControls>().SwitchLocomotion(2);
     }
     //public void SwitchLocomotionHand()
     //{

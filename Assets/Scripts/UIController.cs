@@ -8,7 +8,6 @@ using UnityEngine.UI;
 using UnityEngine.Audio;
 using Assets.SimpleLocalization;
 
-
 public class UIController : MonoBehaviour
 {
     [SerializeField] private Slider setDialogueVolumeStatus;
@@ -19,6 +18,8 @@ public class UIController : MonoBehaviour
     //[SerializeField] private Dropdown setMovetHandStatus;
     [SerializeField] private Toggle setSubstitlesStatus;
     [SerializeField] private Toggle setGuidesStatus;
+    [SerializeField] private GameObject leftHandChoosen;
+    [SerializeField] private GameObject rightHandChoosen;
     [SerializeField] private GameObject teleportChosen;
     [SerializeField] private GameObject smoothChosen;
     [SerializeField] private GameObject mixedChosen;
@@ -45,10 +46,17 @@ public class UIController : MonoBehaviour
     public static int learnedLanguage;
     public static string role;
     public static int teleport;
+    public static int hand;
     public static int subtitles;
     public static int guides;
     public bool tutorial;
     //SceneLoader sceneLoader;
+
+    private void Awake()
+    {
+        OVRPlugin.systemDisplayFrequency = 72.0f;
+    }
+    
     void Start()
     {
         LoadSettingsIntoUI();
@@ -65,27 +73,37 @@ public class UIController : MonoBehaviour
         setDialogueVolumeStatus.value = PlayerPrefs.GetFloat(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "dialogueVolume", 0.5f);
         setSoundVolumeStatus.value = PlayerPrefs.GetFloat(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "soundVolume", 0.5f);
         //setWalkingSpeed.value = PlayerPrefs.GetFloat("walkingSpeed", 1.5f);
-        setSubstitlesStatus.isOn = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Subtitles", 0) == 0;
-        setGuidesStatus.isOn = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "GuidedMode", 0) == 1;
-        SetGuides();
+        if (setSubstitlesStatus) setSubstitlesStatus.isOn = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Subtitles", 0) == 0;
+      
         teleport = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "MovementType", 2);
-        if (!tutorial) SetLocomotionType(teleport);
+        hand = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "MovementHand", 0);
         learnedLanguage = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "StudyLanguage", 0);
         role = PlayerPrefs.GetString(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Role", "Assistant");
         language = PlayerPrefs.GetString(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "Language", "English");
-        LocalizationManager.Language = language;
-        teleportChosen.SetActive(teleport == 0);
-        smoothChosen.SetActive(teleport == 1);
-        mixedChosen.SetActive(teleport == 2);
+        LocalizationManager.Language = language;   
+        
+        if (!tutorial) SetLocomotionType(teleport);
+        SetHandType(hand);
+
+        if (setGuidesStatus) 
+        {
+            setGuidesStatus.isOn = PlayerPrefs.GetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "GuidedMode", 0) == 1;
+            SetGuides();
+        } 
+        if (teleportChosen) teleportChosen.SetActive(teleport == 0);
+        if (smoothChosen) smoothChosen.SetActive(teleport == 1);
+        if (mixedChosen) mixedChosen.SetActive(teleport == 2);
+        if (leftHandChoosen) leftHandChoosen.SetActive(hand == 1);
+        if (rightHandChoosen) rightHandChoosen.SetActive(hand == 0);
         if (englishLearningChosen) englishLearningChosen.SetActive(learnedLanguage == 0);
         if (germanLearningChosen) germanLearningChosen.SetActive(learnedLanguage == 1);
-        englishChosen.SetActive(language == "English");
-        germanChosen.SetActive(language == "German");
-        lithuanianChosen.SetActive(language == "Lithuanian");
-        latvianChosen.SetActive(language == "Latvian");
-        swedishChosen.SetActive(language == "Swedish");
-        assistantChosen.SetActive(role == "Assistant");
-        nurseChosen.SetActive(role == "Nurse");
+        if (englishChosen) englishChosen.SetActive(language == "English");
+        if (germanChosen) germanChosen.SetActive(language == "German");
+        if (lithuanianChosen) lithuanianChosen.SetActive(language == "Lithuanian");
+        if (latvianChosen) latvianChosen.SetActive(language == "Latvian");
+        if (swedishChosen) swedishChosen.SetActive(language == "Swedish");
+        if (assistantChosen) assistantChosen.SetActive(role == "Assistant");
+        if (nurseChosen) nurseChosen.SetActive(role == "Nurse");
     }
     public void SetDialogueVolume() 
     {
@@ -144,8 +162,13 @@ public class UIController : MonoBehaviour
     {
         //teleportLeftHand = setTeleportHandStatus.value;
         teleport = LocomotionID;
+        //teleportChosen.SetActive(teleport == 0);
+        //smoothChosen.SetActive(teleport == 1);
+
         teleportChosen.SetActive(teleport == 0);
         smoothChosen.SetActive(teleport == 1);
+        mixedChosen.SetActive(teleport == 2);
+
         PlayerPrefs.SetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "MovementType", teleport);
         //Object.FindObjectOfType<XRMovementControls>().SwitchLocomotion(teleport);
         if(Realtime && FindObjectOfType<XRMovementControls>())
@@ -153,8 +176,17 @@ public class UIController : MonoBehaviour
     }
     public void SetHandType(int hand)
     {
-        if (hand == 0) AutoHandPlayer.movementHand = MovementHand.Left;
-        if (hand == 1) AutoHandPlayer.movementHand = MovementHand.Right;
+        if (hand == 0) 
+        {
+            FindObjectOfType<XRMovementControls>().SwitchMovementHand(0); //left
+        }
+
+        if (hand == 1) 
+        {
+            FindObjectOfType<XRMovementControls>().SwitchMovementHand(1); //right
+        }
+
+        PlayerPrefs.SetInt(PlayerPrefs.GetInt("CurrentPlayerID", 0).ToString() + "MovementHand", hand);
     }
 
     public void SetGender(int genderID)

@@ -13,20 +13,16 @@ namespace Autohand.Demo{
 
         bool pointing;
         bool selecting;
-        private void Start()
-        {
-            pointing = true;
-            pointGrab.StartPointing();
-        }
+
         void Update(){
             if (link.ButtonPressed(pointInput) && !pointing) {
-                //pointing = true;
-                //pointGrab.StartPointing();
+                pointing = true;
+                pointGrab.StartPointing();
             }
 
             if (!link.ButtonPressed(pointInput) && pointing){
-                //pointing = false;
-                //pointGrab.StopPointing();
+                pointing = false;
+                pointGrab.StopPointing();
             }
 
             
@@ -38,8 +34,6 @@ namespace Autohand.Demo{
             if (!link.ButtonPressed(selectInput) && selecting){
                 selecting = false;
                 pointGrab.CancelSelect();
-                pointing = true;
-                pointGrab.StartPointing();
             }
         }
     }

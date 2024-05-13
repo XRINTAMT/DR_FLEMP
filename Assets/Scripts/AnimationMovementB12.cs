@@ -125,7 +125,7 @@ public class AnimationMovementB12 : MonoBehaviour
         {
             moveObj.rotation = stopPoint[2].rotation;
             animator.SetTrigger("SitDown");
-            animator.applyRootMotion = true;
+            //animator.applyRootMotion = true;
         }
 
     }
@@ -201,7 +201,7 @@ public class AnimationMovementB12 : MonoBehaviour
                 {
                     moveObj.transform.localEulerAngles = new Vector3(0, 0, 0);
                     animator.SetTrigger("SitDown");
-                    animator.applyRootMotion = true;
+                    //animator.applyRootMotion = true;
                     rotate = false;
                 }
             }

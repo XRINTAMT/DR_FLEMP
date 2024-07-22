@@ -57,7 +57,7 @@ namespace AICharacter
             "Processing...", "", " "
         };
 
-        private OpenAIApi openai = new OpenAIApi("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");
+        private OpenAIApi openai;
 
         private string userInput;
         private string finalInstruction;
@@ -68,6 +68,14 @@ namespace AICharacter
 
         private void Awake()
         {
+            TextAsset apiKeyTextAsset = Resources.Load<TextAsset>("OpenAI_API_Key");
+            if (apiKeyTextAsset == null)
+            {
+                Debug.LogError("OpenAI API Key file not found in Resources folder!");
+                return;
+            }
+            string apiKey = apiKeyTextAsset.text.Trim();
+            openai = new OpenAIApi(apiKey);
             character = new Character();
             //character.InitCharacter();
             string c = JsonConvert.SerializeObject(character);

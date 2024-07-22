@@ -29,6 +29,16 @@ namespace GoogleTextToSpeech.Scripts
 
         public void GetSpeechAudioFromGoogle(string textToConvert, VoiceScriptableObject voice, Action<AudioClip> audioClipReceived,  Action<BadRequestData> errorReceived)
         {
+            if(apiKey == null)
+            {
+                TextAsset apiKeyTextAsset = Resources.Load<TextAsset>("Google_API_Key");
+                if (apiKeyTextAsset == null)
+                {
+                    Debug.LogError("Google API Key file not found in Resources folder! No TTS except for the English one will work!");
+                    return;
+                }
+                apiKey = apiKeyTextAsset.text.Trim();
+            }
             if (_actionRequestReceived == null)
             {
                 Debug.Log("Action Subscribed");

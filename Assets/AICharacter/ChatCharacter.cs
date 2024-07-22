@@ -45,7 +45,14 @@ public class ChatCharacter : MonoBehaviour
     void Start()
     {
         _history = new ChatHistory();
-        _openAI = new OpenAIApi("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");
+        TextAsset apiKeyTextAsset = Resources.Load<TextAsset>("OpenAI_API_Key");
+        if (apiKeyTextAsset == null)
+        {
+            Debug.LogError("OpenAI API Key file not found in Resources folder!");
+            return;
+        }
+        string apiKey = apiKeyTextAsset.text.Trim();
+        _openAI = new OpenAIApi(apiKey);
         PhrasesPool = info.ThinkingPhrasesPool;
         //STTInput = FindAnyObjectByType<InteractionHandler>();
         WitReact = FindAnyObjectByType<WitAutoReactivation>();

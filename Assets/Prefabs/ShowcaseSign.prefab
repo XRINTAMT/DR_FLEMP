@@ -362,6 +362,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3183947380169975764}
+        m_TargetAssemblyTypeName: OneTimeEvent, Assembly-CSharp
+        m_MethodName: Fire
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3858296185204547311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -737,6 +749,7 @@ GameObject:
   - component: {fileID: 8376381453568869582}
   - component: {fileID: 6754586093794774814}
   - component: {fileID: 5238948585160497069}
+  - component: {fileID: 3183947380169975764}
   m_Layer: 0
   m_Name: ShowcaseSign
   m_TagString: Untagged
@@ -822,6 +835,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3183947380169975764}
+        m_TargetAssemblyTypeName: OneTimeEvent, Assembly-CSharp
+        m_MethodName: Fire
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   HandExit:
     m_PersistentCalls:
       m_Calls:
@@ -888,3 +913,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   indicator: {fileID: 2374498074607046240}
+--- !u!114 &3183947380169975764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9040906802110079992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f314c22eb2ebc7d48985bb1417eb18cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ToDo:
+    m_PersistentCalls:
+      m_Calls: []
+  Done: 0

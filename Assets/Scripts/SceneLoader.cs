@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 public class SceneLoader : MonoBehaviour
 {
@@ -19,8 +20,31 @@ public class SceneLoader : MonoBehaviour
     }
     public void LoadScene(string targetSceneName)
     {
-        fadeUI.SetActive(true);
-        cam.enabled = true;
+        PhotonManager PhotonManagerObject = FindObjectOfType<PhotonManager>();
+
+        if (PhotonManagerObject != null)
+        {
+            StartCoroutine(WaitForDisconnect(targetSceneName));
+        }
+        else
+        {
+            Load(targetSceneName);
+        }
+    }
+
+    IEnumerator WaitForDisconnect(string targetSceneName)
+    {
+        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.Disconnect();
+        while (PhotonNetwork.IsConnected)
+            yield return 0;
+        Load(targetSceneName);
+    }
+
+    private void Load(string targetSceneName)
+    {
+        //fadeUI.SetActive(true);
+        //cam.enabled = true;
         if (string.IsNullOrEmpty(targetSceneName))
             return;
         SceneManager.LoadScene(targetSceneName);

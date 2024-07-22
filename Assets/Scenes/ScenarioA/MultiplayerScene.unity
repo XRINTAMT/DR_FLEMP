@@ -456,19 +456,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 639561672405985977, guid: c1311941f856e814fa5b3158c286eeb2, type: 3}
       propertyPath: onGrab.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 639561672405985977, guid: c1311941f856e814fa5b3158c286eeb2, type: 3}
       propertyPath: onGrab.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 442838869}
+      objectReference: {fileID: 1284190389}
     - target: {fileID: 639561672405985977, guid: c1311941f856e814fa5b3158c286eeb2, type: 3}
       propertyPath: onGrab.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Leave
+      value: LoadScene
       objectReference: {fileID: 0}
     - target: {fileID: 639561672405985977, guid: c1311941f856e814fa5b3158c286eeb2, type: 3}
       propertyPath: onGrab.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PhotonManager, Assembly-CSharp
+      value: SceneLoader, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 639561672405985977, guid: c1311941f856e814fa5b3158c286eeb2, type: 3}
+      propertyPath: onGrab.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Lobby
       objectReference: {fileID: 0}
     - target: {fileID: 659352738041442893, guid: c1311941f856e814fa5b3158c286eeb2, type: 3}
       propertyPath: OnMax.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -1063,6 +1067,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9187233583c2dac4c9e328faa1cdc227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1284190388 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8917437399957436175, guid: c1311941f856e814fa5b3158c286eeb2, type: 3}
+  m_PrefabInstance: {fileID: 1284190386}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1284190389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284190388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 207307f0e3d6d0349b23437f31d283f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeUI: {fileID: 0}
+  cam: {fileID: 0}
 --- !u!225 &1313149109 stripped
 CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 8602492765905216226, guid: d1b50c66baa82824fb7cdb2a669b27a3, type: 3}

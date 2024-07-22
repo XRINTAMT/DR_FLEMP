@@ -22,7 +22,16 @@ namespace AICharacter
         private OpenAIApi openai;
         void Start()
         {
-            openai = new OpenAIApi("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");
+            TextAsset apiKeyTextAsset = Resources.Load<TextAsset>("OpenAI_API_Key");
+
+            if (apiKeyTextAsset == null)
+            {
+                Debug.LogError("OpenAI API Key file not found in Resources folder!");
+                return;
+            }
+
+            string apiKey = apiKeyTextAsset.text.Trim(); 
+            openai = new OpenAIApi(apiKey);
         }
 
         void Update()

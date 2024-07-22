@@ -9,9 +9,21 @@ namespace AICharacter
 {
     public class ChatGPTConversationController : MonoBehaviour
     {
-        private OpenAIApi openai = new OpenAIApi("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");
+        private OpenAIApi openai;
 
         [SerializeField] private CharacterConversation conversation;
+
+        private void Awake()
+        {
+            TextAsset apiKeyTextAsset = Resources.Load<TextAsset>("OpenAI_API_Key");
+            if (apiKeyTextAsset == null)
+            {
+                Debug.LogError("OpenAI API Key file not found in Resources folder!");
+                return;
+            }
+            string apiKey = apiKeyTextAsset.text.Trim();
+            openai = new OpenAIApi(apiKey);
+        }
 
         public async void SendReply()
         {

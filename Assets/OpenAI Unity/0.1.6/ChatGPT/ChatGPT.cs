@@ -69,14 +69,22 @@ namespace OpenAI
             "Processing...", "", " "
         };
 
-        private OpenAIApi openai = new OpenAIApi("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");
-
+        TextAsset apiKeyTextAsset;
+        OpenAIApi openai;
         private string userInput;
         //private string Instruction = "Act as a random stranger in a chat room and reply to the questions.\nQ: ";
         private string finalInstruction;
 
         private void Awake()
         {
+            apiKeyTextAsset = Resources.Load<TextAsset>("OpenAI_API_Key");
+            if (apiKeyTextAsset == null)
+            {
+                Debug.LogError("OpenAI API Key file not found in Resources folder!");
+                return;
+            }
+            string apiKey = apiKeyTextAsset.text.Trim();
+            openai = new OpenAIApi(apiKey);
             ChatHistory = new List<string>();
             PhrasesPool = new RandomPool<AudioClip>(WaitingPhrases); 
         }

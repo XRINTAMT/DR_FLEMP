@@ -49,7 +49,7 @@ public class GrammarFeedbackCalc : MonoBehaviour
         messages.Add(instruction);
         var completionTask = _openAI.CreateChatCompletion(new CreateChatCompletionRequest()
         {
-            Model ="gpt-3.5-turbo-0613",
+            Model ="gpt-4o-mini",
             Messages = messages,
         });
 

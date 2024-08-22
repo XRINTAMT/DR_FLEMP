@@ -28,9 +28,7 @@ public class RandomPool<T>
     }
 
 }
-
-namespace OpenAI
-{
+/*
     public class ChatGPT : MonoBehaviour
     {
         
@@ -211,4 +209,5 @@ namespace OpenAI
             Debug.Log("Giving control back to the stt");
         }
     }
-}
+
+*/
